@@ -32,7 +32,8 @@ alias cdab="cd ~/"
 alias NHP="nohup ./job.sh &"
 alias memo="vi ~/dotfiles/.memo"
 alias share="cd ~/cloud/share"
-alias dein="cd ~/.cache/dein/repos"
+alias dein="cd ~/.cache/dein/repos/github.com"
+alias plugin="cd ~/.cache/userconfig"
 
 #function 
 hoge() {

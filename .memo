@@ -32,6 +32,10 @@ git commit -m "anything"
 git push origin master
 //file symthesis
 git pull
+//first clone
+cd ~/
+git clone https://github.com/shinya-takagi/dotfiles.git
+sh dotfilesLink.sh
 
 //Copy and Paste
 Copy = sentense or words to double click

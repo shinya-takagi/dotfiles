@@ -127,9 +127,43 @@ let g:ycm_add_preview_to_completeopt = 0
 "	autocmd BufWrite *.py :call Flake8()
 "augroup END
 
+"-------------------------------------------------
+"	Auto write ()
+"-------------------------------------------------
+imap { {}<LEFT>
+imap [ []<LEFT>
+imap ( ()<LEFT>
+"-------------------------------------------------
+"	VIM Settings
+"-------------------------------------------------
+" show ruler
+set ruler
+" show title
+set title
+" show commands until writing.
+set showcmd
+" move between ( and )
+set showmatch
+" insert indent when put Enter-key (if, for, etc...)
+set autoindent
+" show list after inserting words.
+set wildmenu
+highlight LineNr ctermfg=darkyellow
+"Disable Arrow-keys 
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
 
+"In insert-mode, Need push controll-key to move.
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
 
-
-
-
+"-------------------------------------------------
 
