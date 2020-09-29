@@ -25,6 +25,14 @@ Ctrl+Home/End		-> move to home/end in the terminal
 Default option "vimrc"
 open vimrc "~/.vimrc"
 
+//Github 
+//file update
+git add .
+git commit -m "anything"
+git push origin master
+//file symthesis
+git pull
+
 //Copy and Paste
 Copy = sentense or words to double click
 Paste = right click (-disabled) or Alt + V (Ctrl-V in windows)

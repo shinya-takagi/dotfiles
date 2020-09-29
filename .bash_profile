@@ -30,7 +30,7 @@ alias InT="vi input_tran.dat"
 alias cdab="cd ~/"
 #alias Nist="cd /home/takagi/proj/nishi/run_test"
 alias NHP="nohup ./job.sh &"
-alias memo="vi ~/own/memo"
+alias memo="vi ~/dotfiles/.memo"
 alias share="cd ~/cloud/share"
 alias dein="cd ~/.cache/dein/repos"
 
