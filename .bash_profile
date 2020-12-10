@@ -34,6 +34,11 @@ alias memo="vi ~/dotfiles/.memo"
 alias share="cd ~/cloud/share"
 alias dein="cd ~/.cache/dein/repos/github.com"
 alias plugin="cd ~/.cache/userconfig"
+alias vimaf="cd .vim/after/syntax"
+alias vostok="ssh vostok"
+alias cdrive="cd /mnt/c/Users/shiny"
+alias hdd="cd /mnt/e"
+alias ssd="cd /mnt/g"
 
 #function 
 hoge() {

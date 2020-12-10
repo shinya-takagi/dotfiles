@@ -1,14 +1,15 @@
 #! /bin/bash
 
-echo "generate readlink dotfiles? (y/v/*)"
+echo "Copy dotfiles? (y/v/f/*)"
 echo "in vostok, write v. others, not work."
+echo "Write f, and adapt FISH."
 read g
 
 case $g in
-	"y" ) { ln -sf ~/dotfiles/.vimrc ~/.vimrc
-		ln -sf ~/dotfiles/.bash_profile ~/.bash_profile
+	"y" ) { cp ~/.vimrc ~/dotfiles/.vimrc
+		cp ~/.bash_profile ~/dotfiles/.bash_profile
 	};;
-	"v" ) { ln -sf ~/dotfiles/.vimrc_vos ~/vimrc
+	"v" ) { cp ~/.vimrc ~/dotfiles/.vimrc_vos ~/vimrc
 		ln -sf ~/dotfiles/.bash_profile ~/.bash_profile
 	};;
   "f" ) { ln -sf ~/dotfiles/config.fish ~/.config/fish/config.fish
@@ -18,4 +19,3 @@ case $g in
 esac
 
 exit
-
