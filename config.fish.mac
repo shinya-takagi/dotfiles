@@ -1,0 +1,38 @@
+#Environmental Path
+#'export PATH=$HOME/.nodebrew/current/bin:$PATH'
+set PATH $HOME/.nodebrew/current/bin $PATH
+
+
+#BASIC ALIAS
+alias sl 'ls'
+alias et 'exit'
+alias dc 'cd'
+
+#FOR MAC
+alias mac 'cd ~/develop'
+alias pyy 'cd ~/develop/python'
+alias vostok 'ssh vostok'
+alias ggr 'open http://google.com/'
+alias tube 'open https://www.youtube.com' 
+alias github 'open https://www.github.com'
+alias twit 'open https://www.twitter.com'
+alias insta 'open https://www.instagram.com'
+alias qiita 'open https://qiita.com'
+alias vfp 'vi ~/.config/fish/config.fish'
+alias sfp 'source ~/.config/fish/config.fish'
+alias ql 'qlmanage -p'
+alias spvim 'open https://spacevim.org/documentation/' #Spacevim document
+alias weather 'curl -4 http://wttr.in/osaka'  #show weather
+alias te_ 'trans {en=ja}' #英→日
+alias tj_ 'trans {ja=en}' #日→英
+alias memo 'vi ~/develop/codes/memo'
+
+#Call original shell scripts
+#set code_dir '$HOME/develop/code'
+alias tubedl 'sh ~/develop/codes/tube.sh'
+alias qrgen 'sh ~/develop/codes/qrgen.sh'
+alias gethtml 'sh ~/develop/codes/gethtml.sh'
+
+#function a () {
+#echo "test"
+#}
