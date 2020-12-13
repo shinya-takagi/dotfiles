@@ -1,0 +1,100 @@
+#=============================================================================
+# dark_powered.toml --- dark powered configuration example for SpaceVim
+# Copyright (c) 2016-2017 Wang Shidong & Contributors
+# Author: Wang Shidong < wsdjeg at 163.com >
+# URL: https://spacevim.org
+# License: GPLv3
+#=============================================================================
+
+# All SpaceVim option below [option] section
+[options]
+    automatic_update = true
+    # set spacevim theme. by default colorscheme layer is not loaded,
+    # if you want to use more colorscheme, please load the colorscheme
+    # layer
+    colorscheme = "jellybeans"
+    colorscheme_bg = "dark"
+    # Disable guicolors in basic mode, many terminal do not support 24bit
+    # true colors
+    enable_guicolors = true
+    # Disable statusline separator, if you want to use other value, please
+    # install nerd fonts
+    statusline_separator = "arrow"
+    statusline_inactive_separator = "arrow"
+    buffer_index_type = 4
+    enable_tabline_filetype_icon = true
+    enable_statusline_mode = true
+    filetree_direction = 'left'
+    enable_vimfiler_gitstatus = true
+    relativenumber = false
+    enable_cursorline = true
+    filetype_icon = true
+    guifont = 'Droid Sans Mono for Powerline Nerd Font Complete 12'
+    encoding = 'UTF-8'
+    webdevicons_enable_vimfiler = 1
+    WebDevIconsNerdTreeBeforeGlyphPadding = " "
+    WebDevIconsUnicodeDecorateFolderNodes = 'v:true'
+    # file manager plugins supported in SpaceVim:
+    # - vimfiler (default)
+    # - nerdtree
+    # - defx
+    filemanager = "nerdtree"
+
+
+# Enable autocomplete layer
+[[layers]]
+  name = 'autocomplete'
+  auto-completion-return-key-behavior = "complete"
+  auto-completion-tab-key-behavior = "smart"
+
+[[layers]]
+  name = "lsp"
+
+[[layers]]
+  name = 'shell'
+  default_position = 'top'
+  default_height = 30
+
+[[layers]]
+  name = "japanese"
+
+[[layers]]
+  name = "colorscheme"
+
+[[layers]]
+  name = "ui"
+  enable = true
+  enable_sidebar = true
+
+[[layers]]
+  name = "git"
+
+[[layers]]
+  name = "github"
+
+[[layers]]
+  name = "fzf"
+
+[[layers]]
+  name = "tools"
+
+[[layers]]
+  name = "lang#dockerfile"
+
+[[layers]]
+  name = "lang#go"
+
+[[layers]]
+  name = "lang#html"
+
+[[layers]]
+  name = "lang#javascript"
+  auto_fix = true
+  enable_flow_syntax = true
+
+[[layers]]
+  name = "lang#sh"
+
+[[custom_plugins]]
+  repo = 'ryanoasis/vim-devicons'
+  merged = false
