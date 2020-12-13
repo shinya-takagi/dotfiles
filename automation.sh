@@ -6,7 +6,7 @@ read i
 case $i in
 #upload
 "u" ) { git add .
-	git commit -m "anything"
+	git commit -m "kekka ni commit"
 	git push -f origin master
 	};;
 #download
