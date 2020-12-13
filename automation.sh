@@ -7,8 +7,8 @@ case $i in
 #upload
 "u" ) { git add .
 	git commit -m "kekka ni commit"
-#git push -f origin master
-  git push
+ git push -u origin master
+# git push
 	};;
 #download
 "d" ) {	git pull
