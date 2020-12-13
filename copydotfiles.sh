@@ -1,18 +1,34 @@
 #! /bin/bash
 
 echo "Copy dotfiles? (y/v/f/*)"
+echo "y -> copy files from own directories"
 echo "in vostok, write v. others, not work."
 echo "Write f, and adapt FISH."
 read g
 
-#dfpath=$HOME/dotfiles          #Ubuntu
- dfpath=$HOME/develop/dotfiles  #Mac
+#---Discriminate OS---
+if [ "$(uname)" == 'Darwin' ]; then
+    OS='Mac'
+    dfpath=$HOME/develop/dotfiles  #Mac
+elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+    OS='Linux'
+    dfpath=$HOME/dotfiles  #Mac
+elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW32_NT' ]; then                                                                                           
+    OS='Cygwin'
+else
+    echo "Your platform ($(uname -a)) is not supported."
+    exit 1
+fi
+#---------------------
 
+#dfpath=$HOME/dotfiles          #Ubuntu
 
 case $g in
-	"y" ) { cp ~/.vimrc $dfpath/.vimrc
-		cp ~/.bash_profile $dfpath/.bash_profile
-    cp ~/.SpaceVim.d/init.toml $dfpath/init.toml 
+	"y" ) { 
+#   cp ~/.vimrc $dfpath/.vimrc
+#		cp ~/.bash_profile $dfpath/.bash_profile
+#   cp ~/.SpaceVim.d/init.toml $dfpath/init.toml 
+    \cp ~/.config/fish/config.fish $dfpath/config.fish
 	};;
 	"v" ) { cp ~/.vimrc ~/dotfiles/.vimrc_vos ~/vimrc
 		ln -sf ~/dotfiles/.bash_profile ~/.bash_profile

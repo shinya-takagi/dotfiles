@@ -1,18 +1,38 @@
 #! /bin/bash
 
 echo "generate readlink dotfiles? (y/v/*)"
+echo "y -> copy files from own directories"
 echo "in vostok, write v. others, not work."
 read g
+#---Discriminate OS---
+if [ "$(uname)" == 'Darwin' ]; then
+    OS='Mac'
+    dfpath=$HOME/develop/dotfiles  #Mac
+elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+    OS='Linux'
+    dfpath=$HOME/dotfiles  #Mac
+elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW32_NT' ]; then                                                                                           
+    OS='Cygwin'
+else
+    echo "Your platform ($(uname -a)) is not supported."
+    exit 1
+fi
+#---------------------
 
 case $g in
-	"y" ) { ln -sf ~/dotfiles/.vimrc ~/.vimrc
-		ln -sf ~/dotfiles/.bash_profile ~/.bash_profile
+	"y" ) {
+#   ln -sf $dfpath/.vimrc        ~/.vimrc
+#   ln -sf $dfpath/.bash_profile ~/.bash_profile
+#   ln -sf $dfpath/init.toml     ~/.SpaceVim.d/init.toml
+    ln -sf $dfpath/config.fish   ~/.config/fish/config.fish
 	};;
-	"v" ) { ln -sf ~/dotfiles/.vimrc_vos ~/vimrc
-		ln -sf ~/dotfiles/.bash_profile ~/.bash_profile
+	"v" ) { 
+    ln -sf $dfpath/.vimrc_vos ~/vimrc
+    ln -sf $dfpath/.bash_profile ~/.bash_profile
 	};;
-  "f" ) { ln -sf ~/dotfiles/config.fish ~/.config/fish/config.fish
-    ln -sf ~/dotfiles/.vimrc ~/.vimrc
+  "f" ) { 
+    ln -sf $dfpath/config.fish ~/.config/fish/config.fish
+    ln -sf $dfpath/.vimrc ~/.vimrc
   };;
 	* )	echo "stop"
 esac
