@@ -1,4 +1,7 @@
 
+
+
+
 #---Basic Alias---
 alias cp "cp -b -i"
 alias vbp "vi ~/.bash_profile"
@@ -31,10 +34,36 @@ alias sfp "source ~/.config/fish/config.fish"
 #alias share "cd ~/cloud/share"
 #---------------------
 
+#---Call original shell scripts---
+#set code_dir '$HOME/develop/code'
+#------Ubuntu-----
+ alias tubedl 'sh ~/codes/tube.sh'
+ alias qrgen 'sh ~/codes/qrgen.sh'
+ alias gethtml 'sh ~/codes/gethtml.sh'
+ alias galdl 'sh ~/codes/gal-dl.sh'
+#--------Mac------
+#alias tubedl 'sh ~/develop/codes/tube.sh'
+#alias qrgen 'sh ~/develop/codes/qrgen.sh'
+#alias gethtml 'sh ~/develop/codes/gethtml.sh'
+#---------------------------------
+
 #---ALIAS FOR Ubuntu---
 alias cdrive "cd /mnt/c/Users/shiny"
 alias hdd "cd /mnt/e"
 alias ssd "cd /mnt/g"
+function gall
+  set test1 $argv[1] 
+  switch $test1
+  case sup
+    open "https://github.com/mikf/gallery-dl/blob/master/docs/supportedsites.rst"
+  case dir
+    cd /mnt/e/MyData/Picture/gallery-dl
+  case '*'
+    echo "parameters"
+    echo "sup -> open supportedsites. dir -> open saved directories."
+  end
+end
+alias galdir "cd /mnt/e/MyData/Picture/gallery-dl"
 #----------------------
 
 #---ALIAS-FOR-Mac---
@@ -74,15 +103,15 @@ function mkhtml
   showdown makehtml -i $md -o $ht
 end
 
-function tubedl
-  set url $argv[1]
-  set sav $argv[2]
-  set dir /mnt/e/MyData/VIDEO/youtube-dl/$sav
-
-  youtube-dl "$url"
-  mkdir -p $dir
-  mv *.mp4 $dir
-end
+#function tubedl
+#  set url $argv[1]
+#  set sav $argv[2]
+#  set dir /mnt/e/MyData/VIDEO/youtube-dl/$sav
+#
+#  youtube-dl "$url"
+#  mkdir -p $dir
+#  mv *.mp4 $dir
+#end
 
 #USE SWITCH SENTENCE
 #function github
