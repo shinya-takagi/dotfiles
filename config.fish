@@ -41,6 +41,9 @@ alias sfp "source ~/.config/fish/config.fish"
  alias qrgen 'sh ~/codes/qrgen.sh'
  alias gethtml 'sh ~/codes/gethtml.sh'
  alias galdl 'sh ~/codes/gal-dl.sh'
+ alias dirall 'sh ~/codes/dirtoall.sh'
+ alias neeview '/mnt/c/"Program\ Files\ \(x86\)"/NeeLaboratory/NeeView/NeeView.exe &'
+ alias bstnt '/mnt/c/Users/shiny/AppData/Local/boost/Boostnote.exe &'
 #--------Mac------
 #alias tubedl 'sh ~/develop/codes/tube.sh'
 #alias qrgen 'sh ~/develop/codes/qrgen.sh'
