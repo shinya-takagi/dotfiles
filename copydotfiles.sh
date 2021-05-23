@@ -7,21 +7,22 @@ echo "Write f, and adapt FISH."
 read g
 
 #---Discriminate OS---
-if [ "$(uname)" == 'Darwin' ]; then
-    OS='Mac'
-    dfpath=$HOME/develop/dotfiles  #Mac
-elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
-    OS='Linux'
-    dfpath=$HOME/dotfiles  #Mac
-elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW32_NT' ]; then                                                                                           
-    OS='Cygwin'
-else
-    echo "Your platform ($(uname -a)) is not supported."
-    exit 1
-fi
+#if [ "$(uname)" == 'Darwin' ]; then
+#   OS='Mac'
+#   dfpath=$HOME/develop/dotfiles  #Mac
+#elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+#   OS='Linux'
+#   dfpath=$HOME/dotfiles  #Mac
+#elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW32_NT' ]; then                                                                                           
+#   OS='Cygwin'
+#else
+#   echo "Your platform ($(uname -a)) is not supported."
+#   exit 1
+#fi
 #---------------------
 
-#dfpath=$HOME/dotfiles          #Ubuntu
+ dfpath=$HOME/dotfiles          #Ubuntu
+ echo $dfpath
 
 case $g in
 	"y" ) { 

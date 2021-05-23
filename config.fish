@@ -1,5 +1,10 @@
 
 
+#---Add PATH------
+set PATH  /opt/intel/compilers_and_libraries_2020.3.275/linux/bin /opt/intel/compilers_and_libraries_2020.3.275/linux/mpi/intel64/libfabric/bin /opt/intel/bin $PATH
+set PATH $HOME/FISH $PATH
+set PATH $HOME/codes $PATH
+#-----------------
 
 
 #---Basic Alias---
@@ -19,6 +24,7 @@ alias vimaf "cd .vim/after/syntax"
 alias vostok "ssh vostok"
 alias vfp "vi ~/.config/fish/config.fish"
 alias sfp "source ~/.config/fish/config.fish"
+alias ybdl "cd /mnt/e/Mydata/VIDEO/youtube-dl"
 #---------------
 
 #---Aias for vostok---
@@ -44,6 +50,7 @@ alias sfp "source ~/.config/fish/config.fish"
  alias dirall 'sh ~/codes/dirtoall.sh'
  alias neeview '/mnt/c/"Program\ Files\ \(x86\)"/NeeLaboratory/NeeView/NeeView.exe &'
  alias bstnt '/mnt/c/Users/shiny/AppData/Local/boost/Boostnote.exe &'
+ alias tbd 'youtube-dl'
 #--------Mac------
 #alias tubedl 'sh ~/develop/codes/tube.sh'
 #alias qrgen 'sh ~/develop/codes/qrgen.sh'
@@ -55,7 +62,7 @@ alias cdrive "cd /mnt/c/Users/shiny"
 alias hdd "cd /mnt/e"
 alias ssd "cd /mnt/g"
 function gall
-  set test1 $argv[1] 
+  set test1 $argv[1]
   switch $test1
   case sup
     open "https://github.com/mikf/gallery-dl/blob/master/docs/supportedsites.rst"
@@ -67,13 +74,17 @@ function gall
   end
 end
 alias galdir "cd /mnt/e/MyData/Picture/gallery-dl"
+
+# Watching progress of cp command.
+alias cppg "cp $argv[1] $argv[2] & progress -mp %1"
+
 #----------------------
 
 #---ALIAS-FOR-Mac---
 alias mac 'cd ~/develop'
 alias pyy 'cd ~/develop/python'
 alias ggr 'open http://google.com/'
-alias tube 'open https://www.youtube.com' 
+alias tube 'open https://www.youtube.com'
 alias github 'open https://www.github.com'
 alias twit 'open https://www.twitter.com'
 alias insta 'open https://www.instagram.com'
@@ -88,17 +99,17 @@ alias memo 'vi ~/develop/codes/memo'
 #-----IF U NEED MORE ALIASES, ADD TO UPSIDE-----
 
 #------------------------------------------------
-#     Functions 
+#     Functions
 #------------------------------------------------
 function hoge
   echo hoge function
 end
 
-function ifort
-  set sorc $argv[1]
-  set exec $argv[2]
-  sh ~/code/ifort.sh $sorc $exec
-end
+#function ifort
+#  set sorc $argv[1]
+#  set exec $argv[2]
+#  sh ~/code/ifort.sh $sorc $exec
+#end
 
 function mkhtml
   set md $argv[1]
