@@ -1,13 +1,22 @@
-# Lines configured by zsh-newuser-install
-#HISTFILE=~/.histfile
-#HISTSIZE=1000
-#SAVEHIST=1000
-# End of lines configured by zsh-newuser-install
 # -----------------------------
 # Lang
 # -----------------------------
 #export LANG=ja_JP.UTF-8
 #export LESSCHARSET=utf-8
+
+#------------------------------
+# Separate .Zshrc
+# -> alias
+#------------------------------
+#
+ZSHHOME="${HOME}/.zsh"
+if [ -d $ZSHHOME -a -r $ZSHHOME -a \
+     -x $ZSHHOME ]; then
+    for i in $ZSHHOME/*; do
+	[[ ${i##*/} = *.zsh ]] &&
+		[ \( -f $i -o -h $d \) -a -r $i ] && . $i
+    done
+fi
 
 # -----------------------------
 # General
@@ -25,6 +34,7 @@ export EDITOR=vim
 export PATH="$HOME/FISH:$PATH"
 export PATH="$HOME/codes:$PATH"
 export PATH="$HOME/intel/bin:$PATH"
+export PATH="/usr/local/texlive/2021/bin/x86_64-linux:$PATH"
 #export PATH="$HOME/bin:$PATH"
 
 # cdした際のディレクトリをディレクトリスタックへ自動追加
@@ -37,7 +47,7 @@ setopt pushd_ignore_dups
 #bindkey -e
 
 # viキーバインド
-#bindkey -v
+bindkey -v
 
 # フローコントロールを無効にする
 setopt no_flow_control
@@ -58,7 +68,7 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 
 # ビープ音を鳴らさないようにする
-#setopt no_beep
+setopt no_beep
 
 # カッコの対応などを自動的に補完する
 setopt auto_param_keys
@@ -130,6 +140,62 @@ ulimit -c 0
 PROMPT='%F{red}%~%f
 $ '
 #PROMPT='%F{cyan}%n@%m%f:%~# '
+
+# git ブランチ名を色付きで表示させるメソッド
+function rprompt-git-current-branch {
+  local branch_name st branch_status
+  
+# branch='\ue0a0'
+# color='%{\e[38;5;' #  文字色を設定
+# green='114m%}'
+# red='001m%}'
+# yellow='227m%}'
+# blue='033m%}'
+# reset='%{\e[0m%}'   # reset
+  
+  if [ ! -e  ".git" ]; then
+    # git 管理されていないディレクトリは何も返さない
+    return
+  fi
+  branch_name=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
+  st=`git status 2> /dev/null`
+  if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+    # 全て commit されてクリーンな状態
+#   branch_status="${color}${green}${branch}"
+    branch_status="%F{green}"
+  elif [[ -n `echo "$st" | grep "^Untracked files"` ]]; then
+    # git 管理されていないファイルがある状態
+#   branch_status="${color}${red}${branch}?"
+    branch_status="%F{red}manage"
+  elif [[ -n `echo "$st" | grep "^Changes not staged for commit"` ]]; then
+    # git add されていないファイルがある状態
+#   branch_status="${color}${red}${branch}+"
+    branch_status="%F{red}add"
+  elif [[ -n `echo "$st" | grep "^Changes to be committed"` ]]; then
+    # git commit されていないファイルがある状態
+#   branch_status="${color}${yellow}${branch}!"
+    branch_status="%F{yellow}commit"
+  elif [[ -n `echo "$st" | grep "^rebase in progress"` ]]; then
+    # コンフリクトが起こった状態
+#   echo "${color}${red}${branch}!(no branch)${reset}"
+    echo "%F{red}!(no branch)"
+    return
+  else
+    # 上記以外の状態の場合
+#   branch_status="${color}${blue}${branch}"
+    branch_status="%F{blue}"
+  fi
+  # ブランチ名を色付きで表示する
+# echo "${branch_status}$branch_name${reset}"
+  echo "${branch_status}[$branch_name]"
+}
+ 
+# プロンプトが表示されるたびにプロンプト文字列を評価、置換する
+setopt prompt_subst
+ 
+# プロンプトの右側にメソッドの結果を表示させる
+RPROMPT='`rprompt-git-current-branch`'
+
 
 # -----------------------------
 # Completion
@@ -221,33 +287,33 @@ setopt hist_verify
 # Alias
 # -----------------------------
 # グローバルエイリアス
-alias -g L='| less'
-alias -g H='| head'
-alias -g G='| grep'
-alias -g GI='| grep -ri'
-
-# Alias
-alias ls='ls --color=auto'
-alias lst='ls -ltr --color=auto'
-alias la='ls -la --color=auto'
-alias ll='ls -l --color=auto'
-
-alias du="du -Th"
-alias df="df -Th"
-alias su="su -l"
-alias so='source'
-alias vi='vim'
-alias vz='vim ~/.zshrc'
-alias c='cd'
-alias cp='cp -i'
-alias rm='rm -i'
-alias mkdir='mkdir -p'
-alias ..='c ../'
-alias back='pushd'
-alias diff='diff -U1'
-
-alias tma='tmux attach'
-alias tml='tmux list-window'
+#alias -g L='| less'
+#alias -g H='| head'
+#alias -g G='| grep'
+#alias -g GI='| grep -ri'
+#
+## Alias
+#alias ls='ls --color=auto'
+#alias lst='ls -ltr --color=auto'
+#alias la='ls -la --color=auto'
+#alias ll='ls -l --color=auto'
+#
+#alias du="du -Th"
+#alias df="df -Th"
+#alias su="su -l"
+#alias so='source'
+#alias vi='vim'
+#alias vz='vim ~/.zshrc'
+#alias c='cd'
+#alias cp='cp -i'
+#alias rm='rm -i'
+#alias mkdir='mkdir -p'
+#alias ..='c ../'
+#alias back='pushd'
+#alias diff='diff -U1'
+#
+#alias tma='tmux attach'
+#alias tml='tmux list-window'
 
 #alias dki="docker run -i -t -P"
 #alias dex="docker exec -i -t"
@@ -295,28 +361,28 @@ alias tml='tmux list-window'
 # Plugin
 # -----------------------------
 # zplugが無ければインストール
-if [[ ! -d ~/.zplug ]];then
-  git clone https://github.com/zplug/zplug ~/.zplug
-fi
+ if [[ ! -d ~/.zplug ]];then
+   git clone https://github.com/zplug/zplug ~/.zplug
+ fi
 
 # zplugを有効化する
 source ~/.zplug/init.zsh
 
 # プラグインList
 # zplug "ユーザー名/リポジトリ名", タグ
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "b4b4r07/enhancd", use:init.sh
+ zplug "zsh-users/zsh-completions"
+ zplug "zsh-users/zsh-autosuggestions"
+ zplug "zsh-users/zsh-syntax-highlighting", defer:2
+ zplug "b4b4r07/enhancd", use:init.sh
 #zplug "junegunn/fzf-bin", as:command, from:gh-r, file:fzf
 
 # インストールしていないプラグインをインストール
-if ! zplug check --verbose; then
-  printf "Install? [y/N]: "
-  if read -q; then
-      echo; zplug install
-  fi
-fi
+ if ! zplug check --verbose; then
+   printf "Install? [y/N]: "
+   if read -q; then
+       echo; zplug install
+   fi
+ fi
 
 # コマンドをリンクして、PATH に追加し、プラグインは読み込む
 zplug load --verbose

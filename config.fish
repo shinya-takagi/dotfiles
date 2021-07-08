@@ -1,16 +1,21 @@
 
 
 #---Add PATH------
-set PATH  /opt/intel/compilers_and_libraries_2020.3.275/linux/bin /opt/intel/compilers_and_libraries_2020.3.275/linux/mpi/intel64/libfabric/bin /opt/intel/bin $PATH
+#set PATH  /opt/intel/compilers_and_libraries_2020.3.275/linux/bin /opt/intel/compilers_and_libraries_2020.3.275/linux/mpi/intel64/libfabric/bin /opt/intel/bin $PATH
 set PATH $HOME/FISH $PATH
 set PATH $HOME/codes $PATH
+set PATH $HOME/intel/bin $PATH
+
+#---TeX PATH------
+set PATH /usr/local/texlive/2021/bin/x86_64-linux $PATH
+
 #-----------------
 
 
 #---Basic Alias---
 alias cp "cp -b -i"
-alias vbp "vi ~/.bash_profile"
-alias sbp "source ~/.bash_profile"
+#alias vbp "vi ~/.bash_profile"
+#alias sbp "source ~/.bash_profile"
 alias vvmrc "vi ~/.vimrc"
 alias svmrc "source ~/.vimrc"
 alias et "exit"
@@ -25,7 +30,12 @@ alias vostok "ssh vostok"
 alias vfp "vi ~/.config/fish/config.fish"
 alias sfp "source ~/.config/fish/config.fish"
 alias ybdl "cd /mnt/e/Mydata/VIDEO/youtube-dl"
+alias open "xdg-open"
 #---------------
+
+#------git------------
+alias gs "git status"
+alias ga "git add"
 
 #---Aias for vostok---
 #alias bh "bhosts"
