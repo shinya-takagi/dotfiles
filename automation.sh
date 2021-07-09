@@ -4,7 +4,7 @@ echo "file upload or download? (u/d)"
 read i
 
 #message="update dotfiles."
- message="add zsh files."
+ message="Fix bash_profile."
 
 case $i in
 #upload
