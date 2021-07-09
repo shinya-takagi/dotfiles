@@ -14,9 +14,9 @@ case $i in
   git push
   ;; 
 #download
-"d" ) {	git pull
+"d" ) 	git pull
 	./dotfilesLink.sh
-	};;
+	;;
  *  ) echo "stop";;
 esac
 

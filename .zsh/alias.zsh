@@ -35,8 +35,8 @@ alias diff='diff -U1'
 alias gs="git status"
 alias ga="git add"
 alias open="xdg-open"
-alias vvmrc="vi ~/.vimrc"
-alias svmrc="source ~/.vimrc"
+alias vr="vi ~/.vimrc"
+alias svr="source ~/.vimrc"
 alias et="exit"
 alias rl="readlink -f"
 alias dc="cd"
@@ -94,6 +94,11 @@ testfunc (){
     "/usr/bin/zsh") ls ;;
     * ) ls -l
   esac
+}
+tstomp4 (){
+file=$1
+
+ffmpeg -i $file.ts -vcodec copy -acodec copy $file.mp4
 }
 
 
