@@ -28,7 +28,7 @@ case $g in
     ln -sf $dfpath/config.fish   ~/.config/fish/config.fish
 	};;
 	"v" ) { 
-    ln -sf $dfpath/.vimrc_vos ~/vimrc
+    ln -sf $dfpath/.vimrc_vos ~/.vimrc
     ln -sf $dfpath/.bash_profile ~/.bash_profile
 	};;
   "wsl" ) { 
