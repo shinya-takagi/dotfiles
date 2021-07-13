@@ -11,10 +11,11 @@ alias -g GI='| grep -ri'
 
 # local Alias
 alias ls='ls --color=auto'
-alias lst='ls -ltr --color=auto'
-alias la='ls -la --color=auto'
-alias ll='ls -l --color=auto'
+alias lst='ls -ltr'
+alias la='ls -la'
+alias ll='ls -l'
 alias ltr='ll -rt'
+alias lh='ls -lh'
 
 alias du="du -h"
 alias df="df -h"
@@ -34,14 +35,14 @@ alias diff='diff -U1'
 #------git------------
 alias gs="git status"
 alias ga="git add"
+
 alias open="xdg-open"
-alias vr="vi ~/.vimrc"
-alias svr="source ~/.vimrc"
 alias et="exit"
 alias rl="readlink -f"
 alias dc="cd"
 alias sl="ls"
 alias cdrive="cd /mnt/c/Users/shiny"
+
 #-------URL--------------------------
 alias ggr='open http://google.com/'
 alias tube='open https://www.youtube.com'
@@ -54,8 +55,11 @@ alias qiita='open https://qiita.com'
 alias va='vi ~/.zsh/alias.zsh'
 alias vz='vi ~/.zshrc'
 alias sz='source ~/.zshrc'
+alias vd='vi ~/.dircolors-solarized/dircolors.ansi-dark_taka'
 
-#
+# Vim
+alias vr="vi ~/.vimrc"
+alias svr="source ~/.vimrc"
 #alias tma='tmux attach'
 #alias tml='tmux list-window'
 

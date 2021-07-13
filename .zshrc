@@ -1,14 +1,44 @@
-# -----------------------------
-# Lang
-# -----------------------------
-#export LANG=ja_JP.UTF-8
-#export LESSCHARSET=utf-8
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
 
-#------------------------------
-# Separate .Zshrc
-# -> alias
-#------------------------------
-#
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zinit-zsh/z-a-rust \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-bin-gem-node
+
+### End of Zinit's installer chunk
+
+## コマンド補完
+zinit ice wait'0'; zinit light zsh-users/zsh-completions
+autoload -Uz compinit && compinit
+
+## 補完で小文字でも大文字にマッチさせる
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+## 補完候補を一覧表示したとき、Tabや矢印で選択できるようにする
+zstyle ':completion:*:default' menu select=1 
+
+## シンタックスハイライト
+zinit light zsh-users/zsh-syntax-highlighting
+## 履歴補完
+zinit light zsh-users/zsh-autosuggestions
+
+#------------UPPER ZINIT----------------------------
+
+
 ZSHHOME="${HOME}/.zsh"
 if [ -d $ZSHHOME -a -r $ZSHHOME -a \
      -x $ZSHHOME ]; then
@@ -17,6 +47,7 @@ if [ -d $ZSHHOME -a -r $ZSHHOME -a \
 		[ \( -f $i -o -h $d \) -a -r $i ] && . $i
     done
 fi
+
 
 # -----------------------------
 # General
@@ -48,6 +79,7 @@ setopt pushd_ignore_dups
 
 # viキーバインド
 bindkey -v
+bindkey -M viins 'jj' vi-cmd-mode   # Back to Normal with jj
 
 # フローコントロールを無効にする
 setopt no_flow_control
@@ -137,8 +169,21 @@ ulimit -c 0
 # %t    時間(hh:mm(am/pm))
 # Prompt Change
 
+#---Vim MODE CHECK----
+function zle-keymap-select {
+  VIM_NORMAL="%K{208}%F{black}⮀%k%f%K{208}%F{white} % NORMAL %k%f%K{black}%F{208}⮀%k%f"
+  VIM_INSERT="%K{075}%F{black}⮀%k%f%K{075}%F{white} % INSERT %k%f%K{black}%F{075}⮀%k%f"
+ VIMODE="${${KEYMAP/vicmd/$VIM_NORMAL}/(main|viins)/$VIM_INSERT}"
+ zle reset-prompt
+}
+
+zle -N zle-keymap-select
 PROMPT='%F{red}%~%f
-$ '
+${VIMODE}$ '
+#---------------------
+
+#PROMPT='%F{red}%~%f
+#$ '
 #PROMPT='%F{cyan}%n@%m%f:%~# '
 
 # git ブランチ名を色付きで表示させるメソッド
@@ -201,7 +246,7 @@ RPROMPT='`rprompt-git-current-branch`'
 # Completion
 # -----------------------------
 # 自動補完を有効にする
-autoload -Uz compinit ; compinit
+#autoload -Uz compinit ; compinit
 
 # 単語の入力途中でもTab補完を有効化
 #setopt complete_in_word
@@ -361,32 +406,32 @@ setopt hist_verify
 # Plugin
 # -----------------------------
 # zplugが無ければインストール
- if [[ ! -d ~/.zplug ]];then
-   git clone https://github.com/zplug/zplug ~/.zplug
- fi
-
-# zplugを有効化する
-source ~/.zplug/init.zsh
-
-# プラグインList
-# zplug "ユーザー名/リポジトリ名", タグ
- zplug "zsh-users/zsh-completions"
- zplug "zsh-users/zsh-autosuggestions"
- zplug "zsh-users/zsh-syntax-highlighting", defer:2
- zplug "b4b4r07/enhancd", use:init.sh
-#zplug "junegunn/fzf-bin", as:command, from:gh-r, file:fzf
-
-# インストールしていないプラグインをインストール
- if ! zplug check --verbose; then
-   printf "Install? [y/N]: "
-   if read -q; then
-       echo; zplug install
-   fi
- fi
-
-# コマンドをリンクして、PATH に追加し、プラグインは読み込む
-zplug load --verbose
-
+# if [[ ! -d ~/.zplug ]];then
+#   git clone https://github.com/zplug/zplug ~/.zplug
+# fi
+#
+## zplugを有効化する
+#source ~/.zplug/init.zsh
+#
+## プラグインList
+## zplug "ユーザー名/リポジトリ名", タグ
+# zplug "zsh-users/zsh-completions"
+# zplug "zsh-users/zsh-autosuggestions"
+# zplug "zsh-users/zsh-syntax-highlighting", defer:2
+# zplug "b4b4r07/enhancd", use:init.sh
+##zplug "junegunn/fzf-bin", as:command, from:gh-r, file:fzf
+#
+## インストールしていないプラグインをインストール
+# if ! zplug check --verbose; then
+#   printf "Install? [y/N]: "
+#   if read -q; then
+#       echo; zplug install
+#   fi
+# fi
+#
+## コマンドをリンクして、PATH に追加し、プラグインは読み込む
+#zplug load --verbose
+#
 # -----------------------------
 # PATH
 # -----------------------------
@@ -437,3 +482,10 @@ zplug load --verbose
 #  git stash list | fzf-down --reverse -d: --preview 'git show --color=always {1}' |
 #  cut -d: -f1
 #}#
+#
+#------------------------------
+# dircolors
+#------------------------------
+#eval `dircolors ~/.dircolors-solarized/dircolors.256dark`
+eval `dircolors ~/.dircolors-solarized/dircolors.ansi-dark_taka`
+

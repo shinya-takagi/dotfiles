@@ -10,27 +10,26 @@ syntax on
 "-----------------------------------------------
 "		vim command
 "-----------------------------------------------
-" show line numbers
-set number
-" show ruler
- set ruler
-" show title
- set title
-" show commands until writing.
- set showcmd
-" move between ( and )
- set showmatch
-" insert indent when put Enter-key (if, for, etc...)
- set autoindent
-" show list after inserting words.
- set wildmenu
-" Dont generate Swap file.
- set noswapfile
-" cursor line 
- set cursorline
+ set number 	" show line numbers
+ set ruler 	" show ruler
+ set title 	" show title
+ set showcmd 	" show commands until writing.
+ set showmatch 	" move between ( and )
+ set autoindent " insert indent when put Enter-key (if, for, etc...)
+ set wildmenu 	" show list after inserting words.
+ set noswapfile " Dont generate Swap file.
+ set cursorline " cursor line 
 "set nocursorcolumn
+" Temporary files directory
+ set directory=~/.vim/swap
+ set backupdir=~/.vim/tmp
+ set undodir=~/.vim/undo
+
 
  highlight LineNr ctermfg=darkyellow
+"-------------------------------------------------------------
+"	Vim Keymap Setting
+"-------------------------------------------------------------
 " visual mode test
 "noremap <C-v> <C-q>
 "Disable Arrow-keys 
@@ -71,40 +70,49 @@ if &term =~ "xterm"
 	inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
 endif
 "----------------------------------------------------------
-"
 "	Yutori like
-"
 "----------------------------------------------------------
 set nocompatible
 set whichwrap=b,s,h,l,<,>,[,]
 set backspace=indent,eol,start
 "-----------------------------------------------------------
-"
 "	Highlight coler change
-"	
 "-----------------------------------------------------------
 "
 highlight Comment ctermfg=lightblue
 
 "-----------------------------------------------------------
-"
 "	FileType setting
-"
 "-----------------------------------------------------------
 "autocmd BufRead,BufNewFile *.f setfiletype fortran
 "autocmd BufRead,BufNewFile *.sh setfiletype shell
 autocmd BufRead,BufNewFile *.zsh setfiletype zsh
 
 "-----------------------------------------------------------
-"
 "	Plugin Manager
-"
 "-----------------------------------------------------------
 
 call plug#begin()
-  Plug 'preservim/nerdtree'
+  Plug 'preservim/nerdtree'	"Tree type directory
 call plug#end()
 
 " Plugin Keymap
 nnoremap <C-n> :NERDTree<CR>
+
+"
+"	For Fortran 
+"
+call plug#begin('~/.vim/plugged')
+  Plug 'prabirshrestha/asyncomplete.vim'
+  Plug 'prabirshrestha/asyncomplete-lsp.vim'
+  Plug 'prabirshrestha/vim-lsp'
+  Plug 'mattn/vim-lsp-settings'
+  Plug 'mattn/vim-lsp-icons'
+call plug#end()
+let g:lsp_diagnostics_enabled=1
+"下記は好みによって設定変更すること
+let g:lsp_diagnostics_echo_cursor=1
+let g:lsp_text_edit_enabled=1
+let g:asyncomplete_auto_popup=1
+let g:asyncomplete_popup_delay=200
 
