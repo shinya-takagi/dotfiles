@@ -4,7 +4,7 @@ echo "file upload or download? (u/d)"
 read i
 
 #message="update dotfiles."
- message="Fix bash_profile."
+ message="Add tmux."
 
 case $i in
 #upload

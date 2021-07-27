@@ -489,3 +489,9 @@ setopt hist_verify
 #eval `dircolors ~/.dircolors-solarized/dircolors.256dark`
 eval `dircolors ~/.dircolors-solarized/dircolors.ansi-dark_taka`
 
+#------------------------------
+# dircolors
+#------------------------------
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+#export DISPLAY=localhost:0.0
+

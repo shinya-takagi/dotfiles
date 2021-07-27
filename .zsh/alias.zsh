@@ -3,33 +3,31 @@
 # Alias
 # -----------------------------
 # Global Alias (can set alias of pipeline)
-alias -g L='| less'
-alias -g H='| head'
-alias -g G='| grep'
-alias -g gr='| grep --color'
-alias -g GI='| grep -ri'
+alias -g L="| less"
+alias -g H="| head"
+alias -g G="| grep"
+alias -g gr="| grep --color"
+alias -g GI="| grep -ri"
 
 # local Alias
-alias ls='ls --color=auto'
-alias lst='ls -ltr'
-alias la='ls -la'
-alias ll='ls -l'
-alias ltr='ll -rt'
-alias lh='ls -lh'
+alias ls="ls --color=auto"
+alias lst="ls -ltr"
+alias la="ls -la"
+alias ll="ls -l"
+alias ltr="ll -rt"
+alias lh="ls -lh"
 
 alias du="du -h"
 alias df="df -h"
 alias su="su -l"
-alias so='source'
-alias vi='vim'
-alias vz='vim ~/.zshrc'
-alias c='cd'
-alias cp='cp -i'
-alias rm='rm -i'
-alias mkdir='mkdir -p'
-alias ..='c ../'
-alias back='pushd'
-alias diff='diff -U1'
+alias so="source"
+alias c="cd"
+alias cp="cp -i"
+alias rm="rm -i"
+alias mkdir="mkdir -p"
+alias ..="c ../"
+alias back="pushd"
+alias diff="diff -U1"
 
 # from fish
 #------git------------
@@ -41,27 +39,33 @@ alias et="exit"
 alias rl="readlink -f"
 alias dc="cd"
 alias sl="ls"
-alias cdrive="cd /mnt/c/Users/shiny"
 
 #-------URL--------------------------
-alias ggr='open http://google.com/'
-alias tube='open https://www.youtube.com'
-alias github='open https://www.github.com'
-alias twit='open https://www.twitter.com'
-alias insta='open https://www.instagram.com'
-alias qiita='open https://qiita.com'
+alias ggr="open http://google.com/"
+alias tube="open https://www.youtube.com"
+alias github="open https://www.github.com"
+alias twit="open https://www.twitter.com"
+alias insta="open https://www.instagram.com"
+alias qiita="open https://qiita.com"
 
 # zsh
-alias va='vi ~/.zsh/alias.zsh'
-alias vz='vi ~/.zshrc'
-alias sz='source ~/.zshrc'
-alias vd='vi ~/.dircolors-solarized/dircolors.ansi-dark_taka'
+alias vi="vim"
+alias vz="vim ~/.zshrc"
+alias va="vi ~/.zsh/alias.zsh"
+alias vz="vi ~/.zshrc"
+alias sz="source ~/.zshrc"
+alias vd="vi ~/.dircolors-solarized/dircolors.ansi-dark_taka"
 
 # Vim
 alias vr="vi ~/.vimrc"
 alias svr="source ~/.vimrc"
-#alias tma='tmux attach'
-#alias tml='tmux list-window'
+#alias tma="tmux attach"
+#alias tml="tmux list-window"
+
+# Windows 
+alias user="cd /mnt/c/Users/shiny"
+#alias cdrive="cd /mnt/c/Users/shiny"
+
 
 #-------------------------------
 #	FUNCTION
@@ -89,7 +93,7 @@ case "$opti" in
         echo " ================================================="
         echo " option : a -> tar , g -> gz , b -> bz2 , x -> xz" 
         echo "          e -> Extract archive."
-        echo " Format -> gtar option 'DIRECTORY'"
+        echo " Format -> gtar option "DIRECTORY""
 esac
 }
 
@@ -99,12 +103,26 @@ testfunc (){
     * ) ls -l
   esac
 }
+# convert a ts-file to mp4-file.
 tstomp4 (){
 file=$1
 
 ffmpeg -i $file.ts -vcodec copy -acodec copy $file.mp4
+} 
+# PH DLer
+phdl (){
+phdl_path=$HOME/get/PornHub-downloader-python-master
+cd $phdl_path
+option=$1
+cmd=$2
+  case $option in
+    "s" ) python3 $phdl_path/phdler.py start ;;
+    "a" ) python3 $phdl_path/phdler.py add $cmd ;; 
+    "d" ) python3 $phdl_path/phdler.py delete $cmd ;;
+    "l" ) python3 $phdl_path/phdler.py list $cmd ;;
+    *) echo "Bad option or URL. Check your option and URL."
+  esac
 }
-
 
 
 
