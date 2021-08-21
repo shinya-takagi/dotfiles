@@ -33,6 +33,9 @@ alias diff="diff -U1"
 #------git------------
 alias gs="git status"
 alias ga="git add"
+alias gb="git branch"
+alias gco="git checkout"
+alias gcm="git commit -m -a"
 
 alias open="xdg-open"
 alias et="exit"
