@@ -69,6 +69,7 @@ alias svr="source ~/.vimrc"
 
 # Windows 
 alias user="cd /mnt/c/Users/shiny"
+#alias originlab="cd /mnt/c/Users/shiny/OneDrive/ドキュメント/OriginLab/"
 #alias cdrive="cd /mnt/c/Users/shiny"
 
 

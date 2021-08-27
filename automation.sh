@@ -4,7 +4,8 @@ echo "file upload or download? (u/d)"
 read i
 
 #message="update dotfiles."
- message="Add tmux."
+#message="Add tmux."
+ message="update alias"
 
 case $i in
 #upload
