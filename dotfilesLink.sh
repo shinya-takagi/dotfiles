@@ -19,6 +19,8 @@ read g
 #    exit 1
 #fi
 #---------------------
+readonly solarize="dircolors.ansi-dark"
+readonly dir_sol=".dircolors-solarized"
 
 case $g in
 	"y" ) {
@@ -32,11 +34,14 @@ case $g in
     ln -sf $dfpath/.bash_profile ~/.bash_profile
 	};;
   "wsl" ) { 
-    ln -sf $dfpath/config.fish ~/.config/fish/config.fish
-    ln -sf $dfpath/.vimrc ~/.vimrc
-    ln -sf $dfpath/.zshrc ~/.zshrc
-    ln -sf $dfpath/.tmux.conf ~/.tmux.conf
-  };;
+    mkdir -p $HOME/$dir_sol
+    ln -sf $dfpath/config.fish 		~/.config/fish/config.fish
+    ln -sf $dfpath/.vimrc 		~/.vimrc
+    ln -sf $dfpath/.zshrc 		~/.zshrc
+    ln -sf $dfpath/.tmux.conf 		~/.tmux.conf
+    cp     $dir_sol			~/.
+
+};;
 	* )	echo "stop"
 esac
 
