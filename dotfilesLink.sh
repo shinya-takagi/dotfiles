@@ -11,7 +11,6 @@ read g
 #    dfpath=$HOME/develop/dotfiles  #Mac
 #elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
 #    OS='Linux'
-     dfpath=$HOME/dotfiles  #Mac
 #elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW32_NT' ]; then                                                                                           
 #    OS='Cygwin'
 #else
@@ -19,6 +18,7 @@ read g
 #    exit 1
 #fi
 #---------------------
+readonly dfpath=$HOME/dotfiles 
 readonly solarize="dircolors.ansi-dark"
 readonly dir_sol=".dircolors-solarized"
 
@@ -38,6 +38,7 @@ case $g in
     ln -sf $dfpath/config.fish 		~/.config/fish/config.fish
     ln -sf $dfpath/.vimrc 		~/.vimrc
     ln -sf $dfpath/.zshrc 		~/.zshrc
+    ln -sf $dfpath/.zsh/alias.zsh 	~/.zsh/alias.zsh
     ln -sf $dfpath/.tmux.conf 		~/.tmux.conf
     cp     $dir_sol			~/.
 
