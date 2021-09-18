@@ -35,6 +35,7 @@ case $g in
     ln -sf $dfpath/config.fish ~/.config/fish/config.fish
     ln -sf $dfpath/.vimrc ~/.vimrc
     ln -sf $dfpath/.zshrc ~/.zshrc
+    ln -sf $dfpath/.tmux.conf ~/.tmux.conf
   };;
 	* )	echo "stop"
 esac

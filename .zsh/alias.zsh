@@ -77,12 +77,12 @@ alias user="cd /mnt/c/Users/shiny"
 #	FUNCTION
 #-------------------------------
 
-findf(){
+function findf(){
   file=$1
   ls -ltr $(find -name $file)
 }
 
-xtar (){
+function xtar (){
 opti=$1
 dirn=$2
 
@@ -103,20 +103,20 @@ case "$opti" in
 esac
 }
 
-testfunc (){
+function testfunc (){
   case $SHELL in
     "/usr/bin/zsh") ls ;;
     * ) ls -l
   esac
 }
 # convert a ts-file to mp4-file.
-tstomp4 (){
+function tstomp4 (){
 file=$1
 
 ffmpeg -i $file.ts -vcodec copy -acodec copy $file.mp4
 } 
 # PH DLer
-phdl (){
+function phdl (){
 phdl_path=$HOME/get/PornHub-downloader-python-master
 cd $phdl_path
 option=$1
