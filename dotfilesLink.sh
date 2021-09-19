@@ -9,7 +9,7 @@ read g
 #if [ "$(uname)" == 'Darwin' ]; then
 #    OS='Mac'
 #    dfpath=$HOME/develop/dotfiles  #Mac
-#elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+#elif [ "$(expr $(uname -s)" == 'Linux' ]; then
 #    OS='Linux'
 #elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW32_NT' ]; then                                                                                           
 #    OS='Cygwin'
