@@ -23,27 +23,34 @@ readonly solarize="dircolors.ansi-dark"
 readonly dir_sol=".dircolors-solarized"
 
 case $g in
-	"y" ) {
+    "y" ) {
 #   ln -sf $dfpath/.vimrc        ~/.vimrc
 #   ln -sf $dfpath/.bash_profile ~/.bash_profile
     ln -sf $dfpath/init.toml     ~/.SpaceVim.d/init.toml
     ln -sf $dfpath/config.fish   ~/.config/fish/config.fish
 	};;
-	"v" ) { 
+    "v" ) { 
     ln -sf $dfpath/.vimrc_vos ~/.vimrc
     ln -sf $dfpath/.bash_profile ~/.bash_profile
 	};;
-  "wsl" ) { 
-    mkdir -p $HOME/$dir_sol
+    "wsl" ) { 
+    readonly home_sol=$HOME/$dir_sol 
+    mkdir -p ~/.zsh 
+# - - - - -
     ln -sf $dfpath/config.fish 		~/.config/fish/config.fish
     ln -sf $dfpath/.vimrc 		~/.vimrc
     ln -sf $dfpath/.zshrc 		~/.zshrc
     ln -sf $dfpath/.zsh/alias.zsh 	~/.zsh/alias.zsh
     ln -sf $dfpath/.tmux.conf 		~/.tmux.conf
-    cp     $dir_sol			~/.
-
+# - - - - - 
+    if [ ! -d $home_sol ]; then 
+    	cp -r  $dir_sol			~/.
+    elif [ -n "$(ls -A $home_sol)" ]; then
+	echo "$home_sol exists, so it cannot copy $dir_sol"
+	exit 1	
+    fi
 };;
-	* )	echo "stop"
+    * )	echo "stop"
 esac
 
 exit

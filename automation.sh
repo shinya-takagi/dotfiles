@@ -3,16 +3,16 @@
 echo "file upload or download? (u/d)"
 read i
 
-#message="update dotfiles."
-#message="Add tmux."
- message="update alias"
+ readonly branch_name="notepc1"
+ readonly message="Make branch named $branch_name"
 
 case $i in
 #upload
 #"u" ) {# git add .
- "u" ) git commit -a -m "$message"
-#git push -u origin master
-  git push
+ "u" )  git commit -a -m "$message"
+    #   git push -u origin master
+    #   git push
+        git push origin "$branch_name"
   ;; 
 #download
 "d" ) 	git pull
