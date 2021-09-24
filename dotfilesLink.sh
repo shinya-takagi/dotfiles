@@ -1,5 +1,5 @@
 #! /bin/bash
-set -eux
+set -eu
 
 echo "generate symboric link dotfiles? (y/*)"
 echo "y -> copy files from own directories"
