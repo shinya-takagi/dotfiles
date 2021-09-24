@@ -4,7 +4,7 @@ echo "file upload or download? (u/d)"
 read i
 
  readonly branch_name="notepc1"
- readonly message="Make branch named $branch_name"
+ readonly message="Fix dotfilesLink.sh for all OS"
 
 case $i in
 #upload
