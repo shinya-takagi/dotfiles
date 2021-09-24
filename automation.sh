@@ -3,7 +3,7 @@
 echo "file upload or download? (u/d)"
 read i
 
- readonly branch_name="notepc1"
+ readonly branch_name="master"
  readonly message="Fix dotfilesLink.sh for all OS"
 
 case $i in
