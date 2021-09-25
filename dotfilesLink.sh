@@ -26,10 +26,13 @@ function main(){
         ln -sf "$DFPATH"/config.fish                    ~/.config/fish/config.fish
         ln -sf "$DFPATH"/.vimrc                         ~/.vimrc
         case "$OS" in
-            'Mac'  ) ln -sf "$DFPATH"/.zshrc_mac        ~/.zshrc ;; 
-            'Linux' )ln -sf "$DFPATH"/.zshrc            ~/.zshrc ;;
+            'Mac'  ) {  ln -sf "$DFPATH"/.zshrc_mac        ~/.zshrc 
+                        ln -sf "$DFPATH"/.zsh/alias_mac.zsh ~/.zshrc
+            };; 
+            'Linux' ){  ln -sf "$DFPATH"/.zshrc            ~/.zshrc
+                        ln -sf "$DFPATH"/.zsh/alias.zsh    ~/.zsh/alias.zsh
+                    };;
         esac
-        ln -sf "$DFPATH"/.zsh/alias.zsh                 ~/.zsh/alias.zsh
         ln -sf "$DFPATH"/.tmux.conf                     ~/.tmux.conf
         ln -sf "$DFPATH"/.vim/ftplugin/fortran.vim      "$vim_path"/ftplugin/fortran.vim
         ln -sf "$DFPATH"/.vim/ftplugin/sh.vim           "$vim_path"/ftplugin/sh.vim
