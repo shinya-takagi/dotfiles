@@ -335,9 +335,10 @@ function rprompt-git-current-branch {
 #   branch_status="${color}${blue}${branch}"
     branch_status="%F{blue}"
   fi
+  local resetwhite="%F{white}"
   # ブランチ名を色付きで表示する
 # echo "${branch_status}$branch_name${reset}"
-  echo "${branch_status}[$branch_name]"
+  echo "${branch_status}[$branch_name]${resetwhite}"
 }
  
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
