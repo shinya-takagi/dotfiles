@@ -27,7 +27,7 @@ function main(){
         ln -sf "$DFPATH"/.vimrc                         ~/.vimrc
         case "$OS" in
             'Mac'  ) {  ln -sf "$DFPATH"/.zshrc_mac        ~/.zshrc 
-                        ln -sf "$DFPATH"/.zsh/alias_mac.zsh ~/.zshrc
+                        ln -sf "$DFPATH"/.zsh/alias_mac.zsh ~/.zsh/alias.zsh
             };; 
             'Linux' ){  ln -sf "$DFPATH"/.zshrc            ~/.zshrc
                         ln -sf "$DFPATH"/.zsh/alias.zsh    ~/.zsh/alias.zsh
