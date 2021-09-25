@@ -1,3 +1,7 @@
+# -------------------------------------
+#       Setting for zsh
+# -------------------------------------
+
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
@@ -21,23 +25,7 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 
-## コマンド補完
-zinit ice wait'0'; zinit light zsh-users/zsh-completions
-autoload -Uz compinit && compinit
-
-## 補完で小文字でも大文字にマッチさせる
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-## 補完候補を一覧表示したとき、Tabや矢印で選択できるようにする
-zstyle ':completion:*:default' menu select=1 
-
-## シンタックスハイライト
-zinit light zsh-users/zsh-syntax-highlighting
-## 履歴補完
-zinit light zsh-users/zsh-autosuggestions
-
-#------------UPPER ZINIT----------------------------
-
+# ------------UPPER ZINIT----------------------------
 
 ZSHHOME="${HOME}/.zsh"
 if [ -d $ZSHHOME -a -r $ZSHHOME -a \
@@ -47,7 +35,6 @@ if [ -d $ZSHHOME -a -r $ZSHHOME -a \
 		[ \( -f $i -o -h $d \) -a -r $i ] && . $i
     done
 fi
-
 
 # -----------------------------
 # General
@@ -129,18 +116,8 @@ setopt correct_all
 # 上書きリダイレクトの禁止
 setopt no_clobber
 
-# sudo の後ろでコマンド名を補完する
-zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
-                   /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
-
-# ps コマンドのプロセス名補完
-zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
-
 # パスの最後のスラッシュを削除しない
 setopt noautoremoveslash
-
-# 各コマンドが実行されるときにパスをハッシュに入れる
-#setopt hash_cmds
 
 # rsysncでsshを使用する
 export RSYNC_RSH=ssh
@@ -149,107 +126,38 @@ export RSYNC_RSH=ssh
 umask 022
 ulimit -c 0
 
-# -----------------------------
-# Prompt
-# -----------------------------
-# %M    ホスト名
-# %m    ホスト名
-# %d    カレントディレクトリ(フルパス)
-# %~    カレントディレクトリ(フルパス2)
-# %C    カレントディレクトリ(相対パス)
-# %c    カレントディレクトリ(相対パス)
-# %n    ユーザ名
-# %#    ユーザ種別
-# %?    直前のコマンドの戻り値
-# %D    日付(yy-mm-dd)
-# %W    日付(yy/mm/dd)
-# %w    日付(day dd)
-# %*    時間(hh:flag_mm:ss)
-# %T    時間(hh:mm)
-# %t    時間(hh:mm(am/pm))
-# Prompt Change
-
-#---Vim MODE CHECK----
-function zle-keymap-select {
-  VIM_NORMAL="%K{208}%F{black}⮀%k%f%K{208}%F{white} % NORMAL %k%f%K{black}%F{208}⮀%k%f"
-  VIM_INSERT="%K{075}%F{black}⮀%k%f%K{075}%F{white} % INSERT %k%f%K{black}%F{075}⮀%k%f"
- VIMODE="${${KEYMAP/vicmd/$VIM_NORMAL}/(main|viins)/$VIM_INSERT}"
- zle reset-prompt
-}
-
-zle -N zle-keymap-select
-PROMPT='%F{red}%~%f
-${VIMODE}$ '
-#---------------------
-
-#PROMPT='%F{red}%~%f
-#$ '
-#PROMPT='%F{cyan}%n@%m%f:%~# '
-
-# git ブランチ名を色付きで表示させるメソッド
-function rprompt-git-current-branch {
-  local branch_name st branch_status
-  
-# branch='\ue0a0'
-# color='%{\e[38;5;' #  文字色を設定
-# green='114m%}'
-# red='001m%}'
-# yellow='227m%}'
-# blue='033m%}'
-# reset='%{\e[0m%}'   # reset
-  
-  if [ ! -e  ".git" ]; then
-    # git 管理されていないディレクトリは何も返さない
-    return
-  fi
-  branch_name=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
-  st=`git status 2> /dev/null`
-  if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-    # 全て commit されてクリーンな状態
-#   branch_status="${color}${green}${branch}"
-    branch_status="%F{green}"
-  elif [[ -n `echo "$st" | grep "^Untracked files"` ]]; then
-    # git 管理されていないファイルがある状態
-#   branch_status="${color}${red}${branch}?"
-    branch_status="%F{red}manage"
-  elif [[ -n `echo "$st" | grep "^Changes not staged for commit"` ]]; then
-    # git add されていないファイルがある状態
-#   branch_status="${color}${red}${branch}+"
-    branch_status="%F{red}add"
-  elif [[ -n `echo "$st" | grep "^Changes to be committed"` ]]; then
-    # git commit されていないファイルがある状態
-#   branch_status="${color}${yellow}${branch}!"
-    branch_status="%F{yellow}commit"
-  elif [[ -n `echo "$st" | grep "^rebase in progress"` ]]; then
-    # コンフリクトが起こった状態
-#   echo "${color}${red}${branch}!(no branch)${reset}"
-    echo "%F{red}!(no branch)"
-    return
-  else
-    # 上記以外の状態の場合
-#   branch_status="${color}${blue}${branch}"
-    branch_status="%F{blue}"
-  fi
-  # ブランチ名を色付きで表示する
-# echo "${branch_status}$branch_name${reset}"
-  echo "${branch_status}[$branch_name]"
-}
- 
-# プロンプトが表示されるたびにプロンプト文字列を評価、置換する
-setopt prompt_subst
- 
-# プロンプトの右側にメソッドの結果を表示させる
-RPROMPT='`rprompt-git-current-branch`'
-
+# When log in, Run ssh-agent.
+eval `ssh-agent` > /dev/null 2>&1
+eval `ssh-add $HOME/.ssh/id_rsa_vostok2 > /dev/null 2>&1`
 
 # -----------------------------
 # Completion
 # -----------------------------
-# 自動補完を有効にする
-#autoload -Uz compinit ; compinit
+## Self-made completion
+fpath=($HOME/.zsh/functions $fpath)
 
-# 単語の入力途中でもTab補完を有効化
-#setopt complete_in_word
+## コマンド補完
+zinit ice wait'0'; zinit light zsh-users/zsh-completions
+autoload -Uz compinit && compinit
+# autoload -Uz _mcf
+
+# ps コマンドのプロセス名補完
+zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
+
+## 補完で小文字でも大文字にマッチさせる
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+## 補完候補を一覧表示したとき、Tabや矢印で選択できるようにする
+zstyle ':completion:*:default' menu select=1 
+
+## シンタックスハイライト
+zinit light zsh-users/zsh-syntax-highlighting
+## 履歴補完
+zinit light zsh-users/zsh-autosuggestions
+
+# sudo の後ろでコマンド名を補完する
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
+                   /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
 
 # コマンドミスを修正
 setopt correct
@@ -313,6 +221,142 @@ setopt inc_append_history
 
 # ヒストリを呼び出してから実行する間に一旦編集できる状態になる
 setopt hist_verify
+
+# -----------------------------
+# Prompt
+# -----------------------------
+# %M    ホスト名
+# %m    ホスト名
+# %d    カレントディレクトリ(フルパス)
+# %~    カレントディレクトリ(フルパス2)
+# %C    カレントディレクトリ(相対パス)
+# %c    カレントディレクトリ(相対パス)
+# %n    ユーザ名
+# %#    ユーザ種別
+# %?    直前のコマンドの戻り値
+# %D    日付(yy-mm-dd)
+# %W    日付(yy/mm/dd)
+# %w    日付(day dd)
+# %*    時間(hh:flag_mm:ss)
+# %T    時間(hh:mm)
+# %t    時間(hh:mm(am/pm))
+
+# ---Vim MODE CHECK----
+#+++++old++++++
+# function zle-keymap-select {
+#   VIM_NORMAL="%K{208}%F{black}⮀%k%f%K{208}%F{white} % NORMAL %k%f%K{black}%F{208}⮀%k%f"
+#   VIM_INSERT="%K{075}%F{black}⮀%k%f%K{075}%F{white} % INSERT %k%f%K{black}%F{075}⮀%k%f"
+#  VIMODE="${${KEYMAP/vicmd/$VIM_NORMAL}/(main|viins)/$VIM_INSERT}"
+#  zle reset-prompt
+# }
+ 
+# zle -N zle-keymap-select
+# PROMPT='%F{red}%~%f
+# ${VIMODE}$ '
+
+# -----new prompt setting-------
+autoload -Uz add-zsh-hook
+autoload -Uz terminfo
+
+# vim mode set 2 left-down position
+terminfo_down_sc=$terminfo[cud1]$terminfo[cud1]$terminfo[cuu1]$terminfo[cuu1]$terminfo[sc]$terminfo[cud1]$terminfo[cud1]
+function left_down_prompt_preexec() {
+    print -rn -- $terminfo[el]
+}
+add-zsh-hook preexec left_down_prompt_preexec
+
+function zle-keymap-select zle-line-init zle-line-finish
+{
+    case $KEYMAP in
+        main|viins)
+            PROMPT_2="$fg[cyan]-- INSERT --$reset_color"
+            ;;
+        vicmd)
+            PROMPT_2="$fg[white]-- NORMAL --$reset_color"
+            ;;
+#       vivis|vivli)
+#           PROMPT_2="$fg[yellow]-- VISUAL --$reset_color"
+#           ;;
+    esac
+
+    PROMPT="%{$terminfo_down_sc$PROMPT_2$terminfo[rc]%}[%(?.%{${fg[green]}%}.%{${fg[red]}%})%~%{${reset_color}%}]
+%# "
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-line-finish
+zle -N zle-keymap-select
+zle -N edit-command-line
+
+#------End new prompt setting-------
+
+# git ブランチ名を色付きで表示させるメソッド
+function rprompt-git-current-branch {
+  local branch_name st branch_status
+  
+# branch='\ue0a0'
+# color='%{\e[38;5;' #  文字色を設定
+# green='114m%}'
+# red='001m%}'
+# yellow='227m%}'
+# blue='033m%}'
+# reset='%{\e[0m%}'   # reset
+  
+  if [ ! -e  ".git" ]; then
+    # git 管理されていないディレクトリは何も返さない
+    return
+  fi
+  branch_name=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
+  st=`git status 2> /dev/null`
+  if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+    # 全て commit されてクリーンな状態
+#   branch_status="${color}${green}${branch}"
+    branch_status="%F{green}"
+  elif [[ -n `echo "$st" | grep "^Untracked files"` ]]; then
+    # git 管理されていないファイルがある状態
+#   branch_status="${color}${red}${branch}?"
+    branch_status="%F{red}manage"
+  elif [[ -n `echo "$st" | grep "^Changes not staged for commit"` ]]; then
+    # git add されていないファイルがある状態
+#   branch_status="${color}${red}${branch}+"
+    branch_status="%F{red}add"
+  elif [[ -n `echo "$st" | grep "^Changes to be committed"` ]]; then
+    # git commit されていないファイルがある状態
+#   branch_status="${color}${yellow}${branch}!"
+    branch_status="%F{yellow}commit"
+  elif [[ -n `echo "$st" | grep "^rebase in progress"` ]]; then
+    # コンフリクトが起こった状態
+#   echo "${color}${red}${branch}!(no branch)${reset}"
+    echo "%F{red}!(no branch)"
+    return
+  else
+    # 上記以外の状態の場合
+#   branch_status="${color}${blue}${branch}"
+    branch_status="%F{blue}"
+  fi
+  # ブランチ名を色付きで表示する
+# echo "${branch_status}$branch_name${reset}"
+  echo "${branch_status}[$branch_name]"
+}
+ 
+# プロンプトが表示されるたびにプロンプト文字列を評価、置換する
+setopt prompt_subst
+ 
+# プロンプトの右側にメソッドの結果を表示させる
+RPROMPT='`rprompt-git-current-branch`'
+
+#------------------------------
+# dircolors
+#------------------------------
+#eval `dircolors ~/.dircolors-solarized/dircolors.256dark`
+eval `dircolors ~/.dircolors-solarized/dircolors.ansi-dark_taka`
+
+#------------------------------
+# dircolors
+#------------------------------
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+
 
 #余分なスペースを削除してヒストリに記録する
 #setopt hist_reduce_blanks
@@ -483,15 +527,3 @@ setopt hist_verify
 #  cut -d: -f1
 #}#
 #
-#------------------------------
-# dircolors
-#------------------------------
-#eval `dircolors ~/.dircolors-solarized/dircolors.256dark`
-eval `dircolors ~/.dircolors-solarized/dircolors.ansi-dark_taka`
-
-#------------------------------
-# dircolors
-#------------------------------
-export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
-#export DISPLAY=localhost:0.0
-
