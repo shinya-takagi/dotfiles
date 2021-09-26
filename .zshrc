@@ -37,7 +37,7 @@ if [ -d $ZSHHOME -a -r $ZSHHOME -a \
 fi
 
 # -----------------------------
-# General
+#         General
 # -----------------------------
 # 色を使用
 autoload -Uz colors ; colors
@@ -51,7 +51,11 @@ export EDITOR=vim
 # パスを追加したい場合
 export PATH="$HOME/FISH:$PATH"
 export PATH="$HOME/codes:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/intel/bin:$PATH"
+export PATH="$HOME/.bin:$PATH"            # local binary path
+export PATH="$HOME/.local/bin:$PATH"      # local binary path
+export PATH="/usr/local/go/bin:$PATH"     # go language path
 export PATH="/usr/local/texlive/2021/bin/x86_64-linux:$PATH"
 #export PATH="$HOME/bin:$PATH"
 
@@ -60,13 +64,6 @@ setopt auto_pushd
 
 # ディレクトリスタックへの追加の際に重複させない
 setopt pushd_ignore_dups
-
-# emacsキーバインド
-#bindkey -e
-
-# viキーバインド
-bindkey -v
-bindkey -M viins 'jj' vi-cmd-mode   # Back to Normal with jj
 
 # フローコントロールを無効にする
 setopt no_flow_control
@@ -131,7 +128,18 @@ eval `ssh-agent` > /dev/null 2>&1
 eval `ssh-add $HOME/.ssh/id_rsa_vostok2 > /dev/null 2>&1`
 
 # -----------------------------
-# Completion
+#   Key Binding
+# -----------------------------
+# emacsキーバインド
+#bindkey -e
+
+# viキーバインド
+bindkey -v
+bindkey -M viins 'jj' vi-cmd-mode   # Back to Normal with jj
+
+
+# -----------------------------
+#     Completion
 # -----------------------------
 ## Self-made completion
 fpath=($HOME/.zsh/functions $fpath)
@@ -194,7 +202,7 @@ zstyle ':completion:*:manuals' separate-sections true
 setopt magic_equal_subst
 
 # -----------------------------
-# History
+#     History
 # -----------------------------
 # 基本設定
 HISTFILE=$HOME/.zsh-history
@@ -223,7 +231,7 @@ setopt inc_append_history
 setopt hist_verify
 
 # -----------------------------
-# Prompt
+#     Prompt
 # -----------------------------
 # %M    ホスト名
 # %m    ホスト名
@@ -241,18 +249,64 @@ setopt hist_verify
 # %T    時間(hh:mm)
 # %t    時間(hh:mm(am/pm))
 
-# ---Vim MODE CHECK----
-#+++++old++++++
-# function zle-keymap-select {
-#   VIM_NORMAL="%K{208}%F{black}⮀%k%f%K{208}%F{white} % NORMAL %k%f%K{black}%F{208}⮀%k%f"
-#   VIM_INSERT="%K{075}%F{black}⮀%k%f%K{075}%F{white} % INSERT %k%f%K{black}%F{075}⮀%k%f"
-#  VIMODE="${${KEYMAP/vicmd/$VIM_NORMAL}/(main|viins)/$VIM_INSERT}"
-#  zle reset-prompt
-# }
+#------Show Prompt of git infomation-------
+function rprompt-git-current-branch {
+  local branch_name st branch_status
+  
+# branch='\ue0a0'
+# color='%{\e[38;5;' #  文字色を設定
+# green='114m%}'
+# red='001m%}'
+# yellow='227m%}'
+# blue='033m%}'
+# reset='%{\e[0m%}'   # reset
+  
+  if [ ! -e  ".git" ]; then
+    # git 管理されていないディレクトリは何も返さない
+    return
+  fi
+  branch_name=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
+  st=`git status 2> /dev/null`
+  if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+    # 全て commit されてクリーンな状態
+#   branch_status="${color}${green}${branch}"
+    branch_status="%F{green}"
+#   branch_status="%{$fg[green]}%}%{${reset_color}%}"
+  elif [[ -n `echo "$st" | grep "^Untracked files"` ]]; then
+    # git 管理されていないファイルがある状態
+#   branch_status="${color}${red}${branch}?"
+    branch_status="%F{red}manage"
+  elif [[ -n `echo "$st" | grep "^Changes not staged for commit"` ]]; then
+    # git add されていないファイルがある状態
+#   branch_status="${color}${red}${branch}+"
+    branch_status="%F{red}add"
+  elif [[ -n `echo "$st" | grep "^Changes to be committed"` ]]; then
+    # git commit されていないファイルがある状態
+#   branch_status="${color}${yellow}${branch}!"
+    branch_status="%F{yellow}commit"
+  elif [[ -n `echo "$st" | grep "^rebase in progress"` ]]; then
+    # コンフリクトが起こった状態
+#   echo "${color}${red}${branch}!(no branch)${reset}"
+    echo "%F{red}!(no branch)"
+    return
+  else
+    # 上記以外の状態の場合
+#   branch_status="${color}${blue}${branch}"
+    branch_status="%F{blue}"
+  fi
+  # ブランチ名を色付きで表示する
+# echo "${branch_status}$branch_name${reset}"
+  echo "${branch_status}[$branch_name]%f"
+}
  
-# zle -N zle-keymap-select
-# PROMPT='%F{red}%~%f
-# ${VIMODE}$ '
+# プロンプトが表示されるたびにプロンプト文字列を評価、置換する
+setopt prompt_subst
+ 
+# プロンプトの右側にメソッドの結果を表示させる
+zle -N rptompy-git-current-branch 
+RPROMPT='`rprompt-git-current-branch`'
+
+# ------END Git prompt---------
 
 # -----new prompt setting-------
 autoload -Uz add-zsh-hook
@@ -291,71 +345,25 @@ zle -N edit-command-line
 
 #------End new prompt setting-------
 
-# git ブランチ名を色付きで表示させるメソッド
-function rprompt-git-current-branch {
-  local branch_name st branch_status
-  
-# branch='\ue0a0'
-# color='%{\e[38;5;' #  文字色を設定
-# green='114m%}'
-# red='001m%}'
-# yellow='227m%}'
-# blue='033m%}'
-# reset='%{\e[0m%}'   # reset
-  
-  if [ ! -e  ".git" ]; then
-    # git 管理されていないディレクトリは何も返さない
-    return
-  fi
-  branch_name=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
-  st=`git status 2> /dev/null`
-  if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-    # 全て commit されてクリーンな状態
-#   branch_status="${color}${green}${branch}"
-    branch_status="%F{green}"
-  elif [[ -n `echo "$st" | grep "^Untracked files"` ]]; then
-    # git 管理されていないファイルがある状態
-#   branch_status="${color}${red}${branch}?"
-    branch_status="%F{red}manage"
-  elif [[ -n `echo "$st" | grep "^Changes not staged for commit"` ]]; then
-    # git add されていないファイルがある状態
-#   branch_status="${color}${red}${branch}+"
-    branch_status="%F{red}add"
-  elif [[ -n `echo "$st" | grep "^Changes to be committed"` ]]; then
-    # git commit されていないファイルがある状態
-#   branch_status="${color}${yellow}${branch}!"
-    branch_status="%F{yellow}commit"
-  elif [[ -n `echo "$st" | grep "^rebase in progress"` ]]; then
-    # コンフリクトが起こった状態
-#   echo "${color}${red}${branch}!(no branch)${reset}"
-    echo "%F{red}!(no branch)"
-    return
-  else
-    # 上記以外の状態の場合
-#   branch_status="${color}${blue}${branch}"
-    branch_status="%F{blue}"
-  fi
-  local resetwhite="%F{white}"
-  # ブランチ名を色付きで表示する
-# echo "${branch_status}$branch_name${reset}"
-  echo "${branch_status}[$branch_name]${resetwhite}"
-}
+# ---Vim MODE CHECK-------
+#+++++old++++++
+# function zle-keymap-select {
+#   VIM_NORMAL="%K{208}%F{black}⮀%k%f%K{208}%F{white} % NORMAL %k%f%K{black}%F{208}⮀%k%f"
+#   VIM_INSERT="%K{075}%F{black}⮀%k%f%K{075}%F{white} % INSERT %k%f%K{black}%F{075}⮀%k%f"
+#  VIMODE="${${KEYMAP/vicmd/$VIM_NORMAL}/(main|viins)/$VIM_INSERT}"
+#  zle reset-prompt
+# }
  
-# プロンプトが表示されるたびにプロンプト文字列を評価、置換する
-setopt prompt_subst
- 
-# プロンプトの右側にメソッドの結果を表示させる
-RPROMPT='`rprompt-git-current-branch`'
+# zle -N zle-keymap-select
+# PROMPT='%F{red}%~%f
+# ${VIMODE}$ '
+# ---old prompt setting---
 
 #------------------------------
-# dircolors
+#     dircolors
 #------------------------------
 #eval `dircolors ~/.dircolors-solarized/dircolors.256dark`
 eval `dircolors ~/.dircolors-solarized/dircolors.ansi-dark_taka`
-
-#------------------------------
-# dircolors
-#------------------------------
 export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 
 

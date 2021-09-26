@@ -1,17 +1,19 @@
 #! /bin/bash
 
 function main() {
+    local message="Fix dotfilesLink.sh for all OS"
+    local i branch_name
 
-    echo "file upload or download? (u/d)"
+    echo "File upload or download? (u/d/*)"
+    echo "If you want to stop this, put any word except 'u' and 'd'."
     read i
     
     if [ $(uname -s) == 'Darwin' ]; then
-        local branch_name='mac'
+        branch_name='mac'
     elif [ $(uname -s) == 'Linux' ]; then
-        local branch_name='notepc1'
+        branch_name='notepc1'
     #   branch_name='mainpc1'
     fi
-    local message="Fix dotfilesLink.sh for all OS"
     
     case $i in
     # - - - - upload - - - -
@@ -20,8 +22,8 @@ function main() {
     #       git push origin "$branch_name"
       ;; 
     # - - - - download - - - -
-    "d" ) 	git pull
-    	./dotfilesLink.sh
+    "d" )   git pull
+            ./dotfilesLink.sh
     	;;
      *  ) echo "stop";;
     esac

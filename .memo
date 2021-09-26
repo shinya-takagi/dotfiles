@@ -76,3 +76,9 @@ ex)calculated files , PDF presentation files , etc...
  -> write research status how,what ...
  How to go? -> google/Gdrive/research spreadsheet
 
+// coc.nvim complement
+For vim and Markdown
+1. Install go lang
+2. Run : go get github.com/mattn/efm-langserver
+3. Refer to Language Server in coc.nvim GitHub.
+ 

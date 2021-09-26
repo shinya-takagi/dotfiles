@@ -94,7 +94,9 @@ autocmd BufRead,BufNewFile *.zsh setfiletype zsh
 
 call plug#begin()
   Plug 'preservim/nerdtree'	"Tree type directory
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
+
 
 " Plugin Keymap
 nnoremap <C-n> :NERDTree<CR>
@@ -102,17 +104,17 @@ nnoremap <C-n> :NERDTree<CR>
 "
 "	For Fortran 
 "
-call plug#begin('~/.vim/plugged')
-  Plug 'prabirshrestha/asyncomplete.vim'
-  Plug 'prabirshrestha/asyncomplete-lsp.vim'
-  Plug 'prabirshrestha/vim-lsp'
-  Plug 'mattn/vim-lsp-settings'
-  Plug 'mattn/vim-lsp-icons'
-call plug#end()
-let g:lsp_diagnostics_enabled=1
-"下記は好みによって設定変更すること
-let g:lsp_diagnostics_echo_cursor=1
-let g:lsp_text_edit_enabled=1
-let g:asyncomplete_auto_popup=1
-let g:asyncomplete_popup_delay=200
+" call plug#begin('~/.vim/plugged')
+"   Plug 'prabirshrestha/asyncomplete.vim'
+"   Plug 'prabirshrestha/asyncomplete-lsp.vim'
+"   Plug 'prabirshrestha/vim-lsp'
+"   Plug 'mattn/vim-lsp-settings'
+"   Plug 'mattn/vim-lsp-icons'
+" call plug#end()
+" let g:lsp_diagnostics_enabled=1
+" "下記は好みによって設定変更すること
+" let g:lsp_diagnostics_echo_cursor=1
+" let g:lsp_text_edit_enabled=1
+" let g:asyncomplete_auto_popup=1
+" let g:asyncomplete_popup_delay=200
 
