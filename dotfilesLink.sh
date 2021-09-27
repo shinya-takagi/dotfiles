@@ -40,7 +40,7 @@ function main(){
             };; 
             'Linux' ){  
                 local zfuncs=".zsh/functions"
-                mkdir -p $zfuncs 
+                mkdir -p $HOME/$zfuncs 
                 ln -sf "$DFPATH"/.zshrc                 ~/.zshrc
                 ln -sf "$DFPATH"/.zsh/alias.zsh         ~/.zsh/alias.zsh
                 ln -sf "$DFPATH"/$zfuncs/_mcf           ~/$zfuncs/_mcf
