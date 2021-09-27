@@ -1,24 +1,32 @@
 #! /bin/bash
 
-echo "file upload or download? (u/d)"
-read i
+function main() {
+    local message="Fix dotfilesLink.sh for all OS"
+    local i branch_name
 
- readonly branch_name="master"
- readonly message="Fix dotfilesLink.sh for all OS"
+    echo "File upload or download? (u/d/*)"
+    echo "If you want to stop this, put any word except 'u' and 'd'."
+    read i
+    
+    if [ $(uname -s) == 'Darwin' ]; then
+        branch_name='mac'
+    elif [ $(uname -s) == 'Linux' ]; then
+        branch_name='notepc1'
+    #   branch_name='mainpc1'
+    fi
+    
+    case $i in
+    # - - - - upload - - - -
+     "u" )  git commit -a -m "$message"
+            git push origin master
+    #       git push origin "$branch_name"
+      ;; 
+    # - - - - download - - - -
+    "d" )   git pull
+            ./dotfilesLink.sh
+    	;;
+     *  ) echo "stop";;
+    esac
+}
 
-case $i in
-#upload
-#"u" ) {# git add .
- "u" )  git commit -a -m "$message"
-    #   git push -u origin master
-    #   git push
-        git push origin "$branch_name"
-  ;; 
-#download
-"d" ) 	git pull
-	./dotfilesLink.sh
-	;;
- *  ) echo "stop";;
-esac
-
-exit
+main

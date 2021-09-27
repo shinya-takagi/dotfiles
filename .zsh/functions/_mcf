@@ -1,0 +1,29 @@
+#compdef mcf
+
+function _mcf() {
+  _values \
+    'subcmd' \
+      'move[Move calculated data to pwd]' \
+      'copy[Copy MCF code to pwd]' \
+      'alev[Execute a Python file for alev]' 
+# local -a vals
+# vals=(move copy)
+
+# _values '' $vals
+
+# local -a opts
+# opts=(-a -b -h)
+
+# _arguments '1: :->arg1' '2: :->arg2'
+
+# case "$state" in
+#   arg1)
+#     _values $state $vals
+#     ;;
+#   arg2)
+#     _values $state $opts
+# esac
+
+}
+
+compdef _mcf mcf

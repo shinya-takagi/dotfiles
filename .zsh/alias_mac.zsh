@@ -10,7 +10,8 @@ alias -g gr="| grep --color"
 alias -g GI="| grep -ri"
 
 # local Alias
-alias ls="ls --color=auto"
+# alias ls="ls --color=auto"
+alias ls="ls -G"
 alias lst="ls -ltr"
 alias la="ls -la"
 alias ll="ls -l"
@@ -24,7 +25,6 @@ alias so="source"
 alias c="cd"
 alias cp="cp -i"
 alias rm="rm -i"
-alias rmf="rm -f"
 alias mkdir="mkdir -p"
 alias ..="c ../"
 alias back="pushd"
@@ -40,7 +40,7 @@ alias gcm="git commit -a -m"
 alias gp="git push"
 alias gpm="gp origin master"
 
-alias open="xdg-open"
+#alias open="xdg-open"
 alias et="exit"
 alias rl="readlink -f"
 alias dc="cd"
@@ -69,7 +69,7 @@ alias svr="source ~/.vimrc"
 #alias tml="tmux list-window"
 
 # Windows 
-alias user="cd /mnt/c/Users/shiny"
+#alias user="cd /mnt/c/Users/shiny"
 #alias originlab="cd /mnt/c/Users/shiny/OneDrive/ドキュメント/OriginLab/"
 #alias cdrive="cd /mnt/c/Users/shiny"
 
@@ -79,29 +79,29 @@ alias user="cd /mnt/c/Users/shiny"
 #-------------------------------
 
 function findf(){
-  local file=$1
+  file=$1
   ls -ltr $(find -name $file)
 }
 
 function xtar (){
-  local opti=$1
-  local dirn=$2
+opti=$1
+dirn=$2
 
-  case "$opti" in
-   "a" )  tar cvf  $dirn.tar $dirn ;;     #normal tar
-   "g" )  tar cvzf $dirn.tar.gz $dirn ;;  #tar plus zip
-   "b" )  tar cvjf $dirn.tar.bz2 $dirn ;; #tar plus bz2
-   "x" )  tar cvJf $dirn.tar.xz $dirn ;;  #tar plus xz(slow process, highly compress rate)
-   "e" )  tar xvf $dirn ;; #Extraction
-    *  )  echo " =======ERROR!! CANNOT COMPRESS DIRECTORY!!======="
-          echo " =                                               ="
-          echo " =  CHECK DIRECTORY NAME, OPTION, AND FORMAT!!!  ="
-          echo " =                                               ="
-          echo " ================================================="
-          echo " option : a -> tar , g -> gz , b -> bz2 , x -> xz" 
-          echo "          e -> Extract archive."
-          echo " Format -> gtar option "DIRECTORY""
-  esac
+case "$opti" in
+ "a" )  tar cvf  $dirn.tar $dirn ;;     #normal tar
+ "g" )  tar cvzf $dirn.tar.gz $dirn ;;  #tar plus zip
+ "b" )  tar cvjf $dirn.tar.bz2 $dirn ;; #tar plus bz2
+ "x" )  tar cvJf $dirn.tar.xz $dirn ;;  #tar plus xz(slow process, highly compress rate)
+ "e" )  tar xvf $dirn ;; #Extraction
+  *  )  echo " =======ERROR!! CANNOT COMPRESS DIRECTORY!!======="
+        echo " =                                               ="
+        echo " =  CHECK DIRECTORY NAME, OPTION, AND FORMAT!!!  ="
+        echo " =                                               ="
+        echo " ================================================="
+        echo " option : a -> tar , g -> gz , b -> bz2 , x -> xz" 
+        echo "          e -> Extract archive."
+        echo " Format -> gtar option "DIRECTORY""
+esac
 }
 
 function testfunc (){
@@ -112,16 +112,16 @@ function testfunc (){
 }
 # convert a ts-file to mp4-file.
 function tstomp4 (){
-  local file=$1
+file=$1
 
-  ffmpeg -i $file.ts -vcodec copy -acodec copy $file.mp4
+ffmpeg -i $file.ts -vcodec copy -acodec copy $file.mp4
 } 
 # PH DLer
 function phdl (){
-  phdl_path=$HOME/get/PornHub-downloader-python-master
-  cd $phdl_path
-  option=$1
-  cmd=$2
+phdl_path=$HOME/get/PornHub-downloader-python-master
+cd $phdl_path
+option=$1
+cmd=$2
   case $option in
     "s" ) python3 $phdl_path/phdler.py start ;;
     "a" ) python3 $phdl_path/phdler.py add $cmd ;; 
@@ -131,25 +131,6 @@ function phdl (){
   esac
 }
 
-# MCF code
-function mcf(){
-  local PYTHON_PATH="$HOME"/python
-  local MCF_DIR="$PYTHON_PATH"/mcf
-  local MCF_alev="$MCF_DIR"/mcf_alev.py
-  local MCF_bx="$MCF_DIR"/mcf_bx.py
-  local MCF_bxa="$MCF_DIR"/mcf_bx_add.py
-  local opt1="$1"
-  case "$opt1" in
-    "alev"  ) python3 "$MCF_alev" ;;
-    "bx"  ) python3 "$MCF_bx" ;;
-    "bxa"  ) python3 "$MCF_bxa" ;;
-    "bxav"  ) vi "$MCF_bxa" ;;
-    "move" ) sh "$MCF_DIR"/move ;;
-    "movev" ) vi "$MCF_DIR"/move ;;
-    "copy" ) cp "$MCF_CODE" . ;;  
-      *    ) cd "$MCF_DIR"
-  esac
-}
 
 
 
