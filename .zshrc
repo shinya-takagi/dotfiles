@@ -297,6 +297,7 @@ function rprompt-git-current-branch {
   # ブランチ名を色付きで表示する
 # echo "${branch_status}$branch_name${reset}"
   echo "${branch_status}[$branch_name]%f"
+# echo -e "${branch_status}[$branch_name]%f%T"
 }
  
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
@@ -321,6 +322,7 @@ add-zsh-hook preexec left_down_prompt_preexec
 
 function zle-keymap-select zle-line-init zle-line-finish
 {
+# local exit_code_check
     case $KEYMAP in
         main|viins)
             PROMPT_2="$fg[cyan]-- INSERT --$reset_color"
@@ -332,9 +334,13 @@ function zle-keymap-select zle-line-init zle-line-finish
 #           PROMPT_2="$fg[yellow]-- VISUAL --$reset_color"
 #           ;;
     esac
-
-    PROMPT="%{$terminfo_down_sc$PROMPT_2$terminfo[rc]%}[%(?.%{${fg[green]}%}.%{${fg[red]}%})%~%{${reset_color}%}]
-%# "
+    # example of show exit status on prompt
+#   %{$fg[black]%(?.$bg[green].$bg[red])%}<%?>
+#   PROMPT="%{$terminfo_down_sc$PROMPT_2$terminfo[rc]%}[%(?.%{${fg[green]}%}.%{${fg[red]}%})%~%{${reset_color}%}]
+    PROMPT="%{$terminfo_down_sc$PROMPT_2$terminfo[rc]%}[%T]|[%(?.%{${fg[green]}%}.%{${fg[red]}%})%~%{${reset_color}%}]
+%{%(?.$fg[green].$fg[red])%}<%?>%{${reset_color}%} %# "
+# %{%(?.$fg[green].$fg[red])%}<%?>${reset_color} %# "
+# <%{%(?.$fg[green].$fg[red])%}%?${reset_color}> %# "
     zle reset-prompt
 }
 
