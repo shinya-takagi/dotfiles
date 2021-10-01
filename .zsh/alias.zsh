@@ -141,16 +141,21 @@ function mcf(){
   local MCF_alev="$MCF_DIR"/mcf_alev.py
   local MCF_bx="$MCF_DIR"/mcf_bx.py
   local MCF_bxa="$MCF_DIR"/mcf_bx_add.py
+  local MCF_bxtm="$MCF_DIR"/mcf_bx_times.py
   local MCF_bxt="$MCF_DIR"/mcf_table.py
+  local MCF_DATA=/mnt/c/Users/shiny/mydata/Origin/MCF
   local opt1="$1"
   case "$opt1" in
+    "data" ) cd "$MCF_DATA" ;; 
     "alev"  ) python3 "$MCF_alev" ;;
     "bx"  ) python3 "$MCF_bx" ;;
     "bxa"  ) python3 "$MCF_bxa" ;;
     "bxav"  ) vi "$MCF_bxa" ;;
+    "bxtm"  ) python3 "$MCF_bxtm" ;;
     "bxt"  ) python3 "$MCF_bxt" ;;
-    "move" ) sh "$MCF_DIR"/move ;;
-    "movev" ) vi "$MCF_DIR"/move ;;
+    "mv095" ) bash "$MCF_DIR"/mcf_move.sh ;; 
+#   "move" ) sh "$MCF_DIR"/move ;;
+#   "movev" ) vi "$MCF_DIR"/move ;;
     "copy" ) cp "$MCF_CODE" . ;;  
       *    ) cd "$MCF_DIR"
   esac
