@@ -91,15 +91,48 @@ autocmd BufRead,BufNewFile *.zsh setfiletype zsh
 "-----------------------------------------------------------
 "	Plugin Manager
 "-----------------------------------------------------------
+function s:is_plugged(name)
+    if exists('g:plugs') && has_key(g:plugs, a:name) && isdirectory(g:plugs[a:name].dir)
+        return 1
+    else
+        return 0
+    endif
+endfunction
 
 call plug#begin()
-  Plug 'preservim/nerdtree'	"Tree type directory
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'preservim/nerdtree'				"Tree type directory
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'romkatv/powerlevel10k'				"Use powerlevel10k, but it cannot run
+  Plug 'vim-airline/vim-airline'			"Powerline fonts for Vim 
+  Plug 'vim-airline/vim-airline-themes'			"For Airline themes
+  Plug 'ryanoasis/vim-devicons'				"Various icons for Vim.
 call plug#end()
-
-
+"------ vim-airline commands ----------------->
+if s:is_plugged("vim-airline")
+	let g:airline_powerline_fonts = 1		"Use Powerline fonts
+	let g:airline#extensions#tabline#enabled = 1	"Show tab line at opening files
+	let g:airline_theme = 'powerlineish'		"Change Airline color theme
+	if !exists('g:airline_symbols')
+		let g:airline_symbols = {}
+	endif
+	"let g:airline_left_sep = '⮀'			"Separeter for left
+	"let g:airline_left_alt_sep = '⮁'
+	"let g:airline_right_sep = '⮂'			"Separater for right
+	"let g:airline_right_alt_sep = '⮃'
+	let g:airline_symbols.crypt = '🔒'		"暗号化されたファイル
+	let g:airline_symbols.linenr = '¶'		"行
+	let g:airline_symbols.maxlinenr = '㏑'		"最大行
+	let g:airline_symbols.branch = '⭠'		"gitブランチ
+	let g:airline_symbols.paste = 'ρ'		"ペーストモード
+	let g:airline_symbols.spell = 'Ꞩ'		"スペルチェック
+	let g:airline_symbols.notexists = '∄'		"gitで管理されていない場合
+	let g:airline_symbols.whitespace = 'Ξ' 		"空白の警告(余分な空白など)
+endif
 " Plugin Keymap
 nnoremap <C-n> :NERDTree<CR>
+"-------------------------------------<
+set ttimeoutlen=50
+
 
 "
 "	For Fortran 
@@ -112,7 +145,7 @@ nnoremap <C-n> :NERDTree<CR>
 "   Plug 'mattn/vim-lsp-icons'
 " call plug#end()
 " let g:lsp_diagnostics_enabled=1
-" "$B2<5-$O9%$_$K$h$C$F@_DjJQ99$9$k$3$H(B
+" "下記は好みによって設定変更すること
 " let g:lsp_diagnostics_echo_cursor=1
 " let g:lsp_text_edit_enabled=1
 " let g:asyncomplete_auto_popup=1
