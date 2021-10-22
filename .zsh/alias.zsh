@@ -142,6 +142,7 @@ function mcf(){
   local MCF_bx="$MCF_DIR"/mcf_bx.py
   local MCF_bxa="$MCF_DIR"/mcf_bx_add.py
   local MCF_bxtm="$MCF_DIR"/mcf_bx_times.py
+  local MCF_bxsolo="$MCF_DIR"/mcf_bx_times_solo.py
   local MCF_bxt="$MCF_DIR"/mcf_table.py
   local MCF_DATA=/mnt/c/Users/shiny/mydata/Origin/MCF
   local opt1="$1"
@@ -152,6 +153,7 @@ function mcf(){
     "bxa"  ) python3 "$MCF_bxa" ;;
     "bxav"  ) vi "$MCF_bxa" ;;
     "bxtm"  ) python3 "$MCF_bxtm" ;;
+    "bxsolo"  ) python3 "$MCF_bxsolo" ;;
     "bxt"  ) python3 "$MCF_bxt" ;;
     "mv095" ) bash "$MCF_DIR"/mcf_move.sh ;; 
 #   "move" ) sh "$MCF_DIR"/move ;;
