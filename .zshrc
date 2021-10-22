@@ -574,7 +574,7 @@ export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 #  cut -d: -f1
 #}#
 #
- source  ~/powerlevel10k/powerlevel10k.zsh-theme
+source  ~/powerlevel10k/powerlevel10k.zsh-theme
 #source /usr/share/powerline/bindings/zsh/powerline.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
