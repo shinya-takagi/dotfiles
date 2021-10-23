@@ -100,11 +100,12 @@ function s:is_plugged(name)
 endfunction
 
 call plug#begin()
-  Plug 'preservim/nerdtree'	"Tree type directory
+  Plug 'preservim/nerdtree'				"Tree type directory
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'romkatv/powerlevel10k'
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
+" Plug 'romkatv/powerlevel10k'				"Use powerlevel10k, but it cannot run
+  Plug 'vim-airline/vim-airline'			"Powerline fonts for Vim 
+  Plug 'vim-airline/vim-airline-themes'			"For Airline themes
+  Plug 'ryanoasis/vim-devicons'				"Various icons for Vim.
 call plug#end()
 "------ vim-airline commands ----------------->
 if s:is_plugged("vim-airline")
@@ -127,11 +128,11 @@ if s:is_plugged("vim-airline")
 	let g:airline_symbols.notexists = '∄'		"gitで管理されていない場合
 	let g:airline_symbols.whitespace = 'Ξ' 		"空白の警告(余分な空白など)
 endif
+" Plugin Keymap
+nnoremap <C-n> :NERDTree<CR>
 "-------------------------------------<
 set ttimeoutlen=50
 
-" Plugin Keymap
-nnoremap <C-n> :NERDTree<CR>
 
 "
 "	For Fortran 
