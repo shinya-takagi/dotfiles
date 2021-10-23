@@ -4,8 +4,13 @@ function _mcf() {
   _values \
     'subcmd' \
       'move[Move calculated data to pwd]' \
+      'movev[Edit move code on vim]' \
       'copy[Copy MCF code to pwd]' \
-      'alev[Execute a Python file for alev]' 
+      'alev[Execute a Python file for alev]' \
+      'bx[Run neutron separation energy compare code]' \
+      'bxa[bx code in addtion to addtional calculation]' \
+      'bxav[Edit bxa code on vim]' 
+
 # local -a vals
 # vals=(move copy)
 

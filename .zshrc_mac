@@ -179,16 +179,16 @@ ulimit -c 0
 # Prompt Change
 
 #---Vim MODE CHECK----
-function zle-keymap-select {
-  VIM_NORMAL="%K{208}%F{black}⮀%k%f%K{208}%F{white} % NORMAL %k%f%K{black}%F{208}⮀%k%f"
-  VIM_INSERT="%K{075}%F{black}⮀%k%f%K{075}%F{white} % INSERT %k%f%K{black}%F{075}⮀%k%f"
- VIMODE="${${KEYMAP/vicmd/$VIM_NORMAL}/(main|viins)/$VIM_INSERT}"
- zle reset-prompt
-}
-
-zle -N zle-keymap-select
-PROMPT='%F{red}%~%f
-${VIMODE}$ '
+#function zle-keymap-select {
+#  VIM_NORMAL="%K{208}%F{black}⮀%k%f%K{208}%F{white} % NORMAL %k%f%K{black}%F{208}⮀%k%f"
+#  VIM_INSERT="%K{075}%F{black}⮀%k%f%K{075}%F{white} % INSERT %k%f%K{black}%F{075}⮀%k%f"
+# VIMODE="${${KEYMAP/vicmd/$VIM_NORMAL}/(main|viins)/$VIM_INSERT}"
+# zle reset-prompt
+#}
+#
+#zle -N zle-keymap-select
+#PROMPT='%F{red}%~%f
+#${VIMODE}$ '
 #---------------------
 
 #PROMPT='%F{red}%~%f
@@ -217,6 +217,7 @@ function rprompt-git-current-branch {
     # 全て commit されてクリーンな状態
 #   branch_status="${color}${green}${branch}"
     branch_status="%F{green}"
+#   branch_status="%{$fg[green]}%}%{${reset_color}%}"
   elif [[ -n `echo "$st" | grep "^Untracked files"` ]]; then
     # git 管理されていないファイルがある状態
 #   branch_status="${color}${red}${branch}?"
@@ -241,15 +242,58 @@ function rprompt-git-current-branch {
   fi
   # ブランチ名を色付きで表示する
 # echo "${branch_status}$branch_name${reset}"
-  echo "${branch_status}[$branch_name]"
+  echo "${branch_status}[$branch_name]%f"
+# echo -e "${branch_status}[$branch_name]%f%T"
 }
  
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
 setopt prompt_subst
  
 # プロンプトの右側にメソッドの結果を表示させる
+zle -N rptompy-git-current-branch 
 RPROMPT='`rprompt-git-current-branch`'
 
+# -----new prompt setting-------
+autoload -Uz add-zsh-hook
+autoload -Uz terminfo
+
+# vim mode set 2 left-down position
+terminfo_down_sc=$terminfo[cud1]$terminfo[cud1]$terminfo[cuu1]$terminfo[cuu1]$terminfo[sc]$terminfo[cud1]$terminfo[cud1]
+function left_down_prompt_preexec() {
+    print -rn -- $terminfo[el]
+}
+add-zsh-hook preexec left_down_prompt_preexec
+
+function zle-keymap-select zle-line-init zle-line-finish
+{
+# local exit_code_check
+    case $KEYMAP in
+        main|viins)
+            PROMPT_2="$fg[cyan]-- INSERT --$reset_color"
+            ;;
+        vicmd)
+            PROMPT_2="$fg[white]-- NORMAL --$reset_color"
+            ;;
+#       vivis|vivli)
+#           PROMPT_2="$fg[yellow]-- VISUAL --$reset_color"
+#           ;;
+    esac
+    # example of show exit status on prompt
+#   %{$fg[black]%(?.$bg[green].$bg[red])%}<%?>
+#   PROMPT="%{$terminfo_down_sc$PROMPT_2$terminfo[rc]%}[%(?.%{${fg[green]}%}.%{${fg[red]}%})%~%{${reset_color}%}]
+    PROMPT="%{$terminfo_down_sc$PROMPT_2$terminfo[rc]%}[%T]|[%(?.%{${fg[green]}%}.%{${fg[red]}%})%~%{${reset_color}%}]
+%{%(?.$fg[green].$fg[red])%}<%?>%{${reset_color}%} %# "
+# %{%(?.$fg[green].$fg[red])%}<%?>${reset_color} %# "
+# <%{%(?.$fg[green].$fg[red])%}%?${reset_color}> %# "
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-line-finish
+zle -N zle-keymap-select
+zle -N edit-command-line
+
+#------End new prompt setting-------
 
 # -----------------------------
 # Completion
