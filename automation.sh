@@ -23,7 +23,7 @@ function main() {
       ;; 
     # - - - - download - - - -
     "d" )   git pull
-            ./dotfilesLink.sh
+#           ./dotfilesLink.sh
     	;;
      *  ) echo "stop";;
     esac
