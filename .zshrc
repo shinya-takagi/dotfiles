@@ -136,9 +136,16 @@ ulimit -c 0
 psfile_=$HOME/.ssh/main
 eval `ssh-agent` > /dev/null 2>&1
 if [ -e $psfile_ ]; then 
-  agentunlock_=$(openssl rsautl -decrypt -inkey $psfile.key -in $psfile)
-  echo  "$agentunlock_"\n | eval `ssh-add $HOME/.ssh/id_rsa_vostok2 > /dev/null 2>&1`
-  unset psfile_ agentunlock_
+  if [ -e "$HOME/.ssh/id_rsa_vostok2" ]; then
+    keys=id_rsa_vostok2
+  elif [ -e "$HOME/.ssh/id_rsa_github" ]; then
+    keys=id_rsa_github
+  elif [ -e "$HOME/.ssh/id_rsa_vostok2" ] && [ -e "$HOME/.ssh/id_rsa_github" ]; then
+    keys=id_rsa_vostok2
+  fi
+    agentunlock_=$(openssl rsautl -decrypt -inkey $psfile_.key -in $psfile_)
+    echo  "$agentunlock_"\n | eval `ssh-add $HOME/.ssh/"$keys" > /dev/null 2>&1`
+    unset psfile_ agentunlock_
 else
   echo "PASSWORD?"
   eval `ssh-add $HOME/.ssh/id_rsa_vostok2 > /dev/null 2>&1`
