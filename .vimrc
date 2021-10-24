@@ -106,6 +106,7 @@ call plug#begin()
   Plug 'vim-airline/vim-airline'			"Powerline fonts for Vim 
   Plug 'vim-airline/vim-airline-themes'			"For Airline themes
   Plug 'ryanoasis/vim-devicons'				"Various icons for Vim.
+  Plug 'markonm/traces.vim'				"Show Hightlight for search.
 call plug#end()
 "------ vim-airline commands ----------------->
 if s:is_plugged("vim-airline")
