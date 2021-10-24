@@ -65,6 +65,7 @@ export PATH="$HOME/.bin:$PATH"            # local binary path
 export PATH="$HOME/.local/bin:$PATH"      # local binary path
 export PATH="/usr/local/go/bin:$PATH"     # go language path
 export PATH="/usr/local/texlive/2021/bin/x86_64-linux:$PATH"
+export PATH="$HOME/codes/GENERAL_CODE/GEF-2021-V1-1_linux:$PATH"
 #export PATH="$HOME/bin:$PATH"
 
 # cdした際のディレクトリをディレクトリスタックへ自動追加
@@ -573,7 +574,7 @@ export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 #  cut -d: -f1
 #}#
 #
- source  ~/powerlevel10k/powerlevel10k.zsh-theme
+source  ~/powerlevel10k/powerlevel10k.zsh-theme
 #source /usr/share/powerline/bindings/zsh/powerline.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
