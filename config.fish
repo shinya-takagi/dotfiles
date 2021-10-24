@@ -1,4 +1,5 @@
-
+set fish_function_path $fish_function_path "/usr/share/powerline/bindings/fish"
+powerline-setup
 
 #---Add PATH------
 #set PATH  /opt/intel/compilers_and_libraries_2020.3.275/linux/bin /opt/intel/compilers_and_libraries_2020.3.275/linux/mpi/intel64/libfabric/bin /opt/intel/bin $PATH
