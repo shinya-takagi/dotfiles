@@ -133,8 +133,17 @@ umask 022
 ulimit -c 0
 
 # When log in, Run ssh-agent.
+psfile_=$HOME/.ssh/main
 eval `ssh-agent` > /dev/null 2>&1
-eval `ssh-add $HOME/.ssh/id_rsa_vostok2 > /dev/null 2>&1`
+if [ -e $psfile_ ]; then 
+  agentunlock_=$(openssl rsautl -decrypt -inkey $psfile.key -in $psfile)
+  echo  "$agentunlock_"\n | eval `ssh-add $HOME/.ssh/id_rsa_vostok2 > /dev/null 2>&1`
+  unset psfile_ agentunlock_
+else
+  echo "PASSWORD?"
+  eval `ssh-add $HOME/.ssh/id_rsa_vostok2 > /dev/null 2>&1`
+fi
+
 
 # -----------------------------
 #   Key Binding

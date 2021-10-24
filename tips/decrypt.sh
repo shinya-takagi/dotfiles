@@ -1,6 +1,7 @@
 #!/bin/bash
 
-PASSWROD=$(openssl rsautl -decrypt -inkey ~/.ssh/password.key -in password.txt)
+mainfile=main
+PASSWROD=$(openssl rsautl -decrypt -inkey ~/.ssh/password.key -in $mainfile)
     echo $PASSWROD
 if [ "password" = "$PASSWROD" ]; then
     echo test

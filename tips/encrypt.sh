@@ -1,7 +1,12 @@
 #!/bin/bash
 
 password=$1
+password='Shinya01'
+file=$2
 
-openssl genrsa -out ~/.ssh/password.key 2048
-echo "$password" | openssl rsautl -encrypt -inkey ~/.ssh/password.key > ~/.ssh/.keygen_rsa
+#if [ -e "password.key" ]; then
+#    rm ~/.ssh/password.key
+#fi
+openssl genrsa -out ~/.ssh/$file.key 2048
+echo "$password" | openssl rsautl -encrypt -inkey ~/.ssh/$file.key > ~/.ssh/$file
 #ls --color
