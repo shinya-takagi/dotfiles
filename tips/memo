@@ -1,0 +1,16 @@
+#!/bin/bash
+
+## Use private keys to login the server without inserting passphase from stdin
+# sshpass -p $(./password) ssh your-server
+## Need to install sshpass
+
+## Markdown Reader 'glow'
+## How to install,
+## For Brew
+# brew install glow
+## it cannot install glow as apt, so you need to clone repository and build it.(Required go lang)
+# git clone https://github.com/charmbracelet/glow.git
+# cd glow
+# go build
+## Set path glow to your PATH.
+

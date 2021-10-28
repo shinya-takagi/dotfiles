@@ -59,7 +59,7 @@ export EDITOR=vim
 # パスを追加したい場合
 export PATH="$HOME/FISH:$PATH"
 export PATH="$HOME/codes:$PATH"
-export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.go/bin:$PATH"
 export PATH="$HOME/intel/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"            # local binary path
 export PATH="$HOME/.local/bin:$PATH"      # local binary path
@@ -135,21 +135,29 @@ ulimit -c 0
 # When log in, Run ssh-agent.
 psfile_=$HOME/.ssh/main
 eval `ssh-agent` > /dev/null 2>&1
-if [ -e $psfile_ ]; then 
-  if [ -e "$HOME/.ssh/id_rsa_vostok2" ]; then
-    keys=id_rsa_vostok2
-  elif [ -e "$HOME/.ssh/id_rsa_github" ]; then
-    keys=id_rsa_github
-  elif [ -e "$HOME/.ssh/id_rsa_vostok2" ] && [ -e "$HOME/.ssh/id_rsa_github" ]; then
-    keys=id_rsa_vostok2
-  fi
-    agentunlock_=$(openssl rsautl -decrypt -inkey $psfile_.key -in $psfile_)
-    echo  "$agentunlock_"\n | eval `ssh-add $HOME/.ssh/"$keys" > /dev/null 2>&1`
-    unset psfile_ agentunlock_
-else
-  echo "PASSWORD?"
+#if [ -e $psfile_ ]; then 
+#  if [ -e "$HOME/.ssh/id_rsa_vostok2" ]; then
+#    keys=id_rsa_vostok2
+#  elif [ -e "$HOME/.ssh/id_rsa_github" ]; then
+#    keys=id_rsa_github
+#  elif [ -e "$HOME/.ssh/id_rsa_vostok2" ] && [ -e "$HOME/.ssh/id_rsa_github" ]; then
+#    keys=id_rsa_vostok2
+#  fi
+#    agentunlock_=$(openssl rsautl -decrypt -inkey $psfile_.key -in $psfile_)
+##   echo  "$agentunlock_"\n | eval `ssh-add $HOME/.ssh/"$keys" > /dev/null 2>&1`
+#    unset psfile_ agentunlock_
+#else
+#  echo "PASSWORD?"
   eval `ssh-add $HOME/.ssh/id_rsa_vostok2 > /dev/null 2>&1`
-fi
+#fi
+
+# TEST SSH-AGENT WITH ENV SSH_ASKPASS
+#eval `ssh-agent` > /dev/null 2>&1
+#export DISPLAY=:0.0 
+#export SSH_ASKPASS=$HOME/pass.sh
+#eval `ssh-add $HOME/.ssh/id_rsa_vostok2 > /dev/null 2>&1`
+#setsid ssh-add $HOME/.ssh/id_rsa_vostok2 </dev/null
+#ssh vostok
 
 
 # -----------------------------

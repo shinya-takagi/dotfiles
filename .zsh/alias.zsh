@@ -29,6 +29,7 @@ alias mkdir="mkdir -p"
 alias ..="c ../"
 alias back="pushd"
 alias diff="diff -U1"
+alias sshp="sshpass -p $(sh ~/pass.sh) ssh"
 
 # from fish
 #------git------------
