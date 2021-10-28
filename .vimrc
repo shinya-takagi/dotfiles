@@ -101,7 +101,7 @@ endfunction
 
 call plug#begin()
   Plug 'preservim/nerdtree'				"Tree type directory
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'romkatv/powerlevel10k'				"Use powerlevel10k, but it cannot run
   Plug 'vim-airline/vim-airline'			"Powerline fonts for Vim 
   Plug 'vim-airline/vim-airline-themes'			"For Airline themes
