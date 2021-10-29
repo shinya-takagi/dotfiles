@@ -23,6 +23,7 @@ function main(){
         local vim_path=$HOME/.vim
         mkdir -p ~/.zsh 
         mkdir -p "$vim_path"/ftplugin "$vim_path"/swap "$vim_path"/tmp "$vim_path"/undo
+	mkdir -p ~/.config/fish
 # - symboric link - -
         ln -sf "$DFPATH"/config.fish                    ~/.config/fish/config.fish
         ln -sf "$DFPATH"/.vimrc                         ~/.vimrc
