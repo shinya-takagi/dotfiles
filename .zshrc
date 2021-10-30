@@ -6,7 +6,7 @@
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/bin" && \
         print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
         print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
@@ -16,13 +16,14 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 
+# ZINIT REPOSITORY REMOVED!!!!!!!!
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
-zinit light-mode for \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
+#zinit light-mode for \
+#    zinit-zsh/z-a-rust \
+#    zinit-zsh/z-a-as-monitor \
+#    zinit-zsh/z-a-patch-dl \
+#    zinit-zsh/z-a-bin-gem-node
 
 ### End of Zinit's installer chunk
 
@@ -140,7 +141,7 @@ eval `ssh-agent` > /dev/null 2>&1
 ##   echo  "$agentunlock_"\n | eval `ssh-add $HOME/.ssh/"$keys" > /dev/null 2>&1`
 #    unset psfile_ agentunlock_
 #else
-   echo "PASSWORD?"
+#  echo "PASSWORD?"
   eval `ssh-add $HOME/.ssh/"$keys"> /dev/null 2>&1`
 #fi
 
