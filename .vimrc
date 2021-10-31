@@ -92,6 +92,7 @@ autocmd BufRead,BufNewFile *.zsh setfiletype zsh
 "-----------------------------------------------------------
 "	Plugin Manager
 "-----------------------------------------------------------
+" Define 'is_plugged' function.
 function s:is_plugged(name)
     if exists('g:plugs') && has_key(g:plugs, a:name) && isdirectory(g:plugs[a:name].dir)
         return 1
@@ -103,7 +104,7 @@ endfunction
 call plug#begin()
   Plug 'preservim/nerdtree'				"Tree type directory
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"" Plug 'romkatv/powerlevel10k'				"Use powerlevel10k, but it cannot run
+" Plug 'romkatv/powerlevel10k'				"Use powerlevel10k, but it cannot run
   Plug 'vim-airline/vim-airline'			"Powerline fonts for Vim 
   Plug 'vim-airline/vim-airline-themes'			"For Airline themes
   Plug 'ryanoasis/vim-devicons'				"Various icons for Vim.

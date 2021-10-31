@@ -5,13 +5,13 @@
 
 # Referrence : https://haiju.hatenablog.com/entry/2018/12/14/131830 
 #-----Install yay--------------->
-cd ~
-if [ ! -e /usr/bin/git ]; then
-    pacman -S --needed git base-devel
-fi
-git clone https://aur.archlinux.org/yay-bin.git
-cd yay-bin
-makepkg -si
+#cd ~
+#if [ ! -e /usr/bin/git ]; then
+#    pacman -S --needed git base-devel
+#fi
+#git clone https://aur.archlinux.org/yay-bin.git
+#cd yay-bin
+#makepkg -si
 #-----yay------------<
 
 #-----Install Powerpill(parallel pacman)-------->
