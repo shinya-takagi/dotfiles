@@ -27,6 +27,7 @@ syntax on
 
 
  highlight LineNr ctermfg=darkyellow
+"highlight LineNr ctermfg=yellow
 "-------------------------------------------------------------
 "	Vim Keymap Setting
 "-------------------------------------------------------------
@@ -107,6 +108,7 @@ call plug#begin()
   Plug 'vim-airline/vim-airline-themes'			"For Airline themes
   Plug 'ryanoasis/vim-devicons'				"Various icons for Vim.
   Plug 'markonm/traces.vim'				"Show Hightlight for search.
+  Plug 'vimwiki/vimwiki'
 call plug#end()
 "------ vim-airline commands ----------------->
 if s:is_plugged("vim-airline")

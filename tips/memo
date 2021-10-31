@@ -14,3 +14,19 @@
 # go build
 ## Set path glow to your PATH.
 
+###### Youtube viewer from youtube-viewer
+
+### Before it run, Set Environment variables named DISPLAY in Windows ip address.
+# export DISPLAY="localhost":0.0
+
+### Install
+# yay -S youtube-viewer
+
+### How to use
+# youtube-viewer
+
+### youtube api
+## Get youtube api datav3.
+## set api to "$HOME/.config/youtube-viewer/api.json"
+
+
