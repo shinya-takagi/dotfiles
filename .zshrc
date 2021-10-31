@@ -6,7 +6,7 @@
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/bin" && \
         print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
         print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
@@ -16,13 +16,14 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 
+# ZINIT REPOSITORY REMOVED!!!!!!!!
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
-zinit light-mode for \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
+#zinit light-mode for \
+#    zinit-zsh/z-a-rust \
+#    zinit-zsh/z-a-as-monitor \
+#    zinit-zsh/z-a-patch-dl \
+#    zinit-zsh/z-a-bin-gem-node
 
 ### End of Zinit's installer chunk
 
@@ -35,13 +36,6 @@ if [ -d $ZSHHOME -a -r $ZSHHOME -a \
 	[[ ${i##*/} = *.zsh ]] &&
 		[ \( -f $i -o -h $d \) -a -r $i ] && . $i
     done
-fi
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 # -----------------------------
@@ -133,31 +127,37 @@ umask 022
 ulimit -c 0
 
 # When log in, Run ssh-agent.
-psfile_=$HOME/.ssh/main
+#psfile_=$HOME/.ssh/main
 eval `ssh-agent` > /dev/null 2>&1
 #if [ -e $psfile_ ]; then 
-#  if [ -e "$HOME/.ssh/id_rsa_vostok2" ]; then
-#    keys=id_rsa_vostok2
-#  elif [ -e "$HOME/.ssh/id_rsa_github" ]; then
-#    keys=id_rsa_github
-#  elif [ -e "$HOME/.ssh/id_rsa_vostok2" ] && [ -e "$HOME/.ssh/id_rsa_github" ]; then
-#    keys=id_rsa_vostok2
-#  fi
+   if [ -e "$HOME/.ssh/id_rsa_vostok2" ]; then
+     keys=id_rsa_vostok2
+   elif [ -e "$HOME/.ssh/id_rsa_github" ]; then
+     keys=id_rsa_github
+   elif [ -e "$HOME/.ssh/id_rsa_vostok2" ] && [ -e "$HOME/.ssh/id_rsa_github" ]; then
+     keys=id_rsa_vostok2
+   fi
 #    agentunlock_=$(openssl rsautl -decrypt -inkey $psfile_.key -in $psfile_)
 ##   echo  "$agentunlock_"\n | eval `ssh-add $HOME/.ssh/"$keys" > /dev/null 2>&1`
 #    unset psfile_ agentunlock_
 #else
 #  echo "PASSWORD?"
-  eval `ssh-add $HOME/.ssh/id_rsa_vostok2 > /dev/null 2>&1`
+  eval `ssh-add $HOME/.ssh/"$keys"> /dev/null 2>&1`
 #fi
 
 # TEST SSH-AGENT WITH ENV SSH_ASKPASS
 #eval `ssh-agent` > /dev/null 2>&1
 #export DISPLAY=:0.0 
-#export SSH_ASKPASS=$HOME/pass.sh
 #eval `ssh-add $HOME/.ssh/id_rsa_vostok2 > /dev/null 2>&1`
 #setsid ssh-add $HOME/.ssh/id_rsa_vostok2 </dev/null
 #ssh vostok
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 
 # -----------------------------

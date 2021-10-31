@@ -1,4 +1,4 @@
-
+ 
 # -----------------------------
 # Alias
 # -----------------------------
@@ -29,7 +29,10 @@ alias mkdir="mkdir -p"
 alias ..="c ../"
 alias back="pushd"
 alias diff="diff -U1"
-alias sshp="sshpass -p $(sh ~/pass.sh) ssh"
+
+if [ -e "$HOME/pass.sh" ]; then
+  alias sshp="sshpass -p $(sh ~/pass.sh) ssh"
+fi
 
 # from fish
 #------git------------
@@ -55,19 +58,20 @@ alias twit="open https://www.twitter.com"
 alias insta="open https://www.instagram.com"
 alias qiita="open https://qiita.com"
 
-# zsh
-alias vi="vim"
-alias vz="vim ~/.zshrc"
-alias va="vi ~/.zsh/alias.zsh"
-alias vz="vi ~/.zshrc"
-alias sz="source ~/.zshrc"
-alias vd="vi ~/.dircolors-solarized/dircolors.ansi-dark_taka"
-
 # Vim
+alias vi="vim"
 alias vr="vi ~/.vimrc"
 alias svr="source ~/.vimrc"
 #alias tma="tmux attach"
 #alias tml="tmux list-window"
+#
+# zsh
+alias vz="vim ~/.zshrc"
+alias va="vi ~/.zsh/alias.zsh"
+alias vz="vi ~/.zshrc"
+alias sz="source ~/.zshrc"
+alias sa="source ~/.zsh/alias.zsh"
+alias vd="vi ~/.dircolors-solarized/dircolors.ansi-dark_taka"
 
 # python
 alias py="python3"
@@ -77,6 +81,21 @@ alias user="cd /mnt/c/Users/shiny"
 #alias originlab="cd /mnt/c/Users/shiny/OneDrive/ドキュメント/OriginLab/"
 #alias cdrive="cd /mnt/c/Users/shiny"
 
+#----- OS Distrbution condition ---------------------->
+TMPOS=$(cat /etc/os-release | head -2 | tail -1)
+PRETTY_NAME=${TMPOS:13}
+#---------For Arch Linux---------------->
+  if [ $PRETTY_NAME = "Arch Linux\"" ]; then
+    alias al="echo Arch Linux"
+    alias pacman="sudo pacman"
+#---------Arch Linux--------<
+#---------For Ubuntu-------------------->
+  elif [ $PRETTY_NAME = "Ubuntu\"" ]; then
+    alias al="echo Ubuntu"
+  fi
+#---------Ubuntu--------<
+unset TMPOS PRETTY_NAME
+#---- Condition -------------<
 
 #-------------------------------
 #	FUNCTION
@@ -163,6 +182,7 @@ function mcf(){
       *    ) cd "$MCF_DIR"
   esac
 }
+
 
 
 

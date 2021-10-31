@@ -1,7 +1,6 @@
 #!/bin/bash
 
 password=$1
-password='Shinya01'
 file=$2
 
 #if [ -e "password.key" ]; then
