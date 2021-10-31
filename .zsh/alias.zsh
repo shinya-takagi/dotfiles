@@ -88,6 +88,8 @@ PRETTY_NAME=${TMPOS:13}
   if [ $PRETTY_NAME = "Arch Linux\"" ]; then
     alias al="echo Arch Linux"
     alias pacman="sudo pacman"
+    alias vmemo="vim $HOME/dotfiles/tips/memo"
+    alias cmemo="cat $HOME/dotfiles/tips/memo"
 #---------Arch Linux--------<
 #---------For Ubuntu-------------------->
   elif [ $PRETTY_NAME = "Ubuntu\"" ]; then
