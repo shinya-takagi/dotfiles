@@ -427,8 +427,8 @@ setopt hist_verify
 #eval `dircolors ~/.dircolors-solarized/dircolors.256dark`
 eval `dircolors ~/.dircolors-solarized/dircolors.ansi-dark_taka`
 #export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
-export DISPLAY=$(ipconfig.exe | grep IPv4 | grep -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' -o | head -1)
-
+#export DISPLAY=$(ipconfig.exe | grep IPv4 | grep -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' -o | head -2):0
+ export DISPLAY=$(grep nameserver /etc/resolv.conf | sed 's/nameserver //'):0
 
 #余分なスペースを削除してヒストリに記録する
 #setopt hist_reduce_blanks
