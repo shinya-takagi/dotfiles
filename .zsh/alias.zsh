@@ -44,13 +44,17 @@ alias gcm="git commit -a -m"
 alias gp="git push"
 alias gpm="gp origin master"
 
-alias open="xdg-open"
 alias et="exit"
 alias rl="readlink -f"
 alias dc="cd"
 alias sl="ls"
 
 #-------URL--------------------------
+if [ -e $(which wsl-open) ]; then
+  alias open="wsl-open"
+elif [ -e $(which xdg-open) ]; then
+  alias open="xdg-open"
+fi
 alias ggr="open http://google.com/"
 alias tube="open https://www.youtube.com"
 alias github="open https://www.github.com"
