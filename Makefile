@@ -13,7 +13,7 @@ INSTALL_CHEATSHEET= cheasheat.sh
 
 # Commands
 
-git:
+github:
 	bash $(GITUP)
 
 initial:
