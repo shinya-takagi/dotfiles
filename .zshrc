@@ -129,8 +129,8 @@ ulimit -c 0
 # When log in, Run ssh-agent.
 #psfile_=$HOME/.ssh/main
 psnum=$(ps ax | grep ssh-agent | grep -v grep | wc -l)
-if [ $psnum -le 1 ]; then
-#if [ $psnum -eq 0 ]; then
+#if [ $psnum -le 1 ]; then
+#if [ $psnum -ne 0 ]; then
 #   echo "no sshagent"
     eval `ssh-agent` > /dev/null 2>&1
 #if [ -e $psfile_ ]; then 
@@ -148,9 +148,9 @@ if [ $psnum -le 1 ]; then
 #  echo "PASSWORD?"
     eval `ssh-add $HOME/.ssh/"$keys"> /dev/null 2>&1`
 #fi
-else
-    echo "ssh-agent exist. Processes:$psnum"
-fi
+#else
+#    echo "ssh-agent exist. Processes:$psnum"
+#fi
 
 # TEST SSH-AGENT WITH ENV SSH_ASKPASS
 #eval `ssh-agent` > /dev/null 2>&1
