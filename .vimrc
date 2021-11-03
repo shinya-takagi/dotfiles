@@ -7,27 +7,6 @@ syntax on
 
 "colorscheme codedark
 
-"-----------------------------------------------
-"		vim command
-"-----------------------------------------------
- set number 	" show line numbers
- set ruler 	" show ruler
- set title 	" show title
- set showcmd 	" show commands until writing.
- set showmatch 	" move between ( and )
- set autoindent " insert indent when put Enter-key (if, for, etc...)
- set wildmenu 	" show list after inserting words.
- set noswapfile " Dont generate Swap file.
- set cursorline " cursor line 
-"set nocursorcolumn
-" Temporary files directory
- set directory=~/.vim/swap
- set backupdir=~/.vim/tmp
- set undodir=~/.vim/undo
-
-
- highlight LineNr ctermfg=darkyellow
-"highlight LineNr ctermfg=yellow
 "-------------------------------------------------------------
 "	Vim Keymap Setting
 "-------------------------------------------------------------
@@ -80,7 +59,6 @@ set backspace=indent,eol,start
 "	Highlight coler change
 "-----------------------------------------------------------
 "
-highlight Comment ctermfg=lightblue
 
 "-----------------------------------------------------------
 "	FileType setting
@@ -124,8 +102,9 @@ if s:is_plugged("vim-airline")
 	"let g:airline_right_sep = '⮂'			"Separater for right
 	"let g:airline_right_alt_sep = '⮃'
 	let g:airline_symbols.crypt = '🔒'		"暗号化されたファイル
-	let g:airline_symbols.linenr = '¶'		"行
-	let g:airline_symbols.maxlinenr = '㏑'		"最大行
+"let g:airline_symbols.linenr = '¶'		"行
+	let g:airline_symbols.linenr = 'LINE'		"行
+	let g:airline_symbols.maxlinenr = 'MAX㏑'	"最大行
 	let g:airline_symbols.branch = '⭠'		"gitブランチ
 	let g:airline_symbols.paste = 'ρ'		"ペーストモード
 	let g:airline_symbols.spell = 'Ꞩ'		"スペルチェック
@@ -136,7 +115,6 @@ endif
 nnoremap <C-n> :NERDTree<CR>
 "-------------------------------------<
 set ttimeoutlen=50
-
 
 "
 "	For Fortran 
@@ -154,4 +132,44 @@ set ttimeoutlen=50
 " let g:lsp_text_edit_enabled=1
 " let g:asyncomplete_auto_popup=1
 " let g:asyncomplete_popup_delay=200
+"-----------------------------------------------
+"		vim command
+"-----------------------------------------------
+ set number 	" show line numbers
+ set ruler 	" show ruler
+ set title 	" show title
+ set showcmd 	" show commands until writing.
+ set showmatch 	" move between ( and )
+ set autoindent " insert indent when put Enter-key (if, for, etc...)
+ set wildmenu 	" show list after inserting words.
+ set noswapfile " Dont generate Swap file.
+ set cursorline " cursor line 
+"set nocursorcolumn
+" Temporary files directory
+ set directory=~/.vim/swap
+ set backupdir=~/.vim/tmp
+ set undodir=~/.vim/undo
+ set completeopt=menuone,noinsert	" Completement shows in one word, don't insert comp word.
 
+" -------Highlight----------------->
+ highlight LineNr ctermfg=darkyellow
+"highlight LineNr ctermfg=yellow
+highlight Comment ctermfg=lightblue
+" -------Highlight-----------<
+
+" -------Abbreviations-------------->
+iabbrev ad advertisement 
+
+" Comment for vim
+iab "-> "------------------------------------------------->
+iab "-< "-------------------< 
+" Comment for FORTRAN
+iab C-> C------------------------------------------------->
+iab C-< C-------------------< 
+" Comment for Fortran
+iab !-> !------------------------------------------------->
+iab !-< !-------------------< 
+" Comment for shell, python
+iab #-> #------------------------------------------------->
+iab #-< #-------------------< 
+" --------------------------<

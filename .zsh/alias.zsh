@@ -50,10 +50,11 @@ alias dc="cd"
 alias sl="ls"
 
 #-------URL--------------------------
-if [ -e $(which wsl-open) ]; then
-  alias open="wsl-open"
-elif [ -e $(which xdg-open) ]; then
+if type xdg-open >/dev/null 2>&1; then
   alias open="xdg-open"
+fi
+if type wsl-open >/dev/null 2>&1; then
+  alias open="wsl-open"
 fi
 alias ggr="open http://google.com/"
 alias tube="open https://www.youtube.com"
