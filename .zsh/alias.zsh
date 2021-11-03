@@ -85,16 +85,16 @@ alias user="cd /mnt/c/Users/shiny"
 TMPOS=$(cat /etc/os-release | head -2 | tail -1)
 PRETTY_NAME=${TMPOS:13}
 #---------For Arch Linux---------------->
-  if [ $PRETTY_NAME = "Arch Linux\"" ]; then
+if [ $PRETTY_NAME = "Arch Linux\"" ]; then
     alias al="echo Arch Linux"
     alias pacman="sudo pacman"
     alias vmemo="vim $HOME/dotfiles/tips/memo"
     alias cmemo="cat $HOME/dotfiles/tips/memo"
 #---------Arch Linux--------<
 #---------For Ubuntu-------------------->
-  elif [ $PRETTY_NAME = "Ubuntu\"" ]; then
+elif [ $PRETTY_NAME = "Ubuntu\"" ]; then
     alias al="echo Ubuntu"
-  fi
+fi
 #---------Ubuntu--------<
 unset TMPOS PRETTY_NAME
 #---- Condition -------------<
@@ -184,6 +184,163 @@ function mcf(){
       *    ) cd "$MCF_DIR"
   esac
 }
+
+#-------Alias From zshrc------------------------->
+# -----------------------------
+# Alias
+# -----------------------------
+# グローバルエイリアス
+#alias -g L='| less'
+#alias -g H='| head'
+#alias -g G='| grep'
+#alias -g GI='| grep -ri'
+#
+## Alias
+#alias ls='ls --color=auto'
+#alias lst='ls -ltr --color=auto'
+#alias la='ls -la --color=auto'
+#alias ll='ls -l --color=auto'
+#
+#alias du="du -Th"
+#alias df="df -Th"
+#alias su="su -l"
+#alias so='source'
+#alias vi='vim'
+#alias vz='vim ~/.zshrc'
+#alias c='cd'
+#alias cp='cp -i'
+#alias rm='rm -i'
+#alias mkdir='mkdir -p'
+#alias ..='c ../'
+#alias back='pushd'
+#alias diff='diff -U1'
+#
+#alias tma='tmux attach'
+#alias tml='tmux list-window'
+
+#alias dki="docker run -i -t -P"
+#alias dex="docker exec -i -t"
+#alias drmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
+
+# -----------------------------
+# Plugin
+# -----------------------------
+# root のコマンドはヒストリに追加しない
+#if [ $UID = 0 ]; then
+#  unset HISTFILE
+#  SAVEHIST=0
+#fi
+
+#function h {
+#  history
+#}
+
+#function g() {
+#  egrep -r "$1" .
+#}
+
+#function t()
+#{
+#  tmux new-session -s $(pwd |sed -E 's!^.+/([^/]+/[^/]+)$!\1!g' | sed -e 's/\./-/g')
+#}
+#
+#function psgrep() {
+#  ps aux | grep -v grep | grep "USER.*COMMAND"
+#  ps aux | grep -v grep | grep $1
+#}
+#
+#function dstop()
+#{
+#  docker stop $(docker ps -a -q);
+#}
+#
+#function drm()
+#{
+#  docker rm $(docker ps -a -q);
+#}
+
+#PLUGIN SETUP
+# -----------------------------
+# Plugin
+# -----------------------------
+# zplugが無ければインストール
+# if [[ ! -d ~/.zplug ]];then
+#   git clone https://github.com/zplug/zplug ~/.zplug
+# fi
+#
+## zplugを有効化する
+#source ~/.zplug/init.zsh
+#
+## プラグインList
+## zplug "ユーザー名/リポジトリ名", タグ
+# zplug "zsh-users/zsh-completions"
+# zplug "zsh-users/zsh-autosuggestions"
+# zplug "zsh-users/zsh-syntax-highlighting", defer:2
+# zplug "b4b4r07/enhancd", use:init.sh
+##zplug "junegunn/fzf-bin", as:command, from:gh-r, file:fzf
+#
+## インストールしていないプラグインをインストール
+# if ! zplug check --verbose; then
+#   printf "Install? [y/N]: "
+#   if read -q; then
+#       echo; zplug install
+#   fi
+# fi
+#
+## コマンドをリンクして、PATH に追加し、プラグインは読み込む
+#zplug load --verbose
+#
+# -----------------------------
+# PATH
+# -----------------------------
+#case "${OSTYPE}" in
+#  darwin*)
+#    export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+#    export MANPATH=/opt/local/share/man:/opt/local/man:$MANPATH
+#  ;;
+#esac
+
+# -----------------------------
+# Python
+# -----------------------------
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+##eval "$(pyenv init -)"
+#alias pipallupgrade="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
+
+# -----------------------------
+# Golang
+# -----------------------------
+#if which go > /dev/null 2>&1  ; then
+#  export CGO_ENABLED=1
+#  export GOPATH=$HOME/dev/go
+#  export PATH=$PATH:$(go env GOROOT)/bin:$GOPATH/bin
+#fi
+ 
+# -----------------------------
+# Git
+# -----------------------------
+#function gt() {
+#  is_in_git_repo || return
+#  git tag --sort -version:refname |
+#  fzf-down --multi --preview-window right:70% \
+#    --preview 'git show --color=always {} | head -200'
+#}
+#
+#function gr() {
+#  is_in_git_repo || return
+#  git remote -v | awk '{print $1 "\t" $2}' | uniq |
+#  fzf-down --tac \
+#    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" {1} | head -200' |
+#  cut -d$'\t' -f1
+#}
+#
+#function gs() {
+#  is_in_git_repo || return
+#  git stash list | fzf-down --reverse -d: --preview 'git show --color=always {1}' |
+#  cut -d: -f1
+#}#
+#
 
 
 

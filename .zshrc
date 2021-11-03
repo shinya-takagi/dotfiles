@@ -128,7 +128,11 @@ ulimit -c 0
 
 # When log in, Run ssh-agent.
 #psfile_=$HOME/.ssh/main
-eval `ssh-agent` > /dev/null 2>&1
+psnum=$(ps ax | grep ssh-agent | grep -v grep | wc -l)
+if [ $psnum -le 1 ]; then
+#if [ $psnum -eq 0 ]; then
+#   echo "no sshagent"
+    eval `ssh-agent` > /dev/null 2>&1
 #if [ -e $psfile_ ]; then 
    if [ -e "$HOME/.ssh/id_rsa_vostok2" ]; then
      keys=id_rsa_vostok2
@@ -142,8 +146,11 @@ eval `ssh-agent` > /dev/null 2>&1
 #    unset psfile_ agentunlock_
 #else
 #  echo "PASSWORD?"
-  eval `ssh-add $HOME/.ssh/"$keys"> /dev/null 2>&1`
+    eval `ssh-add $HOME/.ssh/"$keys"> /dev/null 2>&1`
 #fi
+else
+    echo "ssh-agent exist. Processes:$psnum"
+fi
 
 # TEST SSH-AGENT WITH ENV SSH_ASKPASS
 #eval `ssh-agent` > /dev/null 2>&1
@@ -420,187 +427,22 @@ setopt hist_verify
 # PROMPT='%F{red}%~%f
 # ${VIMODE}$ '
 # ---old prompt setting---
+#
+# Adopt powerlevel10k for powerline.
+source  ~/powerlevel10k/powerlevel10k.zsh-theme
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#-----PROMPT-----------------------------------<
 
 #------------------------------
 #     dircolors
 #------------------------------
-#eval `dircolors ~/.dircolors-solarized/dircolors.256dark`
 eval `dircolors ~/.dircolors-solarized/dircolors.ansi-dark_taka`
+#=----Dircolors----------<
+#-----Display for Xserver------------->
 #export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 #export DISPLAY=$(ipconfig.exe | grep IPv4 | grep -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' -o | head -2):0
  export DISPLAY=$(grep nameserver /etc/resolv.conf | sed 's/nameserver //'):0
-
-#余分なスペースを削除してヒストリに記録する
-#setopt hist_reduce_blanks
-
-# historyコマンドは残さない
-#setopt hist_save_no_dups
-
-# ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする
-#bindkey '^R' history-incremental-pattern-search-backward
-#bindkey "^S" history-incremental-search-forward
-
-# ^P,^Nを検索へ割り当て
-#bindkey "^P" history-beginning-search-backward-end
-#bindkey "^N" history-beginning-search-forward-end
-
-# -----------------------------
-# Alias
-# -----------------------------
-# グローバルエイリアス
-#alias -g L='| less'
-#alias -g H='| head'
-#alias -g G='| grep'
-#alias -g GI='| grep -ri'
+#-----Xserver---------<
 #
-## Alias
-#alias ls='ls --color=auto'
-#alias lst='ls -ltr --color=auto'
-#alias la='ls -la --color=auto'
-#alias ll='ls -l --color=auto'
-#
-#alias du="du -Th"
-#alias df="df -Th"
-#alias su="su -l"
-#alias so='source'
-#alias vi='vim'
-#alias vz='vim ~/.zshrc'
-#alias c='cd'
-#alias cp='cp -i'
-#alias rm='rm -i'
-#alias mkdir='mkdir -p'
-#alias ..='c ../'
-#alias back='pushd'
-#alias diff='diff -U1'
-#
-#alias tma='tmux attach'
-#alias tml='tmux list-window'
 
-#alias dki="docker run -i -t -P"
-#alias dex="docker exec -i -t"
-#alias drmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
-
-# -----------------------------
-# Plugin
-# -----------------------------
-# root のコマンドはヒストリに追加しない
-#if [ $UID = 0 ]; then
-#  unset HISTFILE
-#  SAVEHIST=0
-#fi
-
-#function h {
-#  history
-#}
-
-#function g() {
-#  egrep -r "$1" .
-#}
-
-#function t()
-#{
-#  tmux new-session -s $(pwd |sed -E 's!^.+/([^/]+/[^/]+)$!\1!g' | sed -e 's/\./-/g')
-#}
-#
-#function psgrep() {
-#  ps aux | grep -v grep | grep "USER.*COMMAND"
-#  ps aux | grep -v grep | grep $1
-#}
-#
-#function dstop()
-#{
-#  docker stop $(docker ps -a -q);
-#}
-#
-#function drm()
-#{
-#  docker rm $(docker ps -a -q);
-#}
-
-#PLUGIN SETUP
-# -----------------------------
-# Plugin
-# -----------------------------
-# zplugが無ければインストール
-# if [[ ! -d ~/.zplug ]];then
-#   git clone https://github.com/zplug/zplug ~/.zplug
-# fi
-#
-## zplugを有効化する
-#source ~/.zplug/init.zsh
-#
-## プラグインList
-## zplug "ユーザー名/リポジトリ名", タグ
-# zplug "zsh-users/zsh-completions"
-# zplug "zsh-users/zsh-autosuggestions"
-# zplug "zsh-users/zsh-syntax-highlighting", defer:2
-# zplug "b4b4r07/enhancd", use:init.sh
-##zplug "junegunn/fzf-bin", as:command, from:gh-r, file:fzf
-#
-## インストールしていないプラグインをインストール
-# if ! zplug check --verbose; then
-#   printf "Install? [y/N]: "
-#   if read -q; then
-#       echo; zplug install
-#   fi
-# fi
-#
-## コマンドをリンクして、PATH に追加し、プラグインは読み込む
-#zplug load --verbose
-#
-# -----------------------------
-# PATH
-# -----------------------------
-#case "${OSTYPE}" in
-#  darwin*)
-#    export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-#    export MANPATH=/opt/local/share/man:/opt/local/man:$MANPATH
-#  ;;
-#esac
-
-# -----------------------------
-# Python
-# -----------------------------
-#export PYENV_ROOT="$HOME/.pyenv"
-#export PATH="$PYENV_ROOT/bin:$PATH"
-##eval "$(pyenv init -)"
-#alias pipallupgrade="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
-
-# -----------------------------
-# Golang
-# -----------------------------
-#if which go > /dev/null 2>&1  ; then
-#  export CGO_ENABLED=1
-#  export GOPATH=$HOME/dev/go
-#  export PATH=$PATH:$(go env GOROOT)/bin:$GOPATH/bin
-#fi
- 
-# -----------------------------
-# Git
-# -----------------------------
-#function gt() {
-#  is_in_git_repo || return
-#  git tag --sort -version:refname |
-#  fzf-down --multi --preview-window right:70% \
-#    --preview 'git show --color=always {} | head -200'
-#}
-#
-#function gr() {
-#  is_in_git_repo || return
-#  git remote -v | awk '{print $1 "\t" $2}' | uniq |
-#  fzf-down --tac \
-#    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" {1} | head -200' |
-#  cut -d$'\t' -f1
-#}
-#
-#function gs() {
-#  is_in_git_repo || return
-#  git stash list | fzf-down --reverse -d: --preview 'git show --color=always {1}' |
-#  cut -d: -f1
-#}#
-#
-source  ~/powerlevel10k/powerlevel10k.zsh-theme
-#source /usr/share/powerline/bindings/zsh/powerline.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
