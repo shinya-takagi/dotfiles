@@ -1,3 +1,5 @@
+" Background color
+set background=dark
 " set japanese?
 set encoding=utf-8
 set fileencodings=iso-2022-jp,sjis,uft-8
@@ -13,6 +15,7 @@ syntax on
 " visual mode test
 "noremap <C-v> <C-q>
 "Disable Arrow-keys 
+inoremap jj <Esc> " jj to escape key  
  noremap <Up> <Nop>
  noremap <Down> <Nop>
  noremap <Left> <Nop>
@@ -173,3 +176,5 @@ iab !-< !-------------------<
 iab #-> #------------------------------------------------->
 iab #-< #-------------------< 
 " --------------------------<
+"colorscheme ThemerVim_1 
+ colorscheme ThemerVim

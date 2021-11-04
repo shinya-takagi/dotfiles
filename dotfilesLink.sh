@@ -33,6 +33,7 @@ function main(){
         ln -sf "$DFPATH"/.vim/ftplugin/sh.vim           "$vim_path"/ftplugin/sh.vim
         ln -sf "$DFPATH"/.vim/ftplugin/python.vim       "$vim_path"/ftplugin/python.vim
         ln -sf "$DFPATH"/.vim/ftplugin/zsh.vim          "$vim_path"/ftplugin/zsh.vim
+        ln -sf "$DFPATH"/.vim/colors/ThemerVim.vim      "$vim_path"/colors/ThemerVim.vim
 
         case "$OS" in
             'Mac'  ) {  
