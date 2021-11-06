@@ -7,6 +7,7 @@ scriptencoding utf-8
 filetype plugin indent on
 syntax on
 
+
 "colorscheme codedark
 
 "-------------------------------------------------------------
@@ -91,6 +92,7 @@ call plug#begin()
   Plug 'ryanoasis/vim-devicons'				"Various icons for Vim.
   Plug 'markonm/traces.vim'				"Show Hightlight for search.
   Plug 'vimwiki/vimwiki'
+  Plug 'sheerun/vim-polyglot'				"Many syntax highlight with vanilla vim which don't have them.
 call plug#end()
 "------ vim-airline commands ----------------->
 if s:is_plugged("vim-airline")
