@@ -24,14 +24,21 @@ GIT_PS1_SHOWUNTRACKEDFILES=true
 GIT_PS1_SHOWSTASHSTATE=true
 GIT_PS1_SHOWUPSTREAM=auto
 #----Git------------<  
+P_RED="\[\033[01;31m\]"
+P_GREEN="\[\033[01;32m\]"
+P_YELLOW="\[\033[01;33m\]"
+P_BLUE="\[\033[01;34m\]"
+P_MAGENTA="\[\033[01;35m\]"
+P_CYAN="\[\033[01;36m\]"
+P_WHITE="\[\033[00m\]"
 if [ "$(echo $GIT_STATUS | grep "+")" ]; then 
-    export PS1="\[\033[01;34m\] \w \[\033[01;31m\]$GIT_STATUS\[\033[01;34m\]\n\[\033[00m\] $ "
+    export PS1="$P_BLUE \w "$P_RED"$GIT_STATUS"$P_BLUE"\n"$P_WHITE" $ "
 elif [ "$(echo $GIT_STATUS | grep "%")" ]; then 
-    export PS1="\[\033[01;34m\] \w \[\033[01;33m\]$GIT_STATUS\[\033[01;34m\]\n\[\033[00m\] $ "
+    export PS1="$P_BLUE \w "$P_YELLOW"$GIT_STATUS"$P_BLUE"\n"$P_WHITE" $ "
 elif [ "$(echo $GIT_STATUS | grep "*")" ]; then 
-    export PS1="\[\033[01;34m\] \w \[\033[01;33m\]$GIT_STATUS\[\033[01;34m\]\n\[\033[00m\] $ "
+    export PS1="$P_BLUE \w "$P_YELLOW"$GIT_STATUS"$P_BLUE"\n"$P_WHITE" $ "
 else
-    export PS1="\[\033[01;34m\] \w \[\033[01;32m\]$GIT_STATUS\[\033[01;34m\]\n\[\033[00m\] $ "
+    export PS1="$P_BLUE \w "$P_GREEN"$GIT_STATUS"$P_BLUE"\n"$P_WHITE" $ "
 fi
 
 # ---PROMPT------------<
@@ -43,6 +50,7 @@ eval `dircolors $HOME/.dircolors-solarized/dircolors.ansi-dark_taka`
 
 # alias list
 # basic command
+alias ls="ls --color"
 alias cp="cp -b -i"
 alias dcp="cp -rbi"
 #alias drm="rm -rv"
