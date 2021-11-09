@@ -1,10 +1,16 @@
 # README
 
-There are dotfiles that I customized among PC, Remote PC.
+There are dotfiles that I customized among PC, Remote PC and computers in our lab.
 
-## Notice
+# Feture
 
-### __coc.nvim__
+This repository contains about bash files, zsh files, vim files, and so on.
+
+If you install them at first, run 'dotfileLinks.sh' to generate the links of dotfiles in your home directory.
+
+# Notice
+
+## __coc.nvim__
 
 coc.nvim required vim(version > 8.2), and node(version > 12.x).
 
@@ -18,7 +24,7 @@ URL1 is to install vim 8.2. URL2 is for installing node above 12.x.
 
 For detail information, visit coc.nvim GitHub(<https://github.com/neoclide/coc.nvim>).
 
-## Author
+# Author
 
 - Name : Shinya Takagi
 
