@@ -22,7 +22,7 @@ function main(){
         local home_sol=$HOME/$dir_sol 
         local vim_path=$HOME/.vim
         mkdir -p ~/.zsh 
-        mkdir -p "$vim_path"/ftplugin "$vim_path"/swap "$vim_path"/tmp "$vim_path"/undo
+        mkdir -p "$vim_path"/ftplugin "$vim_path"/swap "$vim_path"/tmp "$vim_path"/undo "$vim_path"/colors
 	mkdir -p ~/.config/fish
 # - symboric link - -
         ln -sf "$DFPATH"/config.fish                    ~/.config/fish/config.fish
