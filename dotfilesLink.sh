@@ -28,6 +28,7 @@ function main(){
         ln -sf "$DFPATH"/config.fish                    ~/.config/fish/config.fish
         ln -sf "$DFPATH"/.vimrc                         ~/.vimrc
         ln -sf "$DFPATH"/.zlogout                       ~/.zlogout
+        ln -sf "$DFPATH"/.zprofile                      ~/.zprofile
         ln -sf "$DFPATH"/.tmux.conf                     ~/.tmux.conf
         ln -sf "$DFPATH"/.vim/ftplugin/fortran.vim      "$vim_path"/ftplugin/fortran.vim
         ln -sf "$DFPATH"/.vim/ftplugin/sh.vim           "$vim_path"/ftplugin/sh.vim

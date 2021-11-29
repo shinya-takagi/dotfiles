@@ -95,6 +95,7 @@ if [ $PRETTY_NAME = "Arch Linux\"" ]; then
     alias pacman="sudo pacman"
     alias vmemo="vim $HOME/dotfiles/tips/memo"
     alias cmemo="cat $HOME/dotfiles/tips/memo"
+    alias nas="cd /mnt/nas"
 #---------Arch Linux--------<
 #---------For Ubuntu-------------------->
 elif [ $PRETTY_NAME = "Ubuntu\"" ]; then
@@ -107,6 +108,20 @@ unset TMPOS PRETTY_NAME
 #-------------------------------
 #	FUNCTION
 #-------------------------------
+
+function nasmnt(){
+  local opti=$1
+  local DECRYPT_FILE DOTFILE_PATH
+  DOTFILE_PATH="$HOME/dotfiles"
+  PASSWORD=$(bash $DOTFILE_PATH/tips/nas_dec.sh)
+  case "$opti" in
+    "-m" ) sudo mount -o username=shinya,password=$PASSWORD,uid=1000,gid=998 //192.168.3.8/home /mnt/nas ;;
+    "-u" ) sudo umount /mnt/nas ;;
+    *    ) echo " USAGE : $0 [OPTION]"
+           echo "OPTION : -m  ->  mount your nas"
+           echo "         -u  ->  unmount your nas"
+   esac
+}
 
 function findf(){
   local file=$1
@@ -188,6 +203,34 @@ function mcf(){
     "copy" ) cp "$MCF_CODE" . ;;  
       *    ) cd "$MCF_DIR"
   esac
+}
+
+function sshkey(){
+  # When log in, Run ssh-agent.
+  #psfile_=$HOME/.ssh/main
+  psnum=$(ps ax | grep ssh-agent | grep -v grep | wc -l)
+  #if [ $psnum -le 1 ]; then
+  #if [ $psnum -ne 0 ]; then
+  if [ -z $SSH_AGENT_PID ]; then 
+  #   echo "no sshagent"
+      eval `ssh-agent` > /dev/null 2>&1
+  #if [ -e $psfile_ ]; then 
+     if [ -e "$HOME/.ssh/id_rsa_vostok2" ]; then
+       keys=id_rsa_vostok2
+     elif [ -e "$HOME/.ssh/id_rsa_github" ]; then
+       keys=id_rsa_github
+     elif [ -e "$HOME/.ssh/id_rsa_vostok2" ] && [ -e "$HOME/.ssh/id_rsa_github" ]; then
+       keys=id_rsa_vostok2
+     fi
+  #    agentunlock_=$(openssl rsautl -decrypt -inkey $psfile_.key -in $psfile_)
+  ##   echo  "$agentunlock_"\n | eval `ssh-add $HOME/.ssh/"$keys" > /dev/null 2>&1`
+  #    unset psfile_ agentunlock_
+      eval `ssh-add $HOME/.ssh/"$keys"> /dev/null 2>&1`
+   else
+  #  echo "PASSWORD?"
+  #else
+     echo "ssh-agent exist. Processes:"$psnum", PID:$SSH_AGENT_PID"
+   fi
 }
 
 #-------Alias From zshrc------------------------->

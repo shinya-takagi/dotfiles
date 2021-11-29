@@ -51,39 +51,6 @@ export EDITOR=vim
 #setopt IGNOREEOF
 
 # パスを追加したい場合
-FISH=$HOME/FISH
-if [ -n $FISH ]; then
-  export PATH="$FISH:$PATH"
-fi
-CODES=$HOME/codes
-if [ -n $CODES ]; then
-  export PATH="$HOME/codes:$PATH"
-fi
-GOBIN=$HOME/.go/bin
-if [ -n $GOBIN ]; then
-  export PATH="$GOBIN:$PATH"
-fi
-INTELBIN=$HOME/intel/bin
-if [ -n $INTELBIN ]; then
-  export PATH="$HOME/intel/bin:$PATH"
-fi
-BIN=$HOME/.bin
-if [ -n $BIN ]; then
-  export PATH="$BIN:$PATH"            # local binary path
-fi
-LOCAL=$HOME/.local/bin
-if [ -n $LOCAL ]; then
-  export PATH="$LOCAL:$PATH"      # local binary path
-fi
-LOCALGO=/usr/local/go/bin
-if [ -n $LOCALGO ]; then
-  export PATH="/usr/local/go/bin:$PATH"     # go language path
-fi
-TEXLIVE=/usr/local/texlive/2021/bin/x86_64-linux
-if [ -n $TEXLIVE ]; then
-  export PATH="/usr/local/texlive/2021/bin/x86_64-linux:$PATH"
-fi
-unset FISH CODES GOBIN GOPATH INTELBIN BIN LOCAL LOCALGO TEXLIVE
 #export PATH="$HOME/codes/GENERAL_CODE/GEF-2021-V1-1_linux:$PATH"
 #export PATH="$HOME/bin:$PATH"
 
@@ -150,32 +117,6 @@ export RSYNC_RSH=ssh
 # その他
 umask 022
 ulimit -c 0
-
-# When log in, Run ssh-agent.
-#psfile_=$HOME/.ssh/main
-psnum=$(ps ax | grep ssh-agent | grep -v grep | wc -l)
-#if [ $psnum -le 1 ]; then
-#if [ $psnum -ne 0 ]; then
-if [ -z $SSH_AGENT_PID ]; then 
-#   echo "no sshagent"
-    eval `ssh-agent` > /dev/null 2>&1
-#if [ -e $psfile_ ]; then 
-   if [ -e "$HOME/.ssh/id_rsa_vostok2" ]; then
-     keys=id_rsa_vostok2
-   elif [ -e "$HOME/.ssh/id_rsa_github" ]; then
-     keys=id_rsa_github
-   elif [ -e "$HOME/.ssh/id_rsa_vostok2" ] && [ -e "$HOME/.ssh/id_rsa_github" ]; then
-     keys=id_rsa_vostok2
-   fi
-#    agentunlock_=$(openssl rsautl -decrypt -inkey $psfile_.key -in $psfile_)
-##   echo  "$agentunlock_"\n | eval `ssh-add $HOME/.ssh/"$keys" > /dev/null 2>&1`
-#    unset psfile_ agentunlock_
-    eval `ssh-add $HOME/.ssh/"$keys"> /dev/null 2>&1`
- else
-#  echo "PASSWORD?"
-#else
-   echo "ssh-agent exist. Processes:"$psnum", PID:$SSH_AGENT_PID"
- fi
 
 # TEST SSH-AGENT WITH ENV SSH_ASKPASS
 #eval `ssh-agent` > /dev/null 2>&1
