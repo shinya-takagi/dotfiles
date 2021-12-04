@@ -207,7 +207,7 @@ function mcf(){
 
 function sshkey(){
   # When log in, Run ssh-agent.
-  #psfile_=$HOME/.ssh/main
+  psfile_=$HOME/.ssh/main
   psnum=$(ps ax | grep ssh-agent | grep -v grep | wc -l)
   #if [ $psnum -le 1 ]; then
   #if [ $psnum -ne 0 ]; then
@@ -223,7 +223,7 @@ function sshkey(){
        keys=id_rsa_vostok2
      fi
   #    agentunlock_=$(openssl rsautl -decrypt -inkey $psfile_.key -in $psfile_)
-  ##   echo  "$agentunlock_"\n | eval `ssh-add $HOME/.ssh/"$keys" > /dev/null 2>&1`
+  #    echo  "$agentunlock_"\n | eval `ssh-add $HOME/.ssh/"$keys" > /dev/null 2>&1`
   #    unset psfile_ agentunlock_
       eval `ssh-add $HOME/.ssh/"$keys"> /dev/null 2>&1`
    else
