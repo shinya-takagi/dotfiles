@@ -56,12 +56,14 @@ alias sl="ls"
 if type wsl-open >/dev/null 2>&1; then
   alias open="wsl-open"
 fi
-alias ggr="open http://google.com/"
-alias tube="open https://www.youtube.com"
-alias github="open https://www.github.com"
-alias twit="open https://www.twitter.com"
-alias insta="open https://www.instagram.com"
-alias qiita="open https://qiita.com"
+if type open >/dev/null 2>&1; then
+  alias ggr="open http://google.com/"
+  alias tube="open https://www.youtube.com"
+  alias github="open https://www.github.com"
+  alias twit="open https://www.twitter.com"
+  alias insta="open https://www.instagram.com"
+  alias qiita="open https://qiita.com"
+fi
 
 # Vim
 alias vi="vim"
@@ -93,6 +95,7 @@ PRETTY_NAME=${TMPOS:13}
 if [ $PRETTY_NAME = "Arch Linux\"" ]; then
     alias al="echo Arch Linux"
     alias pacman="sudo pacman"
+    alias pacmanupdate="sudo pacman -Sy"
     alias vmemo="vim $HOME/dotfiles/tips/memo"
     alias cmemo="cat $HOME/dotfiles/tips/memo"
     alias nas="cd /mnt/nas"

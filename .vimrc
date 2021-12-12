@@ -93,6 +93,7 @@ call plug#begin()
   Plug 'markonm/traces.vim'				"Show Hightlight for search.
   Plug 'vimwiki/vimwiki'
   Plug 'sheerun/vim-polyglot'				"Many syntax highlight with vanilla vim which don't have them.
+	Plug 'JuliaEditorSupport/julia-vim'
 call plug#end()
 "------ vim-airline commands ----------------->
 if s:is_plugged("vim-airline")
@@ -177,6 +178,9 @@ iab !-< !-------------------<
 " Comment for shell, python
 iab #-> #------------------------------------------------->
 iab #-< #-------------------< 
+
+" Environmental shebang
+iab SHEBANG #!/usr/bin/env
 " --------------------------<
 "colorscheme ThemerVim_1 
  colorscheme ThemerVim
