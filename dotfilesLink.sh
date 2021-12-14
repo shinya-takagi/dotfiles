@@ -23,7 +23,7 @@ function main(){
         local vim_path=$HOME/.vim
         mkdir -p ~/.zsh 
         mkdir -p "$vim_path"/ftplugin "$vim_path"/swap "$vim_path"/tmp "$vim_path"/undo "$vim_path"/colors
-	mkdir -p ~/.config/fish
+        mkdir -p ~/.config/fish
 # - symboric link - -
         ln -sf "$DFPATH"/config.fish                    ~/.config/fish/config.fish
         ln -sf "$DFPATH"/.vimrc                         ~/.vimrc
@@ -39,6 +39,9 @@ function main(){
         ln -sf "$DFPATH"/.git-prompt.sh                 ~/.git-prompt.sh
         ln -sf "$DFPATH"/.git-completion.bash           ~/.git-completion.bash
         ln -sf "$DFPATH"/.bash_prompt.sh                ~/.bash_prompt.sh
+
+        # latex files
+        ln -sf "$DFPATH"/.latexmkrc                     ~/.latexmkrc
 
         case "$OS" in
             'Mac'  ) {  
