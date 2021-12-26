@@ -1,7 +1,7 @@
 {
     "extractor":
     {
-        "base-directory": "/mnt/e/Mydata/Picture/gallery-dl",
+        "base-directory": "~/gallery-dl",
         "archive": null,
         "cookies": null,
         "cookies-update": false,

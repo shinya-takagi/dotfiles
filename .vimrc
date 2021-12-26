@@ -5,6 +5,7 @@
 "autocmd BufRead,BufNewFile *.f90 setfiletype fortran90
 "autocmd BufRead,BufNewFile *.sh setfiletype shell
 autocmd BufRead,BufNewFile *.zsh setfiletype zsh
+autocmd BufRead,BufNewFile *.conf setfiletype json
 "-----------------------------------------------
 "		vim command
 "-----------------------------------------------
