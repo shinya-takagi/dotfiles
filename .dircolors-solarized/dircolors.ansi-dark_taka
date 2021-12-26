@@ -166,7 +166,7 @@ NORMAL 00
 # normal file
 FILE 00
 # directory
-DIR 33
+DIR 33;44
 # 777 directory
 OTHER_WRITABLE 33;40
 # symbolic link
@@ -485,7 +485,9 @@ EXEC 01;31  # Unix
 .sqlite 34
 
 # Original setting files by takagi.
-# python etc
+# source files.
 .py 00;36
 .f 00;36
 .f90 00;36
+.jl 00;36
+.ipynb 00;36

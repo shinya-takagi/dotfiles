@@ -36,8 +36,11 @@ function main(){
         ln -sf "$DFPATH"/.vim/ftplugin/zsh.vim          "$vim_path"/ftplugin/zsh.vim
         ln -sf "$DFPATH"/.vim/colors/ThemerVim.vim      "$vim_path"/colors/ThemerVim.vim
         ln -sf "$DFPATH"/.bashrc                        ~/.bashrc
+        ln -sf "$DFPATH"/.bash_profile                  ~/.bash_profile
+        ln -sf "$DFPATH"/.bash_logout                   ~/.bash_logout
         ln -sf "$DFPATH"/.git-prompt.sh                 ~/.git-prompt.sh
         ln -sf "$DFPATH"/.git-completion.bash           ~/.git-completion.bash
+        ln -sf "$DFPATH"/.gitconfig                     ~/.gitconfig
         ln -sf "$DFPATH"/.bash_prompt.sh                ~/.bash_prompt.sh
 
         # latex files

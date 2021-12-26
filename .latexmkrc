@@ -55,6 +55,7 @@ if ($^O eq 'MSWin32') {
   $dvips                         = 'dvips %O -z -f %S | convbkmk -u > %D';
   $ps2pdf                        = 'ps2pdf %O %S %D';
   $pdf_mode                      = 3;
+# $revtex                        = 'pdflatex %O -synctex=1 -interaction=nonstopmode %S';
   # macOS の場合のみの設定
   if ($^O eq 'darwin') {
     # 一時ファイルの作成を抑止するオプション(0: 抑止)

@@ -87,6 +87,8 @@ alias py="python3"
 alias user="cd /mnt/c/Users/shiny"
 #alias originlab="cd /mnt/c/Users/shiny/OneDrive/ドキュメント/OriginLab/"
 #alias cdrive="cd /mnt/c/Users/shiny"
+alias checkos="cat /etc/os-release"
+alias gefwin="cd /mnt/c/Users/shiny/mydata/miscellinous/GEF-2016-V1-2_edited"
 
 #----- OS Distrbution condition ---------------------->
 TMPOS=$(cat /etc/os-release | head -2 | tail -1)
@@ -113,16 +115,44 @@ unset TMPOS PRETTY_NAME
 #-------------------------------
 
 function nasmnt(){
-  local opti=$1
+  local opt=$1
   local DECRYPT_FILE DOTFILE_PATH
   DOTFILE_PATH="$HOME/dotfiles"
   PASSWORD=$(bash $DOTFILE_PATH/tips/nas_dec.sh)
-  case "$opti" in
+  case "$opt" in
     "-m" ) sudo mount -o username=shinya,password=$PASSWORD,uid=1000,gid=998 //192.168.3.8/home /mnt/nas ;;
     "-u" ) sudo umount /mnt/nas ;;
     *    ) echo " USAGE : $0 [OPTION]"
            echo "OPTION : -m  ->  mount your nas"
            echo "         -u  ->  unmount your nas"
+   esac
+}
+
+function nasmnt_lab(){
+  local IPADDRESS=192.168.1.254
+  local opt=$1
+  #sudo mount -t cifs -o //$IPADDRESS/b4 /mnt/b4
+  #sudo mount //$IPADDRESS/b4 /mnt/b4 -o uid=1000,gid=998,vers=1.0,iocharset=utf8
+  #-o username=admin,password=reaction1,uid="$UID",gid="$GID",vers=2.0 
+  case "$opt" in
+    "-m" ) sudo mount //$IPADDRESS/b4 /mnt/b4 -o uid=1000,gid=998,vers=1.0,iocharset=utf8;;
+    "-u" ) sudo umount /mnt/b4 ;;
+    *    ) echo " USAGE : $0 [OPTION]"
+           echo "OPTION : -m  ->  mount your nas"
+           echo "         -u  ->  unmount your nas"
+   esac
+}
+
+function usbmnt(){
+  local opt=$1
+  case "$opt" in
+    "-m" ) sudo mount -t drvfs D: /mnt/usb ;;
+    "-u" ) sudo umount /mnt/usb ;;
+    *    ) echo "  
+            USAGE : $0 [OPTION]
+           OPTION : -m  ->  mount your usb
+                    -u  ->  unmount your usb
+          "
    esac
 }
 

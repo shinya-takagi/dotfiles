@@ -15,7 +15,6 @@ source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-
 # ZINIT REPOSITORY REMOVED!!!!!!!!
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
@@ -37,87 +36,37 @@ if [ -d $ZSHHOME -a -r $ZSHHOME -a \
 		[ \( -f $i -o -h $d \) -a -r $i ] && . $i
     done
 fi
+# ---------------------------------------------------
 
 # -----------------------------
 #         General
 # -----------------------------
-# 色を使用
-autoload -Uz colors ; colors
-
-# エディタをvimに設定
-export EDITOR=vim
-
-# Ctrl+Dでログアウトしてしまうことを防ぐ
-#setopt IGNOREEOF
-
-# パスを追加したい場合
-#export PATH="$HOME/codes/GENERAL_CODE/GEF-2021-V1-1_linux:$PATH"
-#export PATH="$HOME/bin:$PATH"
-
-# cdした際のディレクトリをディレクトリスタックへ自動追加
-setopt auto_pushd
-
-# ディレクトリスタックへの追加の際に重複させない
-setopt pushd_ignore_dups
-
-# フローコントロールを無効にする
-setopt no_flow_control
-
-# ワイルドカード展開を使用する
-setopt extended_glob
-
-# cdコマンドを省略して、ディレクトリ名のみの入力で移動
-setopt auto_cd
-
-# コマンドラインがどのように展開され実行されたかを表示するようになる
-#setopt xtrace
-
-# 自動でpushdを実行
-setopt auto_pushd
-
-# pushdから重複を削除
-setopt pushd_ignore_dups
-
-# ビープ音を鳴らさないようにする
-setopt no_beep
-
-# カッコの対応などを自動的に補完する
-setopt auto_param_keys
-
-# ディレクトリ名の入力のみで移動する
-setopt auto_cd
-
-# bgプロセスの状態変化を即時に知らせる
-setopt notify
-
-# 8bit文字を有効にする
-setopt print_eight_bit
-
-# 終了ステータスが0以外の場合にステータスを表示する
-setopt print_exit_value
-
-# ファイル名の展開でディレクトリにマッチした場合 末尾に / を付加
-setopt mark_dirs
-
-# コマンドのスペルチェックをする
-setopt correct
-
-# コマンドライン全てのスペルチェックをする
-setopt correct_all
-
-# 上書きリダイレクトの禁止
-setopt no_clobber
-
-# パスの最後のスラッシュを削除しない
-setopt noautoremoveslash
-
-# rsysncでsshを使用する
-export RSYNC_RSH=ssh
-
-# その他
+autoload -Uz colors ; colors    # Use colors
+export EDITOR=vim               # Change an editor as vim.
+#setopt IGNOREEOF               # Ignore logout with Ctrl + D 
+setopt auto_pushd               # Automatic addition of directory as cd.
+setopt pushd_ignore_dups        # Ignore same directory to add in stack.
+setopt no_flow_control          # Disable flow control.
+setopt extended_glob            # Use wildcard glob.
+setopt auto_cd                  # Change directory without cd.
+#setopt xtrace                  # Show command line when you run.
+setopt auto_pushd               # Run pushd automatically.
+setopt pushd_ignore_dups        # Ignore same pushd.
+setopt no_beep                  # Disable beep.
+setopt auto_param_keys          # complete () automatically.
+setopt notify                   # Notify the condition change of bg process.
+setopt print_eight_bit          # Can print 8 bit words.
+setopt print_exit_value         # Print states when it ends excecpt status 0.
+setopt mark_dirs                # Add / on expansion of file names.
+setopt correct                  # Check spelling on command line.
+setopt correct_all              # Check all spell on command line.
+setopt no_clobber               # Ban overwrite with redirect.
+setopt noautoremoveslash        # Don't remove a slash of the path.
+export RSYNC_RSH=ssh            # use ssh on rsync
+# ---------Other------------->
 umask 022
 ulimit -c 0
-
+# ----Automatic SSH Connection, but it cannot use.> 
 # TEST SSH-AGENT WITH ENV SSH_ASKPASS
 #eval `ssh-agent` > /dev/null 2>&1
 #export DISPLAY=:0.0 
@@ -131,82 +80,58 @@ ulimit -c 0
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-
 # -----------------------------
 #   Key Binding
 # -----------------------------
 # emacsキーバインド
 #bindkey -e
-
 # viキーバインド
 bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode   # Back to Normal with jj
-
-
 # -----------------------------
 #     Completion
 # -----------------------------
 ## Self-made completion
 fpath=($HOME/.zsh/functions $fpath)
-
 ## コマンド補完
 zinit ice wait'0'; zinit light zsh-users/zsh-completions
 autoload -Uz compinit && compinit
 # autoload -Uz _mcf
-
 # ps コマンドのプロセス名補完
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
-
 ## 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
 ## 補完候補を一覧表示したとき、Tabや矢印で選択できるようにする
 zstyle ':completion:*:default' menu select=1 
-
 ## シンタックスハイライト
 zinit light zsh-users/zsh-syntax-highlighting
 ## 履歴補完
 zinit light zsh-users/zsh-autosuggestions
-
 # sudo の後ろでコマンド名を補完する
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
                    /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
-
-# コマンドミスを修正
-setopt correct
-
 # 補完の選択を楽にする
 zstyle ':completion:*' menu select
-
 # 補完候補をできるだけ詰めて表示する
 setopt list_packed
-
 # 補完候補にファイルの種類も表示する
 #setopt list_types
-
+#
 # 色の設定
 if [ -z $COLORS_ENV ]; then
   export COLORS_ENV=ON
   export LSCOLORS=Exfxcxdxbxegedabagacad
-  
   # 補完時の色設定
   export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 fi
-
 # キャッシュの利用による補完の高速化
 zstyle ':completion::complete:*' use-cache true
-
 # 補完候補に色つける
 autoload -U colors ; colors ; zstyle ':completion:*' list-colors "${LS_COLORS}"
 #zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
-# 大文字・小文字を区別しない(大文字を入力した場合は区別する)
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
 # manの補完をセクション番号別に表示させる
 zstyle ':completion:*:manuals' separate-sections true
-
 # --prefix=/usr などの = 以降でも補完
 setopt magic_equal_subst
 
@@ -217,28 +142,20 @@ setopt magic_equal_subst
 HISTFILE=$HOME/.zsh-history
 HISTSIZE=100000
 SAVEHIST=1000000
-
 # ヒストリーに重複を表示しない
 setopt histignorealldups
-
 # 他のターミナルとヒストリーを共有
 setopt share_history
-
 # すでにhistoryにあるコマンドは残さない
 setopt hist_ignore_all_dups
-
 # historyに日付を表示
 alias h='fc -lt '%F %T' 1'
-
 # ヒストリに保存するときに余分なスペースを削除する
 setopt hist_reduce_blanks
-
 # 履歴をすぐに追加する
 setopt inc_append_history
-
 # ヒストリを呼び出してから実行する間に一旦編集できる状態になる
 setopt hist_verify
-
 # -----------------------------
 #     Prompt
 # -----------------------------
