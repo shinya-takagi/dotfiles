@@ -22,28 +22,33 @@ function main(){
         local home_sol=$HOME/$dir_sol 
         local vim_path=$HOME/.vim
         mkdir -p ~/.zsh 
-        mkdir -p "$vim_path"/ftplugin "$vim_path"/swap "$vim_path"/tmp "$vim_path"/undo "$vim_path"/colors
+        mkdir -p "$vim_path"/ftplugin "$vim_path"/swap "$vim_path"/tmp "$vim_path"/undo "$vim_path"/colors "$vim_path"/after/syntax
         mkdir -p ~/.config/fish
 # - symboric link - -
         ln -sf "$DFPATH"/config.fish                    ~/.config/fish/config.fish
-        ln -sf "$DFPATH"/.vimrc                         ~/.vimrc
         ln -sf "$DFPATH"/.tmux.conf                     ~/.tmux.conf
-        ln -sf "$DFPATH"/.vim/ftplugin/fortran.vim      "$vim_path"/ftplugin/fortran.vim
-        ln -sf "$DFPATH"/.vim/ftplugin/sh.vim           "$vim_path"/ftplugin/sh.vim
-        ln -sf "$DFPATH"/.vim/ftplugin/python.vim       "$vim_path"/ftplugin/python.vim
-        ln -sf "$DFPATH"/.vim/ftplugin/zsh.vim          "$vim_path"/ftplugin/zsh.vim
-        ln -sf "$DFPATH"/.vim/colors/ThemerVim.vim      "$vim_path"/colors/ThemerVim.vim
+        # Vim
+        ln -sf "$DFPATH"/.vimrc                         ~/.vimrc
+        ln -sf "$DFPATH"/ftplugin/fortran.vim      "$vim_path"/ftplugin/fortran.vim
+        ln -sf "$DFPATH"/ftplugin/sh.vim           "$vim_path"/ftplugin/sh.vim
+        ln -sf "$DFPATH"/ftplugin/python.vim       "$vim_path"/ftplugin/python.vim
+        ln -sf "$DFPATH"/ftplugin/zsh.vim          "$vim_path"/ftplugin/zsh.vim
+        ln -sf "$DFPATH"/colors/ThemerVim.vim      "$vim_path"/colors/ThemerVim.vim
+        ln -sf "$DFPATH"/after/syntax/python.vim   "$vim_path"/after/syntax/python.vim
+        # Bash
         ln -sf "$DFPATH"/.bashrc                        ~/.bashrc
         ln -sf "$DFPATH"/.bash_profile                  ~/.bash_profile
         ln -sf "$DFPATH"/.bash_logout                   ~/.bash_logout
+        ln -sf "$DFPATH"/.bash_prompt.sh                ~/.bash_prompt.sh
+        # Git
         ln -sf "$DFPATH"/.git-prompt.sh                 ~/.git-prompt.sh
         ln -sf "$DFPATH"/.git-completion.bash           ~/.git-completion.bash
         ln -sf "$DFPATH"/.gitconfig                     ~/.gitconfig
-        ln -sf "$DFPATH"/.bash_prompt.sh                ~/.bash_prompt.sh
-        ln -sf "$DFPATH"/.gallery-dl.conf               ~/.gallery-dl.json
-
         # latex files
         ln -sf "$DFPATH"/.latexmkrc                     ~/.latexmkrc
+        # Others
+        ln -sf "$DFPATH"/.gallery-dl.conf               ~/.gallery-dl.json
+
 
         case "$OS" in
             'Mac'  ) {  
