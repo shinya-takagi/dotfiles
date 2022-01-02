@@ -23,18 +23,18 @@ function main(){
         local vim_path=$HOME/.vim
         mkdir -p ~/.zsh 
         mkdir -p "$vim_path"/ftplugin "$vim_path"/swap "$vim_path"/tmp "$vim_path"/undo "$vim_path"/colors "$vim_path"/after/syntax
-        mkdir -p ~/.config/fish
+        mkdir -p ~/.config/fish ~/.config/yt-dlp
 # - symboric link - -
         ln -sf "$DFPATH"/config.fish                    ~/.config/fish/config.fish
         ln -sf "$DFPATH"/.tmux.conf                     ~/.tmux.conf
         # Vim
         ln -sf "$DFPATH"/.vimrc                         ~/.vimrc
-        ln -sf "$DFPATH"/ftplugin/fortran.vim      "$vim_path"/ftplugin/fortran.vim
-        ln -sf "$DFPATH"/ftplugin/sh.vim           "$vim_path"/ftplugin/sh.vim
-        ln -sf "$DFPATH"/ftplugin/python.vim       "$vim_path"/ftplugin/python.vim
-        ln -sf "$DFPATH"/ftplugin/zsh.vim          "$vim_path"/ftplugin/zsh.vim
-        ln -sf "$DFPATH"/colors/ThemerVim.vim      "$vim_path"/colors/ThemerVim.vim
-        ln -sf "$DFPATH"/after/syntax/python.vim   "$vim_path"/after/syntax/python.vim
+        ln -sf "$DFPATH"/.vim/ftplugin/fortran.vim      "$vim_path"/ftplugin/fortran.vim
+        ln -sf "$DFPATH"/.vim/ftplugin/sh.vim           "$vim_path"/ftplugin/sh.vim
+        ln -sf "$DFPATH"/.vim/ftplugin/python.vim       "$vim_path"/ftplugin/python.vim
+        ln -sf "$DFPATH"/.vim/ftplugin/zsh.vim          "$vim_path"/ftplugin/zsh.vim
+        ln -sf "$DFPATH"/.vim/colors/ThemerVim.vim      "$vim_path"/colors/ThemerVim.vim
+        ln -sf "$DFPATH"/.vim/after/syntax/python.vim   "$vim_path"/after/syntax/python.vim
         # Bash
         ln -sf "$DFPATH"/.bashrc                        ~/.bashrc
         ln -sf "$DFPATH"/.bash_profile                  ~/.bash_profile
@@ -47,7 +47,8 @@ function main(){
         # latex files
         ln -sf "$DFPATH"/.latexmkrc                     ~/.latexmkrc
         # Others
-        ln -sf "$DFPATH"/.gallery-dl.conf               ~/.gallery-dl.json
+        ln -sf "$DFPATH"/.gallery-dl.json               ~/.gallery-dl.conf
+        ln -sf "$DFPATH"/.config/yt-dlp/config          ~/.config/yt-dlp/config
 
 
         case "$OS" in

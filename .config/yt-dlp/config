@@ -1,0 +1,5 @@
+# Save Directory
+-o ~/yt-dlp/%(extractor)s/%(uploader)s/%(title)s.%(ext)s
+
+# Merge format "mp4"
+--merge-output-format mp4
