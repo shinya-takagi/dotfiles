@@ -1,0 +1,13 @@
+#
+# Zprofile
+#
+
+export PATH="$HOME/FISH:$PATH"
+export PATH="$HOME/codes:$PATH"
+export PATH="$HOME/intel/bin:$PATH"
+export PATH="/usr/local/texlive/2021/bin/x86_64-linux:$PATH"
+export PATH="/usr/local/Cellar/bison/3.8.2/bin:$PATH"
+export PATH="$HOME/develop/wine/tools:$PATH"
+export PATH="$HOME/.wine/drive_c/windows/system32:$PATH"
+export PATH="$HOME/develop/fbc-1.06/bin:$PATH"
+#export PATH="$HOME/bin:$PATH"

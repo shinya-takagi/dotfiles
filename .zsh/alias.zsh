@@ -84,6 +84,7 @@ alias vd="vi ~/.dircolors-solarized/dircolors.ansi-dark_taka"
 
 # python
 alias py="python3"
+alias ytconfig="vim ~/.config/yt-dlp/config"
 
 # Windows 
 alias user="cd /mnt/c/Users/shiny"

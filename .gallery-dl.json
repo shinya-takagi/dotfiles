@@ -94,6 +94,9 @@
         },
         "instagram":
         {
+	    "usrname" : "second_boy_girl@yahoo.co.jp",
+	    "password" : "BeMyBayB",
+	    "cookies" : "~/gallery-dl/instagram.com_cookies.txt",
             "highlights": false,
             "videos": true
         },
