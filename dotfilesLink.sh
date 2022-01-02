@@ -28,22 +28,12 @@ function main(){
         ln -sf "$DFPATH"/config.fish                    ~/.config/fish/config.fish
         ln -sf "$DFPATH"/.tmux.conf                     ~/.tmux.conf
         # Vim
-<<<<<<< HEAD
         ln -sf "$DFPATH"/ftplugin/fortran.vim           "$vim_path"/ftplugin/fortran.vim
         ln -sf "$DFPATH"/ftplugin/sh.vim                "$vim_path"/ftplugin/sh.vim
         ln -sf "$DFPATH"/ftplugin/python.vim            "$vim_path"/ftplugin/python.vim
         ln -sf "$DFPATH"/ftplugin/zsh.vim               "$vim_path"/ftplugin/zsh.vim
         ln -sf "$DFPATH"/colors/ThemerVim.vim           "$vim_path"/colors/ThemerVim.vim
         ln -sf "$DFPATH"/after/syntax/python.vim        "$vim_path"/after/syntax/python.vim
-=======
-        ln -sf "$DFPATH"/.vimrc                         ~/.vimrc
-        ln -sf "$DFPATH"/.vim/ftplugin/fortran.vim      "$vim_path"/ftplugin/fortran.vim
-        ln -sf "$DFPATH"/.vim/ftplugin/sh.vim           "$vim_path"/ftplugin/sh.vim
-        ln -sf "$DFPATH"/.vim/ftplugin/python.vim       "$vim_path"/ftplugin/python.vim
-        ln -sf "$DFPATH"/.vim/ftplugin/zsh.vim          "$vim_path"/ftplugin/zsh.vim
-        ln -sf "$DFPATH"/.vim/colors/ThemerVim.vim      "$vim_path"/colors/ThemerVim.vim
-        ln -sf "$DFPATH"/.vim/after/syntax/python.vim   "$vim_path"/after/syntax/python.vim
->>>>>>> 2a7c4947ece3baa27e0723057119e3b1c2ddd72b
         # Bash
         ln -sf "$DFPATH"/.bashrc                        ~/.bashrc
         ln -sf "$DFPATH"/.bash_profile                  ~/.bash_profile
