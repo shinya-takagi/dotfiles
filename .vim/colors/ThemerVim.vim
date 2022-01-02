@@ -19,22 +19,22 @@
   let s:guiaccent5 = "#61afef"
   let s:guiaccent6 = "#c678dd"
   let s:guiaccent7 = "#be5046"
-  let s:ctermshade0 = 234
-  let s:ctermshade1 = 238
-  let s:ctermshade2 = 59
-  let s:ctermshade3 = 102
+  let s:ctermshade0 = 234       " Background color
+  let s:ctermshade1 = 238       " cursor background color
+  let s:ctermshade2 = 59        " line number
+  let s:ctermshade3 = 102       " Line cursor color
   let s:ctermshade4 = 103
-  let s:ctermshade5 = 245
+  let s:ctermshade5 = 190
   let s:ctermshade6 = 254
   let s:ctermshade7 = 248
-  let s:ctermaccent0 = 1
-  let s:ctermaccent1 = 7
-  let s:ctermaccent2 = 13
-  let s:ctermaccent3 = 150
-  let s:ctermaccent4 = 116
-  let s:ctermaccent5 = 111
-  let s:ctermaccent6 = 3
-  let s:ctermaccent7 = 173
+  let s:ctermaccent0 = 1        " Error
+  let s:ctermaccent1 = 4        " Keyword (ex. print, function name 
+  let s:ctermaccent2 = 13       " Identifier ( shell's variables
+  let s:ctermaccent3 = 150      " Quotation color
+  let s:ctermaccent4 = 126      " Character (vim completement color)
+  let s:ctermaccent5 = 111      " statement
+  let s:ctermaccent6 = 142      " pre-processor ( python's import)
+  let s:ctermaccent7 = 166      " Special key
   
   endif
   

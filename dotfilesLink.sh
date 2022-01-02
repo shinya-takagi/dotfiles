@@ -15,8 +15,8 @@ function main(){
     fi
 # --OS-------------------<
     local DFPATH=$(pwd)
-    readonly dir_sol=".dircolors-solarized"
-    
+    readonly dir_sol=".dircolors-solarized" 
+
     case $g in
         "y" ) {
         local home_sol=$HOME/$dir_sol 
@@ -28,12 +28,12 @@ function main(){
         ln -sf "$DFPATH"/config.fish                    ~/.config/fish/config.fish
         ln -sf "$DFPATH"/.tmux.conf                     ~/.tmux.conf
         # Vim
-        ln -sf "$DFPATH"/ftplugin/fortran.vim           "$vim_path"/ftplugin/fortran.vim
-        ln -sf "$DFPATH"/ftplugin/sh.vim                "$vim_path"/ftplugin/sh.vim
-        ln -sf "$DFPATH"/ftplugin/python.vim            "$vim_path"/ftplugin/python.vim
-        ln -sf "$DFPATH"/ftplugin/zsh.vim               "$vim_path"/ftplugin/zsh.vim
-        ln -sf "$DFPATH"/colors/ThemerVim.vim           "$vim_path"/colors/ThemerVim.vim
-        ln -sf "$DFPATH"/after/syntax/python.vim        "$vim_path"/after/syntax/python.vim
+        ln -sf "$DFPATH"/.vim/ftplugin/fortran.vim      "$vim_path"/ftplugin/fortran.vim
+        ln -sf "$DFPATH"/.vim/ftplugin/sh.vim           "$vim_path"/ftplugin/sh.vim
+        ln -sf "$DFPATH"/.vim/ftplugin/python.vim       "$vim_path"/ftplugin/python.vim
+        ln -sf "$DFPATH"/.vim/ftplugin/zsh.vim          "$vim_path"/ftplugin/zsh.vim
+        ln -sf "$DFPATH"/.vim/colors/ThemerVim.vim      "$vim_path"/colors/ThemerVim.vim
+        ln -sf "$DFPATH"/.vim/after/syntax/python.vim   "$vim_path"/after/syntax/python.vim
         # Bash
         ln -sf "$DFPATH"/.bashrc                        ~/.bashrc
         ln -sf "$DFPATH"/.bash_profile                  ~/.bash_profile
@@ -49,6 +49,25 @@ function main(){
         ln -sf "$DFPATH"/.gallery-dl.json               ~/.gallery-dl.conf
         ln -sf "$DFPATH"/.config/yt-dlp/config          ~/.config/yt-dlp/config
 
+        # -----Color scheem------
+        if [ ! -d "$home_sol" ]; then 
+            cp -r "$dir_sol"                            ~/.
+            case "$OS" in
+                'Mac' ) { ln -sf "$DFPATH"/"$dir_sol"/"dircolors.ansi-dark_taka_mac" ~/"$dir_sol"/"dircolors.ansi-dark_taka"
+                } ;;
+                'Linux' ) { ln -sf "$DFPATH"/"$dir_sol"/"dircolors.ansi-dark_taka" ~/"$dir_sol"/"dircolors.ansi-dark_taka" 
+                };;
+            esac
+        elif [ -n "$(ls -A "$home_sol")" ]; then
+            echo "$home_sol exists, so it cannot copy $dir_sol"
+            case "$OS" in
+                'Mac' ) { ln -sf "$DFPATH"/"$dir_sol"/"dircolors.ansi-dark_taka_mac" ~/"$dir_sol"/"dircolors.ansi-dark_taka"
+                } ;;
+                'Linux' ) { ln -sf "$DFPATH"/"$dir_sol"/"dircolors.ansi-dark_taka" ~/"$dir_sol"/"dircolors.ansi-dark_taka" 
+                };;
+            esac
+        fi
+        # ------------------------
 
         case "$OS" in
             'Mac'  ) {  
@@ -67,13 +86,6 @@ function main(){
                 ln -sf "$DFPATH"/.zsh/alias.zsh         ~/.zsh/alias.zsh
                 ln -sf "$DFPATH"/$zfuncs/_mcf           ~/$zfuncs/_mcf
                 ln -sf "$DFPATH"/$zfuncs/_cht           ~/$zfuncs/_cht
-                # -----Color scheem------
-                if [ ! -d "$home_sol" ]; then 
-                    cp -r "$dir_sol"                            ~/.
-                elif [ -n "$(ls -A "$home_sol")" ]; then
-                    echo "$home_sol exists, so it cannot copy $dir_sol"
-                fi
-                # ------------------------
             };;
             * )	echo "stop"
         esac

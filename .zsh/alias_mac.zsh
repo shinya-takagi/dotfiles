@@ -10,8 +10,8 @@ alias -g gr="| grep --color"
 alias -g GI="| grep -ri"
 
 # local Alias
-# alias ls="ls --color=auto"
-alias ls="ls -G"
+alias ls="gls --color=auto"
+#alias ls="ls -G"
 alias lst="ls -ltr"
 alias la="ls -la"
 alias ll="ls -l"
@@ -60,11 +60,13 @@ alias vz="vim ~/.zshrc"
 alias va="vi ~/.zsh/alias.zsh"
 alias vz="vi ~/.zshrc"
 alias sz="source ~/.zshrc"
+alias sza="source ~/.zsh/alias.zsh"
 alias vd="vi ~/.dircolors-solarized/dircolors.ansi-dark_taka"
 
 # Vim
 alias vr="vi ~/.vimrc"
 alias svr="source ~/.vimrc"
+alias vicolor="vi ~/develop/dotfiles/.vim/colors/ThemerVim.vim"
 #alias tma="tmux attach"
 #alias tml="tmux list-window"
 
@@ -73,6 +75,8 @@ alias svr="source ~/.vimrc"
 #alias originlab="cd /mnt/c/Users/shiny/OneDrive/ドキュメント/OriginLab/"
 #alias cdrive="cd /mnt/c/Users/shiny"
 
+alias cddot="cd ~/develop/dotfiles"
+alias nas="cd /Volumes/home"
 
 #-------------------------------
 #	FUNCTION

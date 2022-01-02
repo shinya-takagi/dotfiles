@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
@@ -200,103 +207,103 @@ ulimit -c 0
 #PROMPT='%F{cyan}%n@%m%f:%~# '
 
 # git ブランチ名を色付きで表示させるメソッド
-function rprompt-git-current-branch {
-  local branch_name st branch_status
-  
-# branch='\ue0a0'
-# color='%{\e[38;5;' #  文字色を設定
-# green='114m%}'
-# red='001m%}'
-# yellow='227m%}'
-# blue='033m%}'
-# reset='%{\e[0m%}'   # reset
-  
-  if [ ! -e  ".git" ]; then
-    # git 管理されていないディレクトリは何も返さない
-    return
-  fi
-  branch_name=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
-  st=`git status 2> /dev/null`
-  if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-    # 全て commit されてクリーンな状態
-#   branch_status="${color}${green}${branch}"
-    branch_status="%F{green}"
-#   branch_status="%{$fg[green]}%}%{${reset_color}%}"
-  elif [[ -n `echo "$st" | grep "^Untracked files"` ]]; then
-    # git 管理されていないファイルがある状態
-#   branch_status="${color}${red}${branch}?"
-    branch_status="%F{red}manage"
-  elif [[ -n `echo "$st" | grep "^Changes not staged for commit"` ]]; then
-    # git add されていないファイルがある状態
-#   branch_status="${color}${red}${branch}+"
-    branch_status="%F{red}add"
-  elif [[ -n `echo "$st" | grep "^Changes to be committed"` ]]; then
-    # git commit されていないファイルがある状態
-#   branch_status="${color}${yellow}${branch}!"
-    branch_status="%F{yellow}commit"
-  elif [[ -n `echo "$st" | grep "^rebase in progress"` ]]; then
-    # コンフリクトが起こった状態
-#   echo "${color}${red}${branch}!(no branch)${reset}"
-    echo "%F{red}!(no branch)"
-    return
-  else
-    # 上記以外の状態の場合
-#   branch_status="${color}${blue}${branch}"
-    branch_status="%F{blue}"
-  fi
-  # ブランチ名を色付きで表示する
-# echo "${branch_status}$branch_name${reset}"
-  echo "${branch_status}[$branch_name]%f"
-# echo -e "${branch_status}[$branch_name]%f%T"
-}
+#function rprompt-git-current-branch {
+#  local branch_name st branch_status
+#  
+## branch='\ue0a0'
+## color='%{\e[38;5;' #  文字色を設定
+## green='114m%}'
+## red='001m%}'
+## yellow='227m%}'
+## blue='033m%}'
+## reset='%{\e[0m%}'   # reset
+#  
+#  if [ ! -e  ".git" ]; then
+#    # git 管理されていないディレクトリは何も返さない
+#    return
+#  fi
+#  branch_name=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
+#  st=`git status 2> /dev/null`
+#  if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+#    # 全て commit されてクリーンな状態
+##   branch_status="${color}${green}${branch}"
+#    branch_status="%F{green}"
+##   branch_status="%{$fg[green]}%}%{${reset_color}%}"
+#  elif [[ -n `echo "$st" | grep "^Untracked files"` ]]; then
+#    # git 管理されていないファイルがある状態
+##   branch_status="${color}${red}${branch}?"
+#    branch_status="%F{red}manage"
+#  elif [[ -n `echo "$st" | grep "^Changes not staged for commit"` ]]; then
+#    # git add されていないファイルがある状態
+##   branch_status="${color}${red}${branch}+"
+#    branch_status="%F{red}add"
+#  elif [[ -n `echo "$st" | grep "^Changes to be committed"` ]]; then
+#    # git commit されていないファイルがある状態
+##   branch_status="${color}${yellow}${branch}!"
+#    branch_status="%F{yellow}commit"
+#  elif [[ -n `echo "$st" | grep "^rebase in progress"` ]]; then
+#    # コンフリクトが起こった状態
+##   echo "${color}${red}${branch}!(no branch)${reset}"
+#    echo "%F{red}!(no branch)"
+#    return
+#  else
+#    # 上記以外の状態の場合
+##   branch_status="${color}${blue}${branch}"
+#    branch_status="%F{blue}"
+#  fi
+#  # ブランチ名を色付きで表示する
+## echo "${branch_status}$branch_name${reset}"
+#  echo "${branch_status}[$branch_name]%f"
+## echo -e "${branch_status}[$branch_name]%f%T"
+#}
  
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
-setopt prompt_subst
+#setopt prompt_subst
  
 # プロンプトの右側にメソッドの結果を表示させる
-zle -N rptompy-git-current-branch 
-RPROMPT='`rprompt-git-current-branch`'
-
-# -----new prompt setting-------
-autoload -Uz add-zsh-hook
-autoload -Uz terminfo
-
-# vim mode set 2 left-down position
-terminfo_down_sc=$terminfo[cud1]$terminfo[cud1]$terminfo[cuu1]$terminfo[cuu1]$terminfo[sc]$terminfo[cud1]$terminfo[cud1]
-function left_down_prompt_preexec() {
-    print -rn -- $terminfo[el]
-}
-add-zsh-hook preexec left_down_prompt_preexec
-
-function zle-keymap-select zle-line-init zle-line-finish
-{
-# local exit_code_check
-    case $KEYMAP in
-        main|viins)
-            PROMPT_2="$fg[cyan]-- INSERT --$reset_color"
-            ;;
-        vicmd)
-            PROMPT_2="$fg[white]-- NORMAL --$reset_color"
-            ;;
-#       vivis|vivli)
-#           PROMPT_2="$fg[yellow]-- VISUAL --$reset_color"
-#           ;;
-    esac
-    # example of show exit status on prompt
-#   %{$fg[black]%(?.$bg[green].$bg[red])%}<%?>
-#   PROMPT="%{$terminfo_down_sc$PROMPT_2$terminfo[rc]%}[%(?.%{${fg[green]}%}.%{${fg[red]}%})%~%{${reset_color}%}]
-    PROMPT="%{$terminfo_down_sc$PROMPT_2$terminfo[rc]%}[%T]|[%(?.%{${fg[green]}%}.%{${fg[red]}%})%~%{${reset_color}%}]
-%{%(?.$fg[green].$fg[red])%}<%?>%{${reset_color}%} %# "
-# %{%(?.$fg[green].$fg[red])%}<%?>${reset_color} %# "
-# <%{%(?.$fg[green].$fg[red])%}%?${reset_color}> %# "
-    zle reset-prompt
-}
-
-zle -N zle-line-init
-zle -N zle-line-finish
-zle -N zle-keymap-select
-zle -N edit-command-line
-
+#zle -N rptompy-git-current-branch 
+#RPROMPT='`rprompt-git-current-branch`'
+#
+## -----new prompt setting-------
+#autoload -Uz add-zsh-hook
+#autoload -Uz terminfo
+#
+## vim mode set 2 left-down position
+#terminfo_down_sc=$terminfo[cud1]$terminfo[cud1]$terminfo[cuu1]$terminfo[cuu1]$terminfo[sc]$terminfo[cud1]$terminfo[cud1]
+#function left_down_prompt_preexec() {
+#    print -rn -- $terminfo[el]
+#}
+#add-zsh-hook preexec left_down_prompt_preexec
+#
+#function zle-keymap-select zle-line-init zle-line-finish
+#{
+## local exit_code_check
+#    case $KEYMAP in
+#        main|viins)
+#            PROMPT_2="$fg[cyan]-- INSERT --$reset_color"
+#            ;;
+#        vicmd)
+#            PROMPT_2="$fg[white]-- NORMAL --$reset_color"
+#            ;;
+##       vivis|vivli)
+##           PROMPT_2="$fg[yellow]-- VISUAL --$reset_color"
+##           ;;
+#    esac
+#    # example of show exit status on prompt
+##   %{$fg[black]%(?.$bg[green].$bg[red])%}<%?>
+##   PROMPT="%{$terminfo_down_sc$PROMPT_2$terminfo[rc]%}[%(?.%{${fg[green]}%}.%{${fg[red]}%})%~%{${reset_color}%}]
+#    PROMPT="%{$terminfo_down_sc$PROMPT_2$terminfo[rc]%}[%T]|[%(?.%{${fg[green]}%}.%{${fg[red]}%})%~%{${reset_color}%}]
+#%{%(?.$fg[green].$fg[red])%}<%?>%{${reset_color}%} %# "
+## %{%(?.$fg[green].$fg[red])%}<%?>${reset_color} %# "
+## <%{%(?.$fg[green].$fg[red])%}%?${reset_color}> %# "
+#    zle reset-prompt
+#}
+#
+#zle -N zle-line-init
+#zle -N zle-line-finish
+#zle -N zle-keymap-select
+#zle -N edit-command-line
+#
 #------End new prompt setting-------
 
 # -----------------------------
@@ -544,11 +551,16 @@ setopt hist_verify
 # dircolors
 #------------------------------
 #eval `dircolors ~/.dircolors-solarized/dircolors.256dark`
-#eval `dircolors ~/.dircolors-solarized/dircolors.ansi-dark_taka`
+ eval `gdircolors ~/.dircolors-solarized/dircolors.ansi-dark_taka`
 
 #------------------------------
 # dircolors
 #------------------------------
-export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+#export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 #export DISPLAY=localhost:0.0
 
+# Refer to read this repository, https://github.com/romkatv/powerlevel10k
+source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
