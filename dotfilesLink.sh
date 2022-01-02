@@ -28,13 +28,12 @@ function main(){
         ln -sf "$DFPATH"/config.fish                    ~/.config/fish/config.fish
         ln -sf "$DFPATH"/.tmux.conf                     ~/.tmux.conf
         # Vim
-        ln -sf "$DFPATH"/.vimrc                         ~/.vimrc
-        ln -sf "$DFPATH"/ftplugin/fortran.vim      "$vim_path"/ftplugin/fortran.vim
-        ln -sf "$DFPATH"/ftplugin/sh.vim           "$vim_path"/ftplugin/sh.vim
-        ln -sf "$DFPATH"/ftplugin/python.vim       "$vim_path"/ftplugin/python.vim
-        ln -sf "$DFPATH"/ftplugin/zsh.vim          "$vim_path"/ftplugin/zsh.vim
-        ln -sf "$DFPATH"/colors/ThemerVim.vim      "$vim_path"/colors/ThemerVim.vim
-        ln -sf "$DFPATH"/after/syntax/python.vim   "$vim_path"/after/syntax/python.vim
+        ln -sf "$DFPATH"/ftplugin/fortran.vim           "$vim_path"/ftplugin/fortran.vim
+        ln -sf "$DFPATH"/ftplugin/sh.vim                "$vim_path"/ftplugin/sh.vim
+        ln -sf "$DFPATH"/ftplugin/python.vim            "$vim_path"/ftplugin/python.vim
+        ln -sf "$DFPATH"/ftplugin/zsh.vim               "$vim_path"/ftplugin/zsh.vim
+        ln -sf "$DFPATH"/colors/ThemerVim.vim           "$vim_path"/colors/ThemerVim.vim
+        ln -sf "$DFPATH"/after/syntax/python.vim        "$vim_path"/after/syntax/python.vim
         # Bash
         ln -sf "$DFPATH"/.bashrc                        ~/.bashrc
         ln -sf "$DFPATH"/.bash_profile                  ~/.bash_profile
@@ -52,32 +51,35 @@ function main(){
 
         case "$OS" in
             'Mac'  ) {  
+                ln -sf "$DFPATH"/.vimrc_mac             ~/.vimrc
                 ln -sf "$DFPATH"/.zshrc_mac             ~/.zshrc 
+                ln -sf "$DFPATH"/.zprofile_mac          ~/.zprofile
                 ln -sf "$DFPATH"/.zsh/alias_mac.zsh     ~/.zsh/alias.zsh
             };; 
             'Linux' ){  
                 local zfuncs=".zsh/functions"
                 mkdir -p $HOME/$zfuncs 
+                ln -sf "$DFPATH"/.vimrc                 ~/.vimrc
                 ln -sf "$DFPATH"/.zlogout               ~/.zlogout
                 ln -sf "$DFPATH"/.zprofile              ~/.zprofile
                 ln -sf "$DFPATH"/.zshrc                 ~/.zshrc
                 ln -sf "$DFPATH"/.zsh/alias.zsh         ~/.zsh/alias.zsh
                 ln -sf "$DFPATH"/$zfuncs/_mcf           ~/$zfuncs/_mcf
                 ln -sf "$DFPATH"/$zfuncs/_cht           ~/$zfuncs/_cht
-                };;
+                # -----Color scheem------
+                if [ ! -d "$home_sol" ]; then 
+                    cp -r "$dir_sol"                            ~/.
+                elif [ -n "$(ls -A "$home_sol")" ]; then
+                    echo "$home_sol exists, so it cannot copy $dir_sol"
+                fi
+                # ------------------------
+            };;
+            * )	echo "stop"
         esac
+        };;
+    esac
 # - - - - - - - - - 
 
-# -----Color scheem------
-        if [ ! -d "$home_sol" ]; then 
-            cp -r "$dir_sol"                            ~/.
-        elif [ -n "$(ls -A "$home_sol")" ]; then
-    	    echo "$home_sol exists, so it cannot copy $dir_sol"
-        fi
-    	};;
-        * )	echo "stop"
-    esac
-# ------------------------
 }
 
 main
