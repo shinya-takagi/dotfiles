@@ -10,8 +10,8 @@ autocmd BufRead,BufNewFile *.conf setfiletype json
 "		vim command
 "-----------------------------------------------
 " Background color
-"set background=dark
-set background=light
+set background=dark
+"set background=light
 " File encoding of th word code.
 set encoding=utf-8
 set fileencodings=iso-2022-jp,sjis,uft-8
@@ -96,7 +96,7 @@ iab SHEBANG #!/usr/bin/env
 " --------------------------<
 " -------Colorscheme---------------->
 "colorscheme ThemerVim_1 
-"colorscheme ThemerVim    " Original colorscheme
+ colorscheme ThemerVim    " Original colorscheme
 " --------------------<
 
 "-----------------------------------------------------------
