@@ -166,7 +166,7 @@ NORMAL 00
 # normal file
 FILE 00
 # directory
-DIR 36
+DIR 01;36
 # 777 directory
 OTHER_WRITABLE 33;40
 # symbolic link

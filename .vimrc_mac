@@ -53,11 +53,13 @@ set ttimeoutlen=50   " Timeout length
 " C-h is backspace. Delete to backspace
  noremap  <C-h>
  inoremap  <C-h>
+
 "----------------------------------------------------------
 "" PASTE FROM CLIPBOARD
 "----------------------------------------------------------
 " disable indent when you paste it from clipboard in insert mode. 
 "
+set clipboard=unnamed
 if &term =~ "xterm"
 	let &t_SI .= "\e[?2004h"
 	let &t_EI .= "\e[?2004l"

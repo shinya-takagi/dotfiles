@@ -10,8 +10,12 @@ alias -g gr="| grep --color"
 alias -g GI="| grep -ri"
 
 # local Alias
-alias ls="gls --color=auto"
-#alias ls="ls -G"
+if type gls >/dev/null 2>&1; then
+  # gls is contained in coreutils.
+  alias ls="gls --color=auto"
+else
+  alias ls="ls -G"
+fi
 alias lst="ls -ltr"
 alias la="ls -la"
 alias ll="ls -l"
@@ -28,10 +32,10 @@ alias rm="rm -i"
 alias mkdir="mkdir -p"
 alias ..="c ../"
 alias back="pushd"
-alias diff="diff -U1"
+#alias diff="diff -U1"
 
 # from fish
-#------git------------
+#------git----------->
 alias gs="git status"
 alias ga="git add"
 alias gb="git branch"
@@ -39,6 +43,7 @@ alias gco="git checkout"
 alias gcm="git commit -a -m"
 alias gp="git push"
 alias gpm="gp origin master"
+#------git-----------<
 
 #alias open="xdg-open"
 alias et="exit"
@@ -65,16 +70,17 @@ alias vd="vi ~/.dircolors-solarized/dircolors.ansi-dark_taka"
 
 # Vim
 alias vr="vi ~/.vimrc"
+alias vg="vi ~/.gvimrc"
 alias svr="source ~/.vimrc"
 alias vicolor="vi ~/develop/dotfiles/.vim/colors/ThemerVim.vim"
 #alias tma="tmux attach"
 #alias tml="tmux list-window"
 
-# Windows 
-#alias user="cd /mnt/c/Users/shiny"
-#alias originlab="cd /mnt/c/Users/shiny/OneDrive/ドキュメント/OriginLab/"
-#alias cdrive="cd /mnt/c/Users/shiny"
+# python
+alias py="python3"
+alias ytconfig="vim ~/.config/yt-dlp/config"
 
+# Others
 alias cddot="cd ~/develop/dotfiles"
 alias nas="cd /Volumes/home"
 
@@ -135,6 +141,33 @@ cmd=$2
   esac
 }
 
+function sshkey(){
+  # When log in, Run ssh-agent.
+# psfile_=$HOME/.ssh/main
+  psnum=$(ps ax | grep ssh-agent | grep -v grep | wc -l)
+  #if [ $psnum -le 1 ]; then
+  #if [ $psnum -ne 0 ]; then
+  if [ -z $SSH_AGENT_PID ]; then 
+  #   echo "no sshagent"
+      eval `ssh-agent` > /dev/null 2>&1
+  #if [ -e $psfile_ ]; then 
+     if [ -e "$HOME/.ssh/id_rsa_vostok2" ]; then
+       keys=id_rsa_vostok2
+     elif [ -e "$HOME/.ssh/id_rsa_github" ]; then
+       keys=id_rsa_github
+     elif [ -e "$HOME/.ssh/id_rsa_vostok2" ] && [ -e "$HOME/.ssh/id_rsa_github" ]; then
+       keys=id_rsa_vostok2
+     fi
+  #    agentunlock_=$(openssl rsautl -decrypt -inkey $psfile_.key -in $psfile_)
+  #    echo  "$agentunlock_"\n | eval `ssh-add $HOME/.ssh/"$keys" > /dev/null 2>&1`
+  #    unset psfile_ agentunlock_
+      eval `ssh-add $HOME/.ssh/"$keys"> /dev/null 2>&1`
+   else
+  #  echo "PASSWORD?"
+  #else
+     echo "ssh-agent exist. Processes:"$psnum", PID:$SSH_AGENT_PID"
+   fi
+}
 
 
 

@@ -1,12 +1,24 @@
 #! /bin/bash
 set -eu
 
+
+function usage(){
+        echo "Usage: $0 [-r] [-h] " 1>&2
+        echo "     : r -> Run generation of links in dotfiles"
+        echo "     : h -> Show help. (This message)"
+        exit 1
+}
+
+function maintest(){
+    echo testnow
+}
+
 function main(){
     local g OS
-    echo "generate symboric link dotfiles? (y/*)"
-    echo "y -> copy files from own directories"
-    echo "Write others, not to copy or generate files."
-    read -r g
+#   echo "generate symboric link dotfiles? (y/*)"
+#   echo "y -> copy files from own directories"
+#   echo "Write others, not to copy or generate files."
+#   read -r g
 # ---Discriminate OS----->
     if [ "$(uname -s)" == 'Darwin' ]; then
          OS='Mac'
@@ -17,8 +29,8 @@ function main(){
     local DFPATH=$(pwd)
     readonly dir_sol=".dircolors-solarized" 
 
-    case $g in
-        "y" ) {
+#   case $g in
+#       "y" ) {
         local home_sol=$HOME/$dir_sol 
         local vim_path=$HOME/.vim
         mkdir -p ~/.zsh 
@@ -34,6 +46,7 @@ function main(){
         ln -sf "$DFPATH"/.vim/ftplugin/zsh.vim          "$vim_path"/ftplugin/zsh.vim
         ln -sf "$DFPATH"/.vim/colors/ThemerVim.vim      "$vim_path"/colors/ThemerVim.vim
         ln -sf "$DFPATH"/.vim/after/syntax/python.vim   "$vim_path"/after/syntax/python.vim
+        ln -sf "$DFPATH"/.gvimrc                        ~/.gvimrc
         # Bash
         ln -sf "$DFPATH"/.bashrc                        ~/.bashrc
         ln -sf "$DFPATH"/.bash_profile                  ~/.bash_profile
@@ -46,7 +59,6 @@ function main(){
         # latex files
         ln -sf "$DFPATH"/.latexmkrc                     ~/.latexmkrc
         # Others
-        ln -sf "$DFPATH"/.gallery-dl.json               ~/.gallery-dl.conf
         ln -sf "$DFPATH"/.config/yt-dlp/config          ~/.config/yt-dlp/config
 
         # -----Color scheem------
@@ -75,6 +87,7 @@ function main(){
                 ln -sf "$DFPATH"/.zshrc_mac             ~/.zshrc 
                 ln -sf "$DFPATH"/.zprofile_mac          ~/.zprofile
                 ln -sf "$DFPATH"/.zsh/alias_mac.zsh     ~/.zsh/alias.zsh
+                ln -sf "$DFPATH"/.gallery-dl_mac.json   ~/.gallery-dl.conf
             };; 
             'Linux' ){  
                 local zfuncs=".zsh/functions"
@@ -86,13 +99,27 @@ function main(){
                 ln -sf "$DFPATH"/.zsh/alias.zsh         ~/.zsh/alias.zsh
                 ln -sf "$DFPATH"/$zfuncs/_mcf           ~/$zfuncs/_mcf
                 ln -sf "$DFPATH"/$zfuncs/_cht           ~/$zfuncs/_cht
+                ln -sf "$DFPATH"/.gallery-dl.json       ~/.gallery-dl.conf
             };;
             * )	echo "stop"
         esac
-        };;
-    esac
+#       };;
+#   esac
 # - - - - - - - - - 
-
+    exit
 }
 
-main
+while getopts r:h OPT
+do
+    case "$OPT" in
+        r) main
+            ;;
+        h) usage
+            ;;
+        \?) usage
+            ;;
+#       *) 
+#           ;;
+    esac
+done
+
