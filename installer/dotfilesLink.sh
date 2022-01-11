@@ -47,6 +47,7 @@ function main(){
         ln -sf "$DFPATH"/.vim/colors/ThemerVim.vim      "$vim_path"/colors/ThemerVim.vim
         ln -sf "$DFPATH"/.vim/after/syntax/python.vim   "$vim_path"/after/syntax/python.vim
         ln -sf "$DFPATH"/.gvimrc                        ~/.gvimrc
+        ln -sf "$DFPATH"/.vim/coc-settings.json           "$vim_path"/coc-settings.json
         # Bash
         ln -sf "$DFPATH"/.bashrc                        ~/.bashrc
         ln -sf "$DFPATH"/.bash_profile                  ~/.bash_profile
@@ -81,11 +82,12 @@ function main(){
         fi
         # ------------------------
 
+        ln -sf "$DFPATH"/.zsh/alias_mac.zsh             ~/.zshenv
         case "$OS" in
             'Mac'  ) {  
                 ln -sf "$DFPATH"/.vimrc_mac             ~/.vimrc
                 ln -sf "$DFPATH"/.zshrc_mac             ~/.zshrc 
-                ln -sf "$DFPATH"/.zprofile_mac          ~/.zprofile
+                ln -sf "$DFPATH"/.zprofile              ~/.zprofile
                 ln -sf "$DFPATH"/.zsh/alias_mac.zsh     ~/.zsh/alias.zsh
                 ln -sf "$DFPATH"/.gallery-dl_mac.json   ~/.gallery-dl.conf
             };; 
@@ -109,7 +111,7 @@ function main(){
     exit
 }
 
-while getopts r:h OPT
+while getopts :hr OPT
 do
     case "$OPT" in
         r) main

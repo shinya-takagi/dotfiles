@@ -1,7 +1,7 @@
 {
     "extractor":
     {
-        "base-directory": "/Volumes/home/HDD/gallery-dl",
+        "base-directory": "~/Archive/gallery-dl",
         "archive": null,
         "cookies": null,
         "cookies-update": false,
@@ -41,7 +41,7 @@
         },
         "twitter":
         {
-            "filename": "{tweet_id}_{author[name]}.{extension}",
+            "filename": "{tweet_id}_{author[name]}_{num}.{extension}",
             "directory": ["Twitter", "{author[name]}_{author[nick]}"],
 
             "quoted": false,
@@ -93,9 +93,9 @@
         },
         "instagram":
         {
-	    "usrname" : "second_boy_girl@yahoo.co.jp",
-	    "password" : "BeMyBayB",
-	    "cookies" : "~/gallery-dl/instagram.com_cookies.txt",
+	          "usrname" : "second_boy_girl@yahoo.co.jp",
+	          "password" : "BeMyBayB",
+	          "cookies" : "~/gallery-dl/instagram.com_cookies.txt",
             "highlights": false,
             "videos": true
         },

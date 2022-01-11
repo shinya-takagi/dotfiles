@@ -1,6 +1,7 @@
 # Save Directory
 #-o ~/yt-dlp/%(extractor)s/%(uploader)s/%(title)s.%(ext)s
--o /Volumes/home/HDD/yt-dlp/%(extractor)s/%(uploader)s/%(title)s.%(ext)s
+#-o /Volumes/home/HDD/yt-dlp/%(extractor)s/%(uploader)s/%(title)s.%(ext)s
+-o ~/Archive/yt-dlp/%(extractor)s/%(uploader)s/%(title)s.%(ext)s
 
 # Merge format "mp4"
 --merge-output-format mp4

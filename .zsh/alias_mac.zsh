@@ -1,7 +1,7 @@
-
 # -----------------------------
 # Alias
 # -----------------------------
+
 # Global Alias (can set alias of pipeline)
 alias -g L="| less"
 alias -g H="| head"
@@ -45,6 +45,7 @@ alias gp="git push"
 alias gpm="gp origin master"
 #------git-----------<
 
+alias gos="/usr/local/bin/gs"
 #alias open="xdg-open"
 alias et="exit"
 alias rl="readlink -f"
@@ -83,6 +84,7 @@ alias ytconfig="vim ~/.config/yt-dlp/config"
 # Others
 alias cddot="cd ~/develop/dotfiles"
 alias nas="cd /Volumes/home"
+alias kemonodl="bash $HOME/GIT/kemono-dl/DL.sh"
 
 #-------------------------------
 #	FUNCTION
@@ -94,24 +96,24 @@ function findf(){
 }
 
 function xtar (){
-opti=$1
-dirn=$2
-
-case "$opti" in
- "a" )  tar cvf  $dirn.tar $dirn ;;     #normal tar
- "g" )  tar cvzf $dirn.tar.gz $dirn ;;  #tar plus zip
- "b" )  tar cvjf $dirn.tar.bz2 $dirn ;; #tar plus bz2
- "x" )  tar cvJf $dirn.tar.xz $dirn ;;  #tar plus xz(slow process, highly compress rate)
- "e" )  tar xvf $dirn ;; #Extraction
-  *  )  echo " =======ERROR!! CANNOT COMPRESS DIRECTORY!!======="
-        echo " =                                               ="
-        echo " =  CHECK DIRECTORY NAME, OPTION, AND FORMAT!!!  ="
-        echo " =                                               ="
-        echo " ================================================="
-        echo " option : a -> tar , g -> gz , b -> bz2 , x -> xz" 
-        echo "          e -> Extract archive."
-        echo " Format -> gtar option "DIRECTORY""
-esac
+  opti=$1
+  dirn=$2
+  
+  case "$opti" in
+   "a" )  tar cvf  $dirn.tar $dirn ;;     #normal tar
+   "g" )  tar cvzf $dirn.tar.gz $dirn ;;  #tar plus zip
+   "b" )  tar cvjf $dirn.tar.bz2 $dirn ;; #tar plus bz2
+   "x" )  tar cvJf $dirn.tar.xz $dirn ;;  #tar plus xz(slow process, highly compress rate)
+   "e" )  tar xvf $dirn ;; #Extraction
+    *  )  echo " =======ERROR!! CANNOT COMPRESS DIRECTORY!!======="
+          echo " =                                               ="
+          echo " =  CHECK DIRECTORY NAME, OPTION, AND FORMAT!!!  ="
+          echo " =                                               ="
+          echo " ================================================="
+          echo " option : a -> tar , g -> gz , b -> bz2 , x -> xz" 
+          echo "          e -> Extract archive."
+          echo " Format -> gtar option "DIRECTORY""
+  esac
 }
 
 function testfunc (){
@@ -122,16 +124,16 @@ function testfunc (){
 }
 # convert a ts-file to mp4-file.
 function tstomp4 (){
-file=$1
-
-ffmpeg -i $file.ts -vcodec copy -acodec copy $file.mp4
+  file=$1
+  
+  ffmpeg -i $file.ts -vcodec copy -acodec copy $file.mp4
 } 
 # PH DLer
 function phdl (){
-phdl_path=$HOME/get/PornHub-downloader-python-master
-cd $phdl_path
-option=$1
-cmd=$2
+  phdl_path=$HOME/GIT/PornHub-downloader-python-master
+  cd $phdl_path
+  option=$1
+  cmd=$2
   case $option in
     "s" ) python3 $phdl_path/phdler.py start ;;
     "a" ) python3 $phdl_path/phdler.py add $cmd ;; 
@@ -142,31 +144,31 @@ cmd=$2
 }
 
 function sshkey(){
-  # When log in, Run ssh-agent.
-# psfile_=$HOME/.ssh/main
-  psnum=$(ps ax | grep ssh-agent | grep -v grep | wc -l)
-  #if [ $psnum -le 1 ]; then
-  #if [ $psnum -ne 0 ]; then
-  if [ -z $SSH_AGENT_PID ]; then 
-  #   echo "no sshagent"
-      eval `ssh-agent` > /dev/null 2>&1
-  #if [ -e $psfile_ ]; then 
-     if [ -e "$HOME/.ssh/id_rsa_vostok2" ]; then
-       keys=id_rsa_vostok2
-     elif [ -e "$HOME/.ssh/id_rsa_github" ]; then
-       keys=id_rsa_github
-     elif [ -e "$HOME/.ssh/id_rsa_vostok2" ] && [ -e "$HOME/.ssh/id_rsa_github" ]; then
-       keys=id_rsa_vostok2
-     fi
-  #    agentunlock_=$(openssl rsautl -decrypt -inkey $psfile_.key -in $psfile_)
-  #    echo  "$agentunlock_"\n | eval `ssh-add $HOME/.ssh/"$keys" > /dev/null 2>&1`
-  #    unset psfile_ agentunlock_
-      eval `ssh-add $HOME/.ssh/"$keys"> /dev/null 2>&1`
-   else
-  #  echo "PASSWORD?"
-  #else
-     echo "ssh-agent exist. Processes:"$psnum", PID:$SSH_AGENT_PID"
-   fi
+    # When log in, Run ssh-agent.
+    # psfile_=$HOME/.ssh/main
+    psnum=$(ps ax | grep ssh-agent | grep -v grep | wc -l)
+    #if [ $psnum -le 1 ]; then
+    #if [ $psnum -ne 0 ]; then
+    if [ -z $SSH_AGENT_PID ]; then 
+    #   echo "no sshagent"
+        eval `ssh-agent` > /dev/null 2>&1
+    #if [ -e $psfile_ ]; then 
+        if [ -e "$HOME/.ssh/id_rsa_vostok2" ]; then
+         keys=id_rsa_vostok2
+        elif [ -e "$HOME/.ssh/id_rsa_github" ]; then
+         keys=id_rsa_github
+        elif [ -e "$HOME/.ssh/id_rsa_vostok2" ] && [ -e "$HOME/.ssh/id_rsa_github" ]; then
+         keys=id_rsa_vostok2
+        fi
+    #    agentunlock_=$(openssl rsautl -decrypt -inkey $psfile_.key -in $psfile_)
+    #    echo  "$agentunlock_"\n | eval `ssh-add $HOME/.ssh/"$keys" > /dev/null 2>&1`
+    #    unset psfile_ agentunlock_
+        eval `ssh-add $HOME/.ssh/"$keys"> /dev/null 2>&1`
+    else
+    #  echo "PASSWORD?"
+    #else
+        echo "ssh-agent exist. Processes:"$psnum", PID:$SSH_AGENT_PID"
+    fi
 }
 
 
