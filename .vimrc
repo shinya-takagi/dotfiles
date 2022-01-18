@@ -97,8 +97,7 @@ iab SHEBANG #!/usr/bin/env
 " -------Colorscheme---------------->
 "colorscheme ThemerVim_1 
  colorscheme ThemerVim    " Original colorscheme
-" --------------------<
-
+" -------Colorscheme---------<
 "-----------------------------------------------------------
 "	Plugin Manager
 "-----------------------------------------------------------
@@ -122,6 +121,8 @@ call plug#begin()
   Plug 'vimwiki/vimwiki'
   Plug 'sheerun/vim-polyglot'				"Many syntax highlight with vanilla vim which don't have them.
 	Plug 'JuliaEditorSupport/julia-vim'
+  Plug 'guns/xterm-color-table.vim'               " Show xterm color and number.
+  Plug 'skanehira/preview-markdown.vim'           " Preview markdown on Vim.
 call plug#end()
 "------ vim-airline commands ----------------->
 if s:is_plugged("vim-airline")
