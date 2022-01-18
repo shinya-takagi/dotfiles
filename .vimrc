@@ -14,7 +14,7 @@ set background=dark
 "set background=light
 " File encoding of th word code.
 set encoding=utf-8
-set fileencodings=iso-2022-jp,sjis,uft-8
+set fileencodings=iso-2022-jp,uft-8,sjis
 scriptencoding utf-8
 filetype plugin indent on
 syntax on
@@ -145,8 +145,16 @@ if s:is_plugged("vim-airline")
 	let g:airline_symbols.notexists = '∄'		"gitで管理されていない場合
 	let g:airline_symbols.whitespace = 'Ξ' 		"空白の警告(余分な空白など)
 endif
+if s:is_plugged("preview-markdown.vim")
+  let g:preview_markdown_parser = "glow"
+endif
 " Plugin Keymap
-nnoremap <C-n> :NERDTree<CR>
+if s:is_plugged("nerdtree")
+  nnoremap <C-n> :NERDTree<CR>
+  autocmd VimEnter * NERDTree | wincmd p    " When vim starts, open files with NERDTree.
+  " Exit Vim if NERDTree is the only window remaining in the only tab.
+  autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+endif
 "-------------------------------------<
 "     LSP Plugin
 "-------------------------------------<
