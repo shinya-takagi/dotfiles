@@ -69,7 +69,6 @@ ulimit -c 0
 # ----Automatic SSH Connection, but it cannot use.> 
 # TEST SSH-AGENT WITH ENV SSH_ASKPASS
 #eval `ssh-agent` > /dev/null 2>&1
-#export DISPLAY=:0.0 
 #eval `ssh-add $HOME/.ssh/id_rsa_vostok2 > /dev/null 2>&1`
 #setsid ssh-add $HOME/.ssh/id_rsa_vostok2 </dev/null
 #ssh vostok
@@ -329,6 +328,7 @@ eval `dircolors ~/.dircolors-solarized/dircolors.ansi-dark_taka`
 #export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 #export DISPLAY=$(ipconfig.exe | grep IPv4 | grep -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' -o | head -2):0
 #export DISPLAY=$(grep nameserver /etc/resolv.conf | sed 's/nameserver //'):0
+ export DISPLAY=:0.0 
 #-----Xserver---------<
 #
 
