@@ -73,7 +73,7 @@ alias vd="vi ~/.dircolors-solarized/dircolors.ansi-dark_taka"
 alias vr="vi ~/.vimrc"
 alias vg="vi ~/.gvimrc"
 alias svr="source ~/.vimrc"
-alias vicolor="vi ~/develop/dotfiles/.vim/colors/ThemerVim.vim"
+alias vicolor="vi ~/.vim/colors/ThemerVim.vim"
 #alias tma="tmux attach"
 #alias tml="tmux list-window"
 
