@@ -25,7 +25,7 @@ elif [ "$(uname -s )" = "Darwin" ]; then
     export PATH="$HOME/.wine/drive_c/windows/system32:$PATH"
     export PATH="$HOME/develop/fbc-1.06/bin:$PATH"
     #export PATH="$HOME/bin:$PATH"
-    export PYTHONPATH="$HOME/develop/lib:$PYTHONPATH"
+    export PYTHONPATH="$HOME/Google_Drive_kindai.ac.jp/Python/lib:$PYTHONPATH"
     export PATH="/Applications/Wine Stable.app/Contents/Resources/wine/bin:$PATH"
     export FREETYPE_PROPERTIES="truetype:interpreter-version=35"
     export DYLD_FALLBACK_LIBRARY_PATH="/usr/lib:/opt/X11/lib:$DYLD_FALLBACK_LIBRARY_PATH"

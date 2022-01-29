@@ -495,6 +495,15 @@ highlight pyCustomFunc ctermfg=43
 highlight pyCustomAttribute ctermfg=247
 highlight pyCustomMethod ctermfg=33
 
+" ------ Add Syntax from
+"  https://hachibeechan.hateblo.jp/entry/vim-customize-for-python
+"  ------------------------------->
+syn match pythonOperator "\(+\|=\|-\|\^\|\*\)"
+syn match pythonDelimiter "\(,\|\.\|:\)"
+syn keyword pythonSpecialWord self
+
+hi link pythonSpecialWord    Special
+hi link pythonDelimiter      Special
 " ------ End Add Syntax ----------<
 
 if s:Enabled("g:python_slow_sync")

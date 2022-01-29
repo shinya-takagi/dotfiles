@@ -300,6 +300,8 @@ setopt hist_verify
 #------------------------------
 #eval `dircolors ~/.dircolors-solarized/dircolors.256dark`
  eval `gdircolors ~/.dircolors-solarized/dircolors.ansi-dark_taka`
+
+#eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 #------------------------------
 #   DISPLAY
 #------------------------------

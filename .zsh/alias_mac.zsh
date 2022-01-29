@@ -77,13 +77,20 @@ alias vicolor="vi ~/.vim/colors/ThemerVim.vim"
 #alias tma="tmux attach"
 #alias tml="tmux list-window"
 
-# python
+# Python
 alias py="python3"
 alias ytconfig="vim ~/.config/yt-dlp/config"
 
+# TeX
+alias lmk="latexmk -pvc -output-directory=out"
+alias lmkc="latexmk -c"
+
 # Others
-alias cddot="cd ~/develop/dotfiles"
+KINDAI="Google_Drive_kindai.ac.jp"
+alias cddot="cd ~/$KINDAI/dotfiles"
 alias nas="cd /Volumes/home"
+alias kindai="cd $HOME/$KINDAI"
+alias dev="cd $HOME/$KINDAI/develop/Mac"
 alias kemonodl="bash $HOME/GIT/kemono-dl/DL.sh"
 
 #-------------------------------
