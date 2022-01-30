@@ -5,10 +5,6 @@
 #    . /etc/bashrc
 #fi
 
-# ---TEST PRONPT------->
-#export PS1="[Now] \\t at \\d\\n[ \\w]\\n \$ "
-#export PS1="[ \\w]\\n \$ "
-#export PS1="\033[01;34m \\w\\n\033[00m $ "
 #----S.Takagi 2021.11.07. ----Show Git Prompt-----> 
 export PROMPT_COMMAND="source $HOME/.bashrc"
 if [ -f $HOME/.git-completion.bash ]; then
@@ -18,7 +14,7 @@ if [ -f $HOME/.git-prompt.sh ]; then
     source ~/.git-prompt.sh
 #   export GIT_STATUS=$(__git_ps1)
 fi
-export GIT_STATUS=$(__git_ps1 "(%s)")
+export GIT_STATUS="$(__git_ps1 "(%s)") "
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
 GIT_PS1_SHOWSTASHSTATE=true
@@ -31,14 +27,16 @@ P_BLUE="\[\033[01;34m\]"
 P_MAGENTA="\[\033[01;35m\]"
 P_CYAN="\[\033[01;36m\]"
 P_WHITE="\[\033[00m\]"
+NOW_TIME="<$(date +"%Y/%m/%d %p %I:%M:%S")>"
 if [ "$(echo $GIT_STATUS | grep "+")" ]; then 
-    export PS1="$P_BLUE \w "$P_RED"$GIT_STATUS"$P_BLUE"\n"$P_WHITE" $ "
+    export PS1="$P_BLUE \w "$P_RED"$GIT_STATUS"$P_WHITE""$NOW_TIME"\n"$P_WHITE" $ "
 elif [ "$(echo $GIT_STATUS | grep "%")" ]; then 
-    export PS1="$P_BLUE \w "$P_YELLOW"$GIT_STATUS"$P_BLUE"\n"$P_WHITE" $ "
+    export PS1="$P_BLUE \w "$P_YELLOW"$GIT_STATUS"$P_WHITE""$NOW_TIME"\n"$P_WHITE" $ "
 elif [ "$(echo $GIT_STATUS | grep "*")" ]; then 
-    export PS1="$P_BLUE \w "$P_YELLOW"$GIT_STATUS"$P_BLUE"\n"$P_WHITE" $ "
+    export PS1="$P_BLUE \w "$P_YELLOW"$GIT_STATUS"$P_WHITE""$NOW_TIME"\n"$P_WHITE" $ "
 else
-    export PS1="$P_BLUE \w "$P_GREEN"$GIT_STATUS"$P_BLUE"\n"$P_WHITE" $ "
+    GIT_STATUS=""
+    export PS1="$P_BLUE \w "$P_GREEN"$GIT_STATUS"$P_WHITE""$NOW_TIME"\n"$P_WHITE" $ "
 fi
 
 # ---PROMPT------------<
@@ -86,6 +84,7 @@ alias sr="source ~/.vimrc"
 alias ftvim="vi ~/.vim/ftplugin/fortran.vim"
 alias vimmk="vi -O ~/.Makefile_tmp Makefile"
 
+
 # Others
 alias memo="vi ~/own/dev/memo.c"
 alias share="cd ~/cloud/share"
@@ -97,16 +96,24 @@ alias epsilon="cat ~/lang2018/pot2017/ldmc4a2017b/epsilon_t"
 alias amano="cd $HOME/lang2021/amano2021/"
 alias zda="vi ~/own/dev/ZDA.dat"
 alias dvi="vi -d"
+alias cemacs="emacs -nw"
 
 alias 4dim="cd /home/takagi/lang2021/4dim/4dt/lang25_26"
 alias ama="cd $HOME/lang2021/amano2021/langtrant"
 alias aman="cd $HOME/lang2021/amano2021/langtranN"
+alias fus="cd $HOME/lang2021/Fusion_EVP"
 alias code="cd $HOME/own/code"
+alias py="python"
+
+alias term="gnome-terminal &"
 
 # Rotation directory
 ROTUT=~/lang2020/langfi/rot
 alias rotu="cd $ROTUT"
 alias rotp="cd $ROTUT/paper"
+
+# Multi-chance fission
+alias vistmass="vi langST1_14_ty1Mass.f"
 
 # change directory to dot
 alias ..="cd .."
@@ -122,7 +129,7 @@ alias gs="git status"
 
 #function 
 function hoge() {
-echo "This is function hoge"
+    echo "This is function hoge"
 }
 function tt () {
     local nowd=$PWD
@@ -296,19 +303,23 @@ function form (){
     esac
 }
 
-function drm(){
-    local arg_num=$#
-    local move_things=$1
-    local trash_path=$HOME/.trashbox
-    if [ $arg_num -eq 1 ]; then
-        mv "$move_things" $trash_path/"$move_things"_trash 
-        echo $(date +'%Y/%m/%d %H:%M:%S') >> $trash_path/trash_list 
-        echo "$move_things is from "$PWD"." >> $trash_path/trash_list
-        echo ""$move_things" is moved in "$HOME/.trashbox.""
-    elif [ $arg_num -eq 0 ]; then
-        echo "argment "aru_num" is $arg_num."
-    else
-        echo "argment "aru_num" is too many("$arg_num", only 1)."
-    fi
+function subjob1(){
+    local EXECUTABLE=$1
+    bsubomp -m vostok1 -n 1 -o wo ./$EXECUTABLE
 }
+#function drm(){
+#    local arg_num=$#
+#    local move_things=$1
+#    local trash_path=$HOME/.trashbox
+#    if [ $arg_num -eq 1 ]; then
+#        mv "$move_things" $trash_path/"$move_things"_trash || stop 
+#        echo $(date +'%Y/%m/%d %H:%M:%S') >> $trash_path/trash_list 
+#        echo "$move_things is from "$PWD"." >> $trash_path/trash_list
+#        echo ""$move_things" is moved in "$HOME/.trashbox.""
+#    elif [ $arg_num -eq 0 ]; then
+#        echo "argment "aru_num" is $arg_num."
+#    else
+#        echo "argment "aru_num" is too many("$arg_num", only 1)."
+#    fi
+#}
 

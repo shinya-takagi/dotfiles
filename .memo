@@ -1,0 +1,83 @@
+//Command tips
+; -> connect 1st and 2nd commands ,and run sequentiallly
+testcmd=`date "+%Y%m%d"` {date = year/month/day}
+
+//terminal commands
+Ctrl+Pageup/doun	-> scrolling 1Page up/down
+Ctrl+Home/End		-> move to home/end in the terminal
+
+//How to get public and secure keys
+(on teraterm)
+1.click settings/SSH keysgen on the window.
+2.touch "Generation"
+3.write your password in passphrase of keys.
+4.optically sign comments.
+5.save a public key and a secure key.
+(if filename extension dont show, public and secure keys are different names.)
+6.run SSH transfer and login as a user.
+7.move a public key to /home/USER/.ssh and rename it "authorized_keys"
+(Permission of authorized_keys is 644)
+8.disconnect SSH transfer and run teraterm.
+9.login USER as public key authorization.
+10.make you happy!
+
+//vimrc
+Default option "vimrc"
+open vimrc "~/.vimrc"
+
+//Github 
+//file update
+git add .
+git commit -m "anything"
+git push origin master
+//file symthesis
+git pull
+//first clone
+cd ~/
+git clone https://github.com/shinya-takagi/dotfiles.git
+sh dotfilesLink.sh
+
+//Copy and Paste
+Copy = sentense or words to double click
+Paste = right click (-disabled) or Alt + V (Ctrl-V in windows)
+
+//force log out
+1) w command
+2) find your user
+3) run "ps ax | grep sshd"
+4) display <process ID>
+5) run "kill -9 <process ID>"
+
+//vi editor
+vsplit		->	divide half vertically
+Ctrl + w + h	->	move to right window
+Ctrl + w + l	->	move to left window
+(to execute)
+vi(m) -O fileA fileB	->	open fileA and fileB vertically(O is large o, not zero)
+
+//project from Github
+git clone git@github.com:nnobuya/mcnuc_takagi.git
+
+//Calculation of Potential Energy
+LDM   ->	potl.sh
+SHM   ->	xchanger.sh
+Z<100 ->	name:___092a236____
+
+//Statistical Model
+Directory:minato8k	exe:surv4	input:int114	result:resu1
+			Exicitation energy : 15 ~ 60 MeV
+
+
+// ~/cloud/share	NOT USE JAPANESE (cannot read japanese in vostok)
+share files among labo pc , my laptop and my desktop
+ex)calculated files , PDF presentation files , etc...
+
+//Google classroom spreadsheet
+ -> write research status how,what ...
+ How to go? -> google/Gdrive/research spreadsheet
+
+// ssh agent transfer
+ssh -A SERVER_NAME
+ssh -XY SERVER_NAME (X11 fowarding)
+
+

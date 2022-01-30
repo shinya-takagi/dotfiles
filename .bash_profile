@@ -1,8 +1,9 @@
-#
-# ~/.bash_profile
-#
+# .bash_profile
 
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
 
 # User specific environment and startup programs
 # User specific aliases and functions
@@ -16,6 +17,9 @@ ulimit -s unlimited
 #PATH=$PATH:$HOME/bin
 #PATH="$HOME/usr/bin:$PATH"
 PATH="$HOME/own/code:$PATH"
+PATH="$HOME/local/bin:$PATH"
+export PYTHONPATH="$HOME/python_dev/lib"
 
 export PATH
+
 

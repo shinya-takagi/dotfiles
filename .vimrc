@@ -1,107 +1,99 @@
-"-----------------------------------------------------------
-"             FileType setting
-"-----------------------------------------------------------
-augroup auto_filetype
-  autocmd!
-  "autocmd BufRead,BufNewFile *.f setfiletype fortran
-  "autocmd BufRead,BufNewFile *.f90 setfiletype fortran90
-  "autocmd BufRead,BufNewFile *.sh setfiletype shell
-  autocmd BufRead,BufNewFile *.zsh setfiletype zsh
-  autocmd BufRead,BufNewFile *.conf setfiletype json
-augroup end
-"-----------------------------------------------
-"             vim command
-"-----------------------------------------------
-"==========Background color============
- set background=dark
-"set background=light
-"=========File encoding of th word code.=========
-set encoding=utf-8
-"set fileencodings=iso-2022-jp,sjis,uft-8
-set fileencodings=iso-2022-jp,uft-8
-scriptencoding utf-8
-filetype plugin indent on
-syntax on
-set number              " show line numbers
-set ruler               " show ruler
-set title               " show title
-set showcmd             " show commands until writing.
-set showmatch           " move between ( and )
-set autoindent          " insert indent when put Enter-key (if, for, etc...)
-set wildmenu            " show list after inserting words.
-set noswapfile          " Dont generate Swap file.
-set cursorline          " cursor line 
-set ambiwidth=double    " Width 2 of ambi words.
-"set nocursorcolumn
-"==========Temporary files directory==============
-set directory=~/.vim/swap
-set backupdir=~/.vim/tmp
-set undodir=~/.vim/undo
-"=========Completement shows in one word, don't insert comp word.==========
-set completeopt=menuone,noinsert
-set incsearch           " Realtime highlight search.
-set hlsearch            " Highlight when you searched.
-set nocompatible        " No compatible with vi editor.
-set whichwrap=b,s,h,l,<,>,[,]
-set backspace=indent,eol,start " Backspace is"
-set ttimeoutlen=50      " Timeout length
-" Tab settings
-"set tabstop=4           " tab is 4
-"set expandtab           " exchange tab to space
-"set shiftwidth=4        " space width 4
-"set smartindent         " insert indent if it exists indent.
-
-"let $ZSH_ENV = "~/.zsh/alias.zsh" 
 "-------------------------------------------------------------
-"                 Vim Keymapping
+"               Vim Keymap Setting
 "-------------------------------------------------------------
+" visual mode test
+"noremap <C-v> <C-q>
 "Disable Arrow-keys 
  noremap <Up> <Nop>
  noremap <Down> <Nop>
  noremap <Left> <Nop>
  noremap <Right> <Nop>
-" jj to escape key 
- inoremap jj <Esc>  
-" C-h is backspace. Delete to backspace
+"inoremap <Up> <Nop>
+"inoremap <Down> <Nop>
+"inoremap <Left> <Nop>
+"inoremap <Right> <Nop>
+" In insert-mode, Need push controll-key to move.
+" C-h is backspace, so arrow-keys are only disabled normal-mode.
+"inoremap <C-j> <Down>
+"inoremap <C-k> <Up>
+"inoremap <C-h> <Left>
+"inoremap <C-l> <Right>
+"Delete to backspace
  noremap  <C-h>
  inoremap  <C-h>
+ set whichwrap=b,s,h,l,<,>,[,]
+ set backspace=indent,eol,start
+"-------------------------------------------------
+"-----------------------------------------------
+"               vim command
+"-----------------------------------------------
+" Set about file config.
+ set encoding=utf-8
+ set fileencodings=iso-2022-jp,sjis,uft-8
+ scriptencoding utf-8
+ filetype plugin indent on
+ syntax on
+"colorscheme codedark
+ set background=dark
+ colorscheme ThemerVim
+ " Use aliases on bash
+ let $BASH_ENV = "~/.bash_aliases"
+ set nocompatible
+ set number     " show line numbers
+ set ruler      " show ruler
+ set title      " show title
+ set showcmd    " show commands until writing.
+ set showmatch  " move between ( and )
+ set autoindent " insert indent when put Enter-key (if, for, etc...)
+ set wildmenu   " show list after inserting words.
+ set noswapfile " Dont generate Swap file.
+ set cursorline " cursor line 
+ set incsearch  " Realtime highlight search.
+"set nocursorcolumn
+" Temporary files directory
+ set directory=~/.vim/swap
+ set backupdir=~/.vim/tmp
+"set undodir=~/.vim/undo
+"Show Status on Vim forever.
+ set laststatus=2
+"Set detailed status on Vim. %= is moving to right side.
+ set statusline=\P:\ %<%r%F\       "Show filepath
+ set statusline+=%y\                "Show filetype
+"set statusline+=[%{expand('%:e')}] "Show file expansion
+ set statusline+=%=T:\ %{strftime('%p\.%H:%M:%S\ \in\ %Y/%m/%d')}, "Show Time 
+ set statusline+=\ Col:\ %c,    "Show column number
+ set statusline+=\ Row:\ %l/%L/%P\   "Show line number
+"-----------------------------------------------------------
+"           Highlight coler change
+"-----------------------------------------------------------
+"highlight LineNr ctermfg=darkyellow
+"highlight Comment ctermfg=magenta
+highlight StatusLine ctermfg=red ctermbg=black
 "----------------------------------------------------------
-"" PASTE FROM CLIPBOARD
+""          PASTE FROM CLIPBOARD
 "----------------------------------------------------------
 " disable indent when you paste it from clipboard in insert mode. 
-"
 if &term =~ "xterm"
-	let &t_SI .= "\e[?2004h"
-	let &t_EI .= "\e[?2004l"
-	let &pastetoggle = "\e[201~"
-
-	function XTermPasteBegin(ret)
-	set paste
-	return a:ret
-	endfunction
-
-	inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+    let &t_SI .= "\e[?2004h"
+    let &t_EI .= "\e[?2004l"
+    let &pastetoggle = "\e[201~"
+    
+    function XTermPasteBegin(ret)
+        set paste
+        return a:ret
+    endfunction
+    
+    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
 endif
-"--------Auto command-------------->
-augroup run_files
-  autocmd!
-  autocmd FileType python nmap <buffer> <F5> :!python %<CR>
-  autocmd FileType julia nmap <buffer> <F5> :!julia %<CR>
-  autocmd FileType sh nmap <buffer> <F5> :!sh %<CR>
-augroup end
-if filereadable(expand("~/.latexmkrc"))
-  augroup run_latex
+"-----------------------------------------------------------
+"               FileType setting
+"-----------------------------------------------------------
+augroup set_filetype
     autocmd!
-    autocmd FileType tex nmap <buffer> <F5> :!latexmk -pvc -output-directory=out %<CR>
-  augroup end
-endif
-"--------Auto command--------<
-" -------Highlight----------------->
-"highlight LineNr ctermfg=darkyellow
-"highlight LineNr ctermfg=yellow
-"highlight Comment ctermfg=lightblue
-" -------Highlight-----------<
-"
+    autocmd BufRead,BufNewFile *.zsh           setfiletype zsh
+    autocmd BufRead,BufNewFile *.md            set filetype=markdown
+    autocmd BufRead,BufNewFile *.bash          set filetype=sh
+augroup end
 " -------Abbreviations-------------->
 iabbrev ad advertisement 
 " Comment for vim
@@ -116,13 +108,9 @@ iab !-< !-------------------<
 " Comment for shell, python
 iab #-> #------------------------------------------------->
 iab #-< #-------------------< 
-" Environmental shebang
+" Create Shebang automatically
 iab SHEBANG #!/usr/bin/env
 " --------------------------<
-" -------Colorscheme---------------->
-"colorscheme ThemerVim_1 
- colorscheme ThemerVim    " Original colorscheme
-" -------Colorscheme---------<
 "----------------------------------------------------------
 "       For editing Colorscheme
 "----------------------------------------------------------
@@ -178,15 +166,9 @@ function! s:DoFortran()
     :!ifort % -o %<
     :!./%<
 endfunction
-" Save the last cursol position
-augroup vimrcEx
-  au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
-  \ exe "normal g`\"" | endif
-augroup END
 "-----------------------------------------------------------
-"         Plugin Manager
+"               Plugin Installed Checker
 "-----------------------------------------------------------
-" Define 'is_plugged' function.
 function s:is_plugged(name)
     if exists('g:plugs') && has_key(g:plugs, a:name) && isdirectory(g:plugs[a:name].dir)
         return 1
@@ -194,104 +176,28 @@ function s:is_plugged(name)
         return 0
     endif
 endfunction
-
-call plug#begin()
-  Plug 'preservim/nerdtree'				"Tree type directory
-  Plug 'neoclide/coc.nvim', {'branch': 'release'} " completement plugin.
-" Plug 'romkatv/powerlevel10k'				"Use powerlevel10k, but it cannot run
-  Plug 'vim-airline/vim-airline'			"Powerline fonts for Vim 
-  Plug 'vim-airline/vim-airline-themes'			"For Airline themes
-  Plug 'ryanoasis/vim-devicons'				"Various icons for Vim.
-  Plug 'markonm/traces.vim'				"Show Hightlight for search.
-  Plug 'vimwiki/vimwiki'
-  Plug 'sheerun/vim-polyglot'				"Many syntax highlight with vanilla vim which don't have them.
-	Plug 'JuliaEditorSupport/julia-vim'
-  Plug 'guns/xterm-color-table.vim'               " Show xterm color and number.
-  Plug 'skanehira/preview-markdown.vim'           " Preview markdown on Vim.
-  Plug 'Vimjas/vim-python-pep8-indent'            " indent based on pep8
-  Plug 'vim-latex/vim-latex'                      " Plugin for useful LaTeX.
-call plug#end()
-"------ vim-airline commands ----------------->
-if s:is_plugged("vim-airline")
-	let g:airline_powerline_fonts = 1		"Use Powerline fonts
-	let g:airline#extensions#tabline#enabled = 1	"Show tab line at opening files
-	let g:airline_theme = 'powerlineish'		"Change Airline color theme
-	if !exists('g:airline_symbols')
-		let g:airline_symbols = {}
-	endif
-	"let g:airline_left_sep = '⮀'			"Separeter for left
-	"let g:airline_left_alt_sep = '⮁'
-	"let g:airline_right_sep = '⮂'			"Separater for right
-	"let g:airline_right_alt_sep = '⮃'
-	let g:airline_symbols.crypt = '🔒'		"暗号化されたファイル
-"let g:airline_symbols.linenr = '¶'		"行
-	let g:airline_symbols.linenr = 'LINE'		"行
-	let g:airline_symbols.maxlinenr = 'MAX㏑'	"最大行
-	let g:airline_symbols.branch = '⭠'		"gitブランチ
-	let g:airline_symbols.paste = 'ρ'		"ペーストモード
-	let g:airline_symbols.spell = 'Ꞩ'		"スペルチェック
-	let g:airline_symbols.notexists = '∄'		"gitで管理されていない場合
-	let g:airline_symbols.whitespace = 'Ξ' 		"空白の警告(余分な空白など)
-endif
-if s:is_plugged("preview-markdown.vim")
-  let g:preview_markdown_parser = "glow"
-endif
-"================ Plugin Keymap =========================
-if s:is_plugged("nerdtree")
+"-----------------------------------------------------------
+"               Plugin Manager
+"-----------------------------------------------------------
+  call plug#begin()
+    Plug 'preservim/nerdtree'       "Tree type directory
+    Plug 'guns/xterm-color-table.vim'   " Show Xterm color table
+    Plug 'Vimjas/vim-python-pep8-indent'    " indent based on pep8
+    Plug 'hachibeeDI/python_hl_lvar.vim'    " local variable highlight
+    Plug 'nathanaelkane/vim-indent-guides'  " Show Vim Indent
+"   Plug 'osyo-manga/vim-over'
+"   Plug 'vim-python/python-syntax'
+"   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  call plug#end()
+" 
+" " Plugin Keymap
   nnoremap <C-n> :NERDTree<CR>
-  nnoremap <C-x> :NERDTreeClose<CR>
-  augroup autocmd_plugin
+" let g:enable_python_hl_lvar = 1
+augroup autoexe_plugin
     autocmd!
-"   autocmd VimEnter * NERDTree | wincmd p    " When vim starts, open files with NERDTree.
-    " Exit Vim if NERDTree is the only window remaining in the only tab.
-    autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-  augroup end
-endif
-""-------------------------------------------------------
-""      Vim-LaTeX (for MacOS)
-""-------------------------------------------------------
-if s:is_plugged("vim-latex")
-  set grepprg=grep\ -nH\ $*
-  let g:tex_flavor='latex'
-  let g:Imap_UsePlaceHolders = 1
-  let g:Imap_DeleteEmptyPlaceHolders = 1
-  let g:Tex_AutoFolding = 0
-  let g:Imap_StickyPlaceHolders = 0
-  let g:Tex_DefaultTargetFormat = 'pdf'
-  let g:Tex_MultipleCompileFormats='dvi,pdf'
-  "let g:Tex_FormatDependency_pdf = 'pdf'
-  let g:Tex_FormatDependency_pdf = 'dvi,pdf'
-  let g:Tex_CompileRule_pdf = 'ptex2pdf -u -l -ot "-synctex=1 -interaction=nonstopmode -file-line-error-style" $*'
-  "let g:Tex_CompileRule_pdf = 'lualatex -synctex=1 -interaction=nonstopmode -file-line-error-style $*'
-  let g:Tex_CompileRule_dvi = 'uplatex -synctex=1 -interaction=nonstopmode -file-line-error-style $*'
-  let g:Tex_BibtexFlavor = 'upbibtex'
-  let g:Tex_MakeIndexFlavor = 'upmendex $*.idx'
-  let g:Tex_UseEditorSettingInDVIViewer = 1
-  let g:Tex_ViewRule_pdf = 'Skim'
-  "let g:Tex_ViewRule_pdf = 'open -a Skim'
-  "let g:Tex_ViewRule_pdf = 'open -a Preview'
-  "let g:Tex_ViewRule_pdf = 'open -a TeXShop'
-  "let g:Tex_ViewRule_pdf = '/Applications/TeXworks.app/Contents/MacOS/TeXworks'
-  "let g:Tex_ViewRule_pdf = '/Applications/texstudio.app/Contents/MacOS/texstudio --pdf-viewer-only'
-  "let g:Tex_ViewRule_pdf = 'open -a Firefox'
-  "let g:Tex_ViewRule_pdf = 'open -a "Adobe Acrobat Reader DC"'
-  "let g:Tex_ViewRule_pdf = 'open'
-endif
-"-------------------------------------<
-"     LSP Plugin
-"-------------------------------------<
-"	For Fortran 
-"
-" call plug#begin('~/.vim/plugged')
-"   Plug 'prabirshrestha/asyncomplete.vim'
-"   Plug 'prabirshrestha/asyncomplete-lsp.vim'
-"   Plug 'prabirshrestha/vim-lsp'
-"   Plug 'mattn/vim-lsp-settings'
-"   Plug 'mattn/vim-lsp-icons'
-" call plug#end()
-" let g:lsp_diagnostics_enabled=1
-" let g:lsp_diagnostics_echo_cursor=1
-" let g:lsp_text_edit_enabled=1
-" let g:asyncomplete_auto_popup=1
-" let g:asyncomplete_popup_delay=200
-"--------------------------------<
+    if s:is_plugged("vim-indent-guides")
+       "autocmd FileType python :IndentGuidesEnable
+       nmap <F4> \ig    " backslash ig -> Switch IndentGuide
+    endif
+augroup end
+

@@ -94,14 +94,24 @@ function main(){
             'Linux' ){  
                 local zfuncs=".zsh/functions"
                 mkdir -p $HOME/$zfuncs 
-                ln -sf "$DFPATH"/.vimrc                 ~/.vimrc
-                ln -sf "$DFPATH"/.zlogout               ~/.zlogout
-                ln -sf "$DFPATH"/.zprofile              ~/.zprofile
-                ln -sf "$DFPATH"/.zshrc                 ~/.zshrc
-                ln -sf "$DFPATH"/.zsh/alias.zsh         ~/.zsh/alias.zsh
-                ln -sf "$DFPATH"/$zfuncs/_mcf           ~/$zfuncs/_mcf
-                ln -sf "$DFPATH"/$zfuncs/_cht           ~/$zfuncs/_cht
-                ln -sf "$DFPATH"/.gallery-dl.json       ~/.gallery-dl.conf
+                if [[ "$(uname -r)" == *microsoft* ]];  then 
+                    ln -sf "$DFPATH"/.vimrc_wsl             ~/.vimrc
+                    ln -sf "$DFPATH"/.zlogout               ~/.zlogout
+                    ln -sf "$DFPATH"/.zprofile              ~/.zprofile
+                    ln -sf "$DFPATH"/.zshrc                 ~/.zshrc
+                    ln -sf "$DFPATH"/.zsh/alias.zsh         ~/.zsh/alias.zsh
+                    ln -sf "$DFPATH"/$zfuncs/_mcf           ~/$zfuncs/_mcf
+                    ln -sf "$DFPATH"/$zfuncs/_cht           ~/$zfuncs/_cht
+                    ln -sf "$DFPATH"/.gallery-dl.json       ~/.gallery-dl.conf
+                else
+                    ln -sf "$DFPATH"/.vimrc                 ~/.vimrc
+                    ln -sf "$DFPATH"/.zlogout               ~/.zlogout
+                    ln -sf "$DFPATH"/.zprofile              ~/.zprofile
+                    ln -sf "$DFPATH"/.zshrc                 ~/.zshrc
+                    ln -sf "$DFPATH"/.zsh/alias.zsh         ~/.zsh/alias.zsh
+                    ln -sf "$DFPATH"/$zfuncs/_mcf           ~/$zfuncs/_mcf
+                    ln -sf "$DFPATH"/$zfuncs/_cht           ~/$zfuncs/_cht
+                fi
             };;
             * )	echo "stop"
         esac
