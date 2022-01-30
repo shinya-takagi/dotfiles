@@ -53,8 +53,10 @@ alias sl="ls"
 #if type xdg-open >/dev/null 2>&1; then
 #  alias open="xdg-open"
 #fi
-if type wsl-open >/dev/null 2>&1; then
-  alias open="wsl-open"
+#if type wsl-open >/dev/null 2>&1; then
+if [[ "$(uname -r)" == *microsoft* ]];  then 
+   alias open="wsl-open"
+   alias xdg-open="wsl-open"
 fi
 if type open >/dev/null 2>&1; then
   alias ggr="open http://google.com/"
@@ -85,6 +87,10 @@ alias vd="vi ~/.dircolors-solarized/dircolors.ansi-dark_taka"
 # python
 alias py="python3"
 alias ytconfig="vim ~/.config/yt-dlp/config"
+
+# TeX
+alias lmk="latexmk -pvc -output-directory=out"
+alias lmkc="latexmk -c"
 
 # Windows 
 alias user="cd /mnt/c/Users/shiny"

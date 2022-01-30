@@ -1,7 +1,6 @@
 "------------------------>
 "   Color ThemerVim
 "------------------------>
-  
 if &background == 'dark'
   let s:guishade0 = "#181c14"
   let s:guishade1 = "#393e48"
@@ -21,14 +20,14 @@ if &background == 'dark'
   let s:guiaccent7 = "#be5046"
   let s:ctermshade0 = 234       " Background color
   let s:ctermshade1 = 238       " cursor background color
-  let s:ctermshade2 = 59        " line number
+  let s:ctermshade2 = 59        " line number, comment
   let s:ctermshade3 = 102       " Line cursor color
   let s:ctermshade4 = 103       " Status Line?
   let s:ctermshade5 = 190       " tab line?
-  let s:ctermshade6 = 254
+  let s:ctermshade6 = 254       " Normal Word
   let s:ctermshade7 = 248
   let s:ctermaccent0 = 1        " Error
-  let s:ctermaccent1 = 4        " Keyword (ex. print, function name 
+  let s:ctermaccent1 = 2        " Keyword (ex. print, function name 
   let s:ctermaccent2 = 13       " Identifier ( shell's variables
   let s:ctermaccent3 = 150      " Quotation color
   let s:ctermaccent4 = 126      " Character (vim completement color)
@@ -88,22 +87,22 @@ if &background == 'light'
   let s:guiaccent5 = "#61afef"
   let s:guiaccent6 = "#c678dd"
   let s:guiaccent7 = "#be5046"
-  let s:ctermshade0 = 234
-  let s:ctermshade1 = 238
-  let s:ctermshade2 = 59 
-  let s:ctermshade3 = 102
-  let s:ctermshade4 = 103
-  let s:ctermshade5 = 190
-  let s:ctermshade6 = 254
-  let s:ctermshade7 = 248
-  let s:ctermaccent0 = 1 
-  let s:ctermaccent1 = 4 
-  let s:ctermaccent2 = 13
-  let s:ctermaccent3 = 15
-  let s:ctermaccent4 = 12
-  let s:ctermaccent5 = 11
-  let s:ctermaccent6 = 14
-  let s:ctermaccent7 = 166
+  let s:ctermshade0 = 15       " Background color
+  let s:ctermshade1 = 248      " cursor background color
+  let s:ctermshade2 = 242      " line number, comment
+  let s:ctermshade3 = 232      " Line cursor color
+  let s:ctermshade4 = 103      " Status Line?
+  let s:ctermshade5 = 190      " tab line?
+  let s:ctermshade6 = 0        " Normal word                        
+  let s:ctermshade7 = 238                                           
+  let s:ctermaccent0 = 1       " Error
+  let s:ctermaccent1 = 20      " Keyword (ex. print, function name 
+  let s:ctermaccent2 = 5       " Identifier ( shell's variables
+  let s:ctermaccent3 = 52      " Quotation color
+  let s:ctermaccent4 = 130     " Character (vim completement color)
+  let s:ctermaccent5 = 22      " statement
+  let s:ctermaccent6 = 3       " pre-processor ( python's import)
+  let s:ctermaccent7 = 6       " Special key                       
 endif
 
 highlight clear
@@ -219,7 +218,7 @@ exec "hi SignColumn ctermbg=".s:ctermshade0
 exec "hi IncSearch guifg=".s:guishade0." guibg=".s:guiaccent2
 exec "hi IncSearch ctermfg=".s:ctermshade0." ctermbg=".s:ctermaccent2
 exec "hi LineNr guifg=".s:guishade2." guibg=".s:guishade0
-exec "hi LineNr ctermfg=".s:ctermshade2." ctermbg=".s:ctermshade0
+exec "hi LineNr ctermfg=".s:ctermshade6." ctermbg=".s:ctermshade0
 exec "hi CursorLineNr guifg=".s:guishade3." guibg=".s:guishade1
 exec "hi CursorLineNr ctermfg=".s:ctermshade3." ctermbg=".s:ctermshade1
 exec "hi MatchParen guibg=".s:guishade2

@@ -1,47 +1,59 @@
 "-----------------------------------------------------------
-"	FileType setting
+"             FileType setting
 "-----------------------------------------------------------
-"autocmd BufRead,BufNewFile *.f setfiletype fortran
-"autocmd BufRead,BufNewFile *.f90 setfiletype fortran90
-"autocmd BufRead,BufNewFile *.sh setfiletype shell
-autocmd BufRead,BufNewFile *.zsh setfiletype zsh
-autocmd BufRead,BufNewFile *.conf setfiletype json
+augroup auto_filetype
+  autocmd!
+  "autocmd BufRead,BufNewFile *.f setfiletype fortran
+  "autocmd BufRead,BufNewFile *.f90 setfiletype fortran90
+  "autocmd BufRead,BufNewFile *.sh setfiletype shell
+  autocmd BufRead,BufNewFile *.zsh setfiletype zsh
+  autocmd BufRead,BufNewFile *.conf setfiletype json
+augroup end
 "-----------------------------------------------
-"		vim command
+"             vim command
 "-----------------------------------------------
-" Background color
-set background=dark
+"==========Background color============
+ set background=dark
 "set background=light
-" File encoding of th word code.
+"=========File encoding of th word code.=========
 set encoding=utf-8
-set fileencodings=iso-2022-jp,uft-8,sjis
+"set fileencodings=iso-2022-jp,sjis,uft-8
+set fileencodings=iso-2022-jp,uft-8
 scriptencoding utf-8
 filetype plugin indent on
 syntax on
-set number   	" show line numbers
-set ruler 	    " show ruler
-set title 	    " show title
-set showcmd 	  " show commands until writing.
-set showmatch 	" move between ( and )
-set autoindent " insert indent when put Enter-key (if, for, etc...)
-set wildmenu 	" show list after inserting words.
-set noswapfile " Dont generate Swap file.
-set cursorline " cursor line 
+set number              " show line numbers
+set ruler               " show ruler
+set title               " show title
+set showcmd             " show commands until writing.
+set showmatch           " move between ( and )
+set autoindent          " insert indent when put Enter-key (if, for, etc...)
+set wildmenu            " show list after inserting words.
+set noswapfile          " Dont generate Swap file.
+set cursorline          " cursor line 
+set ambiwidth=double    " Width 2 of ambi words.
 "set nocursorcolumn
-" Temporary files directory
+"==========Temporary files directory==============
 set directory=~/.vim/swap
 set backupdir=~/.vim/tmp
 set undodir=~/.vim/undo
-" Completement shows in one word, don't insert comp word.
-set completeopt=menuone,noinsert	
-set incsearch  " Realtime highlight search.
-set hlsearch   " Highlight when you searched.
-set nocompatible " No compatible with vi editor.
+"=========Completement shows in one word, don't insert comp word.==========
+set completeopt=menuone,noinsert
+set incsearch           " Realtime highlight search.
+set hlsearch            " Highlight when you searched.
+set nocompatible        " No compatible with vi editor.
 set whichwrap=b,s,h,l,<,>,[,]
 set backspace=indent,eol,start " Backspace is"
-set ttimeoutlen=50   " Timeout length
+set ttimeoutlen=50      " Timeout length
+" Tab settings
+"set tabstop=4           " tab is 4
+"set expandtab           " exchange tab to space
+"set shiftwidth=4        " space width 4
+"set smartindent         " insert indent if it exists indent.
+
+"let $ZSH_ENV = "~/.zsh/alias.zsh" 
 "-------------------------------------------------------------
-"	Vim Keymapping
+"                 Vim Keymapping
 "-------------------------------------------------------------
 "Disable Arrow-keys 
  noremap <Up> <Nop>
@@ -70,9 +82,22 @@ if &term =~ "xterm"
 
 	inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
 endif
-"
+"--------Auto command-------------->
+augroup run_files
+  autocmd!
+  autocmd FileType python nmap <buffer> <F5> :!python %<CR>
+  autocmd FileType julia nmap <buffer> <F5> :!julia %<CR>
+  autocmd FileType sh nmap <buffer> <F5> :!sh %<CR>
+augroup end
+if filereadable(expand("~/.latexmkrc"))
+  augroup run_latex
+    autocmd!
+    autocmd FileType tex nmap <buffer> <F5> :!latexmk -pvc -output-directory=out %<CR>
+  augroup end
+endif
+"--------Auto command--------<
 " -------Highlight----------------->
- highlight LineNr ctermfg=darkyellow
+"highlight LineNr ctermfg=darkyellow
 "highlight LineNr ctermfg=yellow
 "highlight Comment ctermfg=lightblue
 " -------Highlight-----------<
@@ -98,8 +123,68 @@ iab SHEBANG #!/usr/bin/env
 "colorscheme ThemerVim_1 
  colorscheme ThemerVim    " Original colorscheme
 " -------Colorscheme---------<
+"----------------------------------------------------------
+"       For editing Colorscheme
+"----------------------------------------------------------
+"  get color group of syntax highlight, Development of SyntaxInfo
+"    -> :SyntaxInfo
+function! s:get_syn_id(transparent)
+  let synid = synID(line("."), col("."), 1)
+  if a:transparent
+    return synIDtrans(synid)
+  else
+    return synid
+  endif
+endfunction
+function! s:get_syn_attr(synid)
+  let name = synIDattr(a:synid, "name")
+  let ctermfg = synIDattr(a:synid, "fg", "cterm")
+  let ctermbg = synIDattr(a:synid, "bg", "cterm")
+  let guifg = synIDattr(a:synid, "fg", "gui")
+  let guibg = synIDattr(a:synid, "bg", "gui")
+  return {
+        \ "name": name,
+        \ "ctermfg": ctermfg,
+        \ "ctermbg": ctermbg,
+        \ "guifg": guifg,
+        \ "guibg": guibg}
+endfunction
+function! s:get_syn_info()
+  let baseSyn = s:get_syn_attr(s:get_syn_id(0))
+  echo "name: " . baseSyn.name .
+        \ " ctermfg: " . baseSyn.ctermfg .
+        \ " ctermbg: " . baseSyn.ctermbg .
+        \ " guifg: " . baseSyn.guifg .
+        \ " guibg: " . baseSyn.guibg
+  let linkedSyn = s:get_syn_attr(s:get_syn_id(1))
+  echo "link to"
+  echo "name: " . linkedSyn.name .
+        \ " ctermfg: " . linkedSyn.ctermfg .
+        \ " ctermbg: " . linkedSyn.ctermbg .
+        \ " guifg: " . linkedSyn.guifg .
+        \ " guibg: " . linkedSyn.guibg
+endfunction
+command! SyntaxInfo call s:get_syn_info()
 "-----------------------------------------------------------
-"	Plugin Manager
+"               Auto command
+"-----------------------------------------------------------
+augroup autoexe
+    autocmd!
+    autocmd FileType python nmap <buffer> <F5> :!python %<CR>
+    autocmd FileType fortran nmap <buffer> <F5> :DoFortran<CR>
+augroup END
+command! DoFortran call s:DoFortran()
+function! s:DoFortran()
+    :!ifort % -o %<
+    :!./%<
+endfunction
+" Save the last cursol position
+augroup vimrcEx
+  au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
+  \ exe "normal g`\"" | endif
+augroup END
+"-----------------------------------------------------------
+"         Plugin Manager
 "-----------------------------------------------------------
 " Define 'is_plugged' function.
 function s:is_plugged(name)
@@ -123,6 +208,8 @@ call plug#begin()
 	Plug 'JuliaEditorSupport/julia-vim'
   Plug 'guns/xterm-color-table.vim'               " Show xterm color and number.
   Plug 'skanehira/preview-markdown.vim'           " Preview markdown on Vim.
+  Plug 'Vimjas/vim-python-pep8-indent'            " indent based on pep8
+  Plug 'vim-latex/vim-latex'                      " Plugin for useful LaTeX.
 call plug#end()
 "------ vim-airline commands ----------------->
 if s:is_plugged("vim-airline")
@@ -149,12 +236,46 @@ endif
 if s:is_plugged("preview-markdown.vim")
   let g:preview_markdown_parser = "glow"
 endif
-" Plugin Keymap
+"================ Plugin Keymap =========================
 if s:is_plugged("nerdtree")
   nnoremap <C-n> :NERDTree<CR>
-  autocmd VimEnter * NERDTree | wincmd p    " When vim starts, open files with NERDTree.
-  " Exit Vim if NERDTree is the only window remaining in the only tab.
-  autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+  nnoremap <C-x> :NERDTreeClose<CR>
+  augroup autocmd_plugin
+    autocmd!
+"   autocmd VimEnter * NERDTree | wincmd p    " When vim starts, open files with NERDTree.
+    " Exit Vim if NERDTree is the only window remaining in the only tab.
+    autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+  augroup end
+endif
+""-------------------------------------------------------
+""      Vim-LaTeX (for MacOS)
+""-------------------------------------------------------
+if s:is_plugged("vim-latex")
+  set grepprg=grep\ -nH\ $*
+  let g:tex_flavor='latex'
+  let g:Imap_UsePlaceHolders = 1
+  let g:Imap_DeleteEmptyPlaceHolders = 1
+  let g:Tex_AutoFolding = 0
+  let g:Imap_StickyPlaceHolders = 0
+  let g:Tex_DefaultTargetFormat = 'pdf'
+  let g:Tex_MultipleCompileFormats='dvi,pdf'
+  "let g:Tex_FormatDependency_pdf = 'pdf'
+  let g:Tex_FormatDependency_pdf = 'dvi,pdf'
+  let g:Tex_CompileRule_pdf = 'ptex2pdf -u -l -ot "-synctex=1 -interaction=nonstopmode -file-line-error-style" $*'
+  "let g:Tex_CompileRule_pdf = 'lualatex -synctex=1 -interaction=nonstopmode -file-line-error-style $*'
+  let g:Tex_CompileRule_dvi = 'uplatex -synctex=1 -interaction=nonstopmode -file-line-error-style $*'
+  let g:Tex_BibtexFlavor = 'upbibtex'
+  let g:Tex_MakeIndexFlavor = 'upmendex $*.idx'
+  let g:Tex_UseEditorSettingInDVIViewer = 1
+  let g:Tex_ViewRule_pdf = 'Skim'
+  "let g:Tex_ViewRule_pdf = 'open -a Skim'
+  "let g:Tex_ViewRule_pdf = 'open -a Preview'
+  "let g:Tex_ViewRule_pdf = 'open -a TeXShop'
+  "let g:Tex_ViewRule_pdf = '/Applications/TeXworks.app/Contents/MacOS/TeXworks'
+  "let g:Tex_ViewRule_pdf = '/Applications/texstudio.app/Contents/MacOS/texstudio --pdf-viewer-only'
+  "let g:Tex_ViewRule_pdf = 'open -a Firefox'
+  "let g:Tex_ViewRule_pdf = 'open -a "Adobe Acrobat Reader DC"'
+  "let g:Tex_ViewRule_pdf = 'open'
 endif
 "-------------------------------------<
 "     LSP Plugin
@@ -169,7 +290,6 @@ endif
 "   Plug 'mattn/vim-lsp-icons'
 " call plug#end()
 " let g:lsp_diagnostics_enabled=1
-" "下記は好みによって設定変更すること
 " let g:lsp_diagnostics_echo_cursor=1
 " let g:lsp_text_edit_enabled=1
 " let g:asyncomplete_auto_popup=1

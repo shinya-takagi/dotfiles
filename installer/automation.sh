@@ -17,7 +17,8 @@ function main() {
     
     case $i in
     # - - - - upload - - - -
-     "u" )  git commit -a -m "$message"
+     "u" )  git commit -a
+#-m "$message"
             git push origin master
     #       git push origin "$branch_name"
       ;; 
