@@ -2,12 +2,12 @@
     "suggest.noselect": true,
     "suggest.preferCompleteThanJumpPlaceholder": true,
     "languageserver": {
-        "clangd": {
-            "command": "clangd",
-            "args": ["--background-index"],
-            "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-            "filetypes": ["c", "cpp", "objc", "objcpp"]
-        },
+//      "clangd": {
+//          "command": "clangd",
+//          "args": ["--background-index"],
+//          "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+//          "filetypes": ["c", "cpp", "objc", "objcpp"]
+//      },
         "dockerfile": {
             "command": "docker-langserver",
             "filetypes": ["dockerfile"],
@@ -24,5 +24,6 @@
             }
         }
     },
-    "python.jediEnabled": false
+    "python.jediEnabled": false,
+    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd"
 }
