@@ -1,0 +1,164 @@
+#!/usr/bin/env bash
+
+# This list from Qiita.com
+# https://qiita.com/kawaz/items/952cb1a86b1da77cd7ab
+
+# Homebrew 本体
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" brew doctor
+
+# CLI系
+brew install go # Go
+brew install node # Node
+brew install deno # 最近はNodeより使うかも
+brew install php composer # PHP
+brew install python # Python
+brew install luajit # lua
+brew install shellcheck # bashのlint的なやつ
+brew install bash binutils coreutils findutils bash-completion # 基本コマンドGNU
+brew install tmux reattach-to-user-namespace # ターミナル内のウィンドウ分割とか （20210506 wezterm使い始めてからtmux使わなくなってきた
+brew install starship # shellのプロンプトをパワフルにする。
+brew install vim # Vimエディタ
+#brew install homebrew/dupes/rsync # HFS+のNFD糞仕様対応の文字コード変換付きrsync。 macOS10.13以降のAPFSだとNFDじゃなくWin/Linuxと同様にNFCになったのでもう要らない
+brew install pstree ipcalc # 昔からの懐かしツール
+brew install peco jq # JSONのクエリツール
+brew install itchyny/tap/gojq # goで再実装されたjqの別実装
+brew install htmlq # HTMLをCSSセレクタでクエリするツール
+brew install git git-extras git-lfs ghq hub # git関係
+brew install mercurial subversion # 時々使うCVS系
+brew install imagemagick ffmpeg # 画像とか動画とか
+brew install rar p7zip # アーカイブ系
+brew install memcached redis # KVS系
+brew install ansible # 構成ツール
+brew install awscli # AWS
+brew install asciinema # ターミナルキャプチャ共有サービス
+brew install ctags dict cmigemo # 主にvim連携系で使うコマンドたち
+brew install daemontools djbdns # djb系ツール
+brew install poppler # pdfからテキストを抽出するコマンドpdftotextが入ってる
+brew install pdfcpu # pdfに印影を埋め込んだりするのに使える
+brew install direnv # .envrc てファイルを作っておくとディレクトリ毎に環境変数の自動設定が出来るようにするツール
+brew install iproute2mac # Linuxのipコマンド風ラッパー、ipコマンドに慣れてるので入れておくと楽
+brew install cuelang/tap/cue # 新しいデータ検証言語、データの型定義もできるし値を記述することも出来る
+brew install act #GithubActionsをローカルで実行するコマンド
+brew install node-sass # sassコンパイラ、VSCodeでsass書くときとかにランタイムとして要求される事があるので
+brew install bat # ターミナルでシンタックスハイライト出来る cat みたいなやつ
+brew install sk # pecoとかfzfみたいなやつ。ファジー検索で候補を絞り込むツール。
+
+# Java関係
+## jdkのパッケージは選択肢がいくつかあるが、特に思想信条が無ければ adoptopenjdk を入れとけば良い
+## 色々入れたJDKのどれかをJAVA_HOMEとかに指定したい場合は `find /Library/Java/JavaVirtualMachines/*/Contents/Home -maxdepth 0` の出力から選択すれば良い
+brew install --cask adoptopenjdk # OpenJDKのコミュニティ製バイナリ、パッケージ名に数字がついてないやつは最新が入る(20201014時点では15
+brew install --cask adoptopenjdk8 # java8が要求されるケースがあるので追加で入れとく…(Elastic系がOpenJDK14とか入っててもJava１.8.0系を要求してくる@20200606)
+#brew install --cask java # OpenJDKのソースからビルドするやつ、自分でビルドする意味は殆どないのでadoptopenjdkを使うのが無難
+#brew install --cask oracle-jdk # Oracle JDK
+#brew install --cask corretto # AWS Java
+brew install elasticsearch kibana logstash # Elastic系
+
+# GUI系アプリ
+### これを先に設定しとくと面倒の一部が回避できる。cask系入れる前にセットしつつ普段のupgrade運用の時のことも考えるとbashrcとかに設定してくのが良い
+export HOMEBREW_CASK_OPTS=--no-quarantine # 入れたアプリが「このファイルはXXからダウンロードされました」みたいな確認ダイアログが出て開けなかったりする奴(Gatekeeperというセキュリティ機能）を抑制する環境変数
+
+brew install --cask 1password # パスワードマネージャ
+brew install --cask 1password-cli # opコマンド
+brew install --cask atok # 日本語IMEの老舗、2021年頃Google日本語入力がうまく動かなくなった際に乗り換えた。install後に一度再起動しないと使えない点に注意。
+brew install --cask appcleaner # アプリ掃除アプリ（アプリケーションフォルダからアプリを削除すると関連ファイルも消すかどうか聞いてくれるようになる）
+# brew install --cask alacritty # 高速ターミナル（高速がウリだけどそれ以外の機能が物寂しいのでtmuxと併用することになるがtmuxが遅いせいで高速性にも難が…。あと日本語入力に問題がある。）
+brew tap wez/wezterm; brew install --cask wezterm-nightly --no-quarantine # 高速ターミナル、タブや画面分割(multiplex)など機能も豊富。バグフィックスとかがreleaseに反映されるのが遅いと嫌なのでnightly202105頃からAlacrittyからこっちに乗り換えた
+brew install --cask kitty # 高速ターミナル、タブや画面分割(multiplex)など機能も豊富。202107頃から利用中
+brew install --cask alfred # opt+spaceで簡単起動アプリ
+brew install --cask bettertouchtool # ジェスチャアプリ、超重要
+brew install alt-tab # アプリ単位じゃなくウィンドウ単位での切り替えが出来るようにする、デフォルトは opt+TABだがcmd+TABに上書きして使ってる。ドックにしまったウィンドウも選択できてかつ勝手にドックから出てきてくれるのが便利。
+#brew install --cask cooviewer # 漫画ビューア、macOS 10.15 Catarina 以降使えなくなってしまったので削除… 20200202で64bit版として復活！でもbrewではまだ入れられないので手動DLすべし https://github.com/coo-ona/cooViewer/releases 
+# brew install --cask yacreader # 漫画ビューア、cooViewrの使い勝手に及ばないがとりあえず使ってる…。cooViewer復活したしもうイラネw
+brew install --cask docker # 最近はいろいろ使う。※cask無しにも同名のdockerがあるがバージョン古いので注意、caskの方を入れる
+# brew install --cask kitematic # DockerのGUI？昔のDockerについてたけど今はいらないぽい
+brew install --cask dropbox # 便利ストレージサービス
+brew install --cask visual-studio-code # VSCode、CLIからだとcodeで起動できる、最近流行りのエディタ／開発環境
+brew install --cask eclipse-java # 開発用、最近VSCodeに乗り換えて不便しなくなって来たのそろそろ不要かも。JavaのRemoteDebugはeclipseの方がキビキビ動くからまだ時々使ってる。
+#brew install --cask google-japanese-ime # Google日本語入力、管理者パスワードが求められる
+brew install --cask google-chrome # Chromeブラウザ（これとは別にbetaやdevを本家から落として Google Chrome Dev.app 等にリネームしてアプリケーションフォルダに入れておくと使い分けれて便利）
+brew install --cask firefox # 確認用に使う
+brew install --cask vlc # 動画再生
+brew install --cask skype # たまに仕事で使う
+brew install --cask microsoft-office # Excel,Word,PowerPoint
+brew install --cask parallels # Windows10を動かすのに使ってる
+brew install --cask discord # チャットアプリ一部コミュで使ってる
+brew install --cask ngrok # ローカルポートを外部に公開できるサービス（CLIツールだが何故かCaskで提供されてるが気にしない
+#brew install --cask nox-app-player # Androidエミュレータ
+#brew install --cask bluestacks # Androidエミュレータ
+brew install --cask charles # Proxyツール、通信内用の盗聴や改ざん等何でもござれの神ツール。SSLもMITMできる。
+brew install --cask steam # ゲームプラットフォーム
+#brew install --cask hammerspoon # Macの自動操作やキーバインディングのカスタマイズなど、設定記述言語はLua。入れたもののいじる時間が取れず結局使ってないのでコメントアウト
+brew install --cask commander-one # FTP/SFTP/S3/GoogleDrive/OneDrive/WebDAV/Dropbox/Boxクライアント
+brew install --cask thunderbird # MUA=メーラー、メール環境の試験用に使う
+#brew install --cask google-drive-file-stream # GSuiteアカウントのDriveをPCにマウントするやつ（depreated: google-drive にリネームされた）
+brew install --cask google-drive # GSuiteアカウントのDriveをPCにマウントするやつ
+brew install --cask messenger # Facebook Messenger
+
+brew install --cask xquartz # X11サーバ
+brew install --cask karabiner-elements # キーボードカスタマイズ
+brew install --cask raspberry-pi-imager # ラズパイのOSイメージインストーラ（昔はNOOBSてツールが定番だったが2020移行はこっち推奨らしい。ラズパイ使わない人は不要）
+brew install --cask makemkv # DVD/Blu-rayから mkv ファイルを作成するリッピングツール。ライセンス購入はメニューのHelp>Purchase/Registerから行う
+brew install --cask zoom # リモートミーティング用
+brew install --cask google-cloud-sdk #gcloudコマンドなど
+
+# Finderのクイックルックプラグイン（Space押すと出るやつ）
+brew install --cask qlstephen # 拡張子がないファイルもプレビュー
+brew install --cask qlmarkdown # Markdownビューア
+brew install --cask quicklook-json # JSONビューア
+brew install --cask quicklook-csv # CSVをテーブル表示でプレビュー
+brew install --cask provisionql # ipaファイルをプレビュー
+#brew install --cask betterzipql # zipアーカイブ（無くなった
+brew install --cask qlcolorcode # htmlとかいろんなソースのハイライト
+
+# AppStore系
+brew install mas # AppStore系アプリのCLI管理ツール、リストは mas list で取れる
+mas install 497799835 # XCode
+mas install 425424353 # The Unarchiver
+mas install 803453959 # Slack
+mas install 539883307 # LINE
+mas install 405399194 # Kindle
+mas install 409201541 # Pages
+mas install 409183694 # Keynote
+mas install 409203825 # Numbers
+
+# フォント （主にコンソール用で、見易さ重視＆Powerline対応なやつ）
+#curl -sL http://bit.ly/install-Ricty | bash # Rictyフォント → 毎回ビルド面倒なうえにbrewの引数がコロコロ変わるので白源に乗り換えた
+#curl -sL http://bit.ly/install-HackGen | bash # 白源フォント、Rictyインスペクトな後発フォント。Poweline対応でバイナリ配布もあり導入が楽で良い
+brew install --cask homebrew/cask-fonts/font-hackgen # 白源フォント、Rictyインスペクトな後発フォント。Poweline対応でバイナリ配布もあり導入が楽で良い。v1.3.0以降有志によってFormulaが登録されたのでbrewでインストールも可能に→最近はリリースが自動化されたのでbrewだけで最新が使える認識で良さそう
+brew install --cask homebrew/cask-fonts/font-hackgen-nerd # HackGen フォントに Nerd を足したやつ
+# sudoでTouchIDが使えるようにする ( https://qiita.com/kawaz/items/0593163c1c5538a34f6f )
+curl -sL https://gist.github.com/kawaz/d95fb3b547351e01f0f3f99783180b9f/raw/install-pam_tid-and-pam_reattach.sh | bash
+
+# ログインシェルを変更する
+new_shell=/usr/local/bin/bash
+if type "$new_shell"; then
+  grep -q "^$new_shell" /etc/shells || sudo tee -a /etc/shells <<< "$new_shell"
+  chsh -s "$new_shell"
+fi
+
+# 自分用環境設定
+git clone git@github.com:kawaz/dotfiles.git ~/.dotfiles
+# Macの初期状態だと ~/.bashrc とか ~/.bash_profile が無いのでなければ作る
+grep -Eq '[^#]*/\.bashrc' ~/.bash_profile 2>/dev/null || echo ". ~/.bashrc" >> ~/.bash_profile
+grep -q dotfiles ~/.bashrc 2>/dev/null || echo ". ~/.dotfiles/config/bash/bashrc" >> ~/.bashrc
+# ~/.config や ~/.local を $XDG_CONFIG_HOME とかに置き換える
+ln -s ~/.dotfiles/config/ ~/.config
+ln -s ~/.dotfiles/local/ ~/.local
+# カーソル移動を加速する（Preference＞キーボードで設定できる限界の突破）
+defaults write -g InitialKeyRepeat -int 12 # normal minimum is 15 (225 ms)
+defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+
+# テキスト系コンポーネントでのキーカスタマイズ（Home/End/PageUp/PageDownなどの挙動問題）
+curl -sL https://bit.ly/kawaz-install-DefaultKeyBinding | bash
+
+# sshd （共有>リモートアクセス）のパスワード認証の無効化
+if ! grep -q "^PasswordAuthentication no$" /etc/ssh/sshd_config; then sudo perl -i -pe's/^\s*PasswordAuthentication\s.*/#$&/' /etc/ssh/sshd_config; echo 'PasswordAuthentication no' | sudo tee -a /etc/ssh/sshd_config; fi
+if ! grep -q "^ChallengeResponseAuthentication no$" /etc/ssh/sshd_config; then sudo perl -i -pe's/^\s*ChallengeResponseAuthentication\s.*/#$&/' /etc/ssh/sshd_config; echo 'ChallengeResponseAuthentication no' | sudo tee -a /etc/ssh/sshd_config; fi
+
+# スクリーンショットの保存場所の変更（デフォルトは多分デスクトップ）
+defaults write com.apple.screencapture location '~/Documents/'
+
+# Finderタイトルにフルパスを表示する
+defaults write com.apple.finder _FXShowPosixPathInTitle -boolean true
+killall Finder # Finderを再起動で反映する（Finderはkillしっぱなしでも勝手に復活される)
+
