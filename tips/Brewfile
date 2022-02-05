@@ -1,0 +1,101 @@
+tap "d12frosted/emacs-plus"
+tap "gcenx/wine"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
+tap "homebrew/core"
+tap "romkatv/powerlevel10k"
+brew "bison"
+brew "python@3.9"
+brew "glib"
+brew "cairo"
+brew "coreutils"
+brew "cpanminus"
+brew "libtool"
+brew "guile"
+brew "unbound"
+brew "gnutls"
+brew "nghttp2"
+brew "gobject-introspection"
+brew "harfbuzz"
+brew "libass"
+brew "srt"
+brew "ffmpeg"
+brew "fish"
+brew "gdk-pixbuf"
+brew "git"
+brew "glow"
+brew "libheif"
+brew "imagemagick"
+brew "python@3.10"
+brew "ipython"
+brew "julia"
+brew "pango"
+brew "lima"
+brew "mas"
+brew "nkf"
+brew "node"
+brew "nodebrew"
+brew "pandoc"
+brew "pdftohtml"
+brew "perl"
+brew "pyenv"
+brew "python@3.8"
+brew "qrencode"
+brew "rtorrent"
+brew "scons"
+brew "tmux"
+brew "translate-shell"
+brew "transmission-cli"
+brew "wget"
+brew "youtube-dl", link: false
+brew "zsh-completions"
+brew "d12frosted/emacs-plus/emacs-plus@27"
+brew "romkatv/powerlevel10k/powerlevel10k"
+cask "alfred"
+cask "bitwarden"
+cask "commander-one"
+cask "cyberduck"
+cask "deepl"
+cask "dropbox"
+cask "font-hack-nerd-font"
+cask "google-japanese-ime"
+cask "iterm2"
+cask "mactex"
+cask "mathpix-snipping-tool"
+cask "obs"
+cask "openineditor-lite"
+cask "openinterminal-lite"
+cask "rambox"
+cask "skim"
+cask "slack"
+cask "the-unarchiver"
+cask "unofficial-wineskin"
+cask "xquartz"
+cask "zoom"
+cask "zotero"
+mas "AdBlock Pro", id: 1018301773
+mas "AwesomeScreenshot", id: 1531282066
+mas "Battery Health", id: 490192174
+mas "Capo", id: 696977615
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "LINE", id: 539883307
+mas "Microsoft Remote Desktop", id: 1295203466
+mas "NAS Navigator2", id: 450664466
+mas "Night Eye", id: 1450504903
+mas "Notion Web Clipper", id: 1559269364
+mas "Numbers", id: 409203825
+mas "OneDrive", id: 823766827
+mas "Pages", id: 409201541
+mas "Perculia", id: 1462633284
+mas "PixelFinder", id: 1512540355
+mas "QR Journal", id: 483820530
+mas "Tampermonkey", id: 1482490089
+mas "ToyViewer", id: 414298354
+mas "Twitter", id: 1482454543
+mas "Video Speed Controller", id: 1588368612
+mas "Vimari", id: 1480933944
+mas "Xcode", id: 497799835
