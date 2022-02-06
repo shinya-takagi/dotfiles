@@ -44,9 +44,10 @@ if ($^O eq 'MSWin32') {
   }
 # Windows 以外の OS の場合 (Linux, macOS)
 } else {
+  $lualatex                      = 'lualatex %O';
   $latex                         = 'uplatex %O -synctex=1 -interaction=nonstopmode %S';
   $pdflatex                      = 'pdflatex %O -synctex=1 -interaction=nonstopmode %S';
-  $lualatex                      = 'lualatex %O -synctex=1 -interaction=nonstopmode %S';
+# $lualatex                      = 'lualatex %O -synctex=1 -interaction=nonstopmode %S';
   $xelatex                       = 'xelatex %O -no-pdf -synctex=1 -shell-escape -interaction=nonstopmode %S';
   $biber                         = 'biber %O --bblencoding=utf8 -u -U --output_safechars %B';
   $bibtex                        = 'upbibtex %O %B';
