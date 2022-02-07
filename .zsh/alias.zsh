@@ -91,6 +91,7 @@ alias ytconfig="vim ~/.config/yt-dlp/config"
 # TeX
 alias lmk="latexmk -pvc -output-directory=out"
 alias lmkc="latexmk -c"
+alias lmklua="latexmk -gg -pdflua -pvc -output-directory=out" 
 
 # Windows 
 alias user="cd /mnt/c/Users/shiny"
