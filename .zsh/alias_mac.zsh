@@ -84,6 +84,7 @@ alias ytconfig="vim ~/.config/yt-dlp/config"
 # TeX
 alias lmk="latexmk -pvc -output-directory=out"
 alias lmkc="latexmk -c"
+alias lmklua="latexmk -gg -pdflua -pvc -output-directory=out" 
 
 # Others
 KINDAI="Google_Drive_kindai.ac.jp"
