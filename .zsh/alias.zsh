@@ -155,8 +155,9 @@ function nasmnt_lab(){
 
 function usbmnt(){
   local opt=$1
+  local usb="$2":
   case "$opt" in
-    "-m" ) sudo mount -t drvfs D: /mnt/usb ;;
+    "-m" ) sudo mount -t drvfs $usb /mnt/usb ;;
     "-u" ) sudo umount /mnt/usb ;;
     *    ) echo "  
             USAGE : $0 [OPTION]
