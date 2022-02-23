@@ -44,7 +44,7 @@ fi
 export EDITOR=vim
 set -o vi
 bind 'set show-mode-in-prompt on'
-eval `dircolors $HOME/.dircolors-solarized/dircolors.ansi-dark_taka`
+#eval `dircolors $HOME/.dircolors-solarized/dircolors.ansi-dark_taka`
 
 # alias list
 # basic command
