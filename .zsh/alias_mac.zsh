@@ -81,6 +81,9 @@ alias vicolor="vi ~/.vim/colors/ThemerVim.vim"
 alias py="python3"
 alias ytconfig="vim ~/.config/yt-dlp/config"
 
+# C++
+alias zeroc="open http://rinatz.github.io/cpp-book/"
+
 # TeX
 alias lmk="latexmk -pvc -output-directory=out"
 alias lmkc="latexmk -c"
