@@ -9,6 +9,7 @@ fi
 # User specific aliases and functions
 . /opt/intel/bin/compilervars.sh intel64
 PATH=/opt/bin:/opt/openmpi/bin:$PATH
+PATH=.:$PATH
 LD_LIBRARY_PATH=/opt/openmpi/lib:$LD_LIBRARY_PATH
 MANPATH=/opt/openmpi/share/man:$MANPATH
 export PATH LD_LIBRARY_PATH MANPATH

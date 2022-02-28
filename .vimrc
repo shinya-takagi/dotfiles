@@ -29,11 +29,12 @@
 "-----------------------------------------------
 " Set about file config.
  set encoding=utf-8
- set fileencodings=iso-2022-jp,sjis,uft-8
+ set fileencodings=uft-8,iso-2022-jp,sjis
  scriptencoding utf-8
  filetype plugin indent on
  syntax on
 "colorscheme codedark
+"set background=light
  set background=dark
  colorscheme ThemerVim
  " Use aliases on bash
@@ -160,10 +161,16 @@ augroup autoexe
     autocmd!
     autocmd FileType python nmap <buffer> <F5> :!python %<CR>
     autocmd FileType fortran nmap <buffer> <F5> :DoFortran<CR>
+    autocmd FileType cpp nmap <buffer> <F5> :DoCpp<CR>
 augroup END
 command! DoFortran call s:DoFortran()
+command! DoCpp call s:DoCpp()
 function! s:DoFortran()
     :!ifort % -o %<
+    :!./%<
+endfunction
+function! s:DoCpp()
+    :!icc % -o %<
     :!./%<
 endfunction
 "-----------------------------------------------------------

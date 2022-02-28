@@ -84,6 +84,9 @@ alias sr="source ~/.vimrc"
 alias ftvim="vi ~/.vim/ftplugin/fortran.vim"
 alias vimmk="vi -O ~/.Makefile_tmp Makefile"
 
+# C++
+alias g++="g++ -std=c++0x"
+
 
 # Others
 alias memo="vi ~/own/dev/memo.c"
