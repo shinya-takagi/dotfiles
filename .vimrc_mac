@@ -7,7 +7,7 @@ augroup auto_filetype
   "autocmd BufRead,BufNewFile *.f90 setfiletype fortran90
   "autocmd BufRead,BufNewFile *.sh setfiletype shell
   autocmd BufRead,BufNewFile *.zsh setfiletype zsh
-  autocmd BufRead,BufNewFile *.conf setfiletype json
+" autocmd BufRead,BufNewFile *.conf setfiletype json
 augroup end
 "-----------------------------------------------
 "             vim command
@@ -18,7 +18,7 @@ augroup end
 "=========File encoding of th word code.=========
 set encoding=utf-8
 "set fileencodings=iso-2022-jp,sjis,uft-8
-set fileencodings=iso-2022-jp,uft-8
+set fileencodings=uft-8
 scriptencoding utf-8
 filetype plugin indent on
 syntax on

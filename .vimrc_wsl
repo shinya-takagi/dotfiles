@@ -88,6 +88,7 @@ augroup run_files
   autocmd FileType python nmap <buffer> <F5> :!python %<CR>
   autocmd FileType julia nmap <buffer> <F5> :!julia %<CR>
   autocmd FileType sh nmap <buffer> <F5> :!sh %<CR>
+  autocmd FileType cpp nmap <buffer> <F5> :DoCpp<CR>
 augroup end
 if filereadable(expand("~/.latexmkrc"))
   augroup run_latex
@@ -95,6 +96,11 @@ if filereadable(expand("~/.latexmkrc"))
     autocmd FileType tex nmap <buffer> <F5> :!latexmk -pvc -output-directory=out %<CR>
   augroup end
 endif
+command! DoCpp call s:DoCpp()
+function! s:DoCpp()
+    :!g++ % -o %<
+    :!./%<
+endfunction
 "--------Auto command--------<
 " -------Highlight----------------->
 "highlight LineNr ctermfg=darkyellow
