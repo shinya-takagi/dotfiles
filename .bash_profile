@@ -14,6 +14,7 @@ LD_LIBRARY_PATH=/opt/openmpi/lib:$LD_LIBRARY_PATH
 MANPATH=/opt/openmpi/share/man:$MANPATH
 export PATH LD_LIBRARY_PATH MANPATH
 ulimit -s unlimited
+eval `dircolors $HOME/.dircolors-solarized/dircolors.ansi-dark_taka`
 
 #PATH=$PATH:$HOME/bin
 #PATH="$HOME/usr/bin:$PATH"
