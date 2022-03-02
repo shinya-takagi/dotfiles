@@ -203,19 +203,19 @@ endfunction
 
 call plug#begin()
   Plug 'preservim/nerdtree'				"Tree type directory
-  Plug 'neoclide/coc.nvim', {'branch': 'release'} " completement plugin.
+" Plug 'neoclide/coc.nvim', {'branch': 'release'} " completement plugin.
 " Plug 'romkatv/powerlevel10k'				"Use powerlevel10k, but it cannot run
   Plug 'vim-airline/vim-airline'			"Powerline fonts for Vim 
   Plug 'vim-airline/vim-airline-themes'			"For Airline themes
   Plug 'ryanoasis/vim-devicons'				"Various icons for Vim.
   Plug 'markonm/traces.vim'				"Show Hightlight for search.
-  Plug 'vimwiki/vimwiki'
-  Plug 'sheerun/vim-polyglot'				"Many syntax highlight with vanilla vim which don't have them.
-	Plug 'JuliaEditorSupport/julia-vim'
-  Plug 'guns/xterm-color-table.vim'               " Show xterm color and number.
-  Plug 'skanehira/preview-markdown.vim'           " Preview markdown on Vim.
+" Plug 'vimwiki/vimwiki'
+" Plug 'sheerun/vim-polyglot'				"Many syntax highlight with vanilla vim which don't have them.
+" Plug 'JuliaEditorSupport/julia-vim'
+" Plug 'guns/xterm-color-table.vim'               " Show xterm color and number.
+" Plug 'skanehira/preview-markdown.vim'           " Preview markdown on Vim.
   Plug 'Vimjas/vim-python-pep8-indent'            " indent based on pep8
-  Plug 'vim-latex/vim-latex'                      " Plugin for useful LaTeX.
+" Plug 'vim-latex/vim-latex'                      " Plugin for useful LaTeX.
 call plug#end()
 "------ vim-airline commands ----------------->
 if s:is_plugged("vim-airline")
