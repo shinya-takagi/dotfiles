@@ -33,4 +33,11 @@
 #
 
 # Vim
-.vimrc,.vimrc
+.vimrc_wsl,.vimrc
+
+# Fish configure
+.config/fish/config.fish,.config/fish/config.fish
+.config/fish/fish_plugins,.config/fish/fish_plugins
+.config/fish/fish_variables,.config/fish/fish_variables
+.config/fish/functions/usbmnt.fish,.config/fish/functions/usbmnt.fish
+.config/fish/completions/usbmnt.fish,.config/fish/completions/usbmnt.fish
