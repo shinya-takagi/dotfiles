@@ -83,6 +83,7 @@ if &term =~ "xterm"
 	inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
 endif
 "--------Auto command-------------->
+" Execution on F5 key
 augroup run_files
   autocmd!
   autocmd FileType python nmap <buffer> <F5> :!python %<CR>
@@ -109,7 +110,7 @@ endfunction
 " -------Highlight-----------<
 "
 " -------Abbreviations-------------->
-iabbrev ad advertisement 
+" iabbrev ad advertisement 
 " Comment for vim
 iab "-> "------------------------------------------------->
 iab "-< "-------------------< 
@@ -122,8 +123,11 @@ iab !-< !-------------------<
 " Comment for shell, python
 iab #-> #------------------------------------------------->
 iab #-< #-------------------< 
+" Comment for LaTeX(TeX)
+iab %-> %------------------------------------------------->
+iab %-< %-------------------< 
 " Environmental shebang
-iab SHEBANG #!/usr/bin/env
+iab SHEBANG #!/usr/bin/env 
 " --------------------------<
 " -------Colorscheme---------------->
 "colorscheme ThemerVim_1 

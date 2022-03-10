@@ -41,3 +41,7 @@
 .config/fish/fish_variables,.config/fish/fish_variables
 .config/fish/functions/usbmnt.fish,.config/fish/functions/usbmnt.fish
 .config/fish/completions/usbmnt.fish,.config/fish/completions/usbmnt.fish
+.vim/ftplugin/tex.vim,.vim/ftplugin/tex.vim
+.vim/ftplugin/fish.vim,.vim/ftplugin/fish.vim
+.vim/ftdetect/fish.vim,.vim/ftdetect/fish.vim
+.vim/syntax/fish.vim,.vim/syntax/fish.vim

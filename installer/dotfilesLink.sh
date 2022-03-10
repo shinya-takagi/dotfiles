@@ -64,23 +64,23 @@ function main(){
 #   ln -sf "$DFPATH"/.config/yt-dlp/config          ~/.config/yt-dlp/config
 
 #   # -----Color scheem------
-#   if [ ! -d "$home_sol" ]; then
-#       cp -r "$dir_sol"                            ~/.
-#       case "$OS" in
-#           'Mac' ) { ln -sf "$DFPATH"/"$dir_sol"/"dircolors.ansi-dark_taka_mac" ~/"$dir_sol"/"dircolors.ansi-dark_taka"
-#           } ;;
-#           'Linux' ) { ln -sf "$DFPATH"/"$dir_sol"/"dircolors.ansi-dark_taka" ~/"$dir_sol"/"dircolors.ansi-dark_taka"
-#           };;
-#       esac
-#   elif [ -n "$(ls -A "$home_sol")" ]; then
-#       echo "$home_sol exists, so it cannot copy $dir_sol"
-#       case "$OS" in
-#           'Mac' ) { ln -sf "$DFPATH"/"$dir_sol"/"dircolors.ansi-dark_taka_mac" ~/"$dir_sol"/"dircolors.ansi-dark_taka"
-#           } ;;
-#           'Linux' ) { ln -sf "$DFPATH"/"$dir_sol"/"dircolors.ansi-dark_taka" ~/"$dir_sol"/"dircolors.ansi-dark_taka"
-#           };;
-#       esac
-#   fi
+    if [ ! -d "$home_sol" ]; then
+        cp -r "$dir_sol"                            ~/.
+        case "$OS" in
+            'Mac' ) { ln -sf "$DFPATH"/"$dir_sol"/"dircolors.ansi-dark_taka_mac" ~/"$dir_sol"/"dircolors.ansi-dark_taka"
+            } ;;
+            'Linux' ) { ln -sf "$DFPATH"/"$dir_sol"/"dircolors.ansi-dark_taka" ~/"$dir_sol"/"dircolors.ansi-dark_taka"
+            };;
+        esac
+    elif [ -n "$(ls -A "$home_sol")" ]; then
+        echo "$home_sol exists, so it cannot copy $dir_sol"
+        case "$OS" in
+            'Mac' ) { ln -sf "$DFPATH"/"$dir_sol"/"dircolors.ansi-dark_taka_mac" ~/"$dir_sol"/"dircolors.ansi-dark_taka"
+            } ;;
+            'Linux' ) { ln -sf "$DFPATH"/"$dir_sol"/"dircolors.ansi-dark_taka" ~/"$dir_sol"/"dircolors.ansi-dark_taka"
+            };;
+        esac
+    fi
     # ------------------------
 
 #   ln -sf "$DFPATH"/.zsh/alias_mac.zsh             ~/.zshenv

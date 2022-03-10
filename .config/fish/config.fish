@@ -33,9 +33,30 @@ alias vr='vi ~/.vimrc'
 # fish
 alias vf='vim ~/.config/fish/config.fish'
 alias sf='source ~/.config/fish/config.fish'
+alias cf='cd ~/.config/fish'
+alias cgoogle='cd /mnt/google/マイドライブ'
+
+# For wsl
+alias open='wsl-open'
+
+# Open Browser
+alias github='openhttps://www.github.com'
+alias ggr="open http://google.com/"
+alias tube="open https://www.youtube.com"
+alias qiita="open https://qiita.com"
+
+# TeX
+alias lmk="latexmk -pvc -output-directory=out"
+alias lmkc="latexmk -c"
+alias lmklua="latexmk -gg -pdflua -pvc -output-directory=out"
 
 # Set vim key-bind for fish
 fish_vi_key_bindings
+
+#------------------------------
+#     dircolors
+#------------------------------
+eval (dircolors -c ~/.dircolors-solarized/dircolors.ansi-dark_taka)
 
 # environmental path
 # set -x PATH /home/linuxbrew/.linuxbrew/bin $PATH
