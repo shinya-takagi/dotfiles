@@ -1,5 +1,8 @@
 #!/usr/bin/env perl
 
+# Discrimination in OS(Linux or WSL)
+my $result = `uname -r`;
+
 # OS によって実行ファイル名が異なるので、OSを判断する
 # Windows の場合
 if ($^O eq 'MSWin32') {
