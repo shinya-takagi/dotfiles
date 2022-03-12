@@ -29,6 +29,7 @@ alias gpm='gp origin master'
 # Vim
 alias vi='vim'
 alias vr='vi ~/.vimrc'
+alias nvr 'nvim ~/.config/nvim/init.vim'
 
 # fish
 alias vf='vim ~/.config/fish/config.fish'
@@ -56,7 +57,7 @@ fish_vi_key_bindings
 #------------------------------
 #     dircolors
 #------------------------------
-eval (dircolors -c ~/.dircolors-solarized/dircolors.ansi-dark_taka)
+# eval (dircolors -c ~/.dircolors-solarized/dircolors.ansi-dark_taka)
 
 # environmental path
 # set -x PATH /home/linuxbrew/.linuxbrew/bin $PATH

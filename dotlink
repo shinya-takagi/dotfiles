@@ -34,6 +34,18 @@
 
 # Vim
 .vimrc_wsl,.vimrc
+.vim/colors/ThemerVim.vim,.vim/colors/ThemerVim.vim
+.vim/colors/ThemerVim.vim,.config/nvim/colors/ThemerVim.vim
+
+# Neo vim
+.config/nvim/ftplugin/fish.vim,.config/nvim/ftplugin/fish.vim
+.config/nvim/ftplugin/fish.vim,.config/nvim/ftplugin/fish.vim
+.config/nvim/ftplugin/fortran.vim,.config/nvim/ftplugin/fortran.vim
+.config/nvim/ftplugin/python.vim,.config/nvim/ftplugin/python.vim
+.config/nvim/ftplugin/sh.vim,.config/nvim/ftplugin/sh.vim
+.config/nvim/ftplugin/tex.vim,.config/nvim/ftplugin/tex.vim
+.config/nvim/ftplugin/zsh.vim,.config/nvim/ftplugin/zsh.vim
+.config/nvim/init.vim,.config/nvim/init.vim
 
 # Fish configure
 .config/fish/config.fish,.config/fish/config.fish
