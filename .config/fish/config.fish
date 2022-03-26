@@ -57,7 +57,9 @@ fish_vi_key_bindings
 #------------------------------
 #     dircolors
 #------------------------------
-# eval (dircolors -c ~/.dircolors-solarized/dircolors.ansi-dark_taka)
+if test -f ~/.dircolors-solarized/dircolors.ansi-dark_taka
+  eval (dircolors -c ~/.dircolors-solarized/dircolors.ansi-dark_taka)
+end
 
 # environmental path
 # set -x PATH /home/linuxbrew/.linuxbrew/bin $PATH

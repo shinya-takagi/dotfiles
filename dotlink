@@ -32,13 +32,15 @@
 #------------------------------------------------------------------------------
 #
 
+# Git
+.config/git/ignore, .config/git/ignore
+
 # Vim
 .vimrc_wsl,.vimrc
 .vim/colors/ThemerVim.vim,.vim/colors/ThemerVim.vim
 .vim/colors/ThemerVim.vim,.config/nvim/colors/ThemerVim.vim
 
 # Neo vim
-.config/nvim/ftplugin/fish.vim,.config/nvim/ftplugin/fish.vim
 .config/nvim/ftplugin/fish.vim,.config/nvim/ftplugin/fish.vim
 .config/nvim/ftplugin/fortran.vim,.config/nvim/ftplugin/fortran.vim
 .config/nvim/ftplugin/python.vim,.config/nvim/ftplugin/python.vim
@@ -50,10 +52,13 @@
 # Fish configure
 .config/fish/config.fish,.config/fish/config.fish
 .config/fish/fish_plugins,.config/fish/fish_plugins
-.config/fish/fish_variables,.config/fish/fish_variables
 .config/fish/functions/usbmnt.fish,.config/fish/functions/usbmnt.fish
 .config/fish/completions/usbmnt.fish,.config/fish/completions/usbmnt.fish
 .vim/ftplugin/tex.vim,.vim/ftplugin/tex.vim
 .vim/ftplugin/fish.vim,.vim/ftplugin/fish.vim
 .vim/ftdetect/fish.vim,.vim/ftdetect/fish.vim
 .vim/syntax/fish.vim,.vim/syntax/fish.vim
+.config/nvim/setting/autocommand.vim,.config/nvim/setting/autocommand.vim
+.config/nvim/setting/general.vim,.config/nvim/setting/general.vim
+.config/nvim/setting/plugin.vim,.config/nvim/setting/plugin.vim
+.config/nvim/ginit.vim,.config/nvim/ginit.vim
