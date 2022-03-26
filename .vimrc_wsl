@@ -62,6 +62,7 @@ set ttimeoutlen=50      " Timeout length
  noremap <Right> <Nop>
 " jj to escape key 
  inoremap jj <Esc>  
+ nnoremap ; :
 " C-h is backspace. Delete to backspace
  noremap  <C-h>
  inoremap  <C-h>
