@@ -1,4 +1,6 @@
 #
 # ~/.bash_logout
 #
-eval `ssh-agent -k`
+# ssh agent with logout
+# eval `ssh-agent -k`
+

@@ -21,6 +21,8 @@
 "Delete to backspace
  noremap  <C-h>
  inoremap  <C-h>
+" semicoron to coron on normal mode for US Keyboard
+ nmap ; :
  set whichwrap=b,s,h,l,<,>,[,]
  set backspace=indent,eol,start
 "-------------------------------------------------
@@ -165,6 +167,8 @@ augroup autoexe
 augroup END
 command! DoFortran call s:DoFortran()
 command! DoCpp call s:DoCpp()
+command! -nargs=1 Vds call s:VDiff(<f-args>)
+command! -nargs=1 TEST call s:TEST(<f-args>)
 function! s:DoFortran()
     :!ifort % -o %<
     :!./%<
@@ -172,6 +176,13 @@ endfunction
 function! s:DoCpp()
     :!icc % -o %<
     :!./%<
+endfunction
+function! s:VDiff(txt)
+    let foo = a:txt
+    :vertical diffsplit foo
+endfunction
+function! s:TEST(bar)
+    echo a:bar
 endfunction
 "-----------------------------------------------------------
 "               Plugin Installed Checker
