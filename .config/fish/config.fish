@@ -41,7 +41,7 @@ alias cgoogle='cd /mnt/google/マイドライブ'
 alias open='wsl-open'
 
 # Open Browser
-alias github='openhttps://www.github.com'
+alias github='open https://www.github.com'
 alias ggr="open http://google.com/"
 alias tube="open https://www.youtube.com"
 alias qiita="open https://qiita.com"
