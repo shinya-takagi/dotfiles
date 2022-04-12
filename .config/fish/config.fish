@@ -48,7 +48,7 @@ alias qiita="open https://qiita.com"
 
 # TeX
 alias lmk="latexmk -pvc -output-directory=out"
-alias lmkc="latexmk -c"
+alias lmkc="latexmk "
 alias lmklua="latexmk -gg -pdflua -pvc -output-directory=out"
 
 # Set vim key-bind for fish
