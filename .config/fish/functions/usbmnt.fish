@@ -6,7 +6,7 @@ function usbmnt
 
   switch $_opt
     case -m
-      sudo mount -t drvfs $_sym: -o metadata,uid=1000,gid=1000 /mnt/usb
+      sudo mount -t drvfs $_sym: -o metadata,uid=1000,gid=985 /mnt/usb
     case -u
       sudo umount /mnt/usb
     case '*'

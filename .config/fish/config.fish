@@ -61,6 +61,16 @@ if test -f ~/.dircolors-solarized/dircolors.ansi-dark_taka
   eval (dircolors -c ~/.dircolors-solarized/dircolors.ansi-dark_taka)
 end
 
+#-----------------------
+#       For pyenv
+#-----------------------
+status is-login; and pyenv init --path | source
+status is-interactive; and pyenv init - | source
+#----------------------
+#       For asdf
+#----------------------
+source ~/.asdf/asdf.fish
+
 # environmental path
 # set -x PATH /home/linuxbrew/.linuxbrew/bin $PATH
 # Universal variables
