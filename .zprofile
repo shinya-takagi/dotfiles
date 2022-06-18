@@ -12,6 +12,12 @@ if [ "$(uname -s)" = "Linux" ]; then
     export PATH="/usr/local/texlive/2021/bin/x86_64-linux:$PATH"
     export PYTHONPATH="$HOME/python/lib:$PYTHONPATH"
     export PATH="$HOME/go/bin:$PATH"
+    if [ -e /opt/intel/oneapi/setvars.sh ]; then
+        source /opt/intel/oneapi/setvars.sh > /dev/null
+    fi
+    # dot manager
+    export DOT_REPO="https://github.com/shinya-takagi/dotfiles.git"
+    export DOT_DIR="$HOME/.dotfiles"
     #export PATH="$HOME/codes/GENERAL_CODE/GEF-2021-V1-1_linux:$PATH"
     #export PATH="$HOME/bin:$PATH"
 elif [ "$(uname -s )" = "Darwin" ]; then

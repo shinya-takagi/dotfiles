@@ -71,6 +71,12 @@ status is-interactive; and pyenv init - | source
 #----------------------
 source ~/.asdf/asdf.fish
 
+#----------------------
+#       For intel
+#----------------------
+# source /opt/intel/oneapi/setvars.sh
+# source ~/.fishtobashrc
+
 # environmental path
 # set -x PATH /home/linuxbrew/.linuxbrew/bin $PATH
 # Universal variables
@@ -87,3 +93,4 @@ source ~/.asdf/asdf.fish
 #  source $SSH_AGENT_FILE > /dev/null 2>&1
 #  find $HOME/.ssh -name id_rsa_vostok2 | xargs ssh-add
 #end
+alias ifish="set -x INTEL_FLAG true ; bash"

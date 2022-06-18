@@ -314,7 +314,12 @@ setopt hist_verify
 # ---old prompt setting---
 #
 # Adopt powerlevel10k for powerline.
-source  ~/powerlevel10k/powerlevel10k.zsh-theme
+if [ -e ~/powerlevel10k/powerlevel10k.zsh-theme ]; then
+    source  ~/powerlevel10k/powerlevel10k.zsh-theme
+else
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+    source  ~/powerlevel10k/powerlevel10k.zsh-theme
+fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 #-----PROMPT-----------------------------------<
@@ -330,5 +335,10 @@ eval `dircolors ~/.dircolors-solarized/dircolors.ansi-dark_taka`
 #export DISPLAY=$(grep nameserver /etc/resolv.conf | sed 's/nameserver //'):0
  export DISPLAY=:0.0 
 #-----Xserver---------<
+# Dotfile manager "dot"
+if [ -d $HOME/.dot ]; then
+    source $HOME/.dot/dot.sh
+    fpath=($HOME/.dot $fpath)
+fi
 #
 

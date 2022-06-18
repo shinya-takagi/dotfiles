@@ -62,3 +62,8 @@
 .config/nvim/setting/general.vim,.config/nvim/setting/general.vim
 .config/nvim/setting/plugin.vim,.config/nvim/setting/plugin.vim
 .config/nvim/ginit.vim,.config/nvim/ginit.vim
+
+# zsh
+.zshrc,.zshrc
+.zprofile,.zprofile
+.zsh/alias.zsh,.zsh/alias.zsh
