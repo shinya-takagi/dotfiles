@@ -68,7 +68,8 @@ if type open >/dev/null 2>&1; then
 fi
 
 # Vim
-alias vi="vim"
+# alias vi="vim"
+alias vi="nvim"
 alias vr="vi ~/.vimrc"
 alias svr="source ~/.vimrc"
 #alias tma="tmux attach"
