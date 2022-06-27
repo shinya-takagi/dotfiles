@@ -12,7 +12,8 @@ function main() {
         branch_name='mac'
     elif [ $(uname -s) == 'Linux' ]; then
     #   branch_name='notepc1'
-        branch_name='fish'
+    #   branch_name='fish'
+        branch_name='lab'
     #   branch_name='mainpc1'
     fi
     
