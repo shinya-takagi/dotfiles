@@ -28,6 +28,7 @@ call plug#begin()
     Plug 'onsails/lspkind.nvim'             " Show icons in completion on lsp
     Plug 'ray-x/cmp-treesitter'             " cmp for treesitter
     Plug 'dhruvasagar/vim-table-mode'       " Create table in vim built-in.
+    Plug 'Vimjas/vim-python-pep8-indent'    " Python indent based on pep8
 "-------Completion---------<
 "
 "----Snippet plugin------->
