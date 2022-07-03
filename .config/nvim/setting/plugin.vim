@@ -17,13 +17,17 @@ call plug#begin()
 "   Plug 'mattn/vim-lsp-settings'
 "-----Language server neovim and completion ----->
 "   nvim-cmp(https://github.com/hrsh7th/nvim-cmp)-----> 
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'williamboman/nvim-lsp-installer'
-    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'neovim/nvim-lspconfig'            " Configure lsp
+    Plug 'williamboman/nvim-lsp-installer'  " Automatic lsp installer
+    Plug 'hrsh7th/cmp-nvim-lsp'             " Completion neovim lsp
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/cmp-cmdline'
     Plug 'hrsh7th/nvim-cmp'
+" Add 2022.07.02.
+    Plug 'onsails/lspkind.nvim'             " Show icons in completion on lsp
+    Plug 'ray-x/cmp-treesitter'             " cmp for treesitter
+    Plug 'dhruvasagar/vim-table-mode'       " Create table in vim built-in.
 "-------Completion---------<
 "
 "----Snippet plugin------->
@@ -223,6 +227,29 @@ lua <<EOF
       { name = 'cmdline' }
     })
   })
+
+  local lspkind = require('lspkind')
+  cmp.setup {
+    formatting = {
+      format = lspkind.cmp_format({
+        mode = 'symbol', -- show only symbol annotations
+        maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+  
+        -- The function below will be called before any actual modifications from lspkind
+        -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+        before = function (entry, vim_item)
+          return vim_item
+        end
+      })
+    }
+  }
+
+  -- cmp_for_treesitter
+  require'cmp'.setup {
+    sources = {
+      { name = 'treesitter' }
+    }
+  }
 
   -- Setup lspconfig.
   -- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
