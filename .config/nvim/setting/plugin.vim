@@ -17,9 +17,9 @@ call plug#begin()
 "   Plug 'mattn/vim-lsp-settings'
 "-----Language server neovim and completion ----->
 "   nvim-cmp(https://github.com/hrsh7th/nvim-cmp)-----> 
-    Plug 'neovim/nvim-lspconfig'            " Configure lsp
-    Plug 'williamboman/nvim-lsp-installer'  " Automatic lsp installer
-    Plug 'hrsh7th/cmp-nvim-lsp'             " Completion neovim lsp
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'williamboman/nvim-lsp-installer'
+    Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/cmp-cmdline'
@@ -28,7 +28,8 @@ call plug#begin()
     Plug 'onsails/lspkind.nvim'             " Show icons in completion on lsp
     Plug 'ray-x/cmp-treesitter'             " cmp for treesitter
     Plug 'dhruvasagar/vim-table-mode'       " Create table in vim built-in.
-    Plug 'Vimjas/vim-python-pep8-indent'    " Python indent based on pep8
+    " Python indent based on pep8
+    Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
 "-------Completion---------<
 "
 "----Snippet plugin------->
@@ -36,6 +37,10 @@ call plug#begin()
     Plug 'L3MON4D3/LuaSnip'
     Plug 'saadparwaiz1/cmp_luasnip'
 "-------Snippet-------<
+
+"------Language------>
+    Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
+"-----------<
 
 "----Vim Airline----->
     Plug 'vim-airline/vim-airline'          " Powerline fonts for Vim 
@@ -70,6 +75,11 @@ set completeopt=menu,menuone,noselect
 "colorscheme nightfox
 "colorscheme omni
 "-----Colorscheme-----<
+"
+"----Fern setting----->
+if s:is_plugged("fern.vim")
+    nmap <C-N> :Fern . -drawer<CR>
+endif
 
 "------ vim-airline commands ----------------->
 if s:is_plugged("vim-airline")
