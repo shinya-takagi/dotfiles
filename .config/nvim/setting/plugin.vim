@@ -43,9 +43,12 @@ call plug#begin()
 "-----------<
 
 "----Vim Airline----->
-    Plug 'vim-airline/vim-airline'          " Powerline fonts for Vim 
-    Plug 'vim-airline/vim-airline-themes'   " For Airline themes
-    Plug 'ryanoasis/vim-devicons'           " Various icons for Vim.
+"   Plug 'vim-airline/vim-airline'          " Powerline fonts for Vim 
+"   Plug 'vim-airline/vim-airline-themes'   " For Airline themes
+"   Plug 'ryanoasis/vim-devicons'           " Various icons for Vim.
+" Replace Airline.
+    Plug 'nvim-lualine/lualine.nvim'        " Powerline fonts for neovim
+    Plug 'kyazdani42/nvim-web-devicons'     " Various icons for neovim
 "-------Airline----<
 "
 "----nvim-treesitter---------->
@@ -125,20 +128,7 @@ EOF
 lua <<EOF
     local configs = require 'lspconfig.configs'
     local util = require 'lspconfig.util'
-    -- require'lspconfig'.pyright.setup{}
-    -- require'lspconfig'.pylsp.setup{}
     local lsp_installer = require("nvim-lsp-installer")
-
-    -- lsp_installer.setup({
-    --     automatic_installation = true,  -- automatically detect which server to install
-    --     ui = {
-    --         icons = {
-    --             server_installed = "✓",
-    --             server_pending = "➜",
-    --             server_uninstalled = "✗"
-    --         }
-    --     }
-    -- })
 
 -- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
 -- or if the server is already installed).
@@ -162,15 +152,6 @@ lua <<EOF
         server:setup(opts)
         -- vim.cmd [[ do User LspAttachBuffers ]]
     end)
-    -- Setup lspconfig.
-    -- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-    -- -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-    -- require('lspconfig')['pyright'].setup {
-    --   capabilities = capabilities
-    -- }
-    -- require('lspconfig')['texlab'].setup {
-    --   capabilities = capabilities
-    -- }
 
     -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -268,12 +249,6 @@ lua <<EOF
       { name = 'cmdline' }
     })
   })
---  -- cmp_for_treesitter
---  require'cmp'.setup {
---    sources = {
---      { name = 'treesitter' }
---    }
---  }
 
   local lspkind = require('lspkind')
   cmp.setup {
@@ -291,11 +266,16 @@ lua <<EOF
     }
   }
 
+EOF
 
-  -- Setup lspconfig.
-  -- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-  -- -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-  -- require('lspconfig')['vimls'].setup {
-  --   capabilities = capabilities
-  --}
+
+lua <<EOF
+    local lualine = require('lualine')
+    lualine.setup{
+        options = {
+            theme = 'powerline_dark'
+            --theme = 'molokai'
+        },
+    }
+
 EOF
