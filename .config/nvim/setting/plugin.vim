@@ -39,7 +39,7 @@ call plug#begin()
 "-------Snippet-------<
 
 "------Language------>
-    Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
+"   Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
 "-----------<
 
 "----Vim Airline----->
@@ -111,6 +111,7 @@ endif
 " Syntax highlight with nvim-treesitter
 lua <<EOF
     require'nvim-treesitter.configs'.setup{
+        ensure_installed = {"cpp", "markdown", "make"},
         highlight = {
             enable = true,
             disable = {
@@ -128,6 +129,17 @@ lua <<EOF
     -- require'lspconfig'.pylsp.setup{}
     local lsp_installer = require("nvim-lsp-installer")
 
+    -- lsp_installer.setup({
+    --     automatic_installation = true,  -- automatically detect which server to install
+    --     ui = {
+    --         icons = {
+    --             server_installed = "✓",
+    --             server_pending = "➜",
+    --             server_uninstalled = "✗"
+    --         }
+    --     }
+    -- })
+
 -- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
 -- or if the server is already installed).
     lsp_installer.on_server_ready(function(server)
@@ -138,11 +150,27 @@ lua <<EOF
         --     opts.root_dir = function() ... end
         -- end
 
+        opts.capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+        opts.on_attach = function(client,buffer_number)
+          print(vim.inspect(client))
+          print(buffer_number)
+        end
+
         -- This setup() function will take the provided server configuration and decorate it with the necessary properties
         -- before passing it onwards to lspconfig.
         -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
         server:setup(opts)
+        -- vim.cmd [[ do User LspAttachBuffers ]]
     end)
+    -- Setup lspconfig.
+    -- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    -- -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+    -- require('lspconfig')['pyright'].setup {
+    --   capabilities = capabilities
+    -- }
+    -- require('lspconfig')['texlab'].setup {
+    --   capabilities = capabilities
+    -- }
 
     -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -211,6 +239,8 @@ lua <<EOF
       -- { name = 'snippy' }, -- For snippy users.
     }, {
       { name = 'buffer' },
+      { name = 'path' },
+      { name = 'treesitter' },
     })
   })
 
@@ -238,6 +268,12 @@ lua <<EOF
       { name = 'cmdline' }
     })
   })
+--  -- cmp_for_treesitter
+--  require'cmp'.setup {
+--    sources = {
+--      { name = 'treesitter' }
+--    }
+--  }
 
   local lspkind = require('lspkind')
   cmp.setup {
@@ -255,12 +291,6 @@ lua <<EOF
     }
   }
 
-  -- cmp_for_treesitter
-  require'cmp'.setup {
-    sources = {
-      { name = 'treesitter' }
-    }
-  }
 
   -- Setup lspconfig.
   -- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
