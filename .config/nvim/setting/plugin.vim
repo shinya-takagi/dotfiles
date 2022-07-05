@@ -30,6 +30,9 @@ call plug#begin()
     Plug 'dhruvasagar/vim-table-mode'       " Create table in vim built-in.
     " Python indent based on pep8
     Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
+" Add 2022.07.05.
+    Plug 'windwp/nvim-autopairs'            " Autocomplete pairs
+"   Plug 'nvim-treesitter/playground'       " Show treesitter background
 "-------Completion---------<
 "
 "----Snippet plugin------->
@@ -37,10 +40,6 @@ call plug#begin()
     Plug 'L3MON4D3/LuaSnip'
     Plug 'saadparwaiz1/cmp_luasnip'
 "-------Snippet-------<
-
-"------Language------>
-"   Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
-"-----------<
 
 "----Vim Airline----->
 "   Plug 'vim-airline/vim-airline'          " Powerline fonts for Vim 
@@ -120,7 +119,7 @@ lua <<EOF
             disable = {
                 'ruby',
             }
-        }
+        },
     }
 EOF
 
@@ -265,11 +264,7 @@ lua <<EOF
       })
     }
   }
-
-EOF
-
-
-lua <<EOF
+  -- LuaLine setting
     local lualine = require('lualine')
     lualine.setup{
         options = {
@@ -277,5 +272,16 @@ lua <<EOF
             --theme = 'molokai'
         },
     }
+  -- nvim-autopairs setting
+    local autopairs = require("nvim-autopairs")
+    local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+    -- local cmp = require('cmp')
+    autopairs.setup{
+        cmp.event:on(
+          'confirm_done',
+          cmp_autopairs.on_confirm_done()
+        )
+    }
+
 
 EOF
