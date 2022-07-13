@@ -67,3 +67,5 @@
 .zshrc,.zshrc
 .zprofile,.zprofile
 .zsh/alias.zsh,.zsh/alias.zsh
+$HOME/.dotfiles,/mnt/c/Users/shiny/.wezterm.lua
+.config/nvim/setting/minimal_plugin.vim,.config/nvim/setting/minimal_plugin.vim

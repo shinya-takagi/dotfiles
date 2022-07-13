@@ -19,7 +19,7 @@ function! s:DoCpp()
 endfunction
 
 " Configurate some vim files remotely.
-command! -nargs=* EditSetting call s:EditSetting(<f-args>)
+command! -nargs=* -complete=option EditSetting call s:EditSetting(<f-args>)
 function! s:EditSetting(arv) abort
     if a:arv == "c"
         :e $HOME/.config/nvim/setting/autocommand.vim
@@ -33,3 +33,16 @@ function! s:EditSetting(arv) abort
         echo "g -> edit general.vim"
     endif
 endfunction
+
+" =====================================>
+"       Original commands
+" =====================================>
+" Abbreviation of "vertical diffsplit"
+function! VerticalDiffSplit(filename)
+    execute "vertical diffsplit " a:filename
+endfunction
+function! DiffSplit(filename)
+    execute "diffsplit " a:filename
+endfunction
+command! -complete=file -nargs=1 VDS :call VerticalDiffSplit(<f-args>)
+command! -complete=file -nargs=1 DS :call DiffSplit(<f-args>)

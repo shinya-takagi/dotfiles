@@ -6,6 +6,9 @@ if [ "$(uname -s)" = "Linux" ]; then
     export PATH="/usr/local/go/bin:$PATH"     # go language path
     export PATH="/usr/local/texlive/2021/bin/x86_64-linux:$PATH"    # TeX Live
     export PYTHONPATH="$HOME/dev/Python/lib:$PYTHONPATH"    # Local Python library
+    export PYENV_ROOT="$HOME/.pyenv"          # pyenv path
+    export PATH="$PYENV_ROOT/bin:$PATH"       # For pyenv python path
+    eval "$(pyenv init -)"
     if [ -e /opt/intel/oneapi/setvars.sh ]; then
         source /opt/intel/oneapi/setvars.sh > /dev/null     # Intel Fortran/C++
     fi

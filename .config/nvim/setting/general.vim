@@ -31,6 +31,8 @@
  set smartindent    " insert indent automatically.
  set shiftwidth=4   " tab is 4 space in smartindent.
  set softtabstop=4  " tab insert 4 space.
+
+ let g:python3_host_prog = system('which python')
  
 "=============================================>
 "           Key mapping

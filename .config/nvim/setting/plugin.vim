@@ -12,11 +12,8 @@ endfunction
 
 " Plugin Manager : Vim-Plug(https://github.com/junegunn/vim-plug)
 call plug#begin()
-"----Language server for vim 'vim-lsp'----->
-"   Plug 'prabirshrestha/vim-lsp'
-"   Plug 'mattn/vim-lsp-settings'
 "-----Language server neovim and completion ----->
-"   nvim-cmp(https://github.com/hrsh7th/nvim-cmp)-----> 
+    " nvim-cmp(https://github.com/hrsh7th/nvim-cmp)-----> 
     Plug 'neovim/nvim-lspconfig'
     Plug 'williamboman/nvim-lsp-installer'
     Plug 'hrsh7th/cmp-nvim-lsp'
@@ -24,87 +21,101 @@ call plug#begin()
     Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/cmp-cmdline'
     Plug 'hrsh7th/nvim-cmp'
-" Add 2022.07.02.
-    Plug 'onsails/lspkind.nvim'             " Show icons in completion on lsp
+    Plug 'ray-x/lsp_signature.nvim'         " Show signature help on function
+    Plug 'folke/lsp-colors.nvim'            " Add lsp colors
+    Plug 'folke/trouble.nvim'               " Show warning/error like vscode
+    " nvim-treesitter supports various syntax highlights.
+    "   Require neovim-nightly or nvim7.0 over
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'ray-x/cmp-treesitter'             " cmp for treesitter
+    " Add 2022.07.02.
+    Plug 'onsails/lspkind.nvim'             " Show icons in completion on lsp
     Plug 'dhruvasagar/vim-table-mode'       " Create table in vim built-in.
     " Python indent based on pep8
     Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
-" Add 2022.07.05.
+    " Add 2022.07.05.
     Plug 'windwp/nvim-autopairs'            " Autocomplete pairs
-"   Plug 'nvim-treesitter/playground'       " Show treesitter background
-"-------Completion---------<
-"
-"----Snippet plugin------->
-"" For luasnip users.
+    Plug 'nvim-treesitter/playground'       " Show treesitter background
+    Plug 'zbirenbaum/neodim'                " highlight unuse variables
+    " For luasnip users.
     Plug 'L3MON4D3/LuaSnip'
     Plug 'saadparwaiz1/cmp_luasnip'
-"-------Snippet-------<
-
-"----Vim Airline----->
-"   Plug 'vim-airline/vim-airline'          " Powerline fonts for Vim 
-"   Plug 'vim-airline/vim-airline-themes'   " For Airline themes
-"   Plug 'ryanoasis/vim-devicons'           " Various icons for Vim.
-" Replace Airline.
+    " For LaTeX
+    Plug 'lervag/vimtex'
+    " Airline
     Plug 'nvim-lualine/lualine.nvim'        " Powerline fonts for neovim
     Plug 'kyazdani42/nvim-web-devicons'     " Various icons for neovim
-"-------Airline----<
-"
-"----nvim-treesitter---------->
-    " nvim-treesitter supports various syntax highlights. Require neovim-nightly
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    " adjust treesitter colorscheme
-    Plug 'Th3Whit3Wolf/one-nvim'
-    Plug 'Th3Whit3Wolf/space-nvim'
+    " Filer
+    Plug 'kyazdani42/nvim-tree.lua'         " Neovim tree
+    " Fuzzy Finder
+    Plug 'nvim-lua/plenary.nvim'            " Neovim api
+    Plug 'nvim-telescope/telescope.nvim'    " lua made in fuzzy finder
+    Plug 'RRethy/vim-illuminate'            " Illuminate same variables
+    Plug 'SmiteshP/nvim-navic'              " Show function name.
+    Plug 'simrat39/symbols-outline.nvim'    " Show Symbol at outline
+" --- adjust treesitter colorscheme---->
     Plug 'tanvirtin/monokai.nvim'
-    Plug 'nekonako/xresources-nvim'
-    Plug 'EdenEast/nightfox.nvim' " Vim-Plug
-    Plug 'yonlu/omni.vim'
-"-------treesitter-----<
-"
-"------Filer plugin----->
-    Plug 'lambdalisue/fern.vim'
-    Plug 'antoinemadec/FixCursorHold.nvim'
-"------Filer----->
+"   Plug 'Th3Whit3Wolf/one-nvim'
+"   Plug 'Th3Whit3Wolf/space-nvim'
+"   Plug 'nekonako/xresources-nvim'
+"   Plug 'EdenEast/nightfox.nvim' " Vim-Plug
+"   Plug 'yonlu/omni.vim'
+"-----Fuzzy Finder---<
+
+" -----Plugin Deprecated -------->
+    " ----Language server for vim 'vim-lsp'----->
+    " Plug 'prabirshrestha/vim-lsp'
+    " Plug 'mattn/vim-lsp-settings'
+    " ----Vim Airline----->
+    " Plug 'vim-airline/vim-airline'          " Powerline fonts for Vim 
+    " Plug 'vim-airline/vim-airline-themes'   " For Airline themes
+    " Plug 'ryanoasis/vim-devicons'           " Various icons for Vim.
+    " Plug 'lambdalisue/fern.vim'             " Filer
+    " Plug 'antoinemadec/FixCursorHold.nvim'
+    " Plug '/usr/bin/fzf'
+    " Plug 'junegunn/fzf'     
+" ------------------------<
 
 call plug#end()
 set completeopt=menu,menuone,noselect
 "-----Colorscheme----->
 "colorscheme ThemerVim          " Original colorscheme
-"colorscheme one-nvim
-"colorscheme space-nvim
  colorscheme monokai
-"colorscheme nightfox
-"colorscheme omni
 "-----Colorscheme-----<
 "
 "----Fern setting----->
 if s:is_plugged("fern.vim")
     nmap <C-N> :Fern . -drawer<CR>
 endif
+" if s:is_plugged("telescope.nvim")
+"     nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+"     nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+"     nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+"     nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+" endif
 
 "------ vim-airline commands ----------------->
 if s:is_plugged("vim-airline")
-    let g:airline_powerline_fonts = 1               "Use Powerline fonts
-    let g:airline#extensions#tabline#enabled = 1    "Show tab line at opening files
-    "let g:airline_theme = 'powerlineish'           "Change Airline color theme
-    let g:airline_theme = 'molokai'                 "Change Airline color theme
+    let g:airline_powerline_fonts = 1               " Use Powerline fonts
+    let g:airline#extensions#tabline#enabled = 1    " Show tab line at opening files
+    "let g:airline_theme = 'powerlineish'           " Change Airline color theme
+    let g:airline_theme = 'molokai'                 " Change Airline color theme
     if !exists('g:airline_symbols')
     let g:airline_symbols = {}
     endif
-"   let g:airline_left_sep = '⮀'                    "Separeter for left
+"   let g:airline_left_sep = '⮀'                    " Separeter for left
 "   let g:airline_left_alt_sep = '⮁'
-"   let g:airline_right_sep = '⮂'                   "Separater for right
+"   let g:airline_right_sep = '⮂'                   " Separater for right
 "   let g:airline_right_alt_sep = '⮃'
-    let g:airline_symbols.crypt = '🔒'              "暗号化されたファイル
-"   let g:airline_symbols.linenr = '¶'              "行
-    let g:airline_symbols.linenr = 'LINE'           "行
-    let g:airline_symbols.maxlinenr = 'MAX㏑'       "最大行
-    let g:airline_symbols.branch = '⭠'              "gitブランチ
-    let g:airline_symbols.paste = 'ρ'               "ペーストモード
-    let g:airline_symbols.spell = 'Ꞩ'               "スペルチェック
-    let g:airline_symbols.notexists = '∄'           "gitで管理されていない場合
-    let g:airline_symbols.whitespace = 'Ξ'          "空白の警告(余分な空白など)
+    let g:airline_symbols.crypt = '🔒'              " Encrypted files(read only)
+"   let g:airline_symbols.linenr = '¶'              " Line
+    let g:airline_symbols.linenr = 'LINE'           " Line
+    let g:airline_symbols.maxlinenr = 'MAX㏑'       " Max Line
+    let g:airline_symbols.branch = '⭠'              " Git Branch
+    let g:airline_symbols.paste = 'ρ'               " Paste Mode
+    let g:airline_symbols.spell = 'Ꞩ'               " Spell Check
+    let g:airline_symbols.notexists = '∄'           " If it is not managed by Git
+    let g:airline_symbols.whitespace = 'Ξ'          " Warnig over Space
 endif
 
 "=====================================================>
@@ -113,7 +124,7 @@ endif
 " Syntax highlight with nvim-treesitter
 lua <<EOF
     require'nvim-treesitter.configs'.setup{
-        ensure_installed = {"cpp", "markdown", "make"},
+        -- ensure_installed = {"cpp", "markdown", "make"},
         highlight = {
             enable = true,
             disable = {
@@ -124,13 +135,10 @@ lua <<EOF
 EOF
 
 " Language server of init.lua
+"-----Setup nvim-cmp----------->
 lua <<EOF
-    local configs = require 'lspconfig.configs'
-    local util = require 'lspconfig.util'
-    local lsp_installer = require("nvim-lsp-installer")
-
--- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
--- or if the server is already installed).
+  -- Setup nvim-cmp.
+  local lsp_installer = require("nvim-lsp-installer")
     lsp_installer.on_server_ready(function(server)
         local opts = {}
 
@@ -151,9 +159,8 @@ lua <<EOF
         server:setup(opts)
         -- vim.cmd [[ do User LspAttachBuffers ]]
     end)
-
     -- Mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
+    -- See `:help vim.diagnostic.*` for documentation on any of the below functions
     local opts = { noremap=true, silent=true }
     vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
     vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
@@ -182,39 +189,35 @@ lua <<EOF
       vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
       vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
     end
-EOF
 
-"-----Setup nvim-cmp----------->
-lua <<EOF
-  -- Setup nvim-cmp.
+
   local cmp = require'cmp'
 
   cmp.setup({
     snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
-        --vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-         require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
         -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
         -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
       end,
     },
-    mapping = {
-      ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-      ['<C-e>'] = cmp.mapping({
-        i = cmp.mapping.abort(),
-        c = cmp.mapping.close(),
-      }),
-    -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    window = {
+      -- completion = cmp.config.window.bordered(),
+      -- documentation = cmp.config.window.bordered(),
     },
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      -- { name = 'vsnip' }, -- For vsnip users.
-      { name = 'luasnip' }, -- For luasnip users.
+      { name = 'vsnip' }, -- For vsnip users.
+      -- { name = 'luasnip' }, -- For luasnip users.
       -- { name = 'ultisnips' }, -- For ultisnips users.
       -- { name = 'snippy' }, -- For snippy users.
     }, {
@@ -227,7 +230,7 @@ lua <<EOF
   -- Set configuration for specific filetype.
   cmp.setup.filetype('gitcommit', {
     sources = cmp.config.sources({
-      { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it. 
+      { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
     }, {
       { name = 'buffer' },
     })
@@ -235,6 +238,7 @@ lua <<EOF
 
   -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline(),
     sources = {
       { name = 'buffer' }
     }
@@ -242,13 +246,13 @@ lua <<EOF
 
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
       { name = 'path' }
     }, {
       { name = 'cmdline' }
     })
   })
-
   local lspkind = require('lspkind')
   cmp.setup {
     formatting = {
@@ -283,5 +287,29 @@ lua <<EOF
         )
     }
 
+    -- Setup neodim
+    local neodim = require("neodim")
+    neodim.setup({
+        alpha = 0.8
+        }
+    )
+
+    -- Setup nvimtree
+    local ntree = require("nvim-tree")
+        ntree.setup({
+    })
+
+    -- Setup lsp_signature
+    local signature = require("lsp_signature")
+    local cfg = {}
+    signature.setup(cfg)
+    signature.on_attach()
+
+    -- Setup trouble.nvim
+    require("trouble").setup{
+        -- here is your configuration.
+    }
+    -- Show trouble on Shift+t.
+    vim.api.nvim_set_keymap('n', '<S-t>', '<cmd>TroubleToggle<CR>', { noremap = true})
 
 EOF

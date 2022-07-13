@@ -20,7 +20,7 @@ execute 'source ' join([s:Setting_Directory, '/autocommand.vim'], '')
 " Plugin and Lua script
 if filereadable(expand('~/.local/share/nvim/site/autoload/plug.vim'))
     execute 'source ' join([s:Setting_Directory, '/plugin.vim'], '')
-    " source /home/shinya/.config/nvim/setting/plugin.vim
+    " execute 'source ' join([s:Setting_Directory, '/minimal_plugin.vim'], '')
 endif
 
 " if filereadable(expand('~/.local/share/nvim/site/autoload/plug.vim'))
