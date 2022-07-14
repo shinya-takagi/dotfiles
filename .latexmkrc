@@ -57,7 +57,7 @@ if ($^O eq 'MSWin32') {
   $dvipdf                        = 'dvipdfmx %O -o %D %S';
   $dvips                         = 'dvips %O -z -f %S | convbkmk -u > %D';
   $ps2pdf                        = 'ps2pdf %O %S %D';
-  $pdf_mode                      = 3;
+  $pdf_mode                      = 1;
 # $revtex                        = 'pdflatex %O -synctex=1 -interaction=nonstopmode %S';
   # macOS の場合のみの設定
   if ($^O eq 'darwin') {
@@ -72,5 +72,6 @@ if ($^O eq 'MSWin32') {
     # Linux ではディストリビューションによってインストールされているアプリケーションが
     # 異なるため、ディストリビューションに依存しない xdg-open で開くようにする
     $pdf_previewer               = 'xdg-open';
+    # $pdf_previewer               = 'qpdfview';
   }
 }

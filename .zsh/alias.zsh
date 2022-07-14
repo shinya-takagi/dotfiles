@@ -68,7 +68,8 @@ if type open >/dev/null 2>&1; then
 fi
 
 # Vim
-alias vi="vim"
+# alias vi="vim"
+alias vi="nvim"
 alias vr="vi ~/.vimrc"
 alias svr="source ~/.vimrc"
 #alias tma="tmux attach"
@@ -101,23 +102,23 @@ alias checkos="cat /etc/os-release"
 alias gefwin="cd /mnt/c/Users/shiny/mydata/miscellinous/GEF-2016-V1-2_edited"
 
 #----- OS Distrbution condition ---------------------->
-TMPOS=$(cat /etc/os-release | head -2 | tail -1)
-PRETTY_NAME=${TMPOS:13}
-#---------For Arch Linux---------------->
-if [ $PRETTY_NAME = "Arch Linux\"" ]; then
-    alias al="echo Arch Linux"
-    alias pacman="sudo pacman"
-    alias pacmanupdate="sudo pacman -Sy"
-    alias vmemo="vim $HOME/dotfiles/tips/memo"
-    alias cmemo="cat $HOME/dotfiles/tips/memo"
-    alias nas="cd /mnt/nas"
-#---------Arch Linux--------<
-#---------For Ubuntu-------------------->
-elif [ $PRETTY_NAME = "Ubuntu\"" ]; then
-    alias al="echo Ubuntu"
-fi
+# TMPOS=$(cat /etc/os-release | head -2 | tail -1)
+# PRETTY_NAME=${TMPOS:13}
+# #---------For Arch Linux---------------->
+# if [ $PRETTY_NAME == "Arch Linux\"" ]; then
+#     alias al="echo Arch Linux"
+#     alias pacman="sudo pacman"
+#     alias pacmanupdate="sudo pacman -Sy"
+#     alias vmemo="vim $HOME/dotfiles/tips/memo"
+#     alias cmemo="cat $HOME/dotfiles/tips/memo"
+#     alias nas="cd /mnt/nas"
+# #---------Arch Linux--------<
+# #---------For Ubuntu-------------------->
+# elif [ $PRETTY_NAME == "Ubuntu\"" ]; then
+#     alias al="echo Ubuntu"
+# fi
 #---------Ubuntu--------<
-unset TMPOS PRETTY_NAME
+# unset TMPOS PRETTY_NAME
 #---- Condition -------------<
 
 #-------------------------------

@@ -1,1 +1,3 @@
-eval `ssh-agent -k`
+# zlogout
+
+# eval `ssh-agent -k`   # When ssh-agent is running.

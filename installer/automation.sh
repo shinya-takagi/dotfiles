@@ -11,7 +11,9 @@ function main() {
     if [ $(uname -s) == 'Darwin' ]; then
         branch_name='mac'
     elif [ $(uname -s) == 'Linux' ]; then
-        branch_name='notepc1'
+    #   branch_name='notepc1'
+    #   branch_name='fish'
+        branch_name='lab'
     #   branch_name='mainpc1'
     fi
     
@@ -19,8 +21,8 @@ function main() {
     # - - - - upload - - - -
      "u" )  git commit -a
 #-m "$message"
-            git push origin master
-    #       git push origin "$branch_name"
+#           git push origin master
+            git push origin "$branch_name"
       ;; 
     # - - - - download - - - -
     "d" )   git pull

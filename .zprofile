@@ -2,16 +2,25 @@
 
 # Set PATH
 if [ "$(uname -s)" = "Linux" ]; then
-    export PATH="$HOME/FISH:$PATH"
-    export PATH="$HOME/codes:$PATH"
-    export PATH="$HOME/.go/bin:$PATH"
-    export PATH="$HOME/intel/bin:$PATH"
-    export PATH="$HOME/.bin:$PATH"            # local binary path
     export PATH="$HOME/.local/bin:$PATH"      # local binary path
     export PATH="/usr/local/go/bin:$PATH"     # go language path
-    export PATH="/usr/local/texlive/2021/bin/x86_64-linux:$PATH"
-    export PYTHONPATH="$HOME/python/lib:$PYTHONPATH"
-    export PATH="$HOME/go/bin:$PATH"
+    export PATH="/usr/local/texlive/2021/bin/x86_64-linux:$PATH"    # TeX Live
+    export PYTHONPATH="$HOME/dev/Python/lib:$PYTHONPATH"    # Local Python library
+    export PYENV_ROOT="$HOME/.pyenv"          # pyenv path
+    export PATH="$PYENV_ROOT/bin:$PATH"       # For pyenv python path
+    eval "$(pyenv init -)"
+    if [ -e /opt/intel/oneapi/setvars.sh ]; then
+        source /opt/intel/oneapi/setvars.sh > /dev/null     # Intel Fortran/C++
+    fi
+    # dot manager
+    export DOT_REPO="https://github.com/shinya-takagi/dotfiles.git"
+    export DOT_DIR="$HOME/.dotfiles"
+    # export PATH="$HOME/FISH:$PATH"
+    # export PATH="$HOME/codes:$PATH"
+    # export PATH="$HOME/.go/bin:$PATH"
+    # export PATH="$HOME/intel/bin:$PATH"
+    # export PATH="$HOME/.bin:$PATH"            # local binary path
+    # export PATH="$HOME/go/bin:$PATH"
     #export PATH="$HOME/codes/GENERAL_CODE/GEF-2021-V1-1_linux:$PATH"
     #export PATH="$HOME/bin:$PATH"
 elif [ "$(uname -s )" = "Darwin" ]; then

@@ -35,7 +35,7 @@ function main(){
     mkdir -p "$vim_path"/ftplugin "$vim_path"/swap "$vim_path"/tmp "$vim_path"/undo "$vim_path"/colors "$vim_path"/after/syntax
     mkdir -p ~/.config/fish ~/.config/yt-dlp ~/.config/git
 # - symboric link - -
-    ln -sf "$DFPATH"/config.fish                    ~/.config/fish/config.fish
+#   ln -sf "$DFPATH"/config.fish                    ~/.config/fish/config.fish
     ln -sf "$DFPATH"/.tmux.conf                     ~/.tmux.conf
     # Vim
     ln -sf "$DFPATH"/.vim/ftplugin/fortran.vim      "$vim_path"/ftplugin/fortran.vim
@@ -44,24 +44,26 @@ function main(){
     ln -sf "$DFPATH"/.vim/ftplugin/zsh.vim          "$vim_path"/ftplugin/zsh.vim
     ln -sf "$DFPATH"/.vim/colors/ThemerVim.vim      "$vim_path"/colors/ThemerVim.vim
     ln -sf "$DFPATH"/.vim/after/syntax/python.vim   "$vim_path"/after/syntax/python.vim
-    ln -sf "$DFPATH"/.gvimrc                        ~/.gvimrc
+#   ln -sf "$DFPATH"/.gvimrc                        ~/.gvimrc
     ln -sf "$DFPATH"/.vim/coc-settings.json         "$vim_path"/coc-settings.json
+    # Fish
+#   ln -sf "$DFPATH"/.config
     # Bash
-    ln -sf "$DFPATH"/.bashrc                        ~/.bashrc
-    ln -sf "$DFPATH"/.bash_profile                  ~/.bash_profile
-    ln -sf "$DFPATH"/.bash_logout                   ~/.bash_logout
-    ln -sf "$DFPATH"/.bash_prompt.sh                ~/.bash_prompt.sh
+#   ln -sf "$DFPATH"/.bashrc                        ~/.bashrc
+#   ln -sf "$DFPATH"/.bash_profile                  ~/.bash_profile
+#   ln -sf "$DFPATH"/.bash_logout                   ~/.bash_logout
+#   ln -sf "$DFPATH"/.bash_prompt.sh                ~/.bash_prompt.sh
     # Git
-    ln -sf "$DFPATH"/.git-prompt.sh                 ~/.git-prompt.sh
-    ln -sf "$DFPATH"/.git-completion.bash           ~/.git-completion.bash
-    ln -sf "$DFPATH"/.gitconfig                     ~/.gitconfig
+#   ln -sf "$DFPATH"/.git-prompt.sh                 ~/.git-prompt.sh
+#   ln -sf "$DFPATH"/.git-completion.bash           ~/.git-completion.bash
+#   ln -sf "$DFPATH"/.gitconfig                     ~/.gitconfig
     ln -sf "$DFPATH"/.config/git/ignore             ~/.config/git/ignore
     # latex files
     ln -sf "$DFPATH"/.latexmkrc                     ~/.latexmkrc
     # Others
-    ln -sf "$DFPATH"/.config/yt-dlp/config          ~/.config/yt-dlp/config
+#   ln -sf "$DFPATH"/.config/yt-dlp/config          ~/.config/yt-dlp/config
 
-    # -----Color scheem------
+#   # -----Color scheem------
     if [ ! -d "$home_sol" ]; then
         cp -r "$dir_sol"                            ~/.
         case "$OS" in
@@ -81,7 +83,7 @@ function main(){
     fi
     # ------------------------
 
-    ln -sf "$DFPATH"/.zsh/alias_mac.zsh             ~/.zshenv
+#   ln -sf "$DFPATH"/.zsh/alias_mac.zsh             ~/.zshenv
     case "$OS" in
         'Mac'  ) {
             ln -sf "$DFPATH"/.vimrc_mac             ~/.vimrc
@@ -95,21 +97,21 @@ function main(){
             mkdir -p "$HOME"/$zfuncs
             if [[ "$(uname -r)" == *microsoft* ]];  then
                 ln -sf "$DFPATH"/.vimrc_wsl             ~/.vimrc
-                ln -sf "$DFPATH"/.zlogout               ~/.zlogout
-                ln -sf "$DFPATH"/.zprofile              ~/.zprofile
-                ln -sf "$DFPATH"/.zshrc                 ~/.zshrc
-                ln -sf "$DFPATH"/.zsh/alias.zsh         ~/.zsh/alias.zsh
-                ln -sf "$DFPATH"/$zfuncs/_mcf           ~/$zfuncs/_mcf
-                ln -sf "$DFPATH"/$zfuncs/_cht           ~/$zfuncs/_cht
-                ln -sf "$DFPATH"/.gallery-dl.json       ~/.gallery-dl.conf
+#               ln -sf "$DFPATH"/.zlogout               ~/.zlogout
+#               ln -sf "$DFPATH"/.zprofile              ~/.zprofile
+#               ln -sf "$DFPATH"/.zshrc                 ~/.zshrc
+#               ln -sf "$DFPATH"/.zsh/alias.zsh         ~/.zsh/alias.zsh
+#               ln -sf "$DFPATH"/$zfuncs/_mcf           ~/$zfuncs/_mcf
+#               ln -sf "$DFPATH"/$zfuncs/_cht           ~/$zfuncs/_cht
+#               ln -sf "$DFPATH"/.gallery-dl.json       ~/.gallery-dl.conf
             else
                 ln -sf "$DFPATH"/.vimrc                 ~/.vimrc
-                ln -sf "$DFPATH"/.zlogout               ~/.zlogout
-                ln -sf "$DFPATH"/.zprofile              ~/.zprofile
-                ln -sf "$DFPATH"/.zshrc                 ~/.zshrc
-                ln -sf "$DFPATH"/.zsh/alias.zsh         ~/.zsh/alias.zsh
-                ln -sf "$DFPATH"/$zfuncs/_mcf           ~/$zfuncs/_mcf
-                ln -sf "$DFPATH"/$zfuncs/_cht           ~/$zfuncs/_cht
+#               ln -sf "$DFPATH"/.zlogout               ~/.zlogout
+#               ln -sf "$DFPATH"/.zprofile              ~/.zprofile
+#               ln -sf "$DFPATH"/.zshrc                 ~/.zshrc
+#               ln -sf "$DFPATH"/.zsh/alias.zsh         ~/.zsh/alias.zsh
+#               ln -sf "$DFPATH"/$zfuncs/_mcf           ~/$zfuncs/_mcf
+#               ln -sf "$DFPATH"/$zfuncs/_cht           ~/$zfuncs/_cht
             fi
         };;
         * )	echo "stop"
