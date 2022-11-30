@@ -1,0 +1,41 @@
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#           StarShip Configuration
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Get Editor completion to adjust schema.
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Insert a space between Shell and Prompts.
+add_newline = true
+
+# Directory Set Full-Path
+[directory]
+truncation_length = 100
+truncate_to_repo = false
+
+# Replace Symbol "❯" to Symbol "➜"
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[➜](bold red)"
+
+# Invisible prompts to be disable package module
+[package]
+disabled = true
+
+# Battery Module for display battery state.
+[battery]
+full_symbol = "🔋 "
+charging_symbol = "⚡️ "
+discharging_symbol = "💀 "
+[[battery.display]]
+threshold = 10
+style = "bold red"
+[[battery.display]]
+threshold = 30
+style = "bold yellow"
+discharging_symbol = ""
+
+# Show Times
+[time]
+disabled = true
+use_12hr = true

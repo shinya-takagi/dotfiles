@@ -1,0 +1,3 @@
+# zshenv
+
+source $HOME/.zprofile
