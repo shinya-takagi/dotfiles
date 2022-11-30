@@ -3,17 +3,20 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
-fi
+# if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+#     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+#     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+#     command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/bin" && \
+#         print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+#         print -P "%F{160}▓▒░ The clone has failed.%f%b"
+# fi
+# 
+# source "$HOME/.zinit/bin/zinit.zsh"
+# autoload -Uz _zinit
+# (( ${+_comps} )) && _comps[zinit]=_zinit
 
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
+# Load sheldon (Sheldon is shell plugin manager.)
+eval "$(sheldon source)"
 
 # ------------UPPER ZINIT----------------------------
 
@@ -58,12 +61,6 @@ export RSYNC_RSH=ssh            # use ssh on rsync
 umask 022
 ulimit -c 0
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 # -----------------------------
 #   Key Binding
 # -----------------------------
@@ -73,7 +70,14 @@ bindkey -M viins 'jj' vi-cmd-mode   # Back to Normal with jj
 # -----------------------------
 #     Completion(WIP)
 # -----------------------------
-#
+# ~~~ Start zsh-autocomplete ~~~
+# zstyle ':completion:*'  list-colors '=*=90'
+zstyle ':completion:*:parameters'  list-colors '=*=32'
+zstyle ':completion:*:commands' list-colors '=*=1;31'
+zstyle ':completion:*:builtins' list-colors '=*=1;38;5;142'
+zstyle ':completion:*:aliases' list-colors '=*=2;38;5;128'
+zstyle ':completion:*:*:kill:*' list-colors '=(#b) #([0-9]#)*( *[a-z])*=34=31=33'
+# ~~~ End zsh-autocomplete
 # -----------------------------
 #     History
 # -----------------------------
@@ -113,10 +117,15 @@ fi
 source $HOME/.dot/dot.sh
 fpath=($HOME/.dot $fpath)
 
-
 #----------------------
 function Terminal_Prompts(){
     #--------Powerline-------------->
+    # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+    # Initialization code that may require console input (password prompts, [y/n]
+    # confirmations, etc.) must go above this block; everything else may go below.
+    if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+      source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    fi
     # Adopt powerlevel10k for powerline.
     if [ -e ~/powerlevel10k/powerlevel10k.zsh-theme ]; then
         source  ~/powerlevel10k/powerlevel10k.zsh-theme

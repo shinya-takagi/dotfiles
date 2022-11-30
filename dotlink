@@ -1,0 +1,91 @@
+# vim: ft=conf
+###############################################################################
+#                         _       _    __ _ _                                 #
+#                      __| | ___ | |_ / _(_) | ___  ___                       #
+#                     / _` |/ _ \| __| |_| | |/ _ \/ __|                      #
+#                    | (_| | (_) | |_|  _| | |  __/\__ \                      #
+#                     \__,_|\___/ \__|_| |_|_|\___||___/                      #
+#                                                                             #
+###############################################################################
+# This file contains dotfiles linksets.
+# You can comment out by adding "#" at the beginning of the line.
+# And an empty line is ignored by dot.
+#
+# Format:
+# <dotfile>,<linkto>
+#
+# the script automatically add directory information to the file path.
+# So, you should write like below:
+#     .vimrc,.vimrc
+#
+# You can load from outside of the dotfiles directory:
+#     ~/Dropbox/.netrc,.netrc
+#
+# You can easily copy the existing file to the dotfiles repository
+# and add new link list by
+#     dot add [-m "some comment"] original_file dotfiles_path
+# or, just
+#     dot add original_file
+# In the second example, the script automatically completes the second
+# arguments and confirm whether or not to execute that command.
+#
+#------------------------------------------------------------------------------
+#
+# Neovim
+# -- Filetype
+.config/nvim/ftplugin/fish.vim,.config/nvim/ftplugin/fish.vim
+.config/nvim/ftplugin/fortran.vim,.config/nvim/ftplugin/fortran.vim
+.config/nvim/ftplugin/python.vim,.config/nvim/ftplugin/python.vim
+.config/nvim/ftplugin/sh.vim,.config/nvim/ftplugin/sh.vim
+.config/nvim/ftplugin/tex.vim,.config/nvim/ftplugin/tex.vim
+.config/nvim/ftplugin/zsh.vim,.config/nvim/ftplugin/zsh.vim
+# -- Lua
+.config/nvim/init.lua,.config/nvim/init.lua
+.config/nvim/lua/base.lua,.config/nvim/lua/base.lua
+.config/nvim/lua/autocmds.lua,.config/nvim/lua/autocmds.lua
+.config/nvim/lua/keymaps.lua,.config/nvim/lua/keymaps.lua
+.config/nvim/lua/options.lua,.config/nvim/lua/options.lua
+.config/nvim/lua/plugins.lua,.config/nvim/lua/plugins.lua
+# -- Plugins
+.config/nvim/plugin/autopairs.lua,.config/nvim/plugin/autopairs.lua
+.config/nvim/plugin/cmp.lua,.config/nvim/plugin/cmp.lua
+.config/nvim/plugin/keymap.lua,.config/nvim/plugin/keymap.lua
+.config/nvim/plugin/lsp_signature.lua,.config/nvim/plugin/lsp_signature.lua
+.config/nvim/plugin/lspconfig.lua,.config/nvim/plugin/lspconfig.lua
+.config/nvim/plugin/lspkind.lua,.config/nvim/plugin/lspkind.lua
+.config/nvim/plugin/lspsaga.lua,.config/nvim/plugin/lspsaga.lua
+.config/nvim/plugin/lualine.lua,.config/nvim/plugin/lualine.lua
+.config/nvim/plugin/nvimtree.lua,.config/nvim/plugin/nvimtree.lua
+.config/nvim/plugin/telescope.lua,.config/nvim/plugin/telescope.lua
+.config/nvim/plugin/trouble.lua,.config/nvim/plugin/trouble.lua
+.config/nvim/plugin/alpha.lua,.config/nvim/plugin/alpha.lua
+.config/nvim/plugin/colorscheme.lua,.config/nvim/plugin/colorscheme.lua
+.config/nvim/plugin/indent_blankline.lua,.config/nvim/plugin/indent_blankline.lua
+.config/nvim/plugin/neodev.lua,.config/nvim/plugin/neodev.lua
+.config/nvim/plugin/notify.lua,.config/nvim/plugin/notify.lua
+.config/nvim/plugin/treesitter.lua,.config/nvim/plugin/treesitter.lua
+.config/nvim/plugin/lastplace.lua,.config/nvim/plugin/lastplace.lua
+.config/nvim/plugin/symbols_outline.lua,.config/nvim/plugin/symbols_outline.lua
+.config/nvim/plugin/jaq.lua,.config/nvim/plugin/jaq.lua
+.config/nvim/plugin/noice.lua,.config/nvim/plugin/noice.lua
+.config/nvim/plugin/hlslens.lua,.config/nvim/plugin/hlslens.lua
+.config/nvim/plugin/sidebar.lua,.config/nvim/plugin/sidebar.lua
+.config/nvim/plugin/scrollbar.lua,.config/nvim/plugin/scrollbar.lua
+.config/nvim/plugin/code_rummer.lua,.config/nvim/plugin/code_rummer.lua
+
+# Terminal Setting
+  # alacritty
+.config/alacritty/alacritty.yml,.config/alacritty/alacritty.yml
+  # Tmux
+.config/tmux/tmux.conf,.config/tmux/tmux.conf
+  # StarShip
+.config/starship.toml,.config/starship.toml
+
+# zsh
+.zshrc,.zshrc
+.zprofile,.zprofile
+.zsh/alias.zsh,.zsh/alias.zsh
+.zshenv,.zshenv
+
+# Others
+.config/sheldon/plugins.toml,.config/sheldon/plugins.toml

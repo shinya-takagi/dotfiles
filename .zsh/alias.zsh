@@ -151,158 +151,36 @@ fi
 #-------------------------------
 #	FUNCTION
 #-------------------------------
-
-function nasmnt(){
-  local opt=$1
-  local DECRYPT_FILE DOTFILE_PATH
-  DOTFILE_PATH="$HOME/.dotfiles"
-  # PASSWORD=$(bash $DOTFILE_PATH/tips/nas_dec.sh)
-  PASSWORD=$2
-  case "$opt" in
-    "-m" ) sudo mount -t cifs -o username=shinya,password=$PASSWORD,uid=1000,gid=985,iocharset=utf8 //192.168.3.8/home /mnt/nas ;;
-    "-u" ) sudo umount /mnt/nas ;;
-    *    ) echo " USAGE : $0 [OPTION]"
-           echo "OPTION : -m  ->  mount your nas"
-           echo "         -u  ->  unmount your nas"
-   esac
+# fbr - checkout git branch
+fbr() {
+  local branches branch
+  branches=$(git branch -vv) &&
+  branch=$(echo "$branches" | fzf +m) &&
+  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
-
-function nasmnt_lab(){
-  local IPADDRESS=192.168.1.90
-  local opt=$1
-  #sudo mount -t cifs -o //$IPADDRESS/b4 /mnt/b4
-  #sudo mount //$IPADDRESS/b4 /mnt/b4 -o uid=1000,gid=998,vers=1.0,iocharset=utf8
-  #-o username=admin,password=reaction1,uid="$UID",gid="$GID",vers=2.0 
-  case "$opt" in
-    "-m" ) sudo mount //$IPADDRESS/b4 /mnt/b4 -o uid=1000,gid=985,vers=1.0,iocharset=utf8;;
-    "-u" ) sudo umount /mnt/b4 ;;
-    *    ) echo " USAGE : $0 [OPTION]"
-           echo "OPTION : -m  ->  mount your nas"
-           echo "         -u  ->  unmount your nas"
-   esac
+# fbr - checkout git branch (including remote branches)
+fbrm() {
+  local branches branch
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
-
-function usbmnt(){
-  local opt=$1
-  local usb="$2":
-  case "$opt" in
-    "-m" ) sudo mount -t drvfs $usb /mnt/usb ;;
-    "-u" ) sudo umount /mnt/usb ;;
-    *    ) echo "  
-            USAGE : $0 [OPTION]
-           OPTION : -m  ->  mount your usb
-                    -u  ->  unmount your usb
-          "
-   esac
+# fshow - git commit browser
+fshow() {
+  git log --graph --color=always \
+      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+      --bind "ctrl-m:execute:
+                (grep -o '[a-f0-9]\{7\}' | head -1 |
+                xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+                {}
+FZF-EOF"
 }
-
-function findf(){
-  local file=$1
-  ls -ltr $(find -name $file)
+# fd - cd to selected directory
+fd() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
 }
-
-function xtar (){
-  local opti=$1
-  local dirn=$2
-
-  case "$opti" in
-   "a" )  tar cvf  $dirn.tar $dirn ;;     #normal tar
-   "g" )  tar cvzf $dirn.tar.gz $dirn ;;  #tar plus zip
-   "b" )  tar cvjf $dirn.tar.bz2 $dirn ;; #tar plus bz2
-   "x" )  tar cvJf $dirn.tar.xz $dirn ;;  #tar plus xz(slow process, highly compress rate)
-   "e" )  tar xvf $dirn ;; #Extraction
-    *  )  echo " =======ERROR!! CANNOT COMPRESS DIRECTORY!!======="
-          echo " =                                               ="
-          echo " =  CHECK DIRECTORY NAME, OPTION, AND FORMAT!!!  ="
-          echo " =                                               ="
-          echo " ================================================="
-          echo " option : a -> tar , g -> gz , b -> bz2 , x -> xz" 
-          echo "          e -> Extract archive."
-          echo " Format -> gtar option "DIRECTORY""
-  esac
-}
-
-function testfunc (){
-  case $SHELL in
-    "/usr/bin/zsh") ls ;;
-    * ) ls -l
-  esac
-}
-# convert a ts-file to mp4-file.
-function tstomp4 (){
-  local file=$1
-
-  ffmpeg -i $file.ts -vcodec copy -acodec copy $file.mp4
-} 
-# PH DLer
-function phdl (){
-  phdl_path=$HOME/get/PornHub-downloader-python-master
-  cd $phdl_path
-  option=$1
-  cmd=$2
-  case $option in
-    "s" ) python3 $phdl_path/phdler.py start ;;
-    "a" ) python3 $phdl_path/phdler.py add $cmd ;; 
-    "d" ) python3 $phdl_path/phdler.py delete $cmd ;;
-    "l" ) python3 $phdl_path/phdler.py list $cmd ;;
-    *) echo "Bad option or URL. Check your option and URL."
-  esac
-}
-
-# MCF code
-function mcf(){
-  local PYTHON_PATH="$HOME"/python
-  local MCF_DIR="$PYTHON_PATH"/mcf
-  local MCF_alev="$MCF_DIR"/mcf_alev.py
-  local MCF_bx="$MCF_DIR"/mcf_bx.py
-  local MCF_bxa="$MCF_DIR"/mcf_bx_add.py
-  local MCF_bxtm="$MCF_DIR"/mcf_bx_times.py
-  local MCF_bxsolo="$MCF_DIR"/mcf_bx_times_solo.py
-  local MCF_bxt="$MCF_DIR"/mcf_table.py
-  local MCF_DATA=/mnt/c/Users/shiny/mydata/Origin/MCF
-  local opt1="$1"
-  case "$opt1" in
-    "data" ) cd "$MCF_DATA" ;; 
-    "alev"  ) python3 "$MCF_alev" ;;
-    "bx"  ) python3 "$MCF_bx" ;;
-    "bxa"  ) python3 "$MCF_bxa" ;;
-    "bxav"  ) vi "$MCF_bxa" ;;
-    "bxtm"  ) python3 "$MCF_bxtm" ;;
-    "bxsolo"  ) python3 "$MCF_bxsolo" ;;
-    "bxt"  ) python3 "$MCF_bxt" ;;
-    "mv095" ) bash "$MCF_DIR"/mcf_move.sh ;; 
-#   "move" ) sh "$MCF_DIR"/move ;;
-#   "movev" ) vi "$MCF_DIR"/move ;;
-    "copy" ) cp "$MCF_CODE" . ;;  
-      *    ) cd "$MCF_DIR"
-  esac
-}
-
-function sshkey(){
-  # When log in, Run ssh-agent.
-  psfile_=$HOME/.ssh/main
-  psnum=$(ps ax | grep ssh-agent | grep -v grep | wc -l)
-  #if [ $psnum -le 1 ]; then
-  #if [ $psnum -ne 0 ]; then
-  if [ -z $SSH_AGENT_PID ]; then 
-  #   echo "no sshagent"
-      eval `ssh-agent` > /dev/null 2>&1
-  #if [ -e $psfile_ ]; then 
-     if [ -e "$HOME/.ssh/id_rsa_vostok2" ]; then
-       keys=id_rsa_vostok2
-     elif [ -e "$HOME/.ssh/id_rsa_github" ]; then
-       keys=id_rsa_github
-     elif [ -e "$HOME/.ssh/id_rsa_vostok2" ] && [ -e "$HOME/.ssh/id_rsa_github" ]; then
-       keys=id_rsa_vostok2
-     fi
-  #    agentunlock_=$(openssl rsautl -decrypt -inkey $psfile_.key -in $psfile_)
-  #    echo  "$agentunlock_"\n | eval `ssh-add $HOME/.ssh/"$keys" > /dev/null 2>&1`
-  #    unset psfile_ agentunlock_
-      eval `ssh-add $HOME/.ssh/"$keys"> /dev/null 2>&1`
-   else
-  #  echo "PASSWORD?"
-  #else
-     echo "ssh-agent exist. Processes:"$psnum", PID:$SSH_AGENT_PID"
-   fi
-}
-
