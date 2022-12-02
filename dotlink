@@ -89,3 +89,5 @@
 
 # Others
 .config/sheldon/plugins.toml,.config/sheldon/plugins.toml
+.config/git/ignore,.config/git/ignore
+.config/helix/config.toml,.config/helix/config.toml
