@@ -184,3 +184,15 @@ fd() {
                   -o -type d -print 2> /dev/null | fzf +m) &&
   cd "$dir"
 }
+
+vimtime() {
+    if type nvim > /dev/null 2>&1; then
+        nvim --startuptime ~/nvim.log +q
+    fi
+}
+vimconf(){
+    local nvim_path="$HOME/.config/nvim"
+    if type nvim > /dev/null 2>&1; then
+        nvim $nvim_path/lua/plugins.lua
+    fi
+}

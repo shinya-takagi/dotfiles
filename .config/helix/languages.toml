@@ -1,0 +1,13 @@
+# Language configrations
+
+# [[language]]
+# name = "python"
+# file-types = ["py"]
+# indent = { tab-width = 4, unit = "    "}
+# language-server = { command = "pylsp"}
+
+
+# [[language]]
+# name = "fortran"
+# file-types = ["f", "f90"]
+# language-server = { command = "fortls"}

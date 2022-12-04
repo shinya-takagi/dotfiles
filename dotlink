@@ -47,31 +47,31 @@
 .config/nvim/lua/options.lua,.config/nvim/lua/options.lua
 .config/nvim/lua/plugins.lua,.config/nvim/lua/plugins.lua
 # -- Plugins
-.config/nvim/plugin/autopairs.lua,.config/nvim/plugin/autopairs.lua
-.config/nvim/plugin/cmp.lua,.config/nvim/plugin/cmp.lua
-.config/nvim/plugin/keymap.lua,.config/nvim/plugin/keymap.lua
-.config/nvim/plugin/lsp_signature.lua,.config/nvim/plugin/lsp_signature.lua
-.config/nvim/plugin/lspconfig.lua,.config/nvim/plugin/lspconfig.lua
-.config/nvim/plugin/lspkind.lua,.config/nvim/plugin/lspkind.lua
-.config/nvim/plugin/lspsaga.lua,.config/nvim/plugin/lspsaga.lua
-.config/nvim/plugin/lualine.lua,.config/nvim/plugin/lualine.lua
-.config/nvim/plugin/nvimtree.lua,.config/nvim/plugin/nvimtree.lua
-.config/nvim/plugin/telescope.lua,.config/nvim/plugin/telescope.lua
-.config/nvim/plugin/trouble.lua,.config/nvim/plugin/trouble.lua
-.config/nvim/plugin/alpha.lua,.config/nvim/plugin/alpha.lua
-.config/nvim/plugin/colorscheme.lua,.config/nvim/plugin/colorscheme.lua
-.config/nvim/plugin/indent_blankline.lua,.config/nvim/plugin/indent_blankline.lua
-.config/nvim/plugin/neodev.lua,.config/nvim/plugin/neodev.lua
-.config/nvim/plugin/notify.lua,.config/nvim/plugin/notify.lua
-.config/nvim/plugin/treesitter.lua,.config/nvim/plugin/treesitter.lua
-.config/nvim/plugin/lastplace.lua,.config/nvim/plugin/lastplace.lua
-.config/nvim/plugin/symbols_outline.lua,.config/nvim/plugin/symbols_outline.lua
-.config/nvim/plugin/jaq.lua,.config/nvim/plugin/jaq.lua
-.config/nvim/plugin/noice.lua,.config/nvim/plugin/noice.lua
-.config/nvim/plugin/hlslens.lua,.config/nvim/plugin/hlslens.lua
-.config/nvim/plugin/sidebar.lua,.config/nvim/plugin/sidebar.lua
-.config/nvim/plugin/scrollbar.lua,.config/nvim/plugin/scrollbar.lua
-.config/nvim/plugin/code_rummer.lua,.config/nvim/plugin/code_rummer.lua
+# .config/nvim/plugin/autopairs.lua,.config/nvim/plugin/autopairs.lua
+# .config/nvim/plugin/cmp.lua,.config/nvim/plugin/cmp.lua
+# .config/nvim/plugin/keymap.lua,.config/nvim/plugin/keymap.lua
+# .config/nvim/plugin/lsp_signature.lua,.config/nvim/plugin/lsp_signature.lua
+# .config/nvim/plugin/lspconfig.lua,.config/nvim/plugin/lspconfig.lua
+# .config/nvim/plugin/lspkind.lua,.config/nvim/plugin/lspkind.lua
+# .config/nvim/plugin/lspsaga.lua,.config/nvim/plugin/lspsaga.lua
+# .config/nvim/plugin/lualine.lua,.config/nvim/plugin/lualine.lua
+# .config/nvim/plugin/nvimtree.lua,.config/nvim/plugin/nvimtree.lua
+# .config/nvim/plugin/telescope.lua,.config/nvim/plugin/telescope.lua
+# .config/nvim/plugin/trouble.lua,.config/nvim/plugin/trouble.lua
+# .config/nvim/plugin/alpha.lua,.config/nvim/plugin/alpha.lua
+# .config/nvim/plugin/colorscheme.lua,.config/nvim/plugin/colorscheme.lua
+# .config/nvim/plugin/indent_blankline.lua,.config/nvim/plugin/indent_blankline.lua
+# .config/nvim/plugin/neodev.lua,.config/nvim/plugin/neodev.lua
+# .config/nvim/plugin/notify.lua,.config/nvim/plugin/notify.lua
+# .config/nvim/plugin/treesitter.lua,.config/nvim/plugin/treesitter.lua
+# .config/nvim/plugin/lastplace.lua,.config/nvim/plugin/lastplace.lua
+# .config/nvim/plugin/symbols_outline.lua,.config/nvim/plugin/symbols_outline.lua
+# .config/nvim/plugin/jaq.lua,.config/nvim/plugin/jaq.lua
+# .config/nvim/plugin/noice.lua,.config/nvim/plugin/noice.lua
+# .config/nvim/plugin/hlslens.lua,.config/nvim/plugin/hlslens.lua
+# .config/nvim/plugin/sidebar.lua,.config/nvim/plugin/sidebar.lua
+# .config/nvim/plugin/scrollbar.lua,.config/nvim/plugin/scrollbar.lua
+# .config/nvim/plugin/code_rummer.lua,.config/nvim/plugin/code_rummer.lua
 
 # Terminal Setting
   # alacritty
@@ -91,3 +91,4 @@
 .config/sheldon/plugins.toml,.config/sheldon/plugins.toml
 .config/git/ignore,.config/git/ignore
 .config/helix/config.toml,.config/helix/config.toml
+.config/helix/languages.toml,.config/helix/languages.toml
