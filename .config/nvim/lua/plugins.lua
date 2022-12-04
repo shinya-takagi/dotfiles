@@ -379,7 +379,7 @@ return packer.startup(function(use)
       vim.keymap.set('i', '<C-k>', '<Cmd>Lspsaga signature_help<CR>', opts)
       vim.keymap.set('n', 'gp', '<Cmd>Lspsaga preview_definition<CR>', opts)
       vim.keymap.set('n', 'gr', '<Cmd>Lspsaga rename<CR>', opts)
-      end
+    end
   }) -- Lsp helper
   use({
     'folke/trouble.nvim',
@@ -439,7 +439,7 @@ return packer.startup(function(use)
           TypeParameter = ""
         },
       })
-      end
+    end
   }) -- Show icons in completion on lsp
 
   -- Treesitter
@@ -517,7 +517,7 @@ return packer.startup(function(use)
       "WinScrolled",
     },
     config = function()
-      require("scrollbar").setup {}
+      require("scrollbar").setup({})
     end,
   }) -- Add scrollbar
 
@@ -765,6 +765,11 @@ return packer.startup(function(use)
       nvim_lsp.flow.setup {
         on_attach = on_attach,
         capabilities = capabilities
+      }
+      local env = require("env")
+      nvim_lsp.fortls.setup {
+        on_attach = on_attach,
+        root_dir = env.get("DOT_DIR") .. ".fortls"
       }
       nvim_lsp.tsserver.setup {
         on_attach = on_attach,

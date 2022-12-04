@@ -23,7 +23,9 @@ require("base")
 require("options")
 require("keymaps")
 -- require("colorscheme")
-require("plugins")
+if (not vim.g.vscode) then
+  require("plugins")
+end
 
 -- Packer commands
 -- vim.api.nvim_create_user_command("PackerInstall", [[packadd packer.nvim | lua require("packers").install()]],
