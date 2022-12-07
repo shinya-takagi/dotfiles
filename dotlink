@@ -84,11 +84,12 @@
 # zsh
 .zshrc,.zshrc
 .zprofile,.zprofile
-.zsh/alias.zsh,.zsh/alias.zsh
+# .zsh/alias.zsh,.zsh/alias.zsh
 .zshenv,.zshenv
+.zsh/defer/alias.zsh,.zsh/defer/alias.zsh
+.config/sheldon/plugins.toml,.config/sheldon/plugins.toml  # dotfile manager
 
 # Others
-.config/sheldon/plugins.toml,.config/sheldon/plugins.toml
 .config/git/ignore,.config/git/ignore
 .config/helix/config.toml,.config/helix/config.toml
 .config/helix/languages.toml,.config/helix/languages.toml

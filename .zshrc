@@ -21,14 +21,14 @@ eval "$(sheldon source)"
 # ------------UPPER ZINIT----------------------------
 
 # Load *.zsh files in $HOME/.zsh directory.
-ZSHHOME="${HOME}/.zsh"
-if [ -d $ZSHHOME -a -r $ZSHHOME -a \
-     -x $ZSHHOME ]; then
-    for i in $ZSHHOME/*; do
-	[[ ${i##*/} = *.zsh ]] &&
-		[ \( -f $i -o -h $d \) -a -r $i ] && . $i
-    done
-fi
+# ZSHHOME="${HOME}/.zsh"
+# if [ -d $ZSHHOME -a -r $ZSHHOME -a \
+#      -x $ZSHHOME ]; then
+#     for i in $ZSHHOME/*; do
+# 	[[ ${i##*/} = *.zsh ]] &&
+# 		[ \( -f $i -o -h $d \) -a -r $i ] && . $i
+#     done
+# fi
 
 # ---------------------------------------------------
 
@@ -107,6 +107,7 @@ setopt hist_verify
 
 # ---------zinit plugin--------------->
 # zinit load olets/zsh-abbr   # Use abbreviations.
+# [[ $(type abbr > /dev/null 2>&1) ]] && abbr import-aliases -S >/dev/null
 # abbr import-aliases -S >/dev/null
 # zinit load greymd/docker-zsh-completion # docker completion
 # ------Plugin ------<
