@@ -40,10 +40,17 @@ apply = ["defer"]
 github = "agkozak/zsh-z"
 apply = ["defer"]
 
+# Lazyloading for zsh
 [plugins.dotfiles-defer]
 local = '~/.dotfiles/.zsh/defer'
 use = ['*.zsh']
 apply = ['defer']
+
+# Synchronizing plugin with lanching zsh
+[plugins.dotfiles-sync]
+local = '~/.dotfiles/.zsh/sync'
+use = ['*.zsh']
+apply = ['source']
 
 # For example:
 #

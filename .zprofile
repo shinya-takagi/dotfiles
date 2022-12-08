@@ -4,15 +4,6 @@
 if [ "$(uname -s)" = "Linux" ]; then
     export PATH="$HOME/.local/bin:$PATH"      # local binary path
     export PATH="/usr/local/go/bin:$PATH"     # go language path
-    export PYENV_ROOT="$HOME/.pyenv"          # pyenv path
-    export PATH="$PYENV_ROOT/bin:$PATH"       # For pyenv python path
-    export PYTHONUSERBASE="$HOME/.local"
-    if type pyenv > /dev/null 2>&1; then
-      eval "$(pyenv init -)"
-    fi
-    if [ -e /opt/intel/oneapi/setvars.sh ]; then
-        source /opt/intel/oneapi/setvars.sh > /dev/null     # Intel Fortran/C++
-    fi
     # dot manager
     export DOT_REPO="https://github.com/shinya-takagi/dotfiles_pub.git"
     export DOT_DIR="$HOME/.dotfiles"
@@ -37,14 +28,7 @@ elif [ "$(uname -s )" = "Darwin" ]; then
     export FREETYPE_PROPERTIES="truetype:interpreter-version=35"
     export DYLD_FALLBACK_LIBRARY_PATH="/usr/lib:/opt/X11/lib:$DYLD_FALLBACK_LIBRARY_PATH"
 
-    # Python local Path
-    export PYTHONUSERBASE="$HOME/.local"
-
     # dot manager
     export DOT_REPO="https://github.com/shinya-takagi/dotfiles_pub.git"
     export DOT_DIR="$HOME/.dotfiles"
-    # Intel Oneapi
-    if [ -e /opt/intel/oneapi/setvars.sh ]; then
-        source /opt/intel/oneapi/setvars.sh > /dev/null     # Intel Fortran/C++
-    fi
 fi

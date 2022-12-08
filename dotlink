@@ -86,7 +86,7 @@
 .zprofile,.zprofile
 # .zsh/alias.zsh,.zsh/alias.zsh
 .zshenv,.zshenv
-.zsh/defer/alias.zsh,.zsh/defer/alias.zsh
+# .zsh/defer/alias.zsh,.zsh/defer/alias.zsh
 .config/sheldon/plugins.toml,.config/sheldon/plugins.toml  # dotfile manager
 
 # Others

@@ -3,128 +3,128 @@
 # -----------------------------
 #
 # Global alias (can set alias of pipeline)
-abbr -S -g L="| less"
-abbr -S -g H="| head"
-abbr -S -g G="| grep"
-abbr -S -g gr="| grep --color"
-abbr -S -g GI="| grep -ri"
+alias -g L="| less"
+alias -g H="| head"
+alias -g G="| grep"
+alias -g gr="| grep --color"
+alias -g GI="| grep -ri"
 
 # local alias
-abbr -S ls="ls --color=auto"
-[[ $(type lsd) ]]; abbr -S ls="lsd"   # Use lsd instead of ls.
-abbr -S lst="ls -ltr"
-abbr -S la="ls -la"
-abbr -S ll="ls -l"
-abbr -S ltr="ls -lrt"
-abbr -S lh="ls -lh"
+alias ls="ls --color=auto"
+[[ $(type lsd) ]]; alias ls="lsd"   # Use lsd instead of ls.
+alias lst="ls -ltr"
+alias la="ls -la"
+alias ll="ls -l"
+alias ltr="ls -lrt"
+alias lh="ls -lh"
 
-abbr -S du="du -h"
-abbr -S df="df -h"
-abbr -S su="su -l"
-abbr -S so="source"
-abbr -S c="cd"
-abbr -S cp="cp -i"
-abbr -S rm="rm -i"
-abbr -S rmf="rm -f"
-abbr -S mkdir="mkdir -p"
-abbr -S ..="c ../"
-abbr -S back="pushd"
-abbr -S diff="diff -U1"
+alias du="du -h"
+alias df="df -h"
+alias su="su -l"
+alias so="source"
+alias c="cd"
+alias cp="cp -i"
+alias rm="rm -i"
+alias rmf="rm -f"
+alias mkdir="mkdir -p"
+alias ..="c ../"
+alias back="pushd"
+alias diff="diff -U1"
 
 if [ -e "$HOME/pass.sh" ]; then
-  abbr -S sshp="sshpass -p $(sh ~/pass.sh) ssh"
+  alias sshp="sshpass -p $(sh ~/pass.sh) ssh"
 fi
 
 # from fish
 #------Git------------
-abbr -S gs="git status"
-abbr -S ga="git add"
-abbr -S gb="git branch"
-abbr -S gco="git checkout"
-abbr -S gcm="git commit -a -m"
-abbr -S gp="git push"
-abbr -S gpm="gp origin master"
-abbr -S gf="git fetch"
-abbr -S gm="git merge"
+alias gs="git status"
+alias ga="git add"
+alias gb="git branch"
+alias gco="git checkout"
+alias gcm="git commit -a -m"
+alias gp="git push"
+alias gpm="gp origin master"
+alias gf="git fetch"
+alias gm="git merge"
 
 #----Docker----------
-abbr -S dils="docker images"
-abbr -S dcls="docker container ls"
-abbr -S drun="docker run -it --name"
-abbr -S drm="docker rm"
-abbr -S drmi="docker rmi"
-abbr -S dbu="docker build . -it"
-abbr -S dpa="docker ps -a"
+alias dils="docker images"
+alias dcls="docker container ls"
+alias drun="docker run -it --name"
+alias drm="docker rm"
+alias drmi="docker rmi"
+alias dbu="docker build . -it"
+alias dpa="docker ps -a"
 
-abbr -S et="exit"
-abbr -S rl="readlink -f"
-abbr -S dc="cd"
-abbr -S sl="ls"
+alias et="exit"
+alias rl="readlink -f"
+alias dc="cd"
+alias sl="ls"
 
 #-------URL--------------------------
 #if type xdg-open >/dev/null 2>&1; then
-#  abbr -S open="xdg-open"
+#  alias open="xdg-open"
 #fi
 #if type wsl-open >/dev/null 2>&1; then
 if [[ "$(uname -r)" == *microsoft* ]];  then 
-    abbr -S open="wsl-open"
-    abbr -S xdg-open="wsl-open"
+    alias open="wsl-open"
+    alias xdg-open="wsl-open"
 # Windows 
-    abbr -S user="cd /mnt/c/Users/shiny"
-    abbr -S cdrive="cd /mnt/c/Users/shiny"
-    abbr -S checkos="cat /etc/os-release"
-    abbr -S gefwin="cd /mnt/c/Users/shiny/mydata/miscellinous/GEF-2016-V1-2_edited"
+    alias user="cd /mnt/c/Users/shiny"
+    alias cdrive="cd /mnt/c/Users/shiny"
+    alias checkos="cat /etc/os-release"
+    alias gefwin="cd /mnt/c/Users/shiny/mydata/miscellinous/GEF-2016-V1-2_edited"
 
 fi
 if type open >/dev/null 2>&1; then
-    abbr -S ggr="open http://google.com/"
-    abbr -S tube="open https://www.youtube.com"
-    abbr -S github="open https://www.github.com"
-    abbr -S twit="open https://www.twitter.com"
-    abbr -S insta="open https://www.instagram.com"
-    abbr -S qiita="open https://qiita.com"
+    alias ggr="open http://google.com/"
+    alias tube="open https://www.youtube.com"
+    alias github="open https://www.github.com"
+    alias twit="open https://www.twitter.com"
+    alias insta="open https://www.instagram.com"
+    alias qiita="open https://qiita.com"
 fi
 
 # Vim
-abbr -S vi="vim"
-abbr -S vr="vi ~/.vimrc"
-abbr -S svr="source ~/.vimrc"
+alias vi="vim"
+alias vr="vi ~/.vimrc"
+alias svr="source ~/.vimrc"
 # Neovim
 if type nvim > /dev/null 2>&1; then 
-    abbr -S vi="nvim"   # Use neovim as vi
-    abbr -S vni="nvim ~/.config/nvim/init.lua"
-    abbr -S vnp="nvim ~/.config/nvim/lua/plugins.lua"
+    alias vi="nvim"   # Use neovim as vi
+    alias vni="nvim ~/.config/nvim/init.lua"
+    alias vnp="nvim ~/.config/nvim/lua/plugins.lua"
 fi
 # LunarVim https://github.com/LunarVim/LunarVim
-[[ -a $HOME/.local/bin/lvim ]] && abbr -S vi="lvim"; abbr -S nv="nvim"
+[[ -a $HOME/.local/bin/lvim ]] && alias vi="lvim"; alias nv="nvim"
 
 # tmux
-#abbr -S tma="tmux attach"
-#abbr -S tml="tmux list-window"
+#alias tma="tmux attach"
+#alias tml="tmux list-window"
 
 # zsh
-abbr -S vz="vim ~/.zshrc"
-abbr -S va="vi ~/.zsh/defer/alias.zsh"
-abbr -S vz="vi ~/.zshrc"
-abbr -S vp="vi ~/.zprofile"
-abbr -S vl="vi ~/.zlogout"
-abbr -S sz="source ~/.zshrc"
-abbr -S sa="source ~/.zsh/defer/alias.zsh"
-abbr -S vd="vi ~/.dircolors-solarized/dircolors.ansi-dark_taka"
+alias vz="vim ~/.zshrc"
+alias va="vi ~/.zsh/defer/alias.zsh"
+alias vz="vi ~/.zshrc"
+alias vp="vi ~/.zprofile"
+alias vl="vi ~/.zlogout"
+alias sz="source ~/.zshrc"
+alias sa="source ~/.zsh/defer/alias.zsh"
+alias vd="vi ~/.dircolors-solarized/dircolors.ansi-dark_taka"
 
 # python
-abbr -S py="python3"
-abbr -S ytconfig="vim ~/.config/yt-dlp/config"
+alias py="python3"
+alias ytconfig="vim ~/.config/yt-dlp/config"
 
 # TeX
-abbr -S lmk="latexmk -pvc -output-directory=out"
-abbr -S lmkc="latexmk -c"
-abbr -S lmklua="latexmk -gg -pdflua -pvc -output-directory=out" 
+alias lmk="latexmk -pvc -output-directory=out"
+alias lmkc="latexmk -c"
+alias lmklua="latexmk -gg -pdflua -pvc -output-directory=out" 
 
 # Clipboard
 if [ -e /usr/bin/xsel ]; then
-  abbr -S pbcopy='xsel --clipboard --input'
-  abbr -S pbpaste='xsel --clipboard --output'
+  alias pbcopy='xsel --clipboard --input'
+  alias pbpaste='xsel --clipboard --output'
 fi
 
 
@@ -197,3 +197,4 @@ vimconf(){
     fi
 }
 
+[[ $(type abbr) ]] && abbr import-aliases -S
