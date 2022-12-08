@@ -31,11 +31,6 @@ alias ..="c ../"
 alias back="pushd"
 alias diff="diff -U1"
 
-if [ -e "$HOME/pass.sh" ]; then
-  alias sshp="sshpass -p $(sh ~/pass.sh) ssh"
-fi
-
-# from fish
 #------Git------------
 alias gs="git status"
 alias ga="git add"
@@ -43,7 +38,7 @@ alias gb="git branch"
 alias gco="git checkout"
 alias gcm="git commit -a -m"
 alias gp="git push"
-alias gpm="gp origin master"
+alias gpm="gp -u origin master"
 alias gf="git fetch"
 alias gm="git merge"
 
@@ -56,25 +51,13 @@ alias drmi="docker rmi"
 alias dbu="docker build . -it"
 alias dpa="docker ps -a"
 
-alias et="exit"
-alias rl="readlink -f"
-alias dc="cd"
-alias sl="ls"
-
 #-------URL--------------------------
-#if type xdg-open >/dev/null 2>&1; then
-#  alias open="xdg-open"
-#fi
 #if type wsl-open >/dev/null 2>&1; then
+# Windows 
 if [[ "$(uname -r)" == *microsoft* ]];  then 
     alias open="wsl-open"
     alias xdg-open="wsl-open"
-# Windows 
-    alias user="cd /mnt/c/Users/shiny"
-    alias cdrive="cd /mnt/c/Users/shiny"
     alias checkos="cat /etc/os-release"
-    alias gefwin="cd /mnt/c/Users/shiny/mydata/miscellinous/GEF-2016-V1-2_edited"
-
 fi
 if type open >/dev/null 2>&1; then
     alias ggr="open http://google.com/"
@@ -103,13 +86,12 @@ fi
 #alias tml="tmux list-window"
 
 # zsh
-alias vz="vim ~/.zshrc"
-alias va="vi ~/.zsh/defer/alias.zsh"
-alias vz="vi ~/.zshrc"
-alias vp="vi ~/.zprofile"
-alias vl="vi ~/.zlogout"
-alias sz="source ~/.zshrc"
-alias sa="source ~/.zsh/defer/alias.zsh"
+alias va="vi $DOR_DIR/.zsh/defer/alias.zsh"
+alias vz="vi $DOR_DIR/.zshrc"
+alias vp="vi $DOR_DIR/.zprofile"
+alias vl="vi $DOR_DIR/.zlogout"
+alias sz="source $DOR_DIR/.zshrc"
+alias sa="source $DOR_DIR/.zsh/defer/alias.zsh"
 alias vd="vi ~/.dircolors-solarized/dircolors.ansi-dark_taka"
 
 # python
