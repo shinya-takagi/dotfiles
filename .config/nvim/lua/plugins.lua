@@ -328,7 +328,7 @@ return packer.startup(function(use)
 
   use({
     'ethanholz/nvim-lastplace',
-    event = { "VimEnter" },
+    -- event = { "VimEnter" },
   }) -- Remember last position when it opened.
   -- Vim Compatibles
   use({
