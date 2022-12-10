@@ -33,45 +33,49 @@
 #
 # Neovim
 # -- Filetype
-.config/nvim/ftplugin/fish.vim,.config/nvim/ftplugin/fish.vim
-.config/nvim/ftplugin/fortran.vim,.config/nvim/ftplugin/fortran.vim
-.config/nvim/ftplugin/python.vim,.config/nvim/ftplugin/python.vim
-.config/nvim/ftplugin/sh.vim,.config/nvim/ftplugin/sh.vim
-.config/nvim/ftplugin/tex.vim,.config/nvim/ftplugin/tex.vim
-.config/nvim/ftplugin/zsh.vim,.config/nvim/ftplugin/zsh.vim
+# .config/nvim_local/ftplugin/fish.vim,.config/nvim/ftplugin/fish.vim
+# .config/nvim_local/ftplugin/fortran.vim,.config/nvim/ftplugin/fortran.vim
+# .config/nvim_local/ftplugin/python.vim,.config/nvim/ftplugin/python.vim
+# .config/nvim_local/ftplugin/sh.vim,.config/nvim/ftplugin/sh.vim
+# .config/nvim_local/ftplugin/tex.vim,.config/nvim/ftplugin/tex.vim
+# .config/nvim_local/ftplugin/zsh.vim,.config/nvim/ftplugin/zsh.vim
 # -- Lua
-.config/nvim/init.lua,.config/nvim/init.lua
-.config/nvim/lua/base.lua,.config/nvim/lua/base.lua
-.config/nvim/lua/autocmds.lua,.config/nvim/lua/autocmds.lua
-.config/nvim/lua/keymaps.lua,.config/nvim/lua/keymaps.lua
-.config/nvim/lua/options.lua,.config/nvim/lua/options.lua
-.config/nvim/lua/plugins.lua,.config/nvim/lua/plugins.lua
+# .config/nvim_local/init.lua,.config/nvim/init.lua
+# .config/nvim_local/lua/base.lua,.config/nvim/lua/base.lua
+# .config/nvim_local/lua/autocmds.lua,.config/nvim/lua/autocmds.lua
+# .config/nvim_local/lua/keymaps.lua,.config/nvim/lua/keymaps.lua
+# .config/nvim_local/lua/options.lua,.config/nvim/lua/options.lua
+# .config/nvim_local/lua/plugins.lua,.config/nvim/lua/plugins.lua
+# .config/nvim_local/lua/plugins_jet.lua,.config/nvim/lua/plugins.lua
 # -- Plugins
-# .config/nvim/plugin/autopairs.lua,.config/nvim/plugin/autopairs.lua
-# .config/nvim/plugin/cmp.lua,.config/nvim/plugin/cmp.lua
-# .config/nvim/plugin/keymap.lua,.config/nvim/plugin/keymap.lua
-# .config/nvim/plugin/lsp_signature.lua,.config/nvim/plugin/lsp_signature.lua
-# .config/nvim/plugin/lspconfig.lua,.config/nvim/plugin/lspconfig.lua
-# .config/nvim/plugin/lspkind.lua,.config/nvim/plugin/lspkind.lua
-# .config/nvim/plugin/lspsaga.lua,.config/nvim/plugin/lspsaga.lua
-# .config/nvim/plugin/lualine.lua,.config/nvim/plugin/lualine.lua
-# .config/nvim/plugin/nvimtree.lua,.config/nvim/plugin/nvimtree.lua
-# .config/nvim/plugin/telescope.lua,.config/nvim/plugin/telescope.lua
-# .config/nvim/plugin/trouble.lua,.config/nvim/plugin/trouble.lua
-# .config/nvim/plugin/alpha.lua,.config/nvim/plugin/alpha.lua
-# .config/nvim/plugin/colorscheme.lua,.config/nvim/plugin/colorscheme.lua
-# .config/nvim/plugin/indent_blankline.lua,.config/nvim/plugin/indent_blankline.lua
-# .config/nvim/plugin/neodev.lua,.config/nvim/plugin/neodev.lua
-# .config/nvim/plugin/notify.lua,.config/nvim/plugin/notify.lua
-# .config/nvim/plugin/treesitter.lua,.config/nvim/plugin/treesitter.lua
-# .config/nvim/plugin/lastplace.lua,.config/nvim/plugin/lastplace.lua
-# .config/nvim/plugin/symbols_outline.lua,.config/nvim/plugin/symbols_outline.lua
-# .config/nvim/plugin/jaq.lua,.config/nvim/plugin/jaq.lua
-# .config/nvim/plugin/noice.lua,.config/nvim/plugin/noice.lua
-# .config/nvim/plugin/hlslens.lua,.config/nvim/plugin/hlslens.lua
-# .config/nvim/plugin/sidebar.lua,.config/nvim/plugin/sidebar.lua
-# .config/nvim/plugin/scrollbar.lua,.config/nvim/plugin/scrollbar.lua
-# .config/nvim/plugin/code_rummer.lua,.config/nvim/plugin/code_rummer.lua
+# .config/nvim_local/plugin/autopairs.lua,.config/nvim/plugin/autopairs.lua
+# .config/nvim_local/plugin/cmp.lua,.config/nvim/plugin/cmp.lua
+# .config/nvim_local/plugin/keymap.lua,.config/nvim/plugin/keymap.lua
+# .config/nvim_local/plugin/lsp_signature.lua,.config/nvim/plugin/lsp_signature.lua
+# .config/nvim_local/plugin/lspconfig.lua,.config/nvim/plugin/lspconfig.lua
+# .config/nvim_local/plugin/lspkind.lua,.config/nvim/plugin/lspkind.lua
+# .config/nvim_local/plugin/lspsaga.lua,.config/nvim/plugin/lspsaga.lua
+# .config/nvim_local/plugin/lualine.lua,.config/nvim/plugin/lualine.lua
+# .config/nvim_local/plugin/nvimtree.lua,.config/nvim/plugin/nvimtree.lua
+# .config/nvim_local/plugin/telescope.lua,.config/nvim/plugin/telescope.lua
+# .config/nvim_local/plugin/trouble.lua,.config/nvim/plugin/trouble.lua
+# .config/nvim_local/plugin/alpha.lua,.config/nvim/plugin/alpha.lua
+# .config/nvim_local/plugin/colorscheme.lua,.config/nvim/plugin/colorscheme.lua
+# .config/nvim_local/plugin/indent_blankline.lua,.config/nvim/plugin/indent_blankline.lua
+# .config/nvim_local/plugin/neodev.lua,.config/nvim/plugin/neodev.lua
+# .config/nvim_local/plugin/notify.lua,.config/nvim/plugin/notify.lua
+# .config/nvim_local/plugin/treesitter.lua,.config/nvim/plugin/treesitter.lua
+# .config/nvim_local/plugin/lastplace.lua,.config/nvim/plugin/lastplace.lua
+# .config/nvim_local/plugin/symbols_outline.lua,.config/nvim/plugin/symbols_outline.lua
+# .config/nvim_local/plugin/jaq.lua,.config/nvim/plugin/jaq.lua
+# .config/nvim_local/plugin/noice.lua,.config/nvim/plugin/noice.lua
+# .config/nvim_local/plugin/hlslens.lua,.config/nvim/plugin/hlslens.lua
+# .config/nvim_local/plugin/sidebar.lua,.config/nvim/plugin/sidebar.lua
+# .config/nvim_local/plugin/scrollbar.lua,.config/nvim/plugin/scrollbar.lua
+# .config/nvim_local/plugin/code_rummer.lua,.config/nvim/plugin/code_rummer.lua
+# -- For NvChad https://github.com/NvChad/NvChad
+.config/nvim/lua/custom/init.lua,.config/nvim/lua/custom/init.lua
+.config/nvim/lua/custom/chadrc.lua,.config/nvim/lua/custom/chadrc.lua
 
 # Terminal Setting
   # alacritty
