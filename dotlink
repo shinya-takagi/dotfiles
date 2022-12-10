@@ -97,3 +97,7 @@
 .config/git/ignore,.config/git/ignore
 .config/helix/config.toml,.config/helix/config.toml
 .config/helix/languages.toml,.config/helix/languages.toml
+.config/nvim/lua/custom/plugins/init.lua,.config/nvim/lua/custom/plugins/init.lua
+.config/nvim/lua/custom/plugins/lspconfig.lua,.config/nvim/lua/custom/plugins/lspconfig.lua
+.config/nvim/lua/custom/plugins/overrides.lua,.config/nvim/lua/custom/plugins/overrides.lua
+.config/nvim/lua/custom/themes/monokai.lua,.config/nvim/lua/custom/themes/monokai.lua
