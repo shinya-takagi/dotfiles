@@ -8,20 +8,14 @@ M.options = {
     update_branch = "main",
   },
 }
--- local monokai = require "custom.theme.monokai"
 M.ui = {
   -- hl = highlights
-  -- hl_add = { "monokai" },
   -- hl_add = { },
   -- hl_override = require "custom.themes.monokai",
-  -- changed_themes = {},
-  -- hl_add = require "custom.themes.monokai",
-  -- theme_toggle = { "onedark", "one_light",  "monekai", "vscode_dark", "monokai"},
-  -- theme = require "custom.themes.monokai", -- default theme
+  -- changed_themes = { require "custom.themes.monokai" },
+  theme_toggle = { "onedark", "one_light",  "monekai", "vscode_dark", "monokai"},
   -- transparency = false,
-  -- hl_add = { monokai = require "custom.themes.monokai" },
-  -- theme = "monokai",
-  -- theme = "vscode_dark",
+  theme = "vscode_dark",
 }
 
 -- M.plugins = {}

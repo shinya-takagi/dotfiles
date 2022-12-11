@@ -21,4 +21,22 @@ return {
   -- Override default options
   ["williamboman/mason.nvim"] = { override_options = overrides.mason },
 
+  ------------ New Plugins ----------------------------
+  ['petertriho/nvim-scrollbar'] = {
+    event = {
+      "BufWinEnter",
+      "CmdwinLeave",
+      "TabEnter",
+      "TermEnter",
+      "TextChanged",
+      "VimResized",
+      "WinEnter",
+      "WinScrolled",
+    },
+    config = function()
+      require("scrollbar").setup({})
+    end,
+  }
+
+
 }
