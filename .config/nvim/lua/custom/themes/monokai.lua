@@ -1,8 +1,6 @@
--- Monokai like
-
 local M = {}
 
-M.base30 = {
+M.base_30 = {
   white = "#d6d6d6",
   darker_black = "#282828", -- 6% darker than black
   black = "#2e2e2e", -- nvim background
@@ -55,9 +53,8 @@ M.base_16 = {
   base0C = "#e5b567", -- Escape characters
   base0D = "#b4d273", -- Functions
   base0E = "#f92672", -- Keywords
-  base0F = "#f92672", -- Language tags, Deprecated
+  base0F = "#c9c6c2", -- Language tags, Deprecated
 }
-
 M.polish_hl = {
   ["@field"] = { fg = M.base_30.green },
   ["@parameter"] = { fg = M.base_30.cyan },
@@ -74,9 +71,5 @@ M.polish_hl = {
 }
 
 vim.opt.bg = "dark"
-
-M.ui = {
-  theme = "monokai",
-}
 
 return M

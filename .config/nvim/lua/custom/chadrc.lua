@@ -2,20 +2,21 @@
 
 local M = {}
 
-M.options = {
-  nvChad = {
-    update_url = "https://github.com/NvChad/NvChad",
-    update_branch = "main",
-  },
-}
+-- M.options = {
+--   nvChad = {
+--     update_url = "https://github.com/NvChad/NvChad",
+--     update_branch = "main",
+--   },
+-- }
 M.ui = {
   -- hl = highlights
   -- hl_add = { },
-  -- hl_override = require "custom.themes.monokai",
+  -- hl_override = require "custom.themes.monokai_override",
   -- changed_themes = { require "custom.themes.monokai" },
-  theme_toggle = { "onedark", "one_light",  "monekai", "vscode_dark", "monokai"},
+  -- theme_toggle = { "onedark", "one_light",  "monekai", "vscode_dark", "monokai"},
   -- transparency = false,
-  theme = "vscode_dark",
+  -- theme = "vscode_dark",
+  theme = "monokai",
 }
 
 -- M.plugins = {}
