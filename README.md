@@ -15,8 +15,8 @@ git clone https://github.com/ssh0/dot $HOME/.dot
 ```bash
 export DOT_REPO="https://github.com/shinya-takagi/dotfiles_pub.git"
 export DOT_DIR="$HOME/.dotfiles"
-fpath=($HOME/dot $fpath)  # <- for completion
-source $HOME/dot/dot.sh
+fpath=($HOME/.dot $fpath)  # <- for completion
+source $HOME/.dot/dot.sh
 
 ```
 
