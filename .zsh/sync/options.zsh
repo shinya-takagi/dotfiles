@@ -91,12 +91,13 @@ function Terminal_Prompts(){
 
 # OS Machine Dependence
 if [ "$(uname -s)" = "Linux" ]; then
+    # Terminal Setting
+    Terminal_Prompts
     # Keyboard automatic to disable Caps Lock
-    setxkbmap -option ctrl:nocaps
+    [[ $(type setxkbmap > /dev/null 2>&1) ]] && setxkbmap -option ctrl:nocaps
     # -----Display for Xserver------------->
     export DISPLAY=:0.0 
     # -----Xserver---------<
-    Terminal_Prompts
     # Wine setting
     export WINEARCH="win64"
     if [ $WINEARCH = "win32" ]; then
