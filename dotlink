@@ -103,3 +103,5 @@
 .config/nvim/lua/custom/themes/monokai.lua,.config/nvim/lua/custom/themes/monokai.lua
 .config/nvim/lua/custom/themes/base46_themes/monokai.lua,.local/share/nvim/site/pack/packer/start/base46/lua/base46/themes/monokai.lua
 .config/nvim/lua/custom/themes/monokai.lua,.config/nvim/lua/custom/themes/monokai.lua
+.config/nvim/lua/custom/plugins/null-ls.lua,.config/nvim/lua/custom/plugins/null-ls.lua
+.config/nvim/lua/custom/mappings.lua,.config/nvim/lua/custom/mappings.lua

@@ -25,4 +25,5 @@ elif [ "$(uname -s )" = "Darwin" ]; then
     if [ -e /opt/intel/oneapi/setvars.sh ]; then
         source /opt/intel/oneapi/setvars.sh > /dev/null     # Intel Fortran/C++
     fi
+    export LANG=ja_JP.UTF-8
 fi

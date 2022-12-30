@@ -22,6 +22,7 @@ return {
   ["williamboman/mason.nvim"] = { override_options = overrides.mason },
 
   ------------ New Plugins ----------------------------
+  -- Show scrollbar
   ['petertriho/nvim-scrollbar'] = {
     event = {
       "BufWinEnter",
@@ -36,7 +37,23 @@ return {
     config = function()
       require("scrollbar").setup({})
     end,
-  }
+  },
+  -- Use formatter and linter in Neovim
+  ["jose-elias-alvarez/null-ls.nvim"] = {
+      after = "nvim-lspconfig",
+      config = function()
+         require "custom.plugins.null-ls"
+      end,
+  },
+
+  -- Show Treesitter elements
+  ['nvim-treesitter/playground'] = {
+    after = "nvim-treesitter",
+    config = function ()
+      require"nvim-treesitter.configs".setup({})
+    end
+  },
+
 
 
 }

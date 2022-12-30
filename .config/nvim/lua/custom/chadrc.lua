@@ -13,16 +13,17 @@ M.ui = {
   -- hl_add = { },
   -- hl_override = require "custom.themes.monokai_override",
   -- changed_themes = { require "custom.themes.monokai" },
-  -- theme_toggle = { "onedark", "one_light",  "monekai", "vscode_dark", "monokai"},
+  theme_toggle = { "vscode_dark", "monokai"},
   -- transparency = false,
-  -- theme = "vscode_dark",
   theme = "monokai",
+  -- theme = "monokai",
 }
 
 -- M.plugins = {}
 M.plugins = require "custom.plugins"
 
 -- check core.mappings for table structure
-M.mappings = require "core.mappings"
+-- M.mappings = require "core.mappings"
+M.mappings = require "custom.mappings"
 
 return M

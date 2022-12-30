@@ -10,7 +10,8 @@ M.mason = {
     "fortls",
 
     -- Python
-    "pyright",
+    -- "pyright",
+    "python-lsp-server",
   },
 }
 

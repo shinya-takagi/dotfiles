@@ -86,12 +86,12 @@ fi
 #alias tml="tmux list-window"
 
 # zsh
-alias va="vi $DOR_DIR/.zsh/defer/alias.zsh"
-alias vz="vi $DOR_DIR/.zshrc"
-alias vp="vi $DOR_DIR/.zprofile"
-alias vl="vi $DOR_DIR/.zlogout"
-alias sz="source $DOR_DIR/.zshrc"
-alias sa="source $DOR_DIR/.zsh/defer/alias.zsh"
+alias va="vi $DOT_DIR/.zsh/defer/alias.zsh"
+alias vz="vi $DOT_DIR/.zshrc"
+alias vp="vi $DOT_DIR/.zprofile"
+alias vl="vi $DOT_DIR/.zlogout"
+alias sz="source $DOT_DIR/.zshrc"
+alias sa="source $DOT_DIR/.zsh/defer/alias.zsh"
 alias vd="vi ~/.dircolors-solarized/dircolors.ansi-dark_taka"
 
 # python
@@ -177,6 +177,19 @@ vimconf(){
     if type nvim > /dev/null 2>&1; then
         nvim $nvim_path/lua/plugins.lua
     fi
+}
+function pdfmin()
+{
+    local cnt=0
+    for i in $@; do
+        gs -sDEVICE=pdfwrite \
+           -dCompatibilityLevel=1.4 \
+           -dPDFSETTINGS=/ebook \
+           -dNOPAUSE -dQUIET -dBATCH \
+           -sOutputFile=${i%%.*}.min.pdf ${i} &
+        (( (cnt += 1) % 4 == 0 )) && wait
+    done
+    wait && return 0
 }
 
 [[ $(type abbr) ]] && abbr import-aliases -S
