@@ -28,8 +28,9 @@ apply = ["defer"]
 github = "zsh-users/zsh-syntax-highlighting"
 apply = ["defer"]
 
-# [plugins.zsh-abbriviation]
-# github = "olets/zsh-abbr"
+[plugins.zsh-abbriviation]
+github = "olets/zsh-abbr"
+apply = ["defer"]
 
 [plugins.zsh-docker-completion]
 github = "greymd/docker-zsh-completion"
@@ -38,6 +39,18 @@ apply = ["defer"]
 [plugins.zsh-z]
 github = "agkozak/zsh-z"
 apply = ["defer"]
+
+# Lazyloading for zsh
+[plugins.dotfiles-defer]
+local = '~/.dotfiles/.zsh/defer'
+use = ['*.zsh']
+apply = ['defer']
+
+# Synchronizing plugin with lanching zsh
+[plugins.dotfiles-sync]
+local = '~/.dotfiles/.zsh/sync'
+use = ['*.zsh']
+apply = ['source']
 
 # For example:
 #

@@ -31,11 +31,6 @@ alias ..="c ../"
 alias back="pushd"
 alias diff="diff -U1"
 
-if [ -e "$HOME/pass.sh" ]; then
-  alias sshp="sshpass -p $(sh ~/pass.sh) ssh"
-fi
-
-# from fish
 #------Git------------
 alias gs="git status"
 alias ga="git add"
@@ -43,7 +38,7 @@ alias gb="git branch"
 alias gco="git checkout"
 alias gcm="git commit -a -m"
 alias gp="git push"
-alias gpm="gp origin master"
+alias gpm="gp -u origin master"
 alias gf="git fetch"
 alias gm="git merge"
 
@@ -56,27 +51,21 @@ alias drmi="docker rmi"
 alias dbu="docker build . -it"
 alias dpa="docker ps -a"
 
-alias et="exit"
-alias rl="readlink -f"
-alias dc="cd"
-alias sl="ls"
-
 #-------URL--------------------------
-#if type xdg-open >/dev/null 2>&1; then
-#  alias open="xdg-open"
-#fi
 #if type wsl-open >/dev/null 2>&1; then
+# Windows 
 if [[ "$(uname -r)" == *microsoft* ]];  then 
-   alias open="wsl-open"
-   alias xdg-open="wsl-open"
+    alias open="wsl-open"
+    alias xdg-open="wsl-open"
+    alias checkos="cat /etc/os-release"
 fi
 if type open >/dev/null 2>&1; then
-  alias ggr="open http://google.com/"
-  alias tube="open https://www.youtube.com"
-  alias github="open https://www.github.com"
-  alias twit="open https://www.twitter.com"
-  alias insta="open https://www.instagram.com"
-  alias qiita="open https://qiita.com"
+    alias ggr="open http://google.com/"
+    alias tube="open https://www.youtube.com"
+    alias github="open https://www.github.com"
+    alias twit="open https://www.twitter.com"
+    alias insta="open https://www.instagram.com"
+    alias qiita="open https://qiita.com"
 fi
 
 # Vim
@@ -97,13 +86,12 @@ fi
 #alias tml="tmux list-window"
 
 # zsh
-alias vz="vim ~/.zshrc"
-alias va="vi ~/.zsh/alias.zsh"
-alias vz="vi ~/.zshrc"
-alias vp="vi ~/.zprofile"
-alias vl="vi ~/.zlogout"
-alias sz="source ~/.zshrc"
-alias sa="source ~/.zsh/alias.zsh"
+alias va="vi $DOT_DIR/.zsh/defer/alias.zsh"
+alias vz="vi $DOT_DIR/.zshrc"
+alias vp="vi $DOT_DIR/.zprofile"
+alias vl="vi $DOT_DIR/.zlogout"
+alias sz="source $DOT_DIR/.zshrc"
+alias sa="source $DOT_DIR/.zsh/defer/alias.zsh"
 alias vd="vi ~/.dircolors-solarized/dircolors.ansi-dark_taka"
 
 # python
@@ -114,12 +102,6 @@ alias ytconfig="vim ~/.config/yt-dlp/config"
 alias lmk="latexmk -pvc -output-directory=out"
 alias lmkc="latexmk -c"
 alias lmklua="latexmk -gg -pdflua -pvc -output-directory=out" 
-
-# Windows 
-alias user="cd /mnt/c/Users/shiny"
-#alias cdrive="cd /mnt/c/Users/shiny"
-alias checkos="cat /etc/os-release"
-alias gefwin="cd /mnt/c/Users/shiny/mydata/miscellinous/GEF-2016-V1-2_edited"
 
 # Clipboard
 if [ -e /usr/bin/xsel ]; then
@@ -196,3 +178,18 @@ vimconf(){
         nvim $nvim_path/lua/plugins.lua
     fi
 }
+function pdfmin()
+{
+    local cnt=0
+    for i in $@; do
+        gs -sDEVICE=pdfwrite \
+           -dCompatibilityLevel=1.4 \
+           -dPDFSETTINGS=/ebook \
+           -dNOPAUSE -dQUIET -dBATCH \
+           -sOutputFile=${i%%.*}.min.pdf ${i} &
+        (( (cnt += 1) % 4 == 0 )) && wait
+    done
+    wait && return 0
+}
+
+[[ $(type abbr) ]] && abbr import-aliases -S

@@ -1,0 +1,17 @@
+# helix editor config
+
+# theme = "fleetish"
+theme = "dark_plus"
+
+[editor]
+true-color = true
+cursorline = true
+color-modes = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[keys.insert]
+j = {j = "normal_mode"}  # Back to normal mode pushed jj.
