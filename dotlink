@@ -47,6 +47,14 @@
 # .config/nvim_local/lua/options.lua,.config/nvim/lua/options.lua
 # .config/nvim_local/lua/plugins.lua,.config/nvim/lua/plugins.lua
 # .config/nvim_local/lua/plugins_jet.lua,.config/nvim/lua/plugins.lua
+# -- New Lua setting
+.config/nvim/init.lua,.config/nvim/init.lua
+.config/nvim/lua/core/init.lua,.config/nvim/lua/core/init.lua
+.config/nvim/lua/core/lazy.lua,.config/nvim/lua/core/lazy.lua
+.config/nvim/lua/core/options.lua,.config/nvim/lua/core/options.lua
+.config/nvim/lua/core/keymaps.lua,.config/nvim/lua/core/keymaps.lua
+.config/nvim/lua/plugins/init.lua,.config/nvim/lua/plugins/init.lua
+.config/nvim/lua/utils.lua,.config/nvim/lua/utils.lua
 # -- Plugins
 # .config/nvim_local/plugin/autopairs.lua,.config/nvim/plugin/autopairs.lua
 # .config/nvim_local/plugin/cmp.lua,.config/nvim/plugin/cmp.lua
@@ -74,8 +82,14 @@
 # .config/nvim_local/plugin/scrollbar.lua,.config/nvim/plugin/scrollbar.lua
 # .config/nvim_local/plugin/code_rummer.lua,.config/nvim/plugin/code_rummer.lua
 # -- For NvChad https://github.com/NvChad/NvChad
-.config/nvim/lua/custom/init.lua,.config/nvim/lua/custom/init.lua
-.config/nvim/lua/custom/chadrc.lua,.config/nvim/lua/custom/chadrc.lua
+# .config/nvim/lua/custom/init.lua,.config/nvim/lua/custom/init.lua
+# .config/nvim/lua/custom/chadrc.lua,.config/nvim/lua/custom/chadrc.lua
+# .config/nvim/lua/custom/plugins/init.lua,.config/nvim/lua/custom/plugins/init.lua
+# .config/nvim/lua/custom/plugins/lspconfig.lua,.config/nvim/lua/custom/plugins/lspconfig.lua
+# .config/nvim/lua/custom/plugins/overrides.lua,.config/nvim/lua/custom/plugins/overrides.lua
+# .config/nvim/lua/custom/themes/monokai.lua,.config/nvim/lua/custom/themes/monokai.lua
+# .config/nvim/lua/custom/plugins/null-ls.lua,.config/nvim/lua/custom/plugins/null-ls.lua
+# .config/nvim/lua/custom/mappings.lua,.config/nvim/lua/custom/mappings.lua
 
 # Terminal Setting
   # alacritty
@@ -88,18 +102,10 @@
 # zsh
 .zshrc,.zshrc
 .zprofile,.zprofile
-# .zsh/alias.zsh,.zsh/alias.zsh
 .zshenv,.zshenv
-# .zsh/defer/alias.zsh,.zsh/defer/alias.zsh
 .config/sheldon/plugins.toml,.config/sheldon/plugins.toml  # dotfile manager
 
 # Others
 .config/git/ignore,.config/git/ignore
 .config/helix/config.toml,.config/helix/config.toml
 .config/helix/languages.toml,.config/helix/languages.toml
-.config/nvim/lua/custom/plugins/init.lua,.config/nvim/lua/custom/plugins/init.lua
-.config/nvim/lua/custom/plugins/lspconfig.lua,.config/nvim/lua/custom/plugins/lspconfig.lua
-.config/nvim/lua/custom/plugins/overrides.lua,.config/nvim/lua/custom/plugins/overrides.lua
-.config/nvim/lua/custom/themes/monokai.lua,.config/nvim/lua/custom/themes/monokai.lua
-.config/nvim/lua/custom/plugins/null-ls.lua,.config/nvim/lua/custom/plugins/null-ls.lua
-.config/nvim/lua/custom/mappings.lua,.config/nvim/lua/custom/mappings.lua
