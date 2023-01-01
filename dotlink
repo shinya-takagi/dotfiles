@@ -55,6 +55,16 @@
 .config/nvim/lua/core/keymaps.lua,.config/nvim/lua/core/keymaps.lua
 .config/nvim/lua/plugins/init.lua,.config/nvim/lua/plugins/init.lua
 .config/nvim/lua/utils.lua,.config/nvim/lua/utils.lua
+#   -- Plugins
+.config/nvim/lua/plugins/mason.lua,.config/nvim/lua/plugins/mason.lua
+.config/nvim/lua/plugins/cmp.lua,.config/nvim/lua/plugins/cmp.lua
+.config/nvim/lua/plugins/treesitter.lua,.config/nvim/lua/plugins/treesitter.lua
+.config/nvim/lua/plugins/indent-blankline.lua,.config/nvim/lua/plugins/indent-blankline.lua
+.config/nvim/lua/plugins/lualine.lua,.config/nvim/lua/plugins/lualine.lua
+.config/nvim/lua/plugins/lsp/init.lua,.config/nvim/lua/plugins/lsp/init.lua
+.config/nvim/lua/plugins/lsp/kind.lua,.config/nvim/lua/plugins/lsp/kind.lua
+.config/nvim/lua/plugins/lsp/diagnostics.lua,.config/nvim/lua/plugins/lsp/diagnostics.lua
+
 # -- Plugins
 # .config/nvim_local/plugin/autopairs.lua,.config/nvim/plugin/autopairs.lua
 # .config/nvim_local/plugin/cmp.lua,.config/nvim/plugin/cmp.lua
@@ -109,3 +119,4 @@
 .config/git/ignore,.config/git/ignore
 .config/helix/config.toml,.config/helix/config.toml
 .config/helix/languages.toml,.config/helix/languages.toml
+
