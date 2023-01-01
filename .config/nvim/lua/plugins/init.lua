@@ -2,7 +2,14 @@
 return{
   "williamboman/mason-lspconfig.nvim",
   "nvim-lua/plenary.nvim",
-  "folke/which-key.nvim",
+
+  {
+    "folke/which-key.nvim",
+    event = { "VimEnter" },
+    config = function()
+      require("which-key").setup {}
+    end
+  },
 
   {
     "folke/tokyonight.nvim",
@@ -25,5 +32,14 @@ return{
     "nvim-tree/nvim-web-devicons",
     config = { default = true },
   },
+
+  {
+    'windwp/nvim-autopairs',
+    event = { "VimEnter" },
+    config = function()
+      require("nvim-autopairs").setup {}
+    end
+  },
+
 
 }

@@ -61,6 +61,9 @@
 .config/nvim/lua/plugins/treesitter.lua,.config/nvim/lua/plugins/treesitter.lua
 .config/nvim/lua/plugins/indent-blankline.lua,.config/nvim/lua/plugins/indent-blankline.lua
 .config/nvim/lua/plugins/lualine.lua,.config/nvim/lua/plugins/lualine.lua
+.config/nvim/lua/plugins/gitsings.lua,.config/nvim/lua/plugins/gitsings.lua
+.config/nvim/lua/plugins/luasnip.lua,.config/nvim/lua/plugins/luasnip.lua
+#     -- lsp
 .config/nvim/lua/plugins/lsp/init.lua,.config/nvim/lua/plugins/lsp/init.lua
 .config/nvim/lua/plugins/lsp/kind.lua,.config/nvim/lua/plugins/lsp/kind.lua
 .config/nvim/lua/plugins/lsp/diagnostics.lua,.config/nvim/lua/plugins/lsp/diagnostics.lua
