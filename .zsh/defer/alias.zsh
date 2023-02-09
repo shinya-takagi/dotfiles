@@ -182,7 +182,7 @@ function pdfmin()
 {
     local cnt=0
     for i in $@; do
-        gs -sDEVICE=pdfwrite \
+        \gs -sDEVICE=pdfwrite \
            -dCompatibilityLevel=1.4 \
            -dPDFSETTINGS=/ebook \
            -dNOPAUSE -dQUIET -dBATCH \
@@ -190,6 +190,14 @@ function pdfmin()
         (( (cnt += 1) % 4 == 0 )) && wait
     done
     wait && return 0
+}
+check_DSStore (){
+  DIR=$1
+  find $DIR -name .DS_Store
+}
+del_DSStore (){
+  DIR=$1
+  find $DIR -name .DS_Store -print -delete
 }
 
 [[ $(type abbr) ]] && abbr import-aliases -S
