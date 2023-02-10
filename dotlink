@@ -113,6 +113,7 @@
 .config/nvim/lua/config/lazy.lua,.config/nvim/lua/config/lazy.lua
 .config/nvim/lua/config/options.lua,.config/nvim/lua/config/options.lua
 .config/nvim/lua/plugins/example.lua,.config/nvim/lua/plugins/example.lua
+.config/nvim/lua/plugins/mason.lua,.config/nvim/lua/plugins/mason.lua
 
 # Terminal Setting
   # alacritty
