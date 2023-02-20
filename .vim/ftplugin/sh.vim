@@ -1,6 +1,7 @@
-"setlocal softtabstop=6
-"setlocal tabstop=2
+" setlocal softtabstop=6
+setlocal tabstop=2
 setlocal shiftwidth=4
 setlocal expandtab
 setlocal smarttab
-"setlocal nosmartindent
+setlocal list
+" setlocal nosmartindent

@@ -166,11 +166,11 @@ NORMAL 00
 # normal file
 FILE 00
 # directory
-DIR 33;44
+DIR 33
 # 777 directory
-OTHER_WRITABLE 33;40
+OTHER_WRITABLE 33;42
 # symbolic link
-LINK 35
+LINK 36
 
 # pipe, socket, block device, character device (blue bg)
 FIFO 30;44
