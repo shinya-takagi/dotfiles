@@ -15,17 +15,6 @@ source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-# ZINIT REPOSITORY REMOVED!!!!!!!!
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-#zinit light-mode for \
-#    zinit-zsh/z-a-rust \
-#    zinit-zsh/z-a-as-monitor \
-#    zinit-zsh/z-a-patch-dl \
-#    zinit-zsh/z-a-bin-gem-node
-
-### End of Zinit's installer chunk
-
 # ------------UPPER ZINIT----------------------------
 
 ZSHHOME="${HOME}/.zsh"
@@ -66,12 +55,6 @@ export RSYNC_RSH=ssh            # use ssh on rsync
 # ---------Other------------->
 umask 022
 ulimit -c 0
-# ----Automatic SSH Connection, but it cannot use.> 
-# TEST SSH-AGENT WITH ENV SSH_ASKPASS
-#eval `ssh-agent` > /dev/null 2>&1
-#eval `ssh-add $HOME/.ssh/id_rsa_vostok2 > /dev/null 2>&1`
-#setsid ssh-add $HOME/.ssh/id_rsa_vostok2 </dev/null
-#ssh vostok
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -115,7 +98,7 @@ zstyle ':completion:*' menu select
 setopt list_packed
 # 補完候補にファイルの種類も表示する
 #setopt list_types
-#
+
 # 色の設定
 if [ -z $COLORS_ENV ]; then
   export COLORS_ENV=ON
@@ -155,166 +138,14 @@ setopt hist_reduce_blanks
 setopt inc_append_history
 # ヒストリを呼び出してから実行する間に一旦編集できる状態になる
 setopt hist_verify
-# -----------------------------
-#     Prompt
-# -----------------------------
-# %M    ホスト名
-# %m    ホスト名
-# %d    カレントディレクトリ(フルパス)
-# %~    カレントディレクトリ(フルパス2)
-# %C    カレントディレクトリ(相対パス)
-# %c    カレントディレクトリ(相対パス)
-# %n    ユーザ名
-# %#    ユーザ種別
-# %?    直前のコマンドの戻り値
-# %D    日付(yy-mm-dd)
-# %W    日付(yy/mm/dd)
-# %w    日付(day dd)
-# %*    時間(hh:flag_mm:ss)
-# %T    時間(hh:mm)
-# %t    時間(hh:mm(am/pm))
-#
-# function powerline_precmd() {
-#     PS1="$($GOPATH/bin/powerline-go -error $? -jobs ${${(%):%j}:-0})"
-# 
-#     # Uncomment the following line to automatically clear errors after showing
-#     # them once. This not only clears the error for powerline-go, but also for
-#     # everything else you run in that shell. Don't enable this if you're not
-#     # sure this is what you want.
-# 
-#     #set "?"
-# }
-# 
-# function install_powerline_precmd() {
-#   for s in "${precmd_functions[@]}"; do
-#     if [ "$s" = "powerline_precmd" ]; then
-#       return
-#     fi
-#   done
-#   precmd_functions+=(powerline_precmd)
-# }
-# 
-# if [ "$TERM" != "linux" ] && [ -f "$GOPATH/bin/powerline-go" ]; then
-#     install_powerline_precmd
-# fi
-#------Show Prompt of git infomation-------
-# function rprompt-git-current-branch {
-#   local branch_name st branch_status
-#   
-# # branch='\ue0a0'
-# # color='%{\e[38;5;' #  文字色を設定
-# # green='114m%}'
-# # red='001m%}'
-# # yellow='227m%}'
-# # blue='033m%}'
-# # reset='%{\e[0m%}'   # reset
-#   
-#   if [ ! -e  ".git" ]; then
-#     # git 管理されていないディレクトリは何も返さない
-#     return
-#   fi
-#   branch_name=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
-#   st=`git status 2> /dev/null`
-#   if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-#     # 全て commit されてクリーンな状態
-# #   branch_status="${color}${green}${branch}"
-#     branch_status="%F{green}"
-# #   branch_status="%{$fg[green]}%}%{${reset_color}%}"
-#   elif [[ -n `echo "$st" | grep "^Untracked files"` ]]; then
-#     # git 管理されていないファイルがある状態
-# #   branch_status="${color}${red}${branch}?"
-#     branch_status="%F{red}manage"
-#   elif [[ -n `echo "$st" | grep "^Changes not staged for commit"` ]]; then
-#     # git add されていないファイルがある状態
-# #   branch_status="${color}${red}${branch}+"
-#     branch_status="%F{red}add"
-#   elif [[ -n `echo "$st" | grep "^Changes to be committed"` ]]; then
-#     # git commit されていないファイルがある状態
-# #   branch_status="${color}${yellow}${branch}!"
-#     branch_status="%F{yellow}commit"
-#   elif [[ -n `echo "$st" | grep "^rebase in progress"` ]]; then
-#     # コンフリクトが起こった状態
-# #   echo "${color}${red}${branch}!(no branch)${reset}"
-#     echo "%F{red}!(no branch)"
-#     return
-#   else
-#     # 上記以外の状態の場合
-# #   branch_status="${color}${blue}${branch}"
-#     branch_status="%F{blue}"
-#   fi
-#   # ブランチ名を色付きで表示する
-# # echo "${branch_status}$branch_name${reset}"
-#   echo "${branch_status}[$branch_name]%f"
-# # echo -e "${branch_status}[$branch_name]%f%T"
-# }
-#  
-# # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
-# setopt prompt_subst
-#  
-# # プロンプトの右側にメソッドの結果を表示させる
-# zle -N rptompy-git-current-branch 
-# RPROMPT='`rprompt-git-current-branch`'
-# # 
-# # # ------END Git prompt---------
-# # 
-# # # -----new prompt setting-------
-#  autoload -Uz add-zsh-hook
-#  autoload -Uz terminfo
-#  
-#  # vim mode set 2 left-down position
-#  terminfo_down_sc=$terminfo[cud1]$terminfo[cud1]$terminfo[cuu1]$terminfo[cuu1]$terminfo[sc]$terminfo[cud1]$terminfo[cud1]
-#  function left_down_prompt_preexec() {
-#      print -rn -- $terminfo[el]
-#  }
-#  add-zsh-hook preexec left_down_prompt_preexec
-#  
-#  function zle-keymap-select zle-line-init zle-line-finish
-#  {
-#  # local exit_code_check
-#      case $KEYMAP in
-#          main|viins)
-#              PROMPT_2="$fg[cyan]-- INSERT --$reset_color"
-#              ;;
-#          vicmd)
-#              PROMPT_2="$fg[white]-- NORMAL --$reset_color"
-#              ;;
-#  #       vivis|vivli)
-#  #           PROMPT_2="$fg[yellow]-- VISUAL --$reset_color"
-#  #           ;;
-#      esac
-#      # example of show exit status on prompt
-#  #   %{$fg[black]%(?.$bg[green].$bg[red])%}<%?>
-#  #   PROMPT="%{$terminfo_down_sc$PROMPT_2$terminfo[rc]%}[%(?.%{${fg[green]}%}.%{${fg[red]}%})%~%{${reset_color}%}]
-#      PROMPT="%{$terminfo_down_sc$PROMPT_2$terminfo[rc]%}[%T]|[%(?.%{${fg[green]}%}.%{${fg[red]}%})%~%{${reset_color}%}]
-#  %{%(?.$fg[green].$fg[red])%}<%?>%{${reset_color}%} %# "
-#  # %{%(?.$fg[green].$fg[red])%}<%?>${reset_color} %# "
-#  # <%{%(?.$fg[green].$fg[red])%}%?${reset_color}> %# "
-#      zle reset-prompt
-#  }
-#  
-#  zle -N zle-line-init
-#  zle -N zle-line-finish
-#  zle -N zle-keymap-select
-#  zle -N edit-command-line
 
-#------End new prompt setting-------
-
-# ---Vim MODE CHECK-------
-#+++++old++++++
-# function zle-keymap-select {
-#   VIM_NORMAL="%K{208}%F{black}⮀%k%f%K{208}%F{white} % NORMAL %k%f%K{black}%F{208}⮀%k%f"
-#   VIM_INSERT="%K{075}%F{black}⮀%k%f%K{075}%F{white} % INSERT %k%f%K{black}%F{075}⮀%k%f"
-#  VIMODE="${${KEYMAP/vicmd/$VIM_NORMAL}/(main|viins)/$VIM_INSERT}"
-#  zle reset-prompt
-# }
- 
-# zle -N zle-keymap-select
-# PROMPT='%F{red}%~%f
-# ${VIMODE}$ '
-# ---old prompt setting---
-#
 # Adopt powerlevel10k for powerline.
-source  ~/powerlevel10k/powerlevel10k.zsh-theme
+if [ -e ~/powerlevel10k/powerlevel10k.zsh-theme ]; then
+    source  ~/powerlevel10k/powerlevel10k.zsh-theme
+else
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+    source  ~/powerlevel10k/powerlevel10k.zsh-theme
+fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 #-----PROMPT-----------------------------------<
@@ -325,10 +156,14 @@ source  ~/powerlevel10k/powerlevel10k.zsh-theme
 eval `dircolors ~/.dircolors-solarized/dircolors.ansi-dark_taka`
 #=----Dircolors----------<
 #-----Display for Xserver------------->
+export DISPLAY=:0.0 
 #export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 #export DISPLAY=$(ipconfig.exe | grep IPv4 | grep -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' -o | head -2):0
 #export DISPLAY=$(grep nameserver /etc/resolv.conf | sed 's/nameserver //'):0
- export DISPLAY=:0.0 
 #-----Xserver---------<
-#
+# Dotfile manager "dot"
+if [ -d $HOME/.dot ]; then
+    source $HOME/.dot/dot.sh
+    fpath=($HOME/.dot $fpath)
+fi
 

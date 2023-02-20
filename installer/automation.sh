@@ -12,14 +12,12 @@ function main() {
         branch_name='mac'
     elif [ $(uname -s) == 'Linux' ]; then
     #   branch_name='notepc1'
-    #   branch_name='mainpc1'
         branch_name='vostok'
     fi
     
     case $i in
     # - - - - upload - - - -
      "u" )  git commit -a
-    #       git push origin master
             git push origin "$branch_name"
       ;; 
     # - - - - download - - - -
