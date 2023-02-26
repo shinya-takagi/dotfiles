@@ -53,11 +53,16 @@ alias dpa="docker ps -a"
 
 #-------URL--------------------------
 #if type wsl-open >/dev/null 2>&1; then
-# Windows 
+# Windows(WSL)
 if [[ "$(uname -r)" == *microsoft* ]];  then 
+    # Path to Windows Home directory
+    export WINDOWS_HOME="/mnt/c/Users/shiny"
+
     alias open="wsl-open"
     alias xdg-open="wsl-open"
     alias checkos="cat /etc/os-release"
+    # Start VSCode in WSL without Windows Path.
+    alias code="$WINDOWS_HOME/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code"
 fi
 if type open >/dev/null 2>&1; then
     alias ggr="open http://google.com/"
@@ -192,4 +197,5 @@ function pdfmin()
     wait && return 0
 }
 
+# When installed abbr-zsh, set aliases as abbreviation.
 [[ $(type abbr) ]] && abbr import-aliases -S
