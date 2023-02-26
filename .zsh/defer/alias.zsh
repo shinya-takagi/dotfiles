@@ -55,6 +55,11 @@ alias dpa="docker ps -a"
 #if type wsl-open >/dev/null 2>&1; then
 # Windows 
 if [[ "$(uname -r)" == *microsoft* ]];  then 
+    # Path to Windows Home directory
+    # export WINDOWS_HOME="/mnt/c/Users/shiny"
+    # Start VSCode in WSL without Windows Path.
+    # alias code="$WINDOWS_HOME/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code"
+
     alias open="wsl-open"
     alias xdg-open="wsl-open"
     alias checkos="cat /etc/os-release"
@@ -200,4 +205,5 @@ del_DSStore (){
   find $DIR -name .DS_Store -print -delete
 }
 
+# When installed abbr-zsh, set aliases as abbreviation.
 [[ $(type abbr) ]] && abbr import-aliases -S
