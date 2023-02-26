@@ -120,7 +120,7 @@ dotrc,.config/dot/dotrc
 
 # Terminal Setting
   # alacritty
-.config/alacritty/alacritty.yml,.config/alacritty/alacritty.yml
+# .config/alacritty/alacritty.yml,.config/alacritty/alacritty.yml
   # Tmux
 .config/tmux/tmux.conf,.config/tmux/tmux.conf
   # StarShip

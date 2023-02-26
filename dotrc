@@ -36,7 +36,7 @@ case ${OSTYPE} in
 #        dotlinklocal="${dotdir}/dotlink.windows"
 #        ;;
 esac
-#linkfiles=("${dotlink}" "${dotlinklocal}")
+linkfiles=("${dotlink}" "${dotlinklocal}")
 
 # (In bash)
 
