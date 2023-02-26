@@ -1,3 +1,10 @@
+if (not vim.g.vscode) then
+  require("base")
+  require("options")
+  require("keymaps")
+  require("plugins")
+  -- require("core")
+end
 -- print("init.lua")
 -- vim.g.did_install_default_menus = 1
 -- vim.g.did_install_syntax_menu = 1
@@ -19,13 +26,7 @@
 -- vim.g.skip_loading_mswin = 1
 
 -- Read setting files from Lua directory.
-require("base")
-require("options")
-require("keymaps")
 -- require("colorscheme")
-if (not vim.g.vscode) then
-  require("plugins")
-end
 
 -- Packer commands
 -- vim.api.nvim_create_user_command("PackerInstall", [[packadd packer.nvim | lua require("packers").install()]],

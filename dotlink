@@ -30,7 +30,10 @@
 # arguments and confirm whether or not to execute that command.
 #
 #------------------------------------------------------------------------------
-#
+
+# dotrc
+dotrc,.config/dot/dotrc
+
 # Neovim
 # -- Filetype
 # .config/nvim_local/ftplugin/fish.vim,.config/nvim/ftplugin/fish.vim
@@ -73,9 +76,47 @@
 # .config/nvim_local/plugin/sidebar.lua,.config/nvim/plugin/sidebar.lua
 # .config/nvim_local/plugin/scrollbar.lua,.config/nvim/plugin/scrollbar.lua
 # .config/nvim_local/plugin/code_rummer.lua,.config/nvim/plugin/code_rummer.lua
+#
+# -- New Lua setting for Original
+# .config/nvim_lazy/init.lua,.config/nvim/init.lua
+# .config/nvim_lazy/lua/core/init.lua,.config/nvim/lua/core/init.lua
+# .config/nvim_lazy/lua/core/lazy.lua,.config/nvim/lua/core/lazy.lua
+# .config/nvim_lazy/lua/core/options.lua,.config/nvim/lua/core/options.lua
+# .config/nvim_lazy/lua/core/keymaps.lua,.config/nvim/lua/core/keymaps.lua
+# .config/nvim_lazy/lua/plugins/init.lua,.config/nvim/lua/plugins/init.lua
+# .config/nvim_lazy/lua/utils.lua,.config/nvim/lua/utils.lua
+# #   -- Plugins
+# .config/nvim_lazy/lua/plugins/mason.lua,.config/nvim/lua/plugins/mason.lua
+# .config/nvim_lazy/lua/plugins/cmp.lua,.config/nvim/lua/plugins/cmp.lua
+# .config/nvim_lazy/lua/plugins/treesitter.lua,.config/nvim/lua/plugins/treesitter.lua
+# .config/nvim_lazy/lua/plugins/indent-blankline.lua,.config/nvim/lua/plugins/indent-blankline.lua
+# .config/nvim_lazy/lua/plugins/lualine.lua,.config/nvim/lua/plugins/lualine.lua
+# .config/nvim_lazy/lua/plugins/gitsings.lua,.config/nvim/lua/plugins/gitsings.lua
+# .config/nvim_lazy/lua/plugins/luasnip.lua,.config/nvim/lua/plugins/luasnip.lua
+# #     -- lsp
+# .config/nvim_lazy/lua/plugins/lsp/init.lua,.config/nvim/lua/plugins/lsp/init.lua
+# .config/nvim_lazy/lua/plugins/lsp/kind.lua,.config/nvim/lua/plugins/lsp/kind.lua
+# .config/nvim_lazy/lua/plugins/lsp/diagnostics.lua,.config/nvim/lua/plugins/lsp/diagnostics.lua
+
 # -- For NvChad https://github.com/NvChad/NvChad
-.config/nvim/lua/custom/init.lua,.config/nvim/lua/custom/init.lua
-.config/nvim/lua/custom/chadrc.lua,.config/nvim/lua/custom/chadrc.lua
+# .config/nvim/lua/custom/init.lua,.config/nvim/lua/custom/init.lua
+# .config/nvim/lua/custom/chadrc.lua,.config/nvim/lua/custom/chadrc.lua
+# .config/nvim/lua/custom/plugins/init.lua,.config/nvim/lua/custom/plugins/init.lua
+# .config/nvim/lua/custom/plugins/lspconfig.lua,.config/nvim/lua/custom/plugins/lspconfig.lua
+# .config/nvim/lua/custom/plugins/overrides.lua,.config/nvim/lua/custom/plugins/overrides.lua
+# .config/nvim/lua/custom/themes/monokai.lua,.config/nvim/lua/custom/themes/monokai.lua
+# .config/nvim/lua/custom/plugins/null-ls.lua,.config/nvim/lua/custom/plugins/null-ls.lua
+# .config/nvim/lua/custom/mappings.lua,.config/nvim/lua/custom/mappings.lua
+
+# -- For Neovim with LazyVim
+.config/nvim/init.lua,.config/nvim/init.lua
+.config/nvim/stylua.toml,.config/nvim/stylua.toml
+.config/nvim/lua/config/autocmds.lua,.config/nvim/lua/config/autocmds.lua
+.config/nvim/lua/config/keymaps.lua,.config/nvim/lua/config/keymaps.lua
+.config/nvim/lua/config/lazy.lua,.config/nvim/lua/config/lazy.lua
+.config/nvim/lua/config/options.lua,.config/nvim/lua/config/options.lua
+.config/nvim/lua/plugins/example.lua,.config/nvim/lua/plugins/example.lua
+.config/nvim/lua/plugins/mason.lua,.config/nvim/lua/plugins/mason.lua
 
 # Terminal Setting
   # alacritty
@@ -88,18 +129,11 @@
 # zsh
 .zshrc,.zshrc
 .zprofile,.zprofile
-# .zsh/alias.zsh,.zsh/alias.zsh
 .zshenv,.zshenv
-# .zsh/defer/alias.zsh,.zsh/defer/alias.zsh
 .config/sheldon/plugins.toml,.config/sheldon/plugins.toml  # dotfile manager
 
 # Others
 .config/git/ignore,.config/git/ignore
 .config/helix/config.toml,.config/helix/config.toml
 .config/helix/languages.toml,.config/helix/languages.toml
-.config/nvim/lua/custom/plugins/init.lua,.config/nvim/lua/custom/plugins/init.lua
-.config/nvim/lua/custom/plugins/lspconfig.lua,.config/nvim/lua/custom/plugins/lspconfig.lua
-.config/nvim/lua/custom/plugins/overrides.lua,.config/nvim/lua/custom/plugins/overrides.lua
-.config/nvim/lua/custom/themes/monokai.lua,.config/nvim/lua/custom/themes/monokai.lua
-.config/nvim/lua/custom/plugins/null-ls.lua,.config/nvim/lua/custom/plugins/null-ls.lua
-.config/nvim/lua/custom/mappings.lua,.config/nvim/lua/custom/mappings.lua
+

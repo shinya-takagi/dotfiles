@@ -25,10 +25,14 @@ elif [ "$(uname -s )" = "Darwin" ]; then
     export PATH="/usr/local/Cellar/bison/3.8.2/bin:$PATH"
     export PATH="$HOME/develop/wine/tools:$PATH"
     export PATH="/Applications/Wine Stable.app/Contents/Resources/wine/bin:$PATH"
+    export PATH="/usr/local/sbin:$PATH"
     export FREETYPE_PROPERTIES="truetype:interpreter-version=35"
     export DYLD_FALLBACK_LIBRARY_PATH="/usr/lib:/opt/X11/lib:$DYLD_FALLBACK_LIBRARY_PATH"
 
     # dot manager
     export DOT_REPO="https://github.com/shinya-takagi/dotfiles_pub.git"
     export DOT_DIR="$HOME/.dotfiles"
+
+    # For git-sim
+    [[ $(type git-sim) ]] && export git_sim_media_dir="$HOME/Desktop/"
 fi
