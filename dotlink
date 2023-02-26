@@ -30,7 +30,10 @@
 # arguments and confirm whether or not to execute that command.
 #
 #------------------------------------------------------------------------------
-#
+
+# dotrc
+dotrc,.config/dot/dotrc
+
 # Neovim
 # -- Filetype
 # .config/nvim_local/ftplugin/fish.vim,.config/nvim/ftplugin/fish.vim
