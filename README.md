@@ -5,7 +5,7 @@ This repository is my dotfiles based on [dot](https://github.com/ssh0/dot).
 
 # Requirement
 
-- OS: MacOSX or Linux
+- OS: MacOSX or Linux(WSL)
 - shell: zsh
   - plugin manager: [sheldon](https://github.com/rossmacarthur/sheldon.git)
 - editor : neovim
