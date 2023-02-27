@@ -1,6 +1,19 @@
-# README
+# dotfiles
 
-dotfiles
+This repository is my dotfiles based on [dot](https://github.com/ssh0/dot).
+
+
+# Requirement
+
+- OS: MacOSX or Linux
+- shell: zsh
+  - plugin manager: [sheldon](https://github.com/rossmacarthur/sheldon.git)
+- editor : neovim
+  - plugin manager: [Lazy.nvim](https://github.com/folke/lazy.nvim.git)
+  - plugins: [LazyVim](https://github.com/LazyVim/LazyVim.git)
+- terminal: alacritty
+- version manager: Git
+- dotfile manager: [dot](https://github.com/ssh0/dot)
 
 
 # Get Started
@@ -24,3 +37,10 @@ source $HOME/.dot/dot.sh
 ```bash
 dot clone && dot set -v
 ```
+
+
+# Configuration
+
+- dotlink - symbolic link configuration for dotfiles depending on OS.
+- dotrc - dot configuration. See [dot](https://github.com/ssh0/dot).
+- and more.
