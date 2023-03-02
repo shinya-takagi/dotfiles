@@ -137,3 +137,4 @@ dotrc,.config/dot/dotrc
 .config/helix/config.toml,.config/helix/config.toml
 .config/helix/languages.toml,.config/helix/languages.toml
 
+.config/nvim/lua/plugins/null-ls.lua,.config/nvim/lua/plugins/null-ls.lua
