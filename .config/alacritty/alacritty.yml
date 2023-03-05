@@ -512,9 +512,11 @@ colors:
 #  args:
 #    - --login
 #
+#program: /usr/local/bin/zsh
 shell:
-   program: /usr/local/bin/zsh
+   program: /bin/zsh
    args:
+     - --login
      - -l
      - -c
      - "tmux a -t 0 || tmux"
