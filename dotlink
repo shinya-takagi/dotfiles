@@ -141,3 +141,6 @@ dotrc,.config/dot/dotrc
 .config/iterm2/com.googlecode.iterm2.plist,.config/iterm2/com.googlecode.iterm2.plist
 .config/nvim/lua/plugins/lualine.lua,.config/nvim/lua/plugins/lualine.lua
 .config/nvim/lua/plugins/monokai.lua,.config/nvim/lua/plugins/monokai.lua
+.config/alacritty/themes/monokai_classic.yml,.config/alacritty/themes/monokai_classic.yml
+.config/alacritty/themes/monokai_pro.yml,.config/alacritty/themes/monokai_pro.yml
+.config/alacritty/themes/monokai_soda.yml,.config/alacritty/themes/monokai_soda.yml

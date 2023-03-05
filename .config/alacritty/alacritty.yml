@@ -9,6 +9,7 @@
 # All imports must either be absolute paths starting with `/`, or paths relative
 # to the user's home directory starting with `~/`.
 #import:
+#   - ~/.config/alacritty/themes/monokai_classic.yml
 #  - /path/to/alacritty.yml
 
 # Any items in the `env` entry below will be added as
@@ -217,41 +218,46 @@ font:
 
 
 # Colors (Nightfly)
-colors:
-   # Default colors
-  primary:
-     background: '#011627'
-     foreground: '#acb4c2'
+# colors:
+#    # Default colors
+#   primary:
+#      background: '#011627'
+#      foreground: '#acb4c2'
 
-  cursor:
-    text: '#fafafa'
-    cursor: '#9ca1aa'
+#   cursor:
+#     text: '#fafafa'
+#     cursor: '#9ca1aa'
+#
+#   selection:
+#     text: '#080808'
+#     background: '#b2ceee'
+ 
+#    # Normal colors
+#   normal:
+#     black:   '#1d3b53'
+#     red:     '#fc514e'
+#     green:   '#a1cd5e'
+#     yellow:  '#e3d18a'
+#     blue:    '#82aaff'
+#     magenta: '#c792ea'
+#     cyan:    '#7fdbca'
+#     white:   '#a1aab8'
 
-  selection:
-    text: '#080808'
-    background: '#b2ceee'
+#    # Bright colors
+#   bright:
+#     black:   '#7c8f8f'
+#     red:     '#ff5874'
+#     green:   '#21c7a8'
+#     yellow:  '#ecc48d'
+#     blue:    '#82aaff'
+#     magenta: '#ae81ff'
+#     cyan:    '#7fdbca'
+#     white:   '#d6deeb'
 
-   # Normal colors
-  normal:
-    black:   '#1d3b53'
-    red:     '#fc514e'
-    green:   '#a1cd5e'
-    yellow:  '#e3d18a'
-    blue:    '#82aaff'
-    magenta: '#c792ea'
-    cyan:    '#7fdbca'
-    white:   '#a1aab8'
-
-   # Bright colors
-  bright:
-    black:   '#7c8f8f'
-    red:     '#ff5874'
-    green:   '#21c7a8'
-    yellow:  '#ecc48d'
-    blue:    '#82aaff'
-    magenta: '#ae81ff'
-    cyan:    '#7fdbca'
-    white:   '#d6deeb'
+# Replace new colors
+import:
+   - ~/.config/alacritty/themes/monokai_classic.yml
+  #- ~/.config/alacritty/themes/monokai_pro.yml
 
 # Colors (Tomorrow Night)
 #colors:
