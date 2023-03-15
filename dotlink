@@ -117,14 +117,22 @@ dotrc,.config/dot/dotrc
 .config/nvim/lua/config/options.lua,.config/nvim/lua/config/options.lua
 .config/nvim/lua/plugins/example.lua,.config/nvim/lua/plugins/example.lua
 .config/nvim/lua/plugins/mason.lua,.config/nvim/lua/plugins/mason.lua
+.config/nvim/lua/plugins/null-ls.lua,.config/nvim/lua/plugins/null-ls.lua
+.config/nvim/lua/plugins/lualine.lua,.config/nvim/lua/plugins/lualine.lua
+.config/nvim/lua/plugins/monokai.lua,.config/nvim/lua/plugins/monokai.lua
 
 # Terminal Setting
   # alacritty
 # .config/alacritty/alacritty.yml,.config/alacritty/alacritty.yml
+.config/alacritty/themes/monokai_classic.yml,.config/alacritty/themes/monokai_classic.yml
+.config/alacritty/themes/monokai_pro.yml,.config/alacritty/themes/monokai_pro.yml
+.config/alacritty/themes/monokai_soda.yml,.config/alacritty/themes/monokai_soda.yml
   # Tmux
 .config/tmux/tmux.conf,.config/tmux/tmux.conf
   # StarShip
 .config/starship.toml,.config/starship.toml
+  # iTerm2
+.config/iterm2/com.googlecode.iterm2.plist,.config/iterm2/com.googlecode.iterm2.plist
 
 # zsh
 .zshrc,.zshrc
@@ -136,11 +144,5 @@ dotrc,.config/dot/dotrc
 .config/git/ignore,.config/git/ignore
 .config/helix/config.toml,.config/helix/config.toml
 .config/helix/languages.toml,.config/helix/languages.toml
+.fprettify.rc,.fprettify.rc # Fortran formatter
 
-.config/nvim/lua/plugins/null-ls.lua,.config/nvim/lua/plugins/null-ls.lua
-.config/iterm2/com.googlecode.iterm2.plist,.config/iterm2/com.googlecode.iterm2.plist
-.config/nvim/lua/plugins/lualine.lua,.config/nvim/lua/plugins/lualine.lua
-.config/nvim/lua/plugins/monokai.lua,.config/nvim/lua/plugins/monokai.lua
-.config/alacritty/themes/monokai_classic.yml,.config/alacritty/themes/monokai_classic.yml
-.config/alacritty/themes/monokai_pro.yml,.config/alacritty/themes/monokai_pro.yml
-.config/alacritty/themes/monokai_soda.yml,.config/alacritty/themes/monokai_soda.yml

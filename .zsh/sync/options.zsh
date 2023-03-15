@@ -66,6 +66,7 @@ if [ ! -d $HOME/.dot ]; then
 fi
 source $HOME/.dot/dot.sh
 fpath=($HOME/.dot $fpath)
+fpath+=$HOME/.zsh/function
 
 #----------------------
 function Terminal_Prompts(){
