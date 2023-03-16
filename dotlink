@@ -146,3 +146,4 @@ dotrc,.config/dot/dotrc
 .config/helix/languages.toml,.config/helix/languages.toml
 .fprettify.rc,.fprettify.rc # Fortran formatter
 
+.config/raycast/Raycast_backup.rayconfig,.config/raycast/Raycast_backup.rayconfig
