@@ -147,3 +147,4 @@ dotrc,.config/dot/dotrc
 .fprettify.rc,.fprettify.rc # Fortran formatter
 
 .config/raycast/Raycast_backup.rayconfig,.config/raycast/Raycast_backup.rayconfig
+.config/nvim/lua/plugins/comment.lua,.config/nvim/lua/plugins/comment.lua
