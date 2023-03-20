@@ -3,7 +3,7 @@
 This repository is my dotfiles based on [dot](https://github.com/ssh0/dot).
 
 
-# Requirement
+# Environment
 
 - OS: MacOSX or Linux(WSL)
 - shell: zsh
@@ -12,6 +12,7 @@ This repository is my dotfiles based on [dot](https://github.com/ssh0/dot).
   - plugin manager: [Lazy.nvim](https://github.com/folke/lazy.nvim.git)
   - plugins: [LazyVim](https://github.com/LazyVim/LazyVim.git)
 - terminal: alacritty
+- Launcher: Raycast(MacOS Only)
 - version manager: Git
 - dotfile manager: [dot](https://github.com/ssh0/dot)
 
@@ -26,7 +27,7 @@ git clone https://github.com/ssh0/dot $HOME/.dot
 
 2. Set Environmental variables.
 ```bash
-export DOT_REPO="https://github.com/shinya-takagi/dotfiles_pub.git"
+export DOT_REPO="https://github.com/shinya-takagi/dotfiles.git"
 export DOT_DIR="$HOME/.dotfiles"
 fpath=($HOME/.dot $fpath)  # <- for completion
 source $HOME/.dot/dot.sh
