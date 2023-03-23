@@ -15,6 +15,7 @@ This repository is my dotfiles based on [dot](https://github.com/ssh0/dot).
 - Launcher: Raycast(MacOS Only)
 - version manager: Git
 - dotfile manager: [dot](https://github.com/ssh0/dot)
+- trash manager: trash-cli(Instead of rm)
 
 
 # Get Started

@@ -11,7 +11,7 @@ alias -g GI="| grep -ri"
 
 # local alias
 alias ls="ls --color=auto"
-[[ $(type lsd) ]]; alias ls="lsd"   # Use lsd instead of ls.
+[[ $(type lsd) ]] && alias ls="lsd"   # Use lsd instead of ls.
 alias lst="ls -ltr"
 alias la="ls -la"
 alias ll="ls -l"
@@ -30,6 +30,7 @@ alias mkdir="mkdir -p"
 alias ..="c ../"
 alias back="pushd"
 alias diff="diff -U1"
+[[ $(type trash-put) ]] && alias rm="trash-put" # trash-cli instead of rm.
 
 #------Git------------
 alias gs="git status"
