@@ -33,6 +33,9 @@ elif [ "$(uname -s )" = "Darwin" ]; then
     export DOT_REPO="https://github.com/shinya-takagi/dotfiles_pub.git"
     export DOT_DIR="$HOME/.dotfiles"
 
+    # Git Credential Manager
+    export GCM_CREDENTIAL_STORE=keychain
+
     # For git-sim
     [[ $(type git-sim) ]] && export git_sim_media_dir="$HOME/Desktop/"
 fi

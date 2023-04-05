@@ -37,9 +37,10 @@ alias gs="git status"
 alias ga="git add"
 alias gb="git branch"
 alias gco="git checkout"
-alias gcm="git commit -a -m"
+alias gcm="git commit -m"
+alias gcma="git commit -a -m"
 alias gp="git push"
-alias gpm="gp -u origin master"
+alias gpm="gp -u origin $(git rev-parse --abbrev-ref HEAD)"
 alias gf="git fetch"
 alias gm="git merge"
 
@@ -115,6 +116,7 @@ if [ -e /usr/bin/xsel ]; then
   alias pbpaste='xsel --clipboard --output'
 fi
 
+# PDF
 
 #----- OS Distrbution condition ---------------------->
 # TMPOS=$(cat /etc/os-release | head -2 | tail -1)
@@ -204,6 +206,17 @@ check_DSStore (){
 del_DSStore (){
   DIR=$1
   find $DIR -name .DS_Store -print -delete
+}
+
+pandoc_ja (){
+    target=$1
+    output=${target%.*}.pdf
+    if [ $(uname -s) = "Darvin" ]; then
+      PANDOC_FONT="Hiragino Mincho Pro"
+    fi
+    pandoc --pdf-engine=lualatex \
+      -V CJKmainfont="$PANDOC_FONT" \
+           $target -o $output
 }
 
 # When installed abbr-zsh, set aliases as abbreviation.

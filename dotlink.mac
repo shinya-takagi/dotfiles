@@ -38,3 +38,4 @@
 # Terminal Setting
 # alacritty
 .config/alacritty/alacritty.yml,.config/alacritty/alacritty.yml # (Machine deoendent)
+# .gitconfig_mac, .gitconfig
