@@ -3,3 +3,5 @@
 	name = shinya-takagi
 [init]
 	defaultBranch = main
+[credential]
+	helper = osxkeychain
