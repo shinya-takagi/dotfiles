@@ -39,3 +39,5 @@
 # alacritty
 .config/alacritty/alacritty.yml,.config/alacritty/alacritty.yml # (Machine deoendent)
 # .gitconfig_mac, .gitconfig
+# hammerspoon, Set hotkey
+.hammerspoon/init.lua,.hammerspoon/init.lua
