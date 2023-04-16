@@ -4,7 +4,8 @@ return {
   opts = function()
     return {
       options = {
-        themes = "monokai-pro",
+        -- themes = "monokai-pro",
+        themes = "vscode",
       },
     }
   end,
