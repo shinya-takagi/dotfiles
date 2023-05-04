@@ -4,6 +4,7 @@
 if [ "$(uname -s)" = "Linux" ]; then
     export PATH="$HOME/.local/bin:$PATH"      # local binary path
     export PATH="/usr/local/go/bin:$PATH"     # go language path
+    export PATH="$HOME/.cargo/bin:$PATH"      # Rust binary path
     # dot manager
     export DOT_REPO="https://github.com/shinya-takagi/dotfiles_pub.git"
     export DOT_DIR="$HOME/.dotfiles"
