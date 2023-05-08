@@ -1,20 +1,20 @@
 # `sheldon` configuration file
 # ----------------------------
 #
-# You can modify this file directly or you can use one of the following
+# you can modify this file directly or you can use one of the following
 # `sheldon` commands which are provided to assist in editing the config file:
 #
 # - `sheldon add` to add a new plugin to the config file
 # - `sheldon edit` to open up the config file in the default editor
 # - `sheldon remove` to remove a plugin from the config file
 #
-# See the documentation for more https://github.com/rossmacarthur/sheldon#readme
+# see the documentation for more https://github.com/rossmacarthur/sheldon#readme
 
 shell = "zsh"
 
 [plugins]
 
-# Lazyload for sheldon
+# lazyload for sheldon
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 [templates]
@@ -39,6 +39,11 @@ apply = ["defer"]
 [plugins.zsh-z]
 github = "agkozak/zsh-z"
 apply = ["defer"]
+
+# rust completion
+# [plugins.rust-zsh-completions]
+# github = "ryutok/rust-zsh-completions"
+# apply = ["defer"]
 
 # Lazyloading for zsh
 [plugins.dotfiles-defer]
