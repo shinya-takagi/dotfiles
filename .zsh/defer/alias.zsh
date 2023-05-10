@@ -19,6 +19,7 @@ alias ltr="ls -lrt"
 alias lh="ls -lh"
 
 alias du="du -h"
+[[ $(type dust) ]] && alias du="dust" # dust made in Rust.
 alias df="df -h"
 alias su="su -l"
 alias so="source"
