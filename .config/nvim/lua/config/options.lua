@@ -8,3 +8,10 @@ vim.opt.winbar = "%=%m %f"
 vim.opt.swapfile = false
 -- Use mouse in neovim. Put n(ormal), i(nsert), v(isual), c(ommand), a(ll), or ""
 vim.opt.mouse = ""
+
+-- FileType
+vim.filetype.add({
+  pattern = {
+    ["*.code-workspace"] = "json",
+  },
+})
