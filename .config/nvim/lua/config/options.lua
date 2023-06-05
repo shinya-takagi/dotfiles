@@ -11,6 +11,9 @@ vim.opt.mouse = ""
 
 -- FileType
 vim.filetype.add({
+  filename = {
+    -- ["~/research/langevin_fission/fission.code-workspace"] = "json",
+  },
   pattern = {
     ["*.code-workspace"] = "json",
   },
