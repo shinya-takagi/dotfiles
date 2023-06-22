@@ -13,6 +13,8 @@ return {
     })
     -- Fixed Fortran setting.
 
+    vim.lsp.buf.format({ timeout_ms = 10000 })
+
     -- Load formatters
     return {
       sources = {
