@@ -10,6 +10,7 @@ return {
       "black",
       "fortls",
       "pyright",
+      "rust-analyzer",
     },
   },
 }

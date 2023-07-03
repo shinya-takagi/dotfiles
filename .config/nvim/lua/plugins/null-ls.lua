@@ -20,7 +20,7 @@ return {
       sources = {
         nls.builtins.formatting.black,
         nls.builtins.formatting.stylua,
-        fprettify,
+        -- fprettify,
       },
     }
   end,
