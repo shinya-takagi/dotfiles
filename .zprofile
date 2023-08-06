@@ -17,6 +17,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # OS Dependent
 if [ "$(uname -s)" = "Linux" ]; then
     export PATH="/usr/local/go/bin:$PATH"     # go language path
+    # export PATH="/usr/local/texlive/2021/bin/x86_64-linux:$PATH"
 
     # Input method
     export GTK_IM_MODULE=fcitx5
@@ -31,10 +32,13 @@ if [ "$(uname -s)" = "Linux" ]; then
 
 elif [ "$(uname -s )" = "Darwin" ]; then
     export PATH="$HOME/intel/bin:$PATH"
-    export PATH="/usr/local/texlive/2021/bin/x86_64-linux:$PATH"
+    export PATH="/usr/local/texlive/2023/bin/universal-darwin:$PATH"
     export PATH="/usr/local/Cellar/bison/3.8.2/bin:$PATH"
     export PATH="/Applications/Wine Stable.app/Contents/Resources/wine/bin:$PATH"
+    export PATH="/Library/TeX/texbin:$PATH"
     export PATH="/usr/local/sbin:$PATH"
+    export PATH="$HOME/.pyenv/versions/3.11.3/bin:$PATH"
+    export PYTHONPATH="$HOME/dev/python/lib:$PYTHONPATH"
     export FREETYPE_PROPERTIES="truetype:interpreter-version=35"
     export DYLD_FALLBACK_LIBRARY_PATH="/usr/lib:/opt/X11/lib:$DYLD_FALLBACK_LIBRARY_PATH"
 

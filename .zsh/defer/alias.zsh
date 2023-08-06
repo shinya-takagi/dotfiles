@@ -88,6 +88,10 @@ if type nvim > /dev/null 2>&1; then
 fi
 # LunarVim https://github.com/LunarVim/LunarVim
 [[ -a $HOME/.local/bin/lvim ]] && alias vi="lvim"; alias nv="nvim"
+if type poetry > /dev/null 2>&1; then
+  alias pvi="poetry run nvim"
+  alias prp="poetry run python"
+fi
 
 # tmux
 #alias tma="tmux attach"
@@ -220,5 +224,14 @@ pandoc_ja (){
            $target -o $output
 }
 
+compmovie (){
+  if [[ $(type ffmpeg) ]]; then
+    local input extension_wodot extension
+    input=$1
+    extension_wodot=${input#*.}
+    extension=."$extension_wodot"
+    ffmpeg -i "$input" -crf 38 "${input/$extension/}"_output"$extension"
+  fi
+}
 # When installed abbr-zsh, set aliases as abbreviation.
 [[ $(type abbr) ]] && abbr import-aliases -S

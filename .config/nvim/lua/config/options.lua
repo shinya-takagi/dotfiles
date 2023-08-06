@@ -16,5 +16,13 @@ vim.filetype.add({
   },
   pattern = {
     ["*.code-workspace"] = "json",
+    ["*.nml"] = "fortran",
   },
 })
+-- For VSCode workspace
+vim.api.nvim_create_autocmd(
+  { "BufEnter", "BufWinEnter" },
+  { pattern = { "*.code-workspace" }, command = "set filetype=json" }
+)
+-- For namelist in Fortran
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, { pattern = { "*.nml" }, command = "set filetype=fortran" })
