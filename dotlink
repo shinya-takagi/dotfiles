@@ -152,3 +152,4 @@ dotrc,.config/dot/dotrc
 .config/nvim/lua/plugins/cmp.lua,.config/nvim/lua/plugins/cmp.lua
 .config/tmux/plugins/tmux-powerline/themes/my-theme.sh,.config/tmux/plugins/tmux-powerline/themes/my-theme.sh
 .config/tmux/plugins/tmux-powerline/config/defaults.sh,.config/tmux/plugins/tmux-powerline/config/defaults.sh
+.config/nvim/lua/plugins/venv.lua,.config/nvim/lua/plugins/venv.lua

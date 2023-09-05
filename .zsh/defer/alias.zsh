@@ -30,7 +30,7 @@ alias rmf="rm -f"
 alias mkdir="mkdir -p"
 alias ..="c ../"
 alias back="pushd"
-alias diff="diff -U1"
+# alias diff="diff -U1"
 [[ $(type trash-put) ]] && alias rm="trash-put" # trash-cli instead of rm.
 
 #------Git------------
