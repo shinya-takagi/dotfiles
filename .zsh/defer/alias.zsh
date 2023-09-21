@@ -85,6 +85,7 @@ if type nvim > /dev/null 2>&1; then
     alias vi="nvim"   # Use neovim as vi
     alias vni="nvim ~/.config/nvim/init.lua"
     alias vno="nvim ~/.config/nvim/lua/config/options.lua"
+    [[ $(type poetry) ]] && alias pnv="poetry run nvim"
 fi
 # LunarVim https://github.com/LunarVim/LunarVim
 [[ -a $HOME/.local/bin/lvim ]] && alias vi="lvim"; alias nv="nvim"
