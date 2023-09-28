@@ -48,3 +48,6 @@ elif [ "$(uname -s )" = "Darwin" ]; then
     # For git-sim
     [[ $(type git-sim) ]] && export git_sim_media_dir="$HOME/Desktop/"
 fi
+
+# Added by OrbStack: command-line tools and integration
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :
