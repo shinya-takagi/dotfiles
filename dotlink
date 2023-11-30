@@ -117,12 +117,14 @@ dotrc,.config/dot/dotrc
 .config/nvim/lua/config/options.lua,.config/nvim/lua/config/options.lua
 .config/nvim/lua/plugins/example.lua,.config/nvim/lua/plugins/example.lua
 .config/nvim/lua/plugins/mason.lua,.config/nvim/lua/plugins/mason.lua
-.config/nvim/lua/plugins/null-ls.lua,.config/nvim/lua/plugins/null-ls.lua
+# .config/nvim/lua/plugins/null-ls.lua,.config/nvim/lua/plugins/null-ls.lua # Deprecated
 .config/nvim/lua/plugins/lualine.lua,.config/nvim/lua/plugins/lualine.lua
 .config/nvim/lua/plugins/monokai.lua,.config/nvim/lua/plugins/monokai.lua
 .config/nvim/lua/plugins/venv.lua,.config/nvim/lua/plugins/venv.lua
 .config/nvim/lua/plugins/comment.lua,.config/nvim/lua/plugins/comment.lua
 .config/nvim/lua/plugins/cmp.lua,.config/nvim/lua/plugins/cmp.lua
+.config/nvim/lua/plugins/nvim-lint.lua,.config/nvim/lua/plugins/nvim-lint.lua
+.config/nvim/lua/plugins/conform.lua,.config/nvim/lua/plugins/conform.lua
 
 # Terminal Setting
   # alacritty
