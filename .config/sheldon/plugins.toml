@@ -57,6 +57,9 @@ local = '~/.dotfiles/.zsh/sync'
 use = ['*.zsh']
 apply = ['source']
 
+[plugins.powerlevel10k]
+github = 'romkatv/powerlevel10k'
+
 # For example:
 #
 # [plugins.base16]
