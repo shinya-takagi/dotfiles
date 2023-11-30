@@ -120,6 +120,9 @@ dotrc,.config/dot/dotrc
 .config/nvim/lua/plugins/null-ls.lua,.config/nvim/lua/plugins/null-ls.lua
 .config/nvim/lua/plugins/lualine.lua,.config/nvim/lua/plugins/lualine.lua
 .config/nvim/lua/plugins/monokai.lua,.config/nvim/lua/plugins/monokai.lua
+.config/nvim/lua/plugins/venv.lua,.config/nvim/lua/plugins/venv.lua
+.config/nvim/lua/plugins/comment.lua,.config/nvim/lua/plugins/comment.lua
+.config/nvim/lua/plugins/cmp.lua,.config/nvim/lua/plugins/cmp.lua
 
 # Terminal Setting
   # alacritty
@@ -129,10 +132,14 @@ dotrc,.config/dot/dotrc
 .config/alacritty/themes/monokai_soda.yml,.config/alacritty/themes/monokai_soda.yml
   # Tmux
 .config/tmux/tmux.conf,.config/tmux/tmux.conf
+.config/tmux/plugins/tmux-powerline/themes/my-theme.sh,.config/tmux/plugins/tmux-powerline/themes/my-theme.sh
+.config/tmux/plugins/tmux-powerline/config/defaults.sh,.config/tmux/plugins/tmux-powerline/config/defaults.sh
   # StarShip
 .config/starship.toml,.config/starship.toml
   # iTerm2
 .config/iterm2/com.googlecode.iterm2.plist,.config/iterm2/com.googlecode.iterm2.plist
+  # Raycast
+.config/raycast/Raycast_backup.rayconfig,.config/raycast/Raycast_backup.rayconfig
 
 # zsh
 .zshrc,.zshrc
@@ -141,15 +148,10 @@ dotrc,.config/dot/dotrc
 .config/sheldon/plugins.toml,.config/sheldon/plugins.toml  # dotfile manager
 
 # Others
+.gitconfig, .gitconfig
 .config/git/ignore,.config/git/ignore
 .config/helix/config.toml,.config/helix/config.toml
 .config/helix/languages.toml,.config/helix/languages.toml
 .fprettify.rc,.fprettify.rc # Fortran formatter
+.latexmkrc,.latexmkrc # LaTeX
 
-.config/raycast/Raycast_backup.rayconfig,.config/raycast/Raycast_backup.rayconfig
-.config/nvim/lua/plugins/comment.lua,.config/nvim/lua/plugins/comment.lua
-.gitconfig, .gitconfig
-.config/nvim/lua/plugins/cmp.lua,.config/nvim/lua/plugins/cmp.lua
-.config/tmux/plugins/tmux-powerline/themes/my-theme.sh,.config/tmux/plugins/tmux-powerline/themes/my-theme.sh
-.config/tmux/plugins/tmux-powerline/config/defaults.sh,.config/tmux/plugins/tmux-powerline/config/defaults.sh
-.config/nvim/lua/plugins/venv.lua,.config/nvim/lua/plugins/venv.lua

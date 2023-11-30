@@ -59,7 +59,8 @@ alias dpa="docker ps -a"
 # Windows 
 if [[ "$(uname -r)" == *microsoft* ]];  then 
     # Path to Windows Home directory
-    export WINDOWS_HOME="/mnt/c/Users/shiny"
+    export WINDOWS_HOME="/mnt/c/Users/Shinya\ Takagi/"
+    # export WINDOWS_HOME="/mnt/c/Users/shiny"
     # Start VSCode in WSL without Windows Path.
     alias code="$WINDOWS_HOME/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code"
 

@@ -19,6 +19,8 @@ if [ "$(uname -s)" = "Linux" ]; then
     export PATH="/usr/local/go/bin:$PATH"     # go language path
     # export PATH="/usr/local/texlive/2021/bin/x86_64-linux:$PATH"
 
+    source $HOME/.pyenv/completions/pyenv.zsh
+
     # Input method
     export GTK_IM_MODULE=fcitx5
     export QT_IM_MODULE=fcitx5
