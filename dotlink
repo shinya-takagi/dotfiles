@@ -157,3 +157,4 @@ dotrc,.config/dot/dotrc
 .fprettify.rc,.fprettify.rc # Fortran formatter
 .latexmkrc,.latexmkrc # LaTeX
 
+.config/raycast/scripts/add-memos.sh,.config/raycast/scripts/add-memos.sh
