@@ -41,3 +41,8 @@
 # .gitconfig_mac, .gitconfig
 # hammerspoon, Set hotkey
 .hammerspoon/init.lua,.hammerspoon/init.lua
+  # iTerm2
+.config/iterm2/com.googlecode.iterm2.plist,.config/iterm2/com.googlecode.iterm2.plist
+  # Raycast
+.config/raycast/Raycast_backup.rayconfig,.config/raycast/Raycast_backup.rayconfig
+.config/raycast/scripts/add-memos.sh,.config/raycast/scripts/add-memos.sh

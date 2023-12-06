@@ -138,10 +138,8 @@ dotrc,.config/dot/dotrc
 .config/tmux/plugins/tmux-powerline/config/defaults.sh,.config/tmux/plugins/tmux-powerline/config/defaults.sh
   # StarShip
 .config/starship.toml,.config/starship.toml
-  # iTerm2
-.config/iterm2/com.googlecode.iterm2.plist,.config/iterm2/com.googlecode.iterm2.plist
-  # Raycast
-.config/raycast/Raycast_backup.rayconfig,.config/raycast/Raycast_backup.rayconfig
+  # WezTerm
+.wezterm.lua,.wezterm.lua
 
 # zsh
 .zshrc,.zshrc
@@ -156,5 +154,3 @@ dotrc,.config/dot/dotrc
 .config/helix/languages.toml,.config/helix/languages.toml
 .fprettify.rc,.fprettify.rc # Fortran formatter
 .latexmkrc,.latexmkrc # LaTeX
-
-.config/raycast/scripts/add-memos.sh,.config/raycast/scripts/add-memos.sh
