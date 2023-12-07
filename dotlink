@@ -139,7 +139,8 @@ dotrc,.config/dot/dotrc
   # StarShip
 .config/starship.toml,.config/starship.toml
   # WezTerm
-.wezterm.lua,.wezterm.lua
+# .wezterm.lua,.wezterm.lua
+.config/wezterm/wezterm.lua,.config/wezterm/wezterm.lua
 
 # zsh
 .zshrc,.zshrc
