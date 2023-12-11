@@ -141,6 +141,7 @@ dotrc,.config/dot/dotrc
   # WezTerm
 # .wezterm.lua,.wezterm.lua
 .config/wezterm/wezterm.lua,.config/wezterm/wezterm.lua
+.config/wezterm/keybinds.lua,.config/wezterm/keybinds.lua
 
 # zsh
 .zshrc,.zshrc
