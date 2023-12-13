@@ -76,6 +76,15 @@ config.keys = {
 		action = act.MoveTabRelative(1),
 	},
 }
+for i = 1, 8 do
+	-- Leader + 数字 で数字のタブに移動
+	table.insert(config.keys, {
+		key = tostring(i),
+		mods = "LEADER",
+		-- action = act.MoveTab(i - 1),
+		action = act.ActivateTab(i - 1),
+	})
+end
 
 if previous_os == os.windows then
 	-- Windows

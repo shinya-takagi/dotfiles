@@ -7,6 +7,11 @@ return {
     require("vscode").setup({
       -- filter = "classic",
       italic_comments = false,
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
     })
   end,
   {

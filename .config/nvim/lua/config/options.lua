@@ -9,6 +9,11 @@ vim.opt.swapfile = false
 -- Use mouse in neovim. Put n(ormal), i(nsert), v(isual), c(ommand), a(ll), or ""
 vim.opt.mouse = ""
 
+-- Transparent background
+vim.opt.termguicolors = true
+vim.opt.winblend = 0
+vim.opt.pumblend = 0
+
 -- FileType
 vim.filetype.add({
   filename = {
