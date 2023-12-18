@@ -17,3 +17,9 @@ setopt list_types
 zstyle ':completion::complete:*' use-cache true
 ## ~~~ End zsh-autocomplete
 
+# OrbStack completion
+if (( $+commands[orbctl] )); then
+  eval "$(orbctl completion zsh)"
+  compdef _orb orbctl
+  compdef _orb orb
+fi

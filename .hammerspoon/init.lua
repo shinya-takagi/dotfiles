@@ -27,7 +27,7 @@ function MoveWindowToSpace(app)
 	win:focus()
 end
 
-hotkey.bind({ "ctrl" }, "t", function()
+hotkey.bind({ "ctrl-shift" }, "t", function()
 	local appname = "Alacritty"
 	local app = application.get(appname)
 

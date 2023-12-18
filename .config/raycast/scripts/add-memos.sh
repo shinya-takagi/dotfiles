@@ -18,4 +18,4 @@ current_time=$(date +"%H:%M")
 memo=$(echo "$1" | sed 's/ /%20/g')
 vault="Local"
 # open --background "obsidian://advanced-uri?vault=${vault}&daily=true&mode=append&data=-%20$current_time%20$memo"
-open --background "obsidian://advanced-uri?vault=Local&daily=true&mode=append&data=-%20$current_time%20$memo"
+open --background "obsidian://advanced-uri?vault=Local&daily=true&mode=append&data=-%20$current_time%20$memo&heading=Journal"
