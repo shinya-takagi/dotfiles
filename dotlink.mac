@@ -37,7 +37,8 @@
 
 # Terminal Setting
 # alacritty
-.config/alacritty/alacritty.yml,.config/alacritty/alacritty.yml # (Machine deoendent)
+# .config/alacritty/alacritty.yml,.config/alacritty/alacritty.yml # (yaml deprecated)
+.config/alacritty/alacritty.toml,.config/alacritty/alacritty.toml # (toml used in 0.13.0)
 # .gitconfig_mac, .gitconfig
 # hammerspoon, Set hotkey
 .hammerspoon/init.lua,.hammerspoon/init.lua

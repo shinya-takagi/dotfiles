@@ -123,7 +123,6 @@ font:
     #   - (Windows) Consolas
     # family: monospace
     ## Latest Font preferred
-    family: anonymicepro Nerd Font
     family: CodeNewRoman Nerd Font
 
     # The `style` can be specified to pick a specific face.

@@ -129,6 +129,7 @@ dotrc,.config/dot/dotrc
 # Terminal Setting
   # alacritty
 # .config/alacritty/alacritty.yml,.config/alacritty/alacritty.yml
+# .config/alacritty/alacritty.toml,.config/alacritty/alacritty.toml
 .config/alacritty/themes/monokai_classic.yml,.config/alacritty/themes/monokai_classic.yml
 .config/alacritty/themes/monokai_pro.yml,.config/alacritty/themes/monokai_pro.yml
 .config/alacritty/themes/monokai_soda.yml,.config/alacritty/themes/monokai_soda.yml
