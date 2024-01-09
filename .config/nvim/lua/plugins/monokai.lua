@@ -8,10 +8,10 @@ return {
       -- filter = "classic",
       italic_comments = false,
       transparent = true,
-      styles = {
-        sidebars = "transparent",
-        floats = "transparent",
-      },
+      -- styles = {
+      --   sidebars = "transparent",
+      --   floats = "transparent",
+      -- },
     })
   end,
   {

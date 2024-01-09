@@ -13,6 +13,7 @@ vim.opt.mouse = ""
 vim.opt.termguicolors = true
 vim.opt.winblend = 0
 vim.opt.pumblend = 0
+vim.g.vscode_transparent = 1 -- Need for transparent background.
 
 -- FileType
 vim.filetype.add({

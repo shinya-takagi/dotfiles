@@ -32,6 +32,8 @@ alias ..="c ../"
 alias back="pushd"
 # alias diff="diff -U1"
 [[ $(type trash-put) ]] && alias rm="trash-put" # trash-cli instead of rm.
+[[ $(type rip) ]] && alias rm="rip"
+[[ $(type column) ]] && alias csvs="column -s, -t"
 
 #------Git------------
 alias gs="git status"
