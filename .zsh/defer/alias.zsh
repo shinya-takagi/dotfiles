@@ -237,5 +237,18 @@ compmovie (){
     ffmpeg -i "$input" -crf 38 "${input/$extension/}"_output"$extension"
   fi
 }
+
+pdf2svgcomp () {
+  if type svgo > /dev/null 2>&1 && type pdf2svg > /dev/null 2>&1; then
+    local input extension_wodot extension
+    input=$1
+    extension_wodot=${input%.*} # backword match as extension
+    extension=."svg"
+    # echo "$input" "${input/$extension/}"_output"$extension" $extension_wodot
+    echo "Processing... $input to ${extension_wodot}"_output"$extension"
+    pdf2svg "$input" "$extension_wodot"_output"$extension"
+    svgo "$extension_wodot"_output"$extension" --multipass
+  fi
+}
 # When installed abbr-zsh, set aliases as abbreviation.
 [[ $(type abbr) ]] && abbr import-aliases -S
