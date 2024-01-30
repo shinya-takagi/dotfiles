@@ -4,7 +4,7 @@ return {
   opts = {
     formatters_by_ft = {
       fish = { "fish_indent" },
-      python = { "ruff", "ruff-lsp" },
+      python = { "ruff_fix", "ruff_format" },
       lua = { "stylua" },
       latex = { "latexindent" },
     },

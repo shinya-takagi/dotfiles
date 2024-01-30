@@ -27,18 +27,22 @@ function MoveWindowToSpace(app)
 	win:focus()
 end
 
-hotkey.bind({ "ctrl-shift" }, "t", function()
-	local appname = "Alacritty"
-	local app = application.get(appname)
+function FocusAppInThisWindow(prefix, keybind, appname)
+	hotkey.bind(prefix, keybind, function()
+		local app = application.get(appname)
 
-	if app == nil then
-		application.launchOrFocus(appname)
-	elseif app:isFrontmost() then
-		app:hide()
-	else
-		-- application.launchOrFocus(appname)
-		-- MoveWindowToSpace(app)
-		MoveFullScreenWindow(app)
-		-- or app:isHidden() then
-	end
-end)
+		if app == nil then
+			application.launchOrFocus(appname)
+		elseif app:isFrontmost() then
+			app:hide()
+		else
+			-- application.launchOrFocus(appname)
+			MoveWindowToSpace(app)
+			-- MoveFullScreenWindow(app)
+			-- or app:isHidden() then
+		end
+	end)
+end
+
+-- hotkey.bind({ "ctrl-shift" }, "t", FocusAppInThisWindow("Alacritty"))
+FocusAppInThisWindow({ "ctrl-shift" }, "t", "Alacritty")
