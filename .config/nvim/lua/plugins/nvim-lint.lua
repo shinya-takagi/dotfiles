@@ -5,7 +5,7 @@ return {
     linters_by_ft = {
       fish = { "fish" },
       -- lua = { "luacheck" },
-      python = { "flake8" },
+      python = { "ruff" },
       sh = { "shellcheck" },
       latex = { "chktex" },
     },

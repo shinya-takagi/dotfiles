@@ -9,7 +9,9 @@ size = 12.5
 [font.normal]
 # family = "CodeNewRoman Nerd Font"
 family = "UDEV Gothic 35NF"
+# family = "MonaspiceXe Nerd Font"
 style = "Regular"
+# ligatures = true
 
 [font.offset]
 x = 0

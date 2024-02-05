@@ -3,7 +3,7 @@
 -- Add any additional options here
 
 vim.opt.relativenumber = false -- Default: true
-vim.g.python3_host_prog = vim.fn.system("which python")
+-- vim.g.python3_host_prog = vim.fn.system("which python")
 vim.opt.winbar = "%=%m %f"
 vim.opt.swapfile = false
 -- Use mouse in neovim. Put n(ormal), i(nsert), v(isual), c(ommand), a(ll), or ""

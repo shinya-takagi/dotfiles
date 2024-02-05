@@ -158,3 +158,4 @@ dotrc,.config/dot/dotrc
 .fprettify.rc,.fprettify.rc # Fortran formatter
 .latexmkrc,.latexmkrc # LaTeX
 .config/nvim/lua/plugins/notify.lua,.config/nvim/lua/plugins/notify.lua
+.config/nvim/lua/plugins/code_runner.lua,.config/nvim/lua/plugins/code_runner.lua
