@@ -19,7 +19,7 @@ if [ "$(uname -s)" = "Linux" ]; then
     export PATH="/usr/local/go/bin:$PATH"     # go language path
     # export PATH="/usr/local/texlive/2021/bin/x86_64-linux:$PATH"
 
-    source $HOME/.pyenv/completions/pyenv.zsh
+    type pyenv > /dev/null 2>&1 && source $HOME/.pyenv/completions/pyenv.zsh
 
     # Input method
     export GTK_IM_MODULE=fcitx5
@@ -48,7 +48,7 @@ elif [ "$(uname -s )" = "Darwin" ]; then
     export GCM_CREDENTIAL_STORE=keychain
 
     # For git-sim
-    [[ $(type git-sim) ]] && export git_sim_media_dir="$HOME/Desktop/"
+    type git-sim > /dev/null 2>&1 && export git_sim_media_dir="$HOME/Desktop/"
 fi
 
 # Added by OrbStack: command-line tools and integration

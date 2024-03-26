@@ -11,7 +11,7 @@ alias -g GI="| grep -ri"
 
 # local alias
 alias ls="ls --color=auto"
-[[ $(type lsd) ]] && alias ls="lsd"   # Use lsd instead of ls.
+type lsd > /dev/null 2>&1 && alias ls="lsd"   # Use lsd instead of ls.
 alias lst="ls -ltr"
 alias la="ls -la"
 alias ll="ls -l"
@@ -19,7 +19,7 @@ alias ltr="ls -lrt"
 alias lh="ls -lh"
 
 alias du="du -h"
-[[ $(type dust) ]] && alias du="dust" # dust made in Rust.
+type dust > /dev/null 2>&1 && alias du="dust" # dust made in Rust.
 alias df="df -h"
 alias su="su -l"
 alias so="source"
@@ -31,9 +31,9 @@ alias mkdir="mkdir -p"
 alias ..="c ../"
 alias back="pushd"
 # alias diff="diff -U1"
-[[ $(type trash-put) ]] && alias rm="trash-put" # trash-cli instead of rm.
-[[ $(type rip) ]] && alias rm="rip"
-[[ $(type column) ]] && alias csvs="column -s, -t"
+type dust > /dev/null 2>&1 && alias rm="trash-put" # trash-cli instead of rm.
+type rip > /dev/null 2>&1 && alias rm="rip"
+type column > /dev/null 2>&1 && alias csvs="column -s, -t"
 
 #------Git------------
 alias gs="git status"
@@ -88,7 +88,7 @@ if type nvim > /dev/null 2>&1; then
     alias vi="nvim"   # Use neovim as vi
     alias vni="nvim ~/.config/nvim/init.lua"
     alias vno="nvim ~/.config/nvim/lua/config/options.lua"
-    [[ $(type poetry) ]] && alias pnv="poetry run nvim"
+    type poetry > /dev/null 2>&1 && alias pnv="poetry run nvim"
 fi
 # LunarVim https://github.com/LunarVim/LunarVim
 [[ -a $HOME/.local/bin/lvim ]] && alias vi="lvim"; alias nv="nvim"
@@ -229,7 +229,7 @@ pandoc_ja (){
 }
 
 compmovie (){
-  if [[ $(type ffmpeg) ]]; then
+  if type ffmpeg > /dev/null 2>&1; then
     local input extension_wodot extension
     input=$1
     extension_wodot=${input#*.}
