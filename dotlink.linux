@@ -50,7 +50,8 @@
 # 
 # # Terminal Setting
 #   # alacritty
-.config/alacritty/alacritty_linux.yml,.config/alacritty/alacritty.yml
+# .config/alacritty/alacritty_linux.yml,.config/alacritty/alacritty.yml
+.config/alacritty/alacritty.toml,.config/alacritty/alacritty.toml # (toml used in 0.13.0)
 #   # Tmux
 # .config/tmux/tmux.conf,.config/tmux/tmux.conf
 #   # StarShip

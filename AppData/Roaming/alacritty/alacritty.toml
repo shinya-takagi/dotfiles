@@ -1,0 +1,51 @@
+import = [
+  "C:/Users/Shinya Takagi/AppData/Roaming/alacritty/themes/monokai_classic.toml",
+]
+
+[env]
+TERM = "alacritty"
+
+[font]
+size = 12.0
+
+[font.normal]
+family = "UDEV Gothic 35NF"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+# [[keyboard.bindings]]
+# chars = '\'
+# key = "Yen"
+#
+# [[keyboard.bindings]]
+# chars = "¥"
+# key = "Yen"
+# mods = "Alt"
+#
+# [[keyboard.bindings]]
+# action = "ToggleSimpleFullscreen"
+# key = "Return"
+# mods = "Command"
+
+[scrolling]
+history = 10000
+
+[shell]
+args = [
+  "-d",
+  "Arch_Linux",
+  "/usr/bin/zsh",
+  "--login",
+  "-l",
+  "-c",
+  "tmux a -t default || tmux new -s default",
+]
+program = "C:/WINDOWS/system32/wsl.exe"
+
+[window]
+padding = { x = 3, y = 3 }
+opacity = 0.9
+startup_mode = "Maximized"
