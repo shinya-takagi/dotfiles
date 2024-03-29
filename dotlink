@@ -159,3 +159,4 @@ dotrc,.config/dot/dotrc
 .latexmkrc,.latexmkrc # LaTeX
 .config/nvim/lua/plugins/notify.lua,.config/nvim/lua/plugins/notify.lua
 .config/nvim/lua/plugins/code_runner.lua,.config/nvim/lua/plugins/code_runner.lua
+.local/bin/space2comma,.local/bin/space2comma

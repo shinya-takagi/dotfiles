@@ -1,0 +1,9 @@
+#! /bin/bash
+files=$*
+
+for f in $files; do
+	# filename=$(echo "$1" | awk 'BEGIN{ FS ="."}{ print $1}')
+	filename=$(echo "$f" | awk 'BEGIN{ FS ="."}{ print $1}')
+	awk -v OFS="," '{$1=$1; print $0 }' $1 >"$filename".csv
+	# echo "$filename"
+done
