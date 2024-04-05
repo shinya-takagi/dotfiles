@@ -98,7 +98,7 @@ if [ "$(uname -s)" = "Linux" ]; then
     # Keyboard automatic to disable Caps Lock
     [[ $(type setxkbmap > /dev/null 2>&1) ]] && setxkbmap -option ctrl:nocaps
     # -----Display for Xserver------------->
-    export DISPLAY=:0.0 
+    # export DISPLAY=:0.0 
     # -----Xserver---------<
     # Wine setting
     export WINEARCH="win64"
