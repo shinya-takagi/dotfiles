@@ -2,8 +2,11 @@
 files=$*
 
 for f in $files; do
+	if [[ "$f" =~ \.csv$ ]]; then
+		echo "File $f is already a CSV file."
+		continue
+	fi
 	# filename=$(echo "$1" | awk 'BEGIN{ FS ="."}{ print $1}')
 	filename=$(echo "$f" | awk 'BEGIN{ FS ="."}{ print $1}')
-	awk -v OFS="," '{$1=$1; print $0 }' $1 >"$filename".csv
-	# echo "$filename"
+	awk -v OFS="," '{$1=$1; print $0 }' $f >"$filename".csv
 done
