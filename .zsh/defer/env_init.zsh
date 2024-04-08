@@ -11,6 +11,8 @@ if type pyenv > /dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 export PYTHONUSERBASE="$HOME/.local"
+# Rye
+export PATH="$HOME/.rye/shims:$PATH"
 
 # OS Dependent
 if [ "$(uname -s)" = "Linux" ]; then
