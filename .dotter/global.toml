@@ -1,0 +1,9 @@
+[helpers]
+
+[default]
+depends = []
+
+[default.files]
+".config/nvim/init.lua" = "~/.config/nvim/init.lua"
+
+[default.variables]
