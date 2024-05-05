@@ -5,5 +5,36 @@ depends = []
 
 [default.files]
 ".config/nvim/init.lua" = "~/.config/nvim/init.lua"
+".config/nvim/stylua.toml" = "~/.config/nvim/stylua.toml"
+".config/nvim/lua/config/autocmds.lua" = "~/.config/nvim/lua/config/autocmds.lua"
+".config/nvim/lua/config/keymaps.lua" = "~/.config/nvim/lua/config/keymaps.lua"
+".config/nvim/lua/config/lazy.lua" = "~/.config/nvim/lua/config/lazy.lua"
+".config/nvim/lua/config/options.lua" = "~/.config/nvim/lua/config/options.lua"
+".config/nvim/lua/plugins/example.lua" = "~/.config/nvim/lua/plugins/example.lua"
+".config/nvim/lua/plugins/mason.lua" = "~/.config/nvim/lua/plugins/mason.lua"
+".config/nvim/lua/plugins/lualine.lua" = "~/.config/nvim/lua/plugins/lualine.lua"
+".config/nvim/lua/plugins/monokai.lua" = "~/.config/nvim/lua/plugins/monokai.lua"
+".config/nvim/lua/plugins/venv.lua" = "~/.config/nvim/lua/plugins/venv.lua"
+".config/nvim/lua/plugins/comment.lua" = "~/.config/nvim/lua/plugins/comment.lua"
+".config/nvim/lua/plugins/cmp.lua" = "~/.config/nvim/lua/plugins/cmp.lua"
+".config/nvim/lua/plugins/nvim-lint.lua" = "~/.config/nvim/lua/plugins/nvim-lint.lua"
+".config/nvim/lua/plugins/conform.lua" = "~/.config/nvim/lua/plugins/conform.lua"
+".config/nvim/lua/plugins/notify.lua" = "~/.config/nvim/lua/plugins/notify.lua"
+".config/nvim/lua/plugins/code_runner.lua" = "~/.config/nvim/lua/plugins/code_runner.lua"
+
+  # alacritty
+".config/alacritty/themes/monokai_classic.yml" = "~/.config/alacritty/themes/monokai_classic.yml"
+".config/alacritty/themes/monokai_pro.yml" = "~/.config/alacritty/themes/monokai_pro.yml"
+".config/alacritty/themes/monokai_soda.yml" = "~/.config/alacritty/themes/monokai_soda.yml"
+  # Tmux"
+".config/tmux/tmux.conf" = "~/.config/tmux/tmux.conf"
+".config/tmux/plugins/tmux-powerline/themes/my-theme.sh" = "~/.config/tmux/plugins/tmux-powerline/themes/my-theme.sh"
+".config/tmux/plugins/tmux-powerline/config/defaults.sh" = "~/.config/tmux/plugins/tmux-powerline/config/defaults.sh"
+  # StarShip"
+".config/starship.toml" = "~/.config/starship.toml"
+
+
+".config/wezterm/wezterm.lua" = "~/.config/wezterm/wezterm.lua"
+".config/wezterm/keybinds.lua" = "~/.config/wezterm/keybinds.lua"
 
 [default.variables]

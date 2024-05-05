@@ -125,6 +125,8 @@ dotrc,.config/dot/dotrc
 .config/nvim/lua/plugins/cmp.lua,.config/nvim/lua/plugins/cmp.lua
 .config/nvim/lua/plugins/nvim-lint.lua,.config/nvim/lua/plugins/nvim-lint.lua
 .config/nvim/lua/plugins/conform.lua,.config/nvim/lua/plugins/conform.lua
+.config/nvim/lua/plugins/notify.lua,.config/nvim/lua/plugins/notify.lua
+.config/nvim/lua/plugins/code_runner.lua,.config/nvim/lua/plugins/code_runner.lua
 
 # Terminal Setting
   # alacritty
@@ -157,6 +159,4 @@ dotrc,.config/dot/dotrc
 .config/helix/languages.toml,.config/helix/languages.toml
 .fprettify.rc,.fprettify.rc # Fortran formatter
 .latexmkrc,.latexmkrc # LaTeX
-.config/nvim/lua/plugins/notify.lua,.config/nvim/lua/plugins/notify.lua
-.config/nvim/lua/plugins/code_runner.lua,.config/nvim/lua/plugins/code_runner.lua
 .local/bin/space2comma,.local/bin/space2comma
