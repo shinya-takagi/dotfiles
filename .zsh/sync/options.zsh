@@ -94,7 +94,8 @@ function Terminal_Prompts(){
 # OS Machine Dependence
 if [ "$(uname -s)" = "Linux" ]; then
     # Terminal Setting
-    Terminal_Prompts
+    # Terminal_Prompts
+    eval "$(starship init zsh)"
     # Keyboard automatic to disable Caps Lock
     [[ $(type setxkbmap > /dev/null 2>&1) ]] && setxkbmap -option ctrl:nocaps
     # -----Display for Xserver------------->
