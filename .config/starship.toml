@@ -9,7 +9,7 @@
 add_newline = true
 
 format = """
-$directory$package$git_branch$git_commit$git_state$git_status$hostname\
+$os$directory$package$git_branch$git_commit$git_state$git_status$hostname\
 $package\
 $c\
 $cmake\
@@ -151,3 +151,8 @@ disabled = true
 [time]
 disabled = false
 use_12hr = true
+
+[os]
+# format = "on [($name )]($style)"
+# style = "bold blue"
+disabled = false
