@@ -16,21 +16,21 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # OS Dependent
 if [ "$(uname -s)" = "Linux" ]; then
-    export PATH="/usr/local/go/bin:$PATH"     # go language path
+    # export PATH="/usr/local/go/bin:$PATH"     # go language path
     # export PATH="/usr/local/texlive/2021/bin/x86_64-linux:$PATH"
 
-    type pyenv > /dev/null 2>&1 && source $HOME/.pyenv/completions/pyenv.zsh
+    # type pyenv > /dev/null 2>&1 && source $HOME/.pyenv/completions/pyenv.zsh
 
-    # Input method
-    export GTK_IM_MODULE=fcitx5
-    export QT_IM_MODULE=fcitx5
-    export XMODIFIERS="@im=fcitx5"
-    export XMODIFIER="@im=fcitx5"
-    export DefaultIMModule=fcitx5
-    if [ $SHLVL = 1 ] ; then
-        (fcitx-autostart > /dev/null 2>&1 &)
-        xset -r 49  > /dev/null 2>&1
-    fi
+    # # Input method
+    # export GTK_IM_MODULE=fcitx5
+    # export QT_IM_MODULE=fcitx5
+    # export XMODIFIERS="@im=fcitx5"
+    # export XMODIFIER="@im=fcitx5"
+    # export DefaultIMModule=fcitx5
+    # if [ $SHLVL = 1 ] ; then
+    #     (fcitx-autostart > /dev/null 2>&1 &)
+    #     xset -r 49  > /dev/null 2>&1
+    # fi
 
 elif [ "$(uname -s )" = "Darwin" ]; then
     export PATH="$HOME/intel/bin:$PATH"

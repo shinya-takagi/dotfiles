@@ -14,6 +14,11 @@ export PYTHONUSERBASE="$HOME/.local"
 # Rye
 export PATH="$HOME/.rye/shims:$PATH"
 
+# mise
+if type mise > /dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
+
 # OS Dependent
 if [ "$(uname -s)" = "Linux" ]; then
     # Intel Fortran
