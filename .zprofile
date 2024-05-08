@@ -12,6 +12,9 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# Starship
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 #=============================
 
 # OS Dependent

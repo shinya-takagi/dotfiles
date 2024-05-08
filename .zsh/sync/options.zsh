@@ -110,9 +110,9 @@ if [ "$(uname -s)" = "Linux" ]; then
     fi
 elif [ "$(uname -s)" = "Darwin" ]; then
     # Terminal Dependence
-    if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
-        Terminal_Prompts
-    else
-        eval "$(starship init zsh)"
-    fi
+    # if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+    #     Terminal_Prompts
+    # else
+    eval "$(starship init zsh)"
+    # fi
 fi

@@ -140,7 +140,7 @@ dotrc,.config/dot/dotrc
 .config/tmux/plugins/tmux-powerline/themes/my-theme.sh,.config/tmux/plugins/tmux-powerline/themes/my-theme.sh
 .config/tmux/plugins/tmux-powerline/config/defaults.sh,.config/tmux/plugins/tmux-powerline/config/defaults.sh
   # StarShip
-.config/starship.toml,.config/starship.toml
+.config/starship/starship.toml,.config/starship/starship.toml
   # WezTerm
 # .wezterm.lua,.wezterm.lua
 .config/wezterm/wezterm.lua,.config/wezterm/wezterm.lua
