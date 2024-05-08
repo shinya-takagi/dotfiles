@@ -35,6 +35,7 @@ if [ "$(uname -s)" = "Linux" ]; then
     #     xset -r 49  > /dev/null 2>&1
     # fi
 
+
 elif [ "$(uname -s )" = "Darwin" ]; then
     export PATH="$HOME/intel/bin:$PATH"
     export PATH="/usr/local/texlive/2023/bin/universal-darwin:$PATH"
@@ -52,6 +53,13 @@ elif [ "$(uname -s )" = "Darwin" ]; then
 
     # For git-sim
     type git-sim > /dev/null 2>&1 && export git_sim_media_dir="$HOME/Desktop/"
+
+    # type keychain > /dev/null 2>&1 && eval $(keychain --eval --agents ssh $HOME/.ssh/id_ed25519d)
+    if command -v keychain > /dev/null 2>&1; then
+      keychain -q --nogui $HOME/.ssh/id_ed25519
+      source $HOME/.keychain/$(hostname)-sh
+    fi
+    # type keychain > /dev/null 2>&1 && keychain -q --nogui $HOME/.ssh/id_ed25519d
 fi
 
 # Added by OrbStack: command-line tools and integration
