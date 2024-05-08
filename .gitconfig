@@ -5,3 +5,5 @@
 	defaultBranch = main
 [credential]
 	helper = osxkeychain
+[core]
+	quotePath = false
