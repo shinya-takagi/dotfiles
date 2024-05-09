@@ -1,4 +1,4 @@
-import = ["/Users/shinya/.config/alacritty/themes/monokai_classic.toml"]
+import = ["~/.config/alacritty/themes/tokyonight.toml"]
 
 [env]
 TERM = "alacritty"

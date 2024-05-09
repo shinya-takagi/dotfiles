@@ -161,3 +161,5 @@ dotrc,.config/dot/dotrc
 .latexmkrc,.latexmkrc # LaTeX
 .local/bin/space2comma,.local/bin/space2comma
 .config/gitui/key_binds.ron,.config/gitui/key_binds.ron
+.config/alacritty/themes/tokyonight.toml,.config/alacritty/themes/tokyonight.toml
+.config/zellij/config.kdl,.config/zellij/config.kdl

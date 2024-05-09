@@ -23,7 +23,8 @@ return {
     return {
       options = {
         -- themes = "monokai-pro",
-        themes = "vscode",
+        -- themes = "vscode",
+        themes = "tokyonight",
       },
       sections = {
         lualine_x = { { get_venv, color = { gui = "bold" } } },
