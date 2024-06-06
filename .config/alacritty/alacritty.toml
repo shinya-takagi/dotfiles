@@ -36,6 +36,7 @@ history = 10000
 
 [shell]
 args = ["--login", "-l", "-c", "tmux a -t default || tmux new -s default"]
+# args = ["--login", "-l", "-c", "zellij attach --index 0 --create"]
 program = "/bin/zsh"
 
 [window]
