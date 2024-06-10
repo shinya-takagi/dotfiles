@@ -7,6 +7,7 @@ return {
       python = { "ruff_fix", "ruff_format" },
       lua = { "stylua" },
       latex = { "latexindent" },
+      fortran = { "fprettify" },
     },
   },
 }
