@@ -32,3 +32,5 @@ vim.api.nvim_create_autocmd(
 )
 -- For namelist in Fortran
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, { pattern = { "*.nml" }, command = "set filetype=fortran" })
+
+vim.opt.runtimepath:append("/usr/local/opt/fzf")

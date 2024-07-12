@@ -1,7 +1,7 @@
 # helix editor config
 
 # theme = "fleetish"
-theme = "dark_plus"
+theme = "tokyonight_storm"
 
 [editor]
 true-color = true
