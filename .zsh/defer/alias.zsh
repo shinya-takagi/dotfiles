@@ -252,5 +252,12 @@ pdf2svgcomp () {
     done
   fi
 }
+
+sshtmux () {
+  SERVER=$1
+  COMMAND="tmux a -t ssh || tmux new -s ssh"
+
+  ssh "$SERVER" -t "$COMMAND"
+}
 # When installed abbr-zsh, set aliases as abbreviation.
 [[ $(type abbr) ]] && abbr import-aliases -S

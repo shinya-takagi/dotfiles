@@ -128,6 +128,7 @@ dotrc,.config/dot/dotrc
 .config/nvim/lua/plugins/notify.lua,.config/nvim/lua/plugins/notify.lua
 .config/nvim/lua/plugins/code_runner.lua,.config/nvim/lua/plugins/code_runner.lua
 .config/nvim/lua/plugins/csv.lua,.config/nvim/lua/plugins/csv.lua
+.config/nvim/lua/plugins/boole.lua,.config/nvim/lua/plugins/boole.lua
 
 # Terminal Setting
   # alacritty
