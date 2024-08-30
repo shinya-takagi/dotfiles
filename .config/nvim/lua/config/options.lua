@@ -14,6 +14,7 @@ vim.opt.termguicolors = true
 vim.opt.winblend = 0
 vim.opt.pumblend = 0
 vim.g.vscode_transparent = 1 -- Need for transparent background.
+vim.opt.shell = "/usr/bin/zsh"
 
 -- FileType
 vim.filetype.add({
@@ -21,14 +22,14 @@ vim.filetype.add({
     -- ["~/research/langevin_fission/fission.code-workspace"] = "json",
   },
   pattern = {
-    ["*.code-workspace"] = "json",
+    ["*.code-workspace"] = "jsonc",
     ["*.nml"] = "fortran",
   },
 })
 -- For VSCode workspace
 vim.api.nvim_create_autocmd(
   { "BufEnter", "BufWinEnter" },
-  { pattern = { "*.code-workspace" }, command = "set filetype=json" }
+  { pattern = { "*.code-workspace" }, command = "set filetype=jsonc" }
 )
 -- For namelist in Fortran
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, { pattern = { "*.nml" }, command = "set filetype=fortran" })

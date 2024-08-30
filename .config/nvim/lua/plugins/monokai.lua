@@ -12,10 +12,10 @@ return {
       -- italic_comments = false,
       transparent = true,
       style = "storm",
-      -- styles = {
-      --   sidebars = "transparent",
-      --   floats = "transparent",
-      -- },
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
     })
   end,
   -- {
