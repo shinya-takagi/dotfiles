@@ -169,3 +169,4 @@ dotrc,.config/dot/dotrc
 .latexmkrc,.latexmkrc # LaTeX
 .local/bin/space2comma,.local/bin/space2comma
 
+.config/bat/config,.config/bat/config
