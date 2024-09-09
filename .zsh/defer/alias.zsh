@@ -31,7 +31,7 @@ alias mkdir="mkdir -p"
 alias ..="c ../"
 alias back="pushd"
 # alias diff="diff -U1"
-type dust > /dev/null 2>&1 && alias rm="trash-put" # trash-cli instead of rm.
+type trash-put > /dev/null 2>&1 && alias rm="trash-put" # trash-cli instead of rm.
 type rip > /dev/null 2>&1 && alias rm="rip"
 type column > /dev/null 2>&1 && alias csvs="column -s, -t"
 

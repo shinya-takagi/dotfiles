@@ -17,7 +17,7 @@ if wezterm.config_builder then
 end
 
 -- Set color scheme
-config.color_scheme = "Molokai"
+config.color_scheme = "Tokyo Night Storm"
 
 -- Window background opacity
 config.window_background_opacity = 0.90
@@ -26,7 +26,7 @@ config.window_background_opacity = 0.90
 config.use_ime = true
 
 -- Font
-config.font = wezterm.font("CodeNewRoman Nerd Font Mono")
+config.font = wezterm.font("UDEV Gothic 35NF")
 
 -- 最初からフルスクリーンで起動
 wezterm.on("gui-startup", function(cmd)
