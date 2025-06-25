@@ -39,7 +39,20 @@ else
     export PS1="$P_BLUE \w "$P_GREEN"$GIT_STATUS"$P_WHITE""$NOW_TIME"\n"$P_WHITE" $ "
 fi
 
+if [ -d ./.git ]; then
+    CURRENT_BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
+    alias gme="git merge origin/$CURRENT_BRANCH_NAME"
+fi
 # ---PROMPT------------<
+
+#-----------------------------------------------------
+# Completion
+#-----------------------------------------------------
+# Make
+# complete -W "\`grep -oE '^[a-zA-Z0-9_.-]+:([^=]|$)' ?akefile | sed 's/[^a-zA-Z0-9_.-]*$//'\`" make  # Missing when put option and .PHONY
+# if [ -f "Makefile" ]; then
+#     complete -W "`grep -oE '^[a-zA-Z0-9_-][a-zA-Z0-9_.-]+:([^=]|$)' Makefile | sed 's/[^a-zA-Z0-9_-]*$//'`" make
+# fi
 
 export EDITOR=vim
 set -o vi

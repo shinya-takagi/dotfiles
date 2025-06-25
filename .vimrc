@@ -43,6 +43,9 @@ set fileencodings=uft-8,iso-2022-jp,sjis
 scriptencoding utf-8
 filetype plugin indent on
 syntax on
+" let g:tokyonight_style = 'storm' " available: night, storm
+" let g:tokyonight_enable_italic = 1
+
 
 if g:for_screen_shot == 1
     " Light color (BG:White, FG:Gray)
@@ -52,7 +55,8 @@ if g:for_screen_shot == 1
 else
     " Dark color (BG:Black, FG:White)
     set background=dark
-    colorscheme molokai
+    " colorscheme molokai
+    colorscheme iceberg
     set laststatus=2
 endif
 
@@ -70,6 +74,9 @@ set noswapfile " Dont generate Swap file.
 set cursorline " cursor line 
 set incsearch  " Realtime highlight search.
 set ignorecase
+set diffopt+=vertical   " Diffmode default vertical
+" set termguicolors
+
 " set nocursorcolumn
 
 " Temporary files directory
@@ -96,6 +103,13 @@ set list
 " highlight LineNr ctermfg=darkyellow
 " highlight Comment ctermfg=magenta
 highlight StatusLine ctermfg=red ctermbg=black
+"------------------
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+highlight LineNr ctermbg=none
+highlight Folded ctermbg=none
+highlight EndOfBuffer ctermbg=none
+"------------------
 "----------------------------------------------------------
 ""          PASTE FROM CLIPBOARD
 "----------------------------------------------------------
@@ -117,9 +131,11 @@ endif
 "-----------------------------------------------------------
 augroup set_filetype
     autocmd!
-    autocmd BufRead,BufNewFile *.zsh           setfiletype zsh
-    autocmd BufRead,BufNewFile *.md            set filetype=markdown
-    autocmd BufRead,BufNewFile *.bash          set filetype=sh
+    autocmd BufRead,BufNewFile *.zsh        setfiletype zsh
+    autocmd BufRead,BufNewFile *.md         set filetype=markdown
+    autocmd BufRead,BufNewFile *.bash       set filetype=sh
+    au      BufNewFile,BufRead *.nml        set filetype=fortran
+    au      BufNewFile,BufRead *.namelist   set filetype=fortran
 augroup end
 " -------Abbreviations-------------->
 iabbrev ad advertisement 
@@ -210,16 +226,26 @@ function! s:TEST(bar)
 endfunction
 " Namelist for fortran
 if has("autocmd")
-    let b:fortran_free_source = 1
-    " unlet b:fortran_fixed_source
-    au BufNewFile,BufRead *.nml set filetype=fortran
-    au BufNewFile,BufRead *.namelist set filetype=fortran
+    let b:extfname = expand("%:e")
+    " Namelist for fortran
+    if b:extfname ==? "nml"
+        let b:fortran_free_source = 1
+        set syntax=fortran
+        let b:fortran_fixed_source=!b:fortran_fixed_source
+    endif
 endif
 " Switch Free format and Fixed format.
-nmap <S-F> :set syntax=fortran<CR>:let b:fortran_fixed_source=!b:fortran_fixed_source<CR>:set syntax=text<CR>:set syntax=fortran<CR>
+augroup fortran_cmd
+    autocmd!
+    autocmd FileType fortran nmap <S-F> :set syntax=fortran<CR>:let b:fortran_fixed_source=!b:fortran_fixed_source<CR>:set syntax=text<CR>:set syntax=fortran<CR>
+augroup END
 nmap <C-F> :filetype detect<CR>
 " Syntax on/off switch
 nmap <F7> :if exists("g:syntax_on") <Bar> syntax off <Bar> else <Bar> syntax enable <Bar> endif<CR>
+augroup vimrcEx
+      au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
+        \ exe "normal g`\"" | endif
+augroup END
 "C-----------------------------------------------------------
 "               Plugin Installed Checker
 "-----------------------------------------------------------
@@ -234,14 +260,17 @@ endfunction
 "               Plugin Manager
 "-----------------------------------------------------------
 call plug#begin()
-    Plug 'preservim/nerdtree'       "Tree type directory
-    Plug 'guns/xterm-color-table.vim'   " Show Xterm color table
-    Plug 'Vimjas/vim-python-pep8-indent'    " indent based on pep8
-    Plug 'hachibeeDI/python_hl_lvar.vim'    " local variable highlight
+    " Plug 'preservim/nerdtree'       "Tree type directory
+    " Plug 'guns/xterm-color-table.vim'   " Show Xterm color table
+    " Plug 'Vimjas/vim-python-pep8-indent'    " indent based on pep8
+    " Plug 'hachibeeDI/python_hl_lvar.vim'    " local variable highlight
     Plug 'nathanaelkane/vim-indent-guides'  " Show Vim Indent
+    " Plug 'tribela/vim-transparent'  " Transparent
 "   Plug 'osyo-manga/vim-over'
 "   Plug 'vim-python/python-syntax'
-"   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'ghifarit53/tokyonight-vim'
+    Plug 'vim-airline/vim-airline'
 call plug#end()
 
 " Plugin Keymap
@@ -255,3 +284,4 @@ augroup autoexe_plugin
     endif
 augroup end
 
+" colorscheme tokyonight
