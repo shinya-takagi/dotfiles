@@ -1,10 +1,10 @@
-import = ["~/.config/alacritty/themes/tokyonight.toml"]
+general.import = ["~/.config/alacritty/themes/tokyonight.toml"]
 
 [env]
 TERM = "alacritty"
 
 [font]
-size = 12.5
+size = 16
 
 [font.normal]
 # family = "CodeNewRoman Nerd Font"
@@ -34,7 +34,7 @@ y = 0
 [scrolling]
 history = 10000
 
-[shell]
+[terminal.shell]
 args = ["--login", "-l", "-c", "tmux a -t default || tmux new -s default"]
 # args = ["--login", "-l", "-c", "zellij attach --index 0 --create"]
 program = "/bin/zsh"

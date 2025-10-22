@@ -1,5 +1,5 @@
 return {
-  "williamboman/mason.nvim",
+  "mason-org/mason.nvim",
 
   opts = {
     ensure_installed = {
@@ -11,7 +11,6 @@ return {
       "fortls",
       -- "pyright",
       "ruff",
-      "ruff-lsp",
       "rust-analyzer",
     },
   },
