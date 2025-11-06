@@ -170,3 +170,4 @@ dotrc,.config/dot/dotrc
 .local/bin/space2comma,.local/bin/space2comma
 
 .config/bat/config,.config/bat/config
+.config/nvim/lua/plugins/typst.lua,.config/nvim/lua/plugins/typst.lua
