@@ -171,3 +171,5 @@ dotrc,.config/dot/dotrc
 
 .config/bat/config,.config/bat/config
 .config/nvim/lua/plugins/typst.lua,.config/nvim/lua/plugins/typst.lua
+.config/nvim/lua/plugins/typst_preview.lua,.config/nvim/lua/plugins/typst_preview.lua
+.config/nvim/lua/plugins/tinymist.lua,.config/nvim/lua/plugins/tinymist.lua
