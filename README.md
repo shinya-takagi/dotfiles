@@ -8,7 +8,7 @@ This repository is my dotfiles based on [dot](https://github.com/ssh0/dot).
 - OS: MacOSX or Linux(WSL)
 - shell: zsh
   - plugin manager: [sheldon](https://github.com/rossmacarthur/sheldon.git)
-- editor : neovim
+- editor : [neovim](https://neovim.io)
   - plugin manager: [Lazy.nvim](https://github.com/folke/lazy.nvim.git)
   - plugins: [LazyVim](https://github.com/LazyVim/LazyVim.git)
 - terminal: alacritty
@@ -16,6 +16,15 @@ This repository is my dotfiles based on [dot](https://github.com/ssh0/dot).
 - version manager: Git
 - dotfile manager: [dot](https://github.com/ssh0/dot)
 - trash manager: trash-cli(Instead of rm)
+
+## Recommanded Software
+- [bat](https://github.com/sharkdp/bat): cat clone with syntax highlighting
+- [lsd](https://github.com/lsd-rs/lsd): ls clone with icons and more features
+- [delta](https://github.com/dandavison/delta): diff viewer for git and more
+- [dust](https://github.com/bootandy/dust): du clone with better visualization
+- [lazygit](https://github.com/jesseduffield/lazygit): terminal UI for git
+- [ripgrep](https://github.com/BurntSushi/ripgrep): faster grep clone
+- [fzf](https://github.com/junegunn/fzf): fuzzy finder
 
 
 # Get Started
