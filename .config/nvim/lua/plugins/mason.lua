@@ -12,6 +12,7 @@ return {
       -- "pyright",
       "ruff",
       "rust-analyzer",
+      "tinymist",
     },
   },
 }
