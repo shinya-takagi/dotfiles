@@ -13,6 +13,9 @@ export PATH="$HOME/.local/bin:$PATH"
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# Julia
+export PATH="$HOME/.juliaup/bin:$PATH"
+
 # Starship
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 #=============================
@@ -34,7 +37,17 @@ if [ "$(uname -s)" = "Linux" ]; then
     #     (fcitx-autostart > /dev/null 2>&1 &)
     #     xset -r 49  > /dev/null 2>&1
     # fi
+    export PYTHONPATH="$HOME/research/plot_shape:$PYTHONPATH"
 
+    # if [ -z "$SSH_AGENT_PID" ]; then
+    #   eval "$(ssh-agent -s)" >/dev/null 2>&1
+    #   ssh-add ~/.ssh/id_ed25519
+    # fi
+
+    if type keychain > /dev/null 2>&1; then
+      keychain -q --nogui $HOME/.ssh/id_ed25519
+      source $HOME/.keychain/$HOST-sh
+    fi
 
 elif [ "$(uname -s )" = "Darwin" ]; then
     export PATH="$HOME/intel/bin:$PATH"

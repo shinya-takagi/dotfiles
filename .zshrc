@@ -48,3 +48,12 @@ eval "$(sheldon source)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/home/shinya/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<
