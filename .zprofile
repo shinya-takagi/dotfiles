@@ -19,6 +19,7 @@ export PATH="$HOME/.juliaup/bin:$PATH"
 # Starship
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 #=============================
+ulimit -s unlimited
 
 # OS Dependent
 if [ "$(uname -s)" = "Linux" ]; then
@@ -77,3 +78,5 @@ fi
 
 # Added by OrbStack: command-line tools and integration
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
+source /opt/intel/oneapi/setvars.sh > /dev/null 2>&1 || :
