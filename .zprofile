@@ -51,16 +51,16 @@ if [ "$(uname -s)" = "Linux" ]; then
     fi
 
 elif [ "$(uname -s )" = "Darwin" ]; then
-    export PATH="$HOME/intel/bin:$PATH"
-    export PATH="/usr/local/texlive/2023/bin/universal-darwin:$PATH"
-    export PATH="/usr/local/Cellar/bison/3.8.2/bin:$PATH"
-    export PATH="/Applications/Wine Stable.app/Contents/Resources/wine/bin:$PATH"
-    export PATH="/Library/TeX/texbin:$PATH"
-    export PATH="/usr/local/sbin:$PATH"
-    export PATH="$HOME/.pyenv/versions/3.11.3/bin:$PATH"
-    export PYTHONPATH="$HOME/dev/python/lib:$PYTHONPATH"
-    export FREETYPE_PROPERTIES="truetype:interpreter-version=35"
-    export DYLD_FALLBACK_LIBRARY_PATH="/usr/lib:/opt/X11/lib:$DYLD_FALLBACK_LIBRARY_PATH"
+    # export PATH="$HOME/intel/bin:$PATH"
+    # export PATH="/usr/local/texlive/2023/bin/universal-darwin:$PATH"
+    # export PATH="/usr/local/Cellar/bison/3.8.2/bin:$PATH"
+    # export PATH="/Applications/Wine Stable.app/Contents/Resources/wine/bin:$PATH"
+    # export PATH="/Library/TeX/texbin:$PATH"
+    # export PATH="/usr/local/sbin:$PATH"
+    # export PATH="$HOME/.pyenv/versions/3.11.3/bin:$PATH"
+    # export PYTHONPATH="$HOME/dev/python/lib:$PYTHONPATH"
+    # export FREETYPE_PROPERTIES="truetype:interpreter-version=35"
+    # export DYLD_FALLBACK_LIBRARY_PATH="/usr/lib:/opt/X11/lib:$DYLD_FALLBACK_LIBRARY_PATH"
 
     # Git Credential Manager
     export GCM_CREDENTIAL_STORE=keychain
@@ -74,6 +74,12 @@ elif [ "$(uname -s )" = "Darwin" ]; then
       source $HOME/.keychain/$(hostname)-sh
     fi
     # type keychain > /dev/null 2>&1 && keychain -q --nogui $HOME/.ssh/id_ed25519d
+
+    # Homebrew for Apple silicon processor
+    eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+
+    # For zsh-highlight
+    ulimit -n 4096
 fi
 
 # Added by OrbStack: command-line tools and integration
