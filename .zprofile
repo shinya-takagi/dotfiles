@@ -11,15 +11,30 @@ export DOT_DIR="$HOME/.dotfiles"
 export PATH="$HOME/.local/bin:$PATH"
 
 # Rust
-export PATH="$HOME/.cargo/bin:$PATH"
 
 # Julia
 export PATH="$HOME/.juliaup/bin:$PATH"
+
+# LMstudio
+export PATH="$PATH:/home/shinya/.lmstudio/bin"
 
 # Starship
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 #=============================
 ulimit -s unlimited
+ulimit -n 65535
+
+if [ -f "$HOME/.zshrc_local" ]; then
+  source $HOME/.zshrc_local
+fi
+
+if [ -f "$HOME/.local/bin/env" ]; then
+  source "$HOME/.local/bin/env"
+fi
+
+if [ -f "$HOME/.cargo/env" ]; then
+  . "$HOME/.cargo/env"
+fi
 
 # OS Dependent
 if [ "$(uname -s)" = "Linux" ]; then
@@ -49,6 +64,10 @@ if [ "$(uname -s)" = "Linux" ]; then
       keychain -q --nogui $HOME/.ssh/id_ed25519
       source $HOME/.keychain/$HOST-sh
     fi
+    # For cupti
+    export LD_LIBRARY_PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/26.3/cuda/13.1/extras/CUPTI/lib64:$LD_LIBRARY_PATH
+    export GTK_IM_MODULE=ibus
+    export TERM=xterm-256color
 
 elif [ "$(uname -s )" = "Darwin" ]; then
     # export PATH="$HOME/intel/bin:$PATH"
@@ -86,3 +105,9 @@ fi
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 
 source /opt/intel/oneapi/setvars.sh > /dev/null 2>&1 || :
+
+# NVIDIA HPC Kit
+export NVHPC=/opt/nvidia/hpc_sdk
+export PATH=$NVHPC/Linux_x86_64/26.3/compilers/bin:$PATH
+export MANPATH=$MANPATH:$NVHPC/Linux_x86_64/26.3/compilers/man
+
