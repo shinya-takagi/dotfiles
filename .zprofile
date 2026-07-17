@@ -12,6 +12,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Julia
 export PATH="$HOME/.juliaup/bin:$PATH"
+[ -f "/home/shinya/.julia/juliaup/completions/zsh.zsh" ] && source "/home/shinya/.julia/juliaup/completions/zsh.zsh"
 
 # LMstudio
 export PATH="$PATH:/home/shinya/.lmstudio/bin"
