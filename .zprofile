@@ -22,7 +22,6 @@ export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 #=============================
 ulimit -s unlimited
 
-=======
 if [ -f "$HOME/.zshrc_local" ]; then
   source $HOME/.zshrc_local
 fi
