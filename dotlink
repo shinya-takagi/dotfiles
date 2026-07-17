@@ -162,7 +162,6 @@ dotrc,.config/dot/dotrc
 .zshrc,.zshrc
 .zprofile,.zprofile
 .zshenv,.zshenv
-.config/sheldon/plugins.toml,.config/sheldon/plugins.toml  # dotfile manager
 
 # Others
 .fprettify.rc,.fprettify.rc # Fortran formatter

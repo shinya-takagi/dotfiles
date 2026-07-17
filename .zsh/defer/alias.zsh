@@ -56,6 +56,9 @@ alias drmi="docker rmi"
 alias dbu="docker build . -it"
 alias dpa="docker ps -a"
 
+#-----multipass------
+alias mpa="multipass"
+
 #-------URL--------------------------
 #if type wsl-open >/dev/null 2>&1; then
 # Windows 

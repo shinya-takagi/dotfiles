@@ -41,9 +41,12 @@
 .config/alacritty/alacritty.toml,.config/alacritty/alacritty.toml # (toml used in 0.13.0)
 # .gitconfig_mac, .gitconfig
 # hammerspoon, Set hotkey
-.hammerspoon/init.lua,.hammerspoon/init.lua
+# .hammerspoon/init.lua,.hammerspoon/init.lua
   # iTerm2
-.config/iterm2/com.googlecode.iterm2.plist,.config/iterm2/com.googlecode.iterm2.plist
+# .config/iterm2/com.googlecode.iterm2.plist,.config/iterm2/com.googlecode.iterm2.plist
   # Raycast
-.config/raycast/Raycast_backup.rayconfig,.config/raycast/Raycast_backup.rayconfig
-.config/raycast/scripts/add-memos.sh,.config/raycast/scripts/add-memos.sh
+# .config/raycast/Raycast_backup.rayconfig,.config/raycast/Raycast_backup.rayconfig
+# .config/raycast/scripts/add-memos.sh,.config/raycast/scripts/add-memos.sh
+
+# zsh manager
+.config/sheldon/plugins_mac.toml,.config/sheldon/plugins.toml  # dotfile manager

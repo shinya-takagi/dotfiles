@@ -62,7 +62,7 @@
 # .zprofile,.zprofile
 # .zshenv,.zshenv
 #   # zsh plugin manager, sheldon
-# .config/sheldon/plugins.toml,.config/sheldon/plugins.toml
+.config/sheldon/plugins.toml,.config/sheldon/plugins.toml
 # 
 # # Others
 # .config/git/ignore,.config/git/ignore

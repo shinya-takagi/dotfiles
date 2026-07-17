@@ -26,12 +26,12 @@ dotdir="$HOME/.dotfiles"
 # (In zsh)
 
 case ${OSTYPE} in
-    *linux*)
-        dotlinklocal="${dotdir}/dotlink.linux"
-        ;;
-    *darwin*)
-        dotlinklocal="${dotdir}/dotlink.mac"
-        ;;
+*linux*)
+  dotlinklocal="${dotdir}/dotlink.linux"
+  ;;
+*darwin*)
+  dotlinklocal="${dotdir}/dotlink.mac"
+  ;;
 #    *cygwin*|*msys*)
 #        dotlinklocal="${dotdir}/dotlink.windows"
 #        ;;

@@ -20,13 +20,13 @@ github = "romkatv/zsh-defer"
 [templates]
 defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
 
-[plugins.zsh-autocomplete]
-github = "marlonrichert/zsh-autocomplete"
-apply = ["defer"]
-
-# [plugins.zsh-autosuggestions]
-# github = "zsh-users/zsh-autosuggestions"
+# [plugins.zsh-autocomplete]
+# github = "marlonrichert/zsh-autocomplete"
 # apply = ["defer"]
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+apply = ["defer"]
 
 [plugins.zsh-abbriviation]
 github = "olets/zsh-abbr"

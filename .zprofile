@@ -20,6 +20,15 @@ export PATH="$HOME/.juliaup/bin:$PATH"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 #=============================
 ulimit -s unlimited
+ulimit -n 65535
+
+if [ -f $HOME/.zshrc_local ]; then
+  source $HOME/.zshrc_local
+fi
+
+# zsh-autosuggetions
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#888888"
+
 
 # OS Dependent
 if [ "$(uname -s)" = "Linux" ]; then
