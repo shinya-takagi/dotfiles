@@ -16,6 +16,8 @@ vim.opt.pumblend = 0
 vim.g.vscode_transparent = 1 -- Need for transparent background.
 vim.opt.shell = "/usr/bin/zsh"
 
+vim.g.fortran_CUDA = 1
+
 -- FileType
 vim.filetype.add({
   filename = {
@@ -24,6 +26,9 @@ vim.filetype.add({
   pattern = {
     ["*.code-workspace"] = "jsonc",
     ["*.nml"] = "fortran",
+  },
+  extension = {
+    cuf = "fortran",
   },
 })
 -- For VSCode workspace
