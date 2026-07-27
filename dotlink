@@ -173,3 +173,6 @@ dotrc,.config/dot/dotrc
 .config/nvim/lua/plugins/tinymist.lua,.config/nvim/lua/plugins/tinymist.lua
 .config/nvim/lua/plugins/blink.lua,.config/nvim/lua/plugins/blink.lua
 .config/nvim/lua/plugins/fortran.lua,.config/nvim/lua/plugins/fortran.lua
+.claude/settings.json,.claude/settings.json
+.local/bin/claude-discord-notify.sh,.local/bin/claude-discord-notify.sh
+.local/bin/codex_notify.py,.local/bin/codex_notify.py
