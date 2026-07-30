@@ -1,0 +1,29 @@
+{
+  "description": "Send Codex status notifications to Discord",
+  "hooks": {
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ~/.local/bin/codex_notify.py",
+            "timeout": 15,
+            "statusMessage": "Sending approval notification to Discord"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ~/.local/bin/codex_notify.py",
+            "timeout": 15,
+            "statusMessage": "Sending completion notification to Discord"
+          }
+        ]
+      }
+    ]
+  }
+}

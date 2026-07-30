@@ -1,11 +1,40 @@
 {
-  "enabledPlugins": {
-    "superpowers@claude-plugins-official": true
+  "permissions": {
+    "allow": [
+      "Bash(gh repo view *)",
+      "Bash(gh pr list *)",
+      "Bash(gh pr view *)",
+      "Bash(gh issue list *)",
+      "Bash(gh issue view *)",
+      "Bash(git:*)",
+      "Bash(make:*)",
+      "Bash(cd:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(echo:*)",
+      "Bash(mkdir:*)",
+      "Bash(touch:*)",
+      "Bash(date:*)",
+      "Bash(python3:*)"
+    ],
+    "deny": [
+      "Read(.env)",
+      "Read(.env.*)",
+      "Read(./secrets/**)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)"
+    ],
+    "ask": [
+      "Bash(git push *)",
+      "Bash(rm *)",
+      "Bash(sudo *)"
+    ]
   },
-  "tui": "fullscreen",
-  "theme": "dark",
-  "language": "Japanese",
-
+  "model": "sonnet",
   "hooks": {
     "Notification": [
       {
@@ -30,49 +59,14 @@
       }
     ]
   },
-  "permissions": {
-    "allow": [
-      "Bash(git status)",
-      "Bash(git diff *)",
-      "Bash(git log *)",
-      "Bash(git add *)",
-      "Bash(git commit *)",
-      "Bash(git checkout *)",
-      "Bash(git branch *)",
-      "Bash(gh repo view *)",
-      "Bash(gh pr list *)",
-      "Bash(gh pr view *)",
-      "Bash(gh issue list *)",
-      "Bash(gh issue view *)",
-      "Bash(make:*)",
-      "Bash(cd:*)",
-      "Bash(ls:*)",
-      "Bash(cat:*)",
-      "Bash(head:*)",
-      "Bash(tail:*)",
-      "Bash(grep:*)",
-      "Bash(find:*)",
-      "Bash(echo:*)",
-      "Bash(mkdir:*)",
-      "Bash(touch:*)",
-      "Bash(date:*)",
-      "Bash(python3:*)"
-    ],
-    "ask": [
-      "Bash(git push *)",
-      "Bash(rm *)",
-      "Bash(sudo *)"
-    ],
-    "deny": [
-      "Read(.env)",
-      "Read(.env.*)",
-      "Read(./secrets/**)",
-      "Read(~/.ssh/**)",
-      "Read(~/.aws/**)"
-    ]
-  },
   "statusLine": {
     "type": "command",
     "command": "~/.local/bin/claude_statusline.sh"
-  }
+  },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true
+  },
+  "language": "Japanese",
+  "tui": "fullscreen",
+  "theme": "dark"
 }
