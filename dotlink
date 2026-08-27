@@ -177,3 +177,4 @@ dotrc,.config/dot/dotrc
 .local/bin/claude-discord-notify.sh,.local/bin/claude-discord-notify.sh
 .local/bin/codex_notify.py,.local/bin/codex_notify.py
 .codex/hooks.json,.codex/hooks.json
+.codex/AGENTS.md,.codex/AGENTS.md
