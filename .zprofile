@@ -1,8 +1,6 @@
 # zprofile
 
-# Set PATH
-
-#========Commonly=============
+#========Common=============
 ## dot
 export DOT_REPO="https://github.com/shinya-takagi/dotfiles_pub.git"
 export DOT_DIR="$HOME/.dotfiles"
@@ -12,15 +10,16 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Julia
 export PATH="$HOME/.juliaup/bin:$PATH"
-[ -f "/home/shinya/.julia/juliaup/completions/zsh.zsh" ] && source "/home/shinya/.julia/juliaup/completions/zsh.zsh"
+[ -f "$HOME/.julia/juliaup/completions/zsh.zsh" ] && source "$HOME/.julia/juliaup/completions/zsh.zsh"
 
 # LMstudio
-export PATH="$PATH:/home/shinya/.lmstudio/bin"
+export PATH="$PATH:$HOME/.lmstudio/bin"
 
 # Starship
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 #=============================
 ulimit -s unlimited
+ulimit -n 65535
 
 if [ -f "$HOME/.zshrc_local" ]; then
   source $HOME/.zshrc_local
@@ -34,6 +33,9 @@ fi
 if [ -f "$HOME/.cargo/env" ]; then
   . "$HOME/.cargo/env"
 fi
+
+# Intel OneAPI
+source /opt/intel/oneapi/setvars.sh > /dev/null 2>&1 || :
 
 # OS Dependent
 if [ "$(uname -s)" = "Linux" ]; then
@@ -63,52 +65,33 @@ if [ "$(uname -s)" = "Linux" ]; then
       keychain -q --nogui $HOME/.ssh/id_ed25519
       source $HOME/.keychain/$HOST-sh
     fi
-    # For cupti
-    export LD_LIBRARY_PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/26.3/cuda/13.1/extras/CUPTI/lib64:$LD_LIBRARY_PATH
     export GTK_IM_MODULE=ibus
     export TERM=xterm-256color
 
-elif [ "$(uname -s )" = "Darwin" ]; then
-    # export PATH="$HOME/intel/bin:$PATH"
-    # export PATH="/usr/local/texlive/2023/bin/universal-darwin:$PATH"
-    # export PATH="/usr/local/Cellar/bison/3.8.2/bin:$PATH"
-    # export PATH="/Applications/Wine Stable.app/Contents/Resources/wine/bin:$PATH"
-    # export PATH="/Library/TeX/texbin:$PATH"
-    # export PATH="/usr/local/sbin:$PATH"
-    # export PATH="$HOME/.pyenv/versions/3.11.3/bin:$PATH"
-    # export PYTHONPATH="$HOME/dev/python/lib:$PYTHONPATH"
-    # export FREETYPE_PROPERTIES="truetype:interpreter-version=35"
-    # export DYLD_FALLBACK_LIBRARY_PATH="/usr/lib:/opt/X11/lib:$DYLD_FALLBACK_LIBRARY_PATH"
+    # NVIDIA HPC Kit
+    export NVHPC=/opt/nvidia/hpc_sdk
+    export PATH=$NVHPC/Linux_x86_64/26.3/compilers/bin:$PATH
+    export MANPATH=$MANPATH:$NVHPC/Linux_x86_64/26.3/compilers/man
+    # For cupti
+    export LD_LIBRARY_PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/26.3/cuda/13.1/extras/CUPTI/lib64:$LD_LIBRARY_PATH
 
+elif [ "$(uname -s )" = "Darwin" ]; then
     # Git Credential Manager
     export GCM_CREDENTIAL_STORE=keychain
 
     # zsh-autosuggetions
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#888888"
-    # For git-sim
-    type git-sim > /dev/null 2>&1 && export git_sim_media_dir="$HOME/Desktop/"
 
     # Added by OrbStack: command-line tools and integration
-    # source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+    type orbstack > /dev/null 2>&1 && source ~/.orbstack/shell/init.zsh 2>/dev/null
 
     # type keychain > /dev/null 2>&1 && eval $(keychain --eval --agents ssh $HOME/.ssh/id_ed25519d)
     if command -v keychain > /dev/null 2>&1; then
       keychain -q --nogui $HOME/.ssh/id_ed25519
       source $HOME/.keychain/$(hostname)-sh
     fi
-    # type keychain > /dev/null 2>&1 && keychain -q --nogui $HOME/.ssh/id_ed25519d
 
     # Homebrew for Apple silicon processor
     eval "$(/opt/homebrew/bin/brew shellenv zsh)"
-
-    # For zsh-highlight
-    ulimit -n 65535
 fi
-
-source /opt/intel/oneapi/setvars.sh > /dev/null 2>&1 || :
-
-# NVIDIA HPC Kit
-export NVHPC=/opt/nvidia/hpc_sdk
-export PATH=$NVHPC/Linux_x86_64/26.3/compilers/bin:$PATH
-export MANPATH=$MANPATH:$NVHPC/Linux_x86_64/26.3/compilers/man
 
