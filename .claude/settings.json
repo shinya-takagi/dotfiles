@@ -34,7 +34,7 @@
       "Bash(sudo *)"
     ]
   },
-  "model": "sonnet",
+  "model": "opus",
   "hooks": {
     "Notification": [
       {
@@ -68,5 +68,10 @@
   },
   "language": "Japanese",
   "tui": "fullscreen",
-  "theme": "dark"
+  "theme": "dark",
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "xhigh"
+    }
+  }
 }

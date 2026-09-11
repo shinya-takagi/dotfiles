@@ -45,6 +45,11 @@ apply = ["defer"]
 # github = "ryutok/rust-zsh-completions"
 # apply = ["defer"]
 
+# claude completion
+[plugins.zsh-claudecode-completion]
+github = "wbingli/zsh-claudecode-completion"
+apply = ["source"]
+
 # Lazyloading for zsh
 [plugins.dotfiles-defer]
 local = '~/.dotfiles/.zsh/defer'

@@ -261,5 +261,46 @@ sshtmux () {
 
   ssh "$SERVER" -t "$COMMAND"
 }
+
+# codex in docker container
+dcodex() {
+    local codex_path="$HOME/work/codex-dev"
+    local base="$codex_path/workspace"
+    local relative
+
+    relative="${PWD#$base}"
+
+    if [[ "$PWD" != "$base"* ]]; then
+        echo "dcodex: $base 以下で実行してください"
+        return 1
+    fi
+
+    docker compose \
+        -f "$codex_path/compose.yaml" \
+        exec \
+        -w "/workspace${relative}" \
+        codex \
+        codex --dangerously-bypass-approvals-and-sandbox
+}
+
+dclaude() {
+    local codex_path="$HOME/work/codex-dev"
+    local base="$codex_path/workspace"
+    local relative
+
+    relative="${PWD#$base}"
+
+    if [[ "$PWD" != "$base"* ]]; then
+        echo "dclaude: $base 以下で実行してください"
+        return 1
+    fi
+
+    docker compose \
+        -f "$codex_path/compose.yaml" \
+        exec \
+        -w "/workspace${relative}" \
+        codex \
+        claude --dangerously-skip-permissions
+}
 # When installed abbr-zsh, set aliases as abbreviation.
 [[ $(type abbr) ]] && abbr import-aliases -S

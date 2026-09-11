@@ -15,6 +15,9 @@ export PATH="$HOME/.juliaup/bin:$PATH"
 # LMstudio
 export PATH="$PATH:$HOME/.lmstudio/bin"
 
+# OpenCode
+export PATH=/home/shinya/.opencode/bin:$PATH
+
 # Starship
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 #=============================
