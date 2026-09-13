@@ -22,7 +22,7 @@ defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
 
 [plugins.zsh-autocomplete]
 github = "marlonrichert/zsh-autocomplete"
-# apply = ["source"]
+apply = ["source"]
 
 # [plugins.zsh-autosuggestions]
 # github = "zsh-users/zsh-autosuggestions"
@@ -40,10 +40,16 @@ apply = ["defer"]
 github = "agkozak/zsh-z"
 apply = ["defer"]
 
-# rust completion
-# [plugins.rust-zsh-completions]
-# github = "ryutok/rust-zsh-completions"
-# apply = ["defer"]
+# claude completion
+[plugins.zsh-claudecode-completion]
+github = "wbingli/zsh-claudecode-completion"
+apply = ["defer"]
+
+[plugins.zsh-syntax-highlighting]
+github = "zsh-users/zsh-syntax-highlighting"
+apply = ["defer"]
+
+# ----------------------------------------------------
 
 # Lazyloading for zsh
 [plugins.dotfiles-defer]
@@ -56,16 +62,4 @@ apply = ['defer']
 local = '~/.dotfiles/.zsh/sync'
 use = ['*.zsh']
 apply = ['source']
-
-# [plugins.powerlevel10k]
-# github = 'romkatv/powerlevel10k'
-
-# For example:
-#
-# [plugins.base16]
-# github = "chriskempson/base16-shell"
-
-[plugins.zsh-syntax-highlighting]
-github = "zsh-users/zsh-syntax-highlighting"
-apply = ["defer"]
 

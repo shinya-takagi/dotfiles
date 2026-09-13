@@ -2,7 +2,7 @@
 #     Completion(WIP)
 # -----------------------------
 autoload -Uz compinit
-compinit -u
+compinit
 # ~~~ Start zsh-autocomplete ~~~
 # zstyle ':completion:*'  list-colors '=*=90'
 zstyle ':completion:*:parameters'  list-colors '=*=32'

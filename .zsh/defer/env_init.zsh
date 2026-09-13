@@ -21,15 +21,7 @@ fi
 
 # OS Dependent
 if [ "$(uname -s)" = "Linux" ]; then
-    # Intel Fortran
-    # if [ -e /opt/intel/oneapi/setvars.sh ]; then
-    #     source /opt/intel/oneapi/setvars.sh > /dev/null     # Intel Fortran/C++
-    # fi
     :
 elif [ "$(uname -s )" = "Darwin" ]; then
-    # Intel Oneapi
-    if [ -e /opt/intel/oneapi/setvars.sh ]; then
-        source /opt/intel/oneapi/setvars.sh > /dev/null     # Intel Fortran/C++
-    fi
     export LANG=ja_JP.UTF-8
 fi

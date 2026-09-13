@@ -1,0 +1,407 @@
+#compdef multipass
+
+autoload -U is-at-least
+
+_multipass() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+":: :_multipass_commands" \
+"*::: :->multipass" \
+&& ret=0
+    case $state in
+    (multipass)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:multipass-command-$line[1]:"
+        case $line[1] in
+            (delete)
+_arguments "${_arguments_options[@]}" \
+'--all[Delete all instances]' \
+'-p[Purge instances immediately]' \
+'--purge[Purge instances immediately]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+'::name -- Names of instances to delete:' \
+&& ret=0
+;;
+(exec)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':name -- Name of instance to execute the command on:' \
+':command -- Command to execute on the instance:' \
+&& ret=0
+;;
+(find)
+_arguments "${_arguments_options[@]}" \
+'--format[Output list in the requested format.Valid formats are: table (default), json, csv and yaml]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+'::string --  An optional value to search for in \[<remote\:>\]<string>:' \
+&& ret=0
+;;
+(get)
+_arguments "${_arguments_options[@]}" \
+'--raw[Output in raw format. For now, this affects only the representation of empty values (i.e. "" instead of "<empty>").]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+'::key --  Path to the setting whose configured value should be obtained.:' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+&& ret=0
+;;
+(info)
+_arguments "${_arguments_options[@]}" \
+'--all[Display info for all instances]' \
+'--format[Output info in the requested format. Valid formats are: table (default), json, csv and yaml]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+'::name --  Names of instances to display information about:' \
+&& ret=0
+;;
+(launch)
+_arguments "${_arguments_options[@]}" \
+'-c+[Number of CPUs to allocate. Minimum: 1, default: 1.]' \
+'--cpus=[Number of CPUs to allocate. Minimum: 1, default: 1.]' \
+'-m+[Amount of memory to allocate. Positive integers, in bytes, or with K, M, G suffix. Minimum: 128M, default: 1G.]' \
+'--mem=[Amount of memory to allocate. Positive integers, in bytes, or with K, M, G suffix. Minimum: 128M, default: 1G.]' \
+'-d+[Disk space to allocate. Positive integers, in bytes, or with K, M, G suffix. Minimum: 512M, default: 5G.]' \
+'--disk=[Disk space to allocate. Positive integers, in bytes, or with K, M, G suffix. Minimum: 512M, default: 5G.]' \
+'-n+[Name for the instance. If it is primary (the configured primary instance name), the user home directory is mounted inside the newly launched instance, in Home.]' \
+'--name=[Name for the instance. If it is primary (the configured primary instance name), the user home directory is mounted inside the newly launched instance, in Home.]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+'::image -- Optional image to launch. If omitted, then the default Ubuntu LTS will be used.:' \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" \
+'--format[Output list in the requested format. Valid formats are: table (default), json, csv and yaml]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+&& ret=0
+;;
+(mount)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':source -- Path of the local directory to mount:' \
+':target -- Target mount points, in <name>\[\:<path>\] format, where <name> is an instance name, and optional <path> is the mount point. If omitted, the mount point will be the same as the source absolute path:' \
+&& ret=0
+;;
+(purge)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+&& ret=0
+;;
+(recover)
+_arguments "${_arguments_options[@]}" \
+'--all[Recover all deleted instances]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+'::name -- Names of instances to recover:' \
+&& ret=0
+;;
+(restart)
+_arguments "${_arguments_options[@]}" \
+'--all[Recover all deleted instances]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+'::name -- Names of instances to restart. If omitted, and without the --all option, primary will be assumed.:' \
+&& ret=0
+;;
+(set)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':keyval -- A key-value pair. The key specifies a path to the setting to configure. The value is its intended value.:' \
+&& ret=0
+;;
+(shell)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+'::name -- Name of the instance to open a shell on. If omitted, primary (the configured primary instance name) will be assumed. If the instance is not running, an attempt is made to start it (see `start` for more info).:' \
+&& ret=0
+;;
+(start)
+_arguments "${_arguments_options[@]}" \
+'--all[Start all instances]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+'::name -- Names of instances to start. If omitted, and without the --all option, primary (the configured primary instance name) will be assumed. If primary does not exist but is included in a successful start command (either implicitly or explicitly), it is launched automatically (see `launch` for more info).:' \
+&& ret=0
+;;
+(stop)
+_arguments "${_arguments_options[@]}" \
+'-t+[Time from now, in minutes, to delay shutdown of the instance]' \
+'--time=[Time from now, in minutes, to delay shutdown of the instance]' \
+'-c+[Cancel a pending delayed shutdown]' \
+'--cancel=[Cancel a pending delayed shutdown]' \
+'--all[Stop all instances]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+'::name -- Names of instances to stop. If omitted, and without the --all option, primary will be assumed:' \
+&& ret=0
+;;
+(suspend)
+_arguments "${_arguments_options[@]}" \
+'--all[Suspend all instances]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+'::name -- Names of instances to suspend. If omitted, and without the --all option, primary will be assumed.:' \
+&& ret=0
+;;
+(transfer)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':source -- One or more paths to transfer, prefixed with <name\:> for paths inside the instance, or - for stdin:' \
+':destination -- The destination path, prefixed with <name\:> for a path inside the instance, or - for stdout:' \
+&& ret=0
+;;
+(umount)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+'::mount -- Mount points, in <name>\[\:<path>\] format, where <name> are instance names, and optional <path> are mount points. If omitted, all mounts will be removed from the named instances.:' \
+&& ret=0
+;;
+(version)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+}
+
+(( $+functions[_multipass_commands] )) ||
+_multipass_commands() {
+    local commands; commands=(
+        "delete:Delete instances" \
+"exec:Run a command on an instance" \
+"find:Display available images to create instances from" \
+"get:Get a configuration setting" \
+"help:Display help about a command" \
+"info:Display information about instances" \
+"launch:Create and start an Ubuntu instance" \
+"list:List all available instances" \
+"mount:Mount a local directory in the instance" \
+"purge:Purge all deleted instances permanently" \
+"recover:Recover deleted instances" \
+"restart:Restart instances" \
+"set:Set a configuration setting" \
+"shell:Open a shell on a running instance" \
+"start:Start instances" \
+"stop:Stop running instances" \
+"suspend:Suspend running instances" \
+"transfer:Transfer files between the host and instances" \
+"umount:Unmount a directory from an instance" \
+"version:Show version details" \
+    )
+    _describe -t commands 'multipass commands' commands "$@"
+}
+(( $+functions[_multipass__delete_commands] )) ||
+_multipass__delete_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'multipass delete commands' commands "$@"
+}
+(( $+functions[_multipass__exec_commands] )) ||
+_multipass__exec_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'multipass exec commands' commands "$@"
+}
+(( $+functions[_multipass__find_commands] )) ||
+_multipass__find_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'multipass find commands' commands "$@"
+}
+(( $+functions[_multipass__get_commands] )) ||
+_multipass__get_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'multipass get commands' commands "$@"
+}
+(( $+functions[_multipass__help_commands] )) ||
+_multipass__help_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'multipass help commands' commands "$@"
+}
+(( $+functions[_multipass__info_commands] )) ||
+_multipass__info_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'multipass info commands' commands "$@"
+}
+(( $+functions[_multipass__launch_commands] )) ||
+_multipass__launch_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'multipass launch commands' commands "$@"
+}
+(( $+functions[_multipass__list_commands] )) ||
+_multipass__list_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'multipass list commands' commands "$@"
+}
+(( $+functions[_multipass__mount_commands] )) ||
+_multipass__mount_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'multipass mount commands' commands "$@"
+}
+(( $+functions[_multipass__purge_commands] )) ||
+_multipass__purge_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'multipass purge commands' commands "$@"
+}
+(( $+functions[_multipass__recover_commands] )) ||
+_multipass__recover_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'multipass recover commands' commands "$@"
+}
+(( $+functions[_multipass__restart_commands] )) ||
+_multipass__restart_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'multipass restart commands' commands "$@"
+}
+(( $+functions[_multipass__set_commands] )) ||
+_multipass__set_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'multipass set commands' commands "$@"
+}
+(( $+functions[_multipass__shell_commands] )) ||
+_multipass__shell_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'multipass shell commands' commands "$@"
+}
+(( $+functions[_multipass__start_commands] )) ||
+_multipass__start_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'multipass start commands' commands "$@"
+}
+(( $+functions[_multipass__stop_commands] )) ||
+_multipass__stop_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'multipass stop commands' commands "$@"
+}
+(( $+functions[_multipass__suspend_commands] )) ||
+_multipass__suspend_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'multipass suspend commands' commands "$@"
+}
+(( $+functions[_multipass__transfer_commands] )) ||
+_multipass__transfer_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'multipass transfer commands' commands "$@"
+}
+(( $+functions[_multipass__umount_commands] )) ||
+_multipass__umount_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'multipass umount commands' commands "$@"
+}
+(( $+functions[_multipass__version_commands] )) ||
+_multipass__version_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'multipass version commands' commands "$@"
+}
+
+_multipass "$@"

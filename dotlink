@@ -132,8 +132,6 @@ dotrc,.config/dot/dotrc
 
 # Terminal Setting
   # alacritty
-# .config/alacritty/alacritty.yml,.config/alacritty/alacritty.yml
-# .config/alacritty/alacritty.toml,.config/alacritty/alacritty.toml
 .config/alacritty/themes/monokai_classic.yml,.config/alacritty/themes/monokai_classic.yml
 .config/alacritty/themes/monokai_pro.yml,.config/alacritty/themes/monokai_pro.yml
 .config/alacritty/themes/monokai_soda.yml,.config/alacritty/themes/monokai_soda.yml
@@ -150,7 +148,6 @@ dotrc,.config/dot/dotrc
 .config/helix/config.toml,.config/helix/config.toml
 .config/helix/languages.toml,.config/helix/languages.toml
   # WezTerm
-# .wezterm.lua,.wezterm.lua
 .config/wezterm/wezterm.lua,.config/wezterm/wezterm.lua
 .config/wezterm/keybinds.lua,.config/wezterm/keybinds.lua
   # Git
